@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKG · Naula — Rooted in Vietnam. Refined for the world.</title>
+<meta name="description" content="TKG is a botanical wellness brand rooted in Vietnamese herbal practice — crafted through the Naula method for modern daily life.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & ROOT ─────────────────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1A1A1A;
+  --paper:#FBFBF2;
+  --cyan:#4CC9E8;
+  --amber:#FFB703;
+  --fire:#D45D2A;
+  --perilla:#6B2B5C;
+  --wood:#8B5E3C;
+  --moss:#527121;
+  --hoa-yellow:#E8A020;
+  --hoa-sage:#7A9E5A;
+  --border:#DDD5CA;
+  --muted:#7A7268;
+  --cream:#F0EBE3;
+  --warm:#E8E0D5;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Be Vietnam Pro',sans-serif;
+  font-weight:300;
+  color:var(--ink);
+  background:var(--paper);
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── TYPOGRAPHY ──────────────────────────────────────────────────── */
+.ls{font-family:'League Spartan',sans-serif;}
+.eyebrow{
+  font-family:'Be Vietnam Pro',sans-serif;
+  font-size:10px;font-weight:500;
+  letter-spacing:0.22em;color:var(--cyan);
+  text-transform:uppercase;margin-bottom:14px;
+  display:block;
+}
+.h2{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(28px,4vw,42px);
+  font-weight:700;line-height:0.95;
+  text-transform:uppercase;color:var(--ink);
+  margin-bottom:3px;
+}
+.h2-lt{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(28px,4vw,42px);
+  font-weight:300;line-height:0.95;
+  text-transform:uppercase;color:var(--wood);
+  margin-bottom:28px;
+}
+.body-text{font-size:14px;color:var(--muted);line-height:1.85;font-weight:300;}
+.pull-quote{
+  font-size:15px;font-style:italic;color:var(--ink);
+  border-left:2px solid var(--amber);padding-left:18px;
+  line-height:1.6;margin-top:28px;font-weight:300;
+}
+
+/* ── NAV ─────────────────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 48px;
+  background:rgba(251,251,242,0.95);
+  backdrop-filter:blur(8px);
+  border-bottom:0.5px solid var(--border);
+  transition:all 0.3s;
+}
+.nav-logo{
+  font-family:'League Spartan',sans-serif;
+  font-size:18px;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+}
+.nav-logo span{color:var(--cyan);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{
+  font-size:11px;font-weight:400;
+  letter-spacing:0.08em;color:var(--muted);
+  text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{
+  font-size:10px;font-weight:500;letter-spacing:0.12em;
+  padding:9px 22px;background:var(--amber);color:var(--ink);
+  text-decoration:none;text-transform:uppercase;
+  transition:opacity 0.2s;
+}
+.nav-cta:hover{opacity:0.85;}
+
+/* ── HERO ─────────────────────────────────────────────────────────── */
+.hero{
+  min-height:100vh;
+  position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+  padding-top:72px;
+}
+.hero-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  z-index:0;
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(
+    to top,
+    rgba(26,26,26,0.75) 0%,
+    rgba(26,26,26,0.3) 50%,
+    rgba(26,26,26,0.1) 100%
+  );
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:64px 48px;
+  max-width:700px;
+}
+.hero-eyebrow{
+  font-size:10px;font-weight:500;
+  letter-spacing:0.22em;color:var(--cyan);
+  text-transform:uppercase;margin-bottom:20px;display:block;
+}
+.hero-h1{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(40px,6vw,72px);
+  font-weight:700;line-height:0.92;
+  text-transform:uppercase;color:var(--paper);
+  margin-bottom:4px;letter-spacing:-0.02em;
+}
+.hero-h1b{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(40px,6vw,72px);
+  font-weight:300;line-height:0.92;
+  text-transform:uppercase;color:var(--amber);
+  margin-bottom:28px;letter-spacing:-0.02em;
+}
+.hero-rule{width:32px;height:2px;background:var(--amber);margin-bottom:24px;}
+.hero-body{
+  font-size:15px;color:rgba(251,251,242,0.75);
+  line-height:1.8;max-width:480px;
+  margin-bottom:36px;font-weight:300;
+}
+.hero-body strong{font-weight:500;color:var(--paper);}
+.hero-cta-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.btn-amber{
+  font-size:10px;font-weight:600;letter-spacing:0.12em;
+  padding:14px 32px;background:var(--amber);color:var(--ink);
+  text-decoration:none;text-transform:uppercase;
+  transition:opacity 0.2s;display:inline-block;
+}
+.btn-amber:hover{opacity:0.85;}
+.btn-ghost{
+  font-size:12px;color:rgba(251,251,242,0.7);
+  border-bottom:0.5px solid rgba(251,251,242,0.4);
+  padding-bottom:2px;text-decoration:none;
+  transition:color 0.2s,border-color 0.2s;
+}
+.btn-ghost:hover{color:var(--paper);border-color:var(--paper);}
+
+/* Pixel accent hero */
+.hero-px-accent{
+  position:absolute;top:88px;right:48px;z-index:2;
+  display:grid;grid-template-columns:repeat(5,14px);
+  grid-template-rows:repeat(6,14px);gap:3px;
+  opacity:0.5;
+}
+
+/* ── PROOF BAR ───────────────────────────────────────────────────── */
+.proof-bar{
+  background:var(--ink);
+  display:flex;align-items:stretch;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.proof-bar::-webkit-scrollbar{display:none;}
+.proof-item{
+  padding:14px 20px;
+  border-right:0.5px solid rgba(251,251,242,0.07);
+  font-size:9px;font-weight:400;
+  letter-spacing:0.12em;
+  color:rgba(251,251,242,0.45);
+  text-transform:uppercase;
+  white-space:nowrap;
+  display:flex;align-items:center;
+}
+.proof-item:last-child{border-right:none;}
+.t-cyan{color:var(--cyan);font-weight:500;}
+.t-moss{color:var(--moss);font-weight:500;}
+.t-amber{color:var(--amber);font-weight:500;}
+
+/* ── SECTIONS SHARED ─────────────────────────────────────────────── */
+section{padding:88px 48px;}
+.section-inner{max-width:1080px;margin:0 auto;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+
+/* ── INTRO ───────────────────────────────────────────────────────── */
+.intro{background:var(--cream);}
+.spec-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border);
+  border:0.5px solid var(--border);
+}
+.spec-cell{
+  background:var(--paper);padding:22px 18px;
+  position:relative;
+}
+.spec-cell::after{
+  content:'';position:absolute;top:0;right:0;
+  width:16px;height:16px;background:var(--cream);
+}
+.spec-num{
+  font-family:'League Spartan',sans-serif;
+  font-size:9px;font-weight:600;
+  letter-spacing:0.16em;color:var(--cyan);
+  text-transform:uppercase;margin-bottom:8px;display:block;
+}
+.spec-title{
+  font-family:'League Spartan',sans-serif;
+  font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.04em;
+  color:var(--ink);margin-bottom:6px;display:block;
+}
+.spec-body{font-size:11px;color:var(--muted);line-height:1.6;font-weight:300;}
+
+/* ── SKU ─────────────────────────────────────────────────────────── */
+.sku-section{background:var(--paper);}
+.sku-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border);
+  border:0.5px solid var(--border);
+  margin-top:48px;
+}
+.sku-card{overflow:hidden;}
+.sku-header{padding:36px 32px 28px;}
+.sku-header.fire{background:var(--hoa-yellow);}
+.sku-header.perilla{background:var(--hoa-sage);}
+.sku-product-img{
+  width:100%;height:200px;
+  object-fit:contain;object-position:center;
+  margin-top:20px;
+}
+.sku-en{
+  font-size:9px;letter-spacing:0.16em;
+  text-transform:uppercase;font-weight:500;
+  color:rgba(251,251,242,0.65);
+  display:block;margin-bottom:4px;
+}
+.sku-name{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(20px,2.5vw,28px);
+  font-weight:700;text-transform:uppercase;
+  color:var(--paper);line-height:1.0;
+  display:block;margin-bottom:4px;
+}
+.sku-ing{font-size:10px;font-weight:300;color:rgba(251,251,242,0.5);}
+.sku-body-wrap{padding:28px 32px;background:var(--paper);}
+.sku-tagline{
+  font-size:14px;font-style:italic;
+  color:var(--ink);line-height:1.5;
+  margin-bottom:12px;font-weight:300;display:block;
+}
+.sku-desc{font-size:12px;color:var(--muted);line-height:1.75;margin-bottom:14px;}
+.sku-use{
+  font-size:9px;font-weight:500;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:14px;
+}
+.origin-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 10px;
+  background:rgba(82,113,33,0.1);
+  border:0.5px solid rgba(82,113,33,0.35);
+}
+.origin-dot{width:6px;height:6px;background:var(--moss);flex-shrink:0;border-radius:0;}
+.origin-text{font-size:9px;color:var(--moss);font-weight:500;letter-spacing:0.1em;text-transform:uppercase;}
+
+/* ── HOW TO PREPARE ──────────────────────────────────────────────── */
+.prepare{background:var(--ink);padding:88px 48px;}
+.prepare-eyebrow{
+  font-size:10px;font-weight:500;letter-spacing:0.22em;
+  color:var(--cyan);text-transform:uppercase;
+  margin-bottom:14px;display:block;
+}
+.prepare-h2{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(28px,4vw,42px);font-weight:700;
+  line-height:0.95;text-transform:uppercase;
+  color:var(--paper);margin-bottom:3px;
+}
+.prepare-h2b{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(28px,4vw,42px);font-weight:300;
+  line-height:0.95;text-transform:uppercase;
+  color:var(--amber);margin-bottom:48px;
+}
+.prepare-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(251,251,242,0.06);
+}
+.prepare-step{background:var(--ink);border:0.5px solid rgba(251,251,242,0.04);}
+.prepare-img-wrap{width:100%;height:240px;overflow:hidden;position:relative;}
+.prepare-img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  transition:transform 0.4s ease;
+}
+.prepare-step:hover .prepare-img{transform:scale(1.03);}
+.prepare-px-bar{
+  height:6px;background:var(--ink);
+  display:flex;gap:2px;padding:1px;
+}
+.prepare-px-bar span{flex:1;background:rgba(251,251,242,0.06);}
+.prepare-px-bar span:nth-child(2n){background:rgba(255,183,3,0.4);}
+.prepare-px-bar span:nth-child(3n){background:transparent;}
+.prepare-text{padding:22px 20px;}
+.p-num{
+  font-family:'League Spartan',sans-serif;
+  font-size:9px;font-weight:600;
+  letter-spacing:0.16em;color:var(--amber);
+  text-transform:uppercase;margin-bottom:8px;display:block;
+}
+.p-title{
+  font-family:'League Spartan',sans-serif;
+  font-size:13px;font-weight:700;
+  text-transform:uppercase;color:var(--paper);
+  margin-bottom:8px;line-height:1.2;display:block;
+}
+.p-body{font-size:11px;color:rgba(251,251,242,0.4);line-height:1.65;font-weight:300;}
+.p-tech{font-size:10px;color:var(--cyan);font-weight:500;margin-top:8px;display:block;letter-spacing:0.04em;}
+
+/* ── NAULA ───────────────────────────────────────────────────────── */
+.naula{background:var(--cream);}
+.naula-header{
+  display:grid;grid-template-columns:1fr auto;
+  gap:48px;margin-bottom:48px;align-items:end;
+}
+.naula-px{
+  display:grid;grid-template-columns:repeat(8,18px);
+  grid-template-rows:repeat(5,18px);gap:3px;
+}
+.naula-px div{background:var(--warm);}
+.naula-px div.i{background:var(--ink);}
+.naula-px div.a{background:var(--amber);}
+.naula-px div.c{background:var(--cyan);}
+.naula-px div.m{background:var(--moss);}
+.steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border:0.5px solid var(--border);margin-bottom:12px;
+}
+.step{background:var(--paper);padding:26px 20px;}
+.st-num{
+  font-family:'League Spartan',sans-serif;
+  font-size:9px;font-weight:600;
+  letter-spacing:0.16em;color:var(--cyan);
+  text-transform:uppercase;margin-bottom:10px;display:block;
+}
+.st-title{
+  font-family:'League Spartan',sans-serif;
+  font-size:12px;font-weight:700;
+  text-transform:uppercase;color:var(--ink);
+  margin-bottom:8px;line-height:1.2;display:block;
+}
+.st-body{font-size:11px;color:var(--muted);line-height:1.6;font-weight:300;}
+.proof-strip{
+  display:flex;align-items:center;gap:10px;
+  font-size:10px;color:var(--muted);
+  padding:14px 18px;
+  border:0.5px solid var(--cyan);
+  background:rgba(76,201,232,0.06);
+  letter-spacing:0.04em;
+}
+.proof-sq{width:8px;height:8px;background:var(--cyan);flex-shrink:0;}
+.origin-card{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 20px;
+  background:rgba(82,113,33,0.08);
+  border:0.5px solid var(--moss);
+  margin-top:10px;
+}
+.origin-px-mini{
+  display:grid;grid-template-columns:repeat(3,10px);
+  grid-template-rows:repeat(3,10px);gap:2px;flex-shrink:0;
+}
+.origin-px-mini div{background:var(--moss);}
+.origin-px-mini div:nth-child(2n){background:#7A9B4A;}
+.origin-px-mini div:nth-child(5n){background:#3D5518;}
+.origin-label{font-size:10px;color:var(--moss);font-weight:500;letter-spacing:0.06em;display:block;}
+.origin-sub{font-size:10px;color:var(--muted);font-weight:300;margin-top:2px;}
+
+/* ── WHY ─────────────────────────────────────────────────────────── */
+.why{background:var(--ink);}
+.why-h2{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(28px,4vw,42px);font-weight:700;
+  line-height:0.95;text-transform:uppercase;
+  color:var(--paper);margin-bottom:3px;
+}
+.why-h2b{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(28px,4vw,42px);font-weight:300;
+  line-height:0.95;text-transform:uppercase;
+  color:var(--amber);margin-bottom:48px;
+}
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(251,251,242,0.07);
+}
+.why-card{
+  background:var(--ink);padding:36px 28px;
+  border:0.5px solid rgba(251,251,242,0.05);
+}
+.why-px-bar{
+  display:grid;grid-template-columns:repeat(6,8px);
+  grid-template-rows:8px;gap:2px;margin-bottom:18px;
+}
+.why-px-bar div{background:rgba(251,251,242,0.07);}
+.why-px-bar div.a{background:var(--amber);}
+.why-px-bar div.c{background:var(--cyan);}
+.why-px-bar div.m{background:var(--moss);}
+.wc-num{
+  font-family:'League Spartan',sans-serif;
+  font-size:9px;font-weight:600;
+  letter-spacing:0.14em;color:var(--amber);
+  text-transform:uppercase;margin-bottom:12px;display:block;
+}
+.wc-title{
+  font-family:'League Spartan',sans-serif;
+  font-size:15px;font-weight:700;
+  color:var(--paper);text-transform:uppercase;
+  margin-bottom:10px;line-height:1.1;display:block;
+}
+.wc-body{font-size:12px;color:rgba(251,251,242,0.4);line-height:1.75;font-weight:300;}
+.wc-geo{font-size:10px;color:var(--moss);font-weight:500;margin-top:12px;display:block;letter-spacing:0.06em;}
+
+/* ── SLOGAN BREAK ────────────────────────────────────────────────── */
+.slogan-break{
+  background:var(--hoa-yellow);
+  padding:36px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.slogan-text{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(20px,3vw,32px);
+  font-weight:300;color:var(--ink);letter-spacing:0.04em;
+}
+.slogan-text .bold{font-weight:700;}
+.slogan-px{
+  display:grid;grid-template-columns:repeat(6,14px);
+  grid-template-rows:repeat(4,14px);gap:3px;flex-shrink:0;
+}
+.slogan-px div{background:rgba(26,26,26,0.08);}
+.slogan-px div:nth-child(3n){background:rgba(26,26,26,0.18);}
+.slogan-px div:nth-child(5n){background:transparent;}
+
+/* ── ORDER ───────────────────────────────────────────────────────── */
+.order{background:var(--paper);}
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.order-h2{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(28px,4vw,42px);font-weight:700;
+  line-height:0.95;text-transform:uppercase;
+  color:var(--ink);margin-bottom:3px;
+}
+.order-h2b{
+  font-family:'League Spartan',sans-serif;
+  font-size:clamp(28px,4vw,42px);font-weight:300;
+  line-height:0.95;text-transform:uppercase;
+  color:var(--wood);margin-bottom:28px;
+}
+.order-body{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:28px;font-weight:300;}
+.spec-rows{border-top:0.5px solid var(--border);margin-bottom:32px;}
+.spec-row{
+  display:flex;justify-content:space-between;
+  padding:10px 0;border-bottom:0.5px solid var(--border);font-size:13px;
+}
+.spec-k{color:var(--muted);font-weight:300;}
+.spec-v{font-weight:500;color:var(--ink);}
+.spec-v.c{color:var(--cyan);}
+.spec-v.g{color:var(--moss);}
+.btn-order{
+  display:block;font-size:11px;font-weight:600;
+  letter-spacing:0.12em;padding:16px 28px;
+  background:var(--amber);color:var(--ink);
+  text-decoration:none;text-transform:uppercase;
+  margin-bottom:14px;transition:opacity 0.2s;
+  text-align:center;
+}
+.btn-order:hover{opacity:0.85;}
+.order-note{font-size:11px;color:var(--muted);line-height:1.65;font-weight:300;}
+.order-box{
+  background:var(--cream);padding:36px 32px;
+  border:0.5px solid var(--border);position:relative;overflow:hidden;
+}
+.order-box-px{
+  position:absolute;top:0;right:0;
+  display:grid;grid-template-columns:repeat(4,14px);
+  grid-template-rows:repeat(4,14px);gap:2px;padding:4px;
+}
+.order-box-px div{background:var(--border);}
+.order-box-px div:nth-child(2n){background:var(--amber);opacity:0.35;}
+.order-box-px div:nth-child(4n){background:transparent;}
+.box-label{
+  font-size:9px;font-weight:500;letter-spacing:0.18em;
+  color:var(--cyan);text-transform:uppercase;
+  margin-bottom:6px;display:block;
+}
+.box-title{
+  font-family:'League Spartan',sans-serif;
+  font-size:20px;font-weight:700;
+  text-transform:uppercase;color:var(--ink);margin-bottom:24px;
+}
+.box-row{
+  display:flex;justify-content:space-between;
+  padding:10px 0;border-bottom:0.5px solid var(--border);font-size:12px;
+}
+.box-k{color:var(--muted);font-weight:300;}
+.box-v{font-weight:500;color:var(--ink);}
+.box-v.tech{color:var(--cyan);}
+.box-v.geo{color:var(--moss);}
+.box-price-row{display:flex;justify-content:space-between;align-items:baseline;padding-top:20px;}
+.box-price-label{font-size:12px;color:var(--muted);font-weight:300;}
+.box-price{
+  font-family:'League Spartan',sans-serif;
+  font-size:44px;font-weight:700;color:var(--ink);
+}
+
+/* ── FOOTER ──────────────────────────────────────────────────────── */
+footer{
+  padding:32px 48px;
+  border-top:0.5px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--paper);
+}
+.footer-logo{
+  font-family:'League Spartan',sans-serif;
+  font-size:15px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);
+}
+.footer-logo span{color:var(--cyan);}
+.footer-tag{font-size:10px;color:var(--muted);font-style:italic;margin-top:4px;font-weight:300;}
+.footer-right{font-size:10px;color:var(--muted);text-align:right;font-weight:300;}
+.footer-right a{color:var(--amber);text-decoration:none;}
+
+/* ── PIXEL HELPERS ───────────────────────────────────────────────── */
+.px-grid{display:grid;gap:3px;}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────── */
+@media(max-width:900px){
+  nav{padding:14px 24px;}
+  .nav-links{display:none;}
+  section{padding:64px 24px;}
+  .two-col{grid-template-columns:1fr;gap:40px;}
+  .sku-grid{grid-template-columns:1fr;}
+  .prepare-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .order-grid{grid-template-columns:1fr;}
+  .hero-content{padding:48px 24px;}
+  .naula-header{grid-template-columns:1fr;}
+  .naula-px{display:none;}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px;}
+  .footer-right{text-align:center;}
+  .slogan-break{padding:28px 24px;}
+  .proof-bar{overflow-x:auto;}
+}
+@media(max-width:600px){
+  .prepare-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr;}
+  .spec-grid{grid-template-columns:1fr;}
+  .hero-h1,.hero-h1b{font-size:36px;}
+}
+
+/* ── SCROLL FADE IN ──────────────────────────────────────────────── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">TKG<span>·</span>naula</a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#prepare">How to prepare</a></li>
+    <li><a href="#naula">The Naula method</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <a href="#order" class="nav-cta">Order now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img"
+    src="https://drive.google.com/uc?export=view&id=1_GH5EfHg4HQDl80c0ZdEUx54oP6kD4bx"
+    alt="TKG Lư Trung Hoả and Phú Đăng Hoả — Vietnamese botanical wellness">
+  <div class="hero-overlay"></div>
+
+  <!-- Pixel accent -->
+  <div class="hero-px-accent px-grid" style="grid-template-columns:repeat(5,14px);grid-template-rows:repeat(6,14px);">
+    <div style="background:var(--amber);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.3;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--amber);width:14px;height:14px;"></div>
+    <div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--moss);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div>
+    <div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--amber);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div>
+    <div style="width:14px;height:14px;"></div><div style="background:var(--moss);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div>
+    <div style="background:var(--amber);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--amber);width:14px;height:14px;"></div>
+    <div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--amber);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div>
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">Vietnamese botanical wellness</span>
+    <div class="hero-h1">Rooted in Vietnam.</div>
+    <div class="hero-h1b">Refined for the world.</div>
+    <div class="hero-rule"></div>
+    <p class="hero-body">Two botanicals. One preparation discipline. No shortcuts.<br>TKG is built on <strong>named ingredients</strong>, honest formulation, and a craft process rooted in Vietnamese herbal practice.</p>
+    <div class="hero-cta-row">
+      <a href="#products" class="btn-amber">Explore the products</a>
+      <a href="#naula" class="btn-ghost">Learn about Naula →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item">Laboratory tested · Eurofins</div>
+  <div class="proof-item"><span class="t-cyan">ISO/IEC 17025</span> accredited</div>
+  <div class="proof-item"><span class="t-cyan">No detectable lead</span></div>
+  <div class="proof-item">No preservatives · No artificial flavoring</div>
+  <div class="proof-item"><span class="t-moss">Single origin · Long An, Vietnam</span></div>
+  <div class="proof-item"><span class="t-amber">$34.99 · 32 sachets</span></div>
+</div>
+
+<!-- INTRO -->
+<section class="intro fade-in">
+  <div class="section-inner">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">What is TKG</span>
+        <div class="h2">Not tea.</div>
+        <div class="h2">Not supplement.</div>
+        <div class="h2-lt">Something more considered.</div>
+        <p class="body-text">TKG beverages begin with whole plants — sourced by name, from a single origin in Long An, Vietnam. Prepared through the Naula method: slow-cooked, then freeze-dried to preserve character.</p>
+        <p class="body-text" style="margin-top:12px;">No artificial flavoring. No preservatives. No industrial extraction.</p>
+        <div class="pull-quote">"The honey is separate — because your sweetness is yours to decide."</div>
+      </div>
+      <div class="spec-grid">
+        <div class="spec-cell">
+          <span class="spec-num">01</span>
+          <span class="spec-title">Whole plant</span>
+          <p class="spec-body">Named botanicals, not extracts. Every ingredient sourced whole.</p>
+        </div>
+        <div class="spec-cell">
+          <span class="spec-num">02</span>
+          <span class="spec-title">Freeze-dried</span>
+          <p class="spec-body">Locked at peak character. Hot or cold water — character holds.</p>
+        </div>
+        <div class="spec-cell">
+          <span class="spec-num">03</span>
+          <span class="spec-title">Dual-chamber</span>
+          <p class="spec-body">Botanical powder and fresh honey sealed separately.</p>
+        </div>
+        <div class="spec-cell">
+          <span class="spec-num">04</span>
+          <span class="spec-title">No refined sugar</span>
+          <p class="spec-body">Fresh honey only. You decide the sweetness.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKU -->
+<section class="sku-section fade-in" id="products">
+  <div class="section-inner">
+    <span class="eyebrow">The products</span>
+    <div class="h2">Two expressions.</div>
+    <div class="h2-lt">One philosophy.</div>
+    <div class="sku-grid">
+      <!-- Lư Trung Hoả -->
+      <div class="sku-card">
+        <div class="sku-header fire">
+          <span class="sku-en">Lư Trung Hoả · Furnace Fire</span>
+          <span class="sku-name">Ginger +<br>Lemongrass</span>
+          <span class="sku-ing">Whole plant · Freeze-dried · Naula method</span>
+          <img class="sku-product-img"
+            src="https://drive.google.com/uc?export=view&id=1EmHg6J8Rin2H776s0SyKOnmxkenYtjaC"
+            alt="Lư Trung Hoả — Ginger Lemongrass">
+        </div>
+        <div class="sku-body-wrap">
+          <span class="sku-tagline">Bold. Direct. Warm from the first sip.</span>
+          <p class="sku-desc">Whole ginger and lemongrass — freeze-dried at peak character. For mornings, cold days, and the kind of warmth that arrives immediately.</p>
+          <span class="sku-use">Morning · Before work · Cold weather</span>
+          <div class="origin-tag">
+            <div class="origin-dot"></div>
+            <span class="origin-text">Long An, Vietnam</span>
+          </div>
+        </div>
+      </div>
+      <!-- Phú Đăng Hoả -->
+      <div class="sku-card">
+        <div class="sku-header perilla">
+          <span class="sku-en">Phú Đăng Hoả · Lamp Fire</span>
+          <span class="sku-name">Perilla +<br>Clove</span>
+          <span class="sku-ing">Whole plant · Freeze-dried · Naula method</span>
+          <img class="sku-product-img"
+            src="https://drive.google.com/uc?export=view&id=1fdp--pPls93da-CiChKBH-eiReoWxhPw"
+            alt="Phú Đăng Hoả — Perilla Clove">
+        </div>
+        <div class="sku-body-wrap">
+          <span class="sku-tagline">Quiet. Considered. Warmth that arrives slowly.</span>
+          <p class="sku-desc">Perilla and clove — prepared through Naula, dried without rush. For evenings, focused work, and the kind of stillness that takes time to settle.</p>
+          <span class="sku-use">Evening · Focus · Quiet moments</span>
+          <div class="origin-tag">
+            <div class="origin-dot"></div>
+            <span class="origin-text">Long An, Vietnam</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO PREPARE -->
+<section class="prepare fade-in" id="prepare">
+  <div class="section-inner">
+    <span class="prepare-eyebrow">How to prepare</span>
+    <div class="prepare-h2">Four steps.</div>
+    <div class="prepare-h2b">No shortcuts.</div>
+    <div class="prepare-grid">
+      <div class="prepare-step">
+        <div class="prepare-img-wrap">
+          <img class="prepare-img"
+            src="https://drive.google.com/uc?export=view&id=1hD5P0fNSaUJ-J7LXgkiScicMXma6r-zT"
+            alt="Step 1 — Open the sachet">
+          <div class="prepare-px-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="prepare-text">
+          <span class="p-num">01 · Open</span>
+          <span class="p-title">Tear the botanical powder sachet.</span>
+          <p class="p-body">Dual-chamber — powder and honey sealed separately. Open the botanical side first.</p>
+          <span class="p-tech">4gr freeze-dried powder</span>
+        </div>
+      </div>
+      <div class="prepare-step">
+        <div class="prepare-img-wrap">
+          <img class="prepare-img"
+            src="https://drive.google.com/uc?export=view&id=1GzcRcGivuvsYgGez2Yan77BqyDLCRIo9"
+            alt="Step 2 — Pour the powder">
+          <div class="prepare-px-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="prepare-text">
+          <span class="p-num">02 · Pour</span>
+          <span class="p-title">Empty the powder into your glass.</span>
+          <p class="p-body">Freeze-dried from whole botanicals. Dissolves fully in hot or cold water.</p>
+          <span class="p-tech">Dissolves in hot or cold water</span>
+        </div>
+      </div>
+      <div class="prepare-step">
+        <div class="prepare-img-wrap">
+          <img class="prepare-img"
+            src="https://drive.google.com/uc?export=view&id=1Ii1HUaN8YFZWcAhWoypsBg_WUJEJAByh"
+            alt="Step 3 — Add honey">
+          <div class="prepare-px-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="prepare-text">
+          <span class="p-num">03 · Honey your way</span>
+          <span class="p-title">Add honey — as much as you decide.</span>
+          <p class="p-body">Fresh honey sealed separately. No refined sugar in the powder. Your sweetness, your call.</p>
+          <span class="p-tech">20ml pure honey sachet included</span>
+        </div>
+      </div>
+      <div class="prepare-step">
+        <div class="prepare-img-wrap">
+          <img class="prepare-img"
+            src="https://drive.google.com/uc?export=view&id=1bIPoVvjBnIWM206_kbrjjqkgXnNDH7On"
+            alt="Step 4 — Stir and drink">
+          <div class="prepare-px-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="prepare-text">
+          <span class="p-num">04 · Add water · Stir</span>
+          <span class="p-title">200ml water. Stir. Done.</span>
+          <p class="p-body">Hot for deep warmth. Cold for refreshing clarity. The botanical character holds either way.</p>
+          <span class="p-tech">200ml · hot or cold</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAULA METHOD -->
+<section class="naula fade-in" id="naula">
+  <div class="section-inner">
+    <div class="naula-header">
+      <div>
+        <span class="eyebrow">How it's made</span>
+        <div class="h2">The Naula method.</div>
+        <div class="h2-lt">A discipline, not a brand name.</div>
+      </div>
+      <div class="naula-px">
+        <div></div><div class="i"></div><div></div><div class="a"></div><div></div><div class="m"></div><div></div><div class="c"></div>
+        <div class="i"></div><div></div><div class="a"></div><div></div><div class="c"></div><div></div><div class="i"></div><div></div>
+        <div></div><div class="c"></div><div></div><div class="m"></div><div></div><div class="a"></div><div></div><div class="i"></div>
+        <div class="m"></div><div></div><div class="i"></div><div></div><div class="a"></div><div></div><div class="c"></div><div></div>
+        <div></div><div class="a"></div><div></div><div class="c"></div><div></div><div class="i"></div><div></div><div class="m"></div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="st-num">01 · Sourcing</span>
+        <span class="st-title">Named botanicals. Single origin.</span>
+        <p class="st-body">Whole plants from Long An, Vietnam. Every ingredient named. Nothing blended or anonymous.</p>
+      </div>
+      <div class="step">
+        <span class="st-num">02 · Naula preparation</span>
+        <span class="st-title">Slow-cooked whole.</span>
+        <p class="st-body">Time, fire, and water — adjusted for each ingredient. No universal formula applied to everything.</p>
+      </div>
+      <div class="step">
+        <span class="st-num">03 · Freeze-drying</span>
+        <span class="st-title">Locked at peak character.</span>
+        <p class="st-body">Flash-frozen, sublimated in vacuum. Colour, aroma, character preserved without heat damage.</p>
+      </div>
+      <div class="step">
+        <span class="st-num">04 · Dual-chamber</span>
+        <span class="st-title">Powder and honey. Sealed separately.</span>
+        <p class="st-body">You decide the sweetness. No refined sugar in the botanical powder.</p>
+      </div>
+    </div>
+    <div class="proof-strip">
+      <div class="proof-sq"></div>
+      <span>Eurofins · ISO/IEC 17025 · <span class="t-cyan">No detectable lead</span> · <span class="t-cyan">No microbial contamination</span> · Results available on request</span>
+    </div>
+    <div class="origin-card">
+      <div class="origin-px-mini">
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+      </div>
+      <div>
+        <span class="origin-label">Single origin · Long An, Vietnam</span>
+        <p class="origin-sub">Whole plants purchased directly from local growers. Named. Traceable. Non-anonymous.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY TKG -->
+<section class="why fade-in">
+  <div class="section-inner">
+    <span class="eyebrow" style="color:var(--cyan);">Why TKG</span>
+    <div class="why-h2">Honest botanicals.</div>
+    <div class="why-h2b">Carefully crafted.</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-px-bar"><div class="a"></div><div></div><div class="c"></div><div></div><div class="a"></div><div></div></div>
+        <span class="wc-num">01</span>
+        <span class="wc-title">Real ingredients</span>
+        <p class="wc-body">Ginger. Lemongrass. Perilla. Clove. Every ingredient named. Nothing hidden in a blend. You know exactly what you are drinking.</p>
+        <span class="wc-geo">Origin · Long An, Vietnam</span>
+      </div>
+      <div class="why-card">
+        <div class="why-px-bar"><div></div><div class="a"></div><div></div><div class="c"></div><div></div><div class="a"></div></div>
+        <span class="wc-num">02</span>
+        <span class="wc-title">Clean formulation</span>
+        <p class="wc-body">No preservatives. No artificial colours. No refined sugar. What's on the label is in the sachet — nothing added for convenience.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-px-bar"><div class="c"></div><div></div><div class="m"></div><div></div><div class="c"></div><div></div></div>
+        <span class="wc-num">03</span>
+        <span class="wc-title">Evidence, not claims</span>
+        <p class="wc-body">Designed to support daily warmth and balance. Not a cure. Not a miracle. A product that respects both its origin and the person drinking it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLOGAN BREAK -->
+<div class="slogan-break">
+  <div class="slogan-text">Well. <span class="bold">Wellness.</span> Naula.</div>
+  <div class="slogan-px">
+    <div></div><div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div>
+  </div>
+</div>
+
+<!-- ORDER -->
+<section class="order fade-in" id="order">
+  <div class="section-inner">
+    <div class="order-grid">
+      <div>
+        <span class="eyebrow">Order</span>
+        <div class="order-h2">Ready to try TKG?</div>
+        <div class="order-h2b">Order via email.</div>
+        <p class="order-body">We are currently accepting orders via email. Each box contains 32 sachets — 16 botanical powder and 16 fresh honey, sealed separately.</p>
+        <div class="spec-rows">
+          <div class="spec-row"><span class="spec-k">Price per box</span><span class="spec-v">$34.99</span></div>
+          <div class="spec-row"><span class="spec-k">Free shipping</span><span class="spec-v">Orders over $70</span></div>
+          <div class="spec-row"><span class="spec-k">Flat rate shipping</span><span class="spec-v">$9 (under $70)</span></div>
+          <div class="spec-row"><span class="spec-k">Satisfaction guarantee</span><span class="spec-v">60 days</span></div>
+        </div>
+        <a class="btn-order" href="mailto:TKG.naula@gmail.com">Order → TKG.naula@gmail.com</a>
+        <p class="order-note">For wholesale, distribution, or partnership inquiries — reach us at the same address.</p>
+      </div>
+      <div class="order-box">
+        <div class="order-box-px">
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div>
+        </div>
+        <span class="box-label">What's in the box</span>
+        <div class="box-title">One box · Two SKUs available</div>
+        <div class="box-row"><span class="box-k">Total sachets</span><span class="box-v">32</span></div>
+        <div class="box-row"><span class="box-k">Botanical powder sachets</span><span class="box-v">16</span></div>
+        <div class="box-row"><span class="box-k">Fresh honey sachets</span><span class="box-v">16</span></div>
+        <div class="box-row"><span class="box-k">Servings per box</span><span class="box-v">16</span></div>
+        <div class="box-row"><span class="box-k">Cost per serving</span><span class="box-v tech">~$2.18</span></div>
+        <div class="box-row"><span class="box-k">Caffeine</span><span class="box-v tech">None</span></div>
+        <div class="box-row"><span class="box-k">Origin</span><span class="box-v geo">Long An, Vietnam</span></div>
+        <div class="box-price-row">
+          <span class="box-price-label">Per box</span>
+          <span class="box-price">$34.99</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">TKG<span> · Thiện Kiến</span></div>
+    <div class="footer-tag">Rooted in Vietnam. Refined for the world.</div>
+  </div>
+  <div class="footer-right">
+    <a href="mailto:TKG.naula@gmail.com">TKG.naula@gmail.com</a><br>
+    <span style="font-size:9px;margin-top:4px;display:block;">© 2026 Thiện Kiến. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+// Scroll fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll',()=>{
+  const nav = document.querySelector('nav');
+  if(window.scrollY > 50){
+    nav.style.boxShadow = '0 1px 20px rgba(26,26,26,0.08)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+</script>
+</body>
+</html>
