@@ -264,26 +264,27 @@ section{padding:88px 48px;}
   display:block;margin-bottom:4px;
 }
 .sku-ing{font-size:10px;font-weight:300;color:rgba(251,251,242,0.5);}
-.sku-body-wrap{padding:28px 32px;background:var(--paper);}
+.sku-body-wrap.fire{padding:28px 32px;background:#D45D2A;}
+.sku-body-wrap.perilla{padding:28px 32px;background:#6B2B5C;}
 .sku-tagline{
   font-size:14px;font-style:italic;
-  color:var(--ink);line-height:1.5;
+  color:rgba(251,251,242,0.9);line-height:1.5;
   margin-bottom:12px;font-weight:300;display:block;
 }
-.sku-desc{font-size:12px;color:var(--muted);line-height:1.75;margin-bottom:14px;}
+.sku-desc{font-size:12px;color:rgba(251,251,242,0.65);line-height:1.75;margin-bottom:14px;}
 .sku-use{
   font-size:9px;font-weight:500;
   letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--muted);display:block;margin-bottom:14px;
+  color:rgba(251,251,242,0.5);display:block;margin-bottom:14px;
 }
 .origin-tag{
   display:inline-flex;align-items:center;gap:6px;
   padding:5px 10px;
-  background:rgba(82,113,33,0.1);
-  border:0.5px solid rgba(82,113,33,0.35);
+  background:rgba(82,113,33,0.2);
+  border:0.5px solid rgba(122,196,90,0.5);
 }
-.origin-dot{width:6px;height:6px;background:var(--moss);flex-shrink:0;border-radius:0;}
-.origin-text{font-size:9px;color:var(--moss);font-weight:500;letter-spacing:0.1em;text-transform:uppercase;}
+.origin-dot{width:6px;height:6px;background:#7AC45A;flex-shrink:0;border-radius:0;}
+.origin-text{font-size:9px;color:#7AC45A;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;}
 
 /* ── HOW TO PREPARE ──────────────────────────────────────────────── */
 .prepare{background:var(--ink);padding:88px 48px;}
@@ -356,10 +357,10 @@ section{padding:88px 48px;}
 .naula-px div.m{background:#7AC45A;}
 .steps{
   display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;background:var(--border);
-  border:0.5px solid var(--border);margin-bottom:12px;
+  gap:1px;background:rgba(251,251,242,0.15);
+  border:0.5px solid rgba(251,251,242,0.15);margin-bottom:12px;
 }
-.step{background:rgba(26,26,26,0.2);padding:26px 20px;overflow:hidden;}
+.step{background:rgba(251,251,242,0.07);padding:26px 20px;overflow:hidden;border:0.5px solid rgba(251,251,242,0.1);}
 .st-num{
   font-family:'League Spartan',sans-serif;
   font-size:9px;font-weight:600;
@@ -372,7 +373,7 @@ section{padding:88px 48px;}
   text-transform:uppercase;color:var(--paper);
   margin-bottom:8px;line-height:1.2;display:block;
 }
-.st-body{font-size:11px;color:rgba(251,251,242,0.45);line-height:1.6;font-weight:300;}
+.st-body{font-size:11px;color:rgba(251,251,242,0.7);line-height:1.6;font-weight:300;}
 .proof-strip{
   display:flex;align-items:center;gap:10px;
   font-size:10px;color:var(--muted);
@@ -636,7 +637,30 @@ footer{
   .rd-row{grid-template-columns:1fr;gap:4px;}
 }
 
-/* ── SCROLL FADE IN ──────────────────────────────────────────────── */
+/* ── HERO ANIMATION ──────────────────────────────────────────────── */
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(32px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+.hero-text-block{
+  animation:slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+}
+.hero-eyebrow{animation:fadeIn 0.6s ease 0.5s both;}
+.hero-h1{animation:slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.55s both;}
+.hero-h1b{animation:slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.65s both;}
+.hero-rule{animation:fadeIn 0.5s ease 0.85s both;}
+.hero-body{animation:slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.9s both;}
+.hero-cta-row{animation:slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 1.05s both;}
+.hero-right{animation:fadeIn 0.8s ease 1.1s both;}
+@media(prefers-reduced-motion:reduce){
+  .hero-text-block,.hero-eyebrow,.hero-h1,.hero-h1b,.hero-rule,.hero-body,.hero-cta-row,.hero-right{
+    animation:none;
+  }
+}
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
 .fade-in.visible{opacity:1;transform:translateY(0);}
 </style>
@@ -761,8 +785,7 @@ footer{
             src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/ChatGPT%20Image%20Mar%209%2C%202026%2C%2009_55_31%20PM.png"
             alt="Lư Trung Hoả — Ginger Lemongrass">
         </div>
-        <div class="sku-body-wrap">
-          <span class="sku-tagline">Bold. Direct. Warm from the first sip.</span>
+        <div class="sku-body-wrap fire">
           <p class="sku-desc">Whole ginger and lemongrass — freeze-dried at peak character. For mornings, cold days, and the kind of warmth that arrives immediately.</p>
           <span class="sku-use">Morning · Before work · Cold weather</span>
           <div class="origin-tag">
@@ -781,7 +804,7 @@ footer{
             src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/ChatGPT%20Image%20Mar%209%2C%202026%2C%2009_58_25%20PM.png"
             alt="Phú Đăng Hoả — Perilla Clove">
         </div>
-        <div class="sku-body-wrap">
+        <div class="sku-body-wrap perilla">
           <span class="sku-tagline">Quiet. Considered. Warmth that arrives slowly.</span>
           <p class="sku-desc">Perilla and clove — prepared through Naula, dried without rush. For evenings, focused work, and the kind of stillness that takes time to settle.</p>
           <span class="sku-use">Evening · Focus · Quiet moments</span>
