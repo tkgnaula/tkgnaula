@@ -583,6 +583,60 @@ footer{
   .hero-h1,.hero-h1b{font-size:36px;}
 }
 
+/* ── FAQ ─────────────────────────────────────────────────────────── */
+.faq-section{background:var(--paper);}
+.faq-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:48px;margin-top:48px;
+}
+.faq-group-label{
+  font-family:'League Spartan',sans-serif;
+  font-size:10px;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:20px;
+  padding-bottom:10px;border-bottom:0.5px solid var(--border);
+}
+.faq-item{
+  margin-bottom:20px;padding-bottom:20px;
+  border-bottom:0.5px solid var(--border);
+}
+.faq-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.faq-q{
+  font-family:'League Spartan',sans-serif;
+  font-size:13px;font-weight:600;
+  color:var(--ink);margin-bottom:8px;
+  cursor:pointer;line-height:1.3;
+}
+.faq-a{
+  font-size:12px;color:var(--muted);
+  line-height:1.75;font-weight:300;
+}
+
+/* ── RETURNS ─────────────────────────────────────────────────────── */
+.returns-section{background:var(--cream);}
+.returns-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:72px;align-items:start;
+}
+.returns-detail{
+  border:0.5px solid var(--border);
+  background:var(--paper);
+}
+.rd-row{
+  display:grid;grid-template-columns:140px 1fr;
+  gap:16px;padding:14px 20px;
+  border-bottom:0.5px solid var(--border);
+  font-size:12px;
+}
+.rd-label{color:var(--muted);font-weight:300;}
+.rd-val{color:var(--ink);font-weight:400;line-height:1.6;}
+
+@media(max-width:900px){
+  .faq-grid{grid-template-columns:1fr;}
+  .returns-grid{grid-template-columns:1fr;}
+  .rd-row{grid-template-columns:1fr;gap:4px;}
+}
+
 /* ── SCROLL FADE IN ──────────────────────────────────────────────── */
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
 .fade-in.visible{opacity:1;transform:translateY(0);}
@@ -597,6 +651,7 @@ footer{
     <li><a href="#products">Products</a></li>
     <li><a href="#prepare">How to prepare</a></li>
     <li><a href="#naula">The Naula method</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#order">Order</a></li>
   </ul>
   <a href="#order" class="nav-cta">Order now</a>
@@ -934,6 +989,129 @@ footer{
         <div class="box-price-row">
           <span class="box-price-label">Per box</span>
           <span class="box-price">$34.99</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section fade-in" id="faq">
+  <div class="section-inner">
+    <span class="eyebrow">FAQ</span>
+    <div class="h2">Common questions.</div>
+    <div class="h2-lt">Honest answers.</div>
+    <div class="faq-grid">
+
+      <div class="faq-group">
+        <div class="faq-group-label">The product</div>
+        <div class="faq-item">
+          <div class="faq-q">What is TKG botanical powder — and how is it different from regular tea?</div>
+          <div class="faq-a">Regular tea is brewed by steeping dried leaves and discarding the solids — you only receive what dissolves in water. TKG botanical powder is prepared through the Naula method: the whole plant is processed in full, then freeze-dried at sub-zero temperatures to preserve its natural properties, colour, and character. When you prepare it, you use everything — nothing is discarded.<br><br>Dual-chamber design: botanical powder and fresh honey are sealed separately. The honey is not pre-mixed because sweetness is your choice — and fresh honey requires proper preservation. No refined sugar. No preservatives.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What are the wellness benefits of Lư Trung Hoả and Phú Đăng Hoả?</div>
+          <div class="faq-a">Both products belong to the Hoả (Fire) line — designed to support internal warmth and thermal balance, not to treat or cure. The Hoả line retains its warming character whether prepared hot or cold.<br><br>Ginger & lemongrass (Lư Trung Hoả): warming, circulatory support, resilience. Perilla & clove (Phú Đăng Hoả): calming, anti-inflammatory, antioxidant, internal balance.<br><br>Both tested by Eurofins ISO/IEC 17025 — no detectable lead, no microbial contamination.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What is the difference in taste between the two?</div>
+          <div class="faq-a">Lư Trung Hoả (Ginger & Lemongrass): bold and direct. Spicy heat combined with bright, fresh aroma creates immediate alertness. Warmth arrives quickly and clearly — suited for when you need energy to begin.<br><br>Phú Đăng Hoả (Perilla & Clove): quiet and layered. Perilla carries a gentle, slightly cooling herbal note; clove adds a deep, slow warmth underneath. Warmth arrives gradually — suited for winding down and finding stillness.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Why does the powder colour vary between batches?</div>
+          <div class="faq-a">Slight colour variation between batches is a sign of real ingredients — not a production error. Colour depends on harvest season and growing conditions. TKG does not standardise colour through additives — standardisation happens through the Naula method and independent testing.</div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <div class="faq-group-label">Product & quality</div>
+        <div class="faq-item">
+          <div class="faq-q">Where do the ingredients come from?</div>
+          <div class="faq-a">Long An, Vietnam — purchased directly from local cooperatives.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is it non-GMO, gluten-free, vegan?</div>
+          <div class="faq-a">Non-GMO. Gluten-free. Dairy-free. Vegan.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is it third-party tested?</div>
+          <div class="faq-a">Yes — FDA registered, ISO/IEC cGMP compliant. Tested by Eurofins. Results available on request.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Does it contain caffeine?</div>
+          <div class="faq-a">Caffeine-free.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How should it be stored?</div>
+          <div class="faq-a">Store in a cool, dry place with good airflow. Use immediately after opening.</div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <div class="faq-group-label">Preparation</div>
+        <div class="faq-item">
+          <div class="faq-q">What is the best water temperature?</div>
+          <div class="faq-a">Hot or cold — your choice. Do not use water at a full boil — let it cool slightly before preparing.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How much per serving?</div>
+          <div class="faq-a">One dual-chamber sachet per 200ml of water. Adjust the water amount to taste.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can it be used in cooking?</div>
+          <div class="faq-a">Yes — TKG botanical powder works well in culinary recipes, smoothies, cocktails, and mocktails.</div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <div class="faq-group-label">Where to buy</div>
+        <div class="faq-item">
+          <div class="faq-q">Where can I purchase TKG?</div>
+          <div class="faq-a">tkg-naula.com · Amazon · Target · Select grocery and wellness retailers.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Are there any discounts available?</div>
+          <div class="faq-a">Subscribe to the newsletter for a first-order offer. The Loyal-Naula Rewards programme earns points on every order. Subscribe & Save is available for recurring orders.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RETURNS -->
+<section class="returns-section fade-in" id="returns">
+  <div class="section-inner">
+    <div class="returns-grid">
+      <div>
+        <span class="eyebrow">Satisfaction guarantee</span>
+        <div class="h2">60 days.</div>
+        <div class="h2-lt">No hesitation.</div>
+        <p class="body-text" style="margin-bottom:16px;">We stand behind what we make. If something is not as described — contact us. We will make it right.</p>
+        <p class="body-text">The return policy applies within 60 days from the date of purchase, for products purchased through the official website or authorised sellers.</p>
+      </div>
+      <div>
+        <div class="returns-detail">
+          <div class="rd-row">
+            <div class="rd-label">Window</div>
+            <div class="rd-val">60 days from purchase date</div>
+          </div>
+          <div class="rd-row">
+            <div class="rd-label">Eligible purchases</div>
+            <div class="rd-val">Official website and authorised sellers only</div>
+          </div>
+          <div class="rd-row">
+            <div class="rd-label">How to request</div>
+            <div class="rd-val">Contact us with your order number and reason — <a href="mailto:TKG.naula@gmail.com" style="color:var(--amber);">TKG.naula@gmail.com</a></div>
+          </div>
+          <div class="rd-row">
+            <div class="rd-label">Return shipping</div>
+            <div class="rd-val">Customer's responsibility if return is required</div>
+          </div>
+          <div class="rd-row" style="border-bottom:none;">
+            <div class="rd-label">Note</div>
+            <div class="rd-val">Photos of the product or packaging may be requested to process the claim</div>
+          </div>
         </div>
       </div>
     </div>
