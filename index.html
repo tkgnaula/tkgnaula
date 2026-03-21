@@ -101,103 +101,102 @@ nav{
 .nav-cta:hover{opacity:0.85;}
 
 /* ── HERO ─────────────────────────────────────────────────────────── */
-.hero{
-  min-height:100vh;
-  position:relative;overflow:hidden;
-  display:flex;align-items:flex-end;
-  padding-top:72px;
+.hero{display:flex;flex-direction:column;margin-top:57px;}
+.hero-img-wrap{
+  position:relative;width:100%;
+  height:clamp(320px,55vw,600px);overflow:hidden;
 }
 .hero-img{
-  position:absolute;inset:0;
   width:100%;height:100%;
   object-fit:cover;object-position:center;
-  z-index:0;
+  display:block;
 }
 .hero-overlay{
-  position:absolute;inset:0;z-index:1;
-  background:linear-gradient(
-    to top,
-    rgba(26,26,26,0.75) 0%,
-    rgba(26,26,26,0.3) 50%,
-    rgba(26,26,26,0.1) 100%
-  );
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(26,26,26,0) 55%,rgba(139,94,60,0.3) 100%);
 }
-.hero-content{
-  position:relative;z-index:2;
-  padding:64px 48px;
-  max-width:700px;
+.hero-text-block{
+  background:var(--wood);
+  padding:52px 48px 56px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:48px;align-items:end;
 }
 .hero-eyebrow{
   font-size:10px;font-weight:500;
-  letter-spacing:0.22em;color:var(--cyan);
-  text-transform:uppercase;margin-bottom:20px;display:block;
+  letter-spacing:0.22em;color:rgba(251,251,242,0.5);
+  text-transform:uppercase;margin-bottom:18px;display:block;
 }
 .hero-h1{
   font-family:'League Spartan',sans-serif;
-  font-size:clamp(40px,6vw,72px);
+  font-size:clamp(36px,5.5vw,68px);
   font-weight:700;line-height:0.92;
   text-transform:uppercase;color:var(--paper);
   margin-bottom:4px;letter-spacing:-0.02em;
 }
 .hero-h1b{
   font-family:'League Spartan',sans-serif;
-  font-size:clamp(40px,6vw,72px);
+  font-size:clamp(36px,5.5vw,68px);
   font-weight:300;line-height:0.92;
   text-transform:uppercase;color:var(--amber);
-  margin-bottom:28px;letter-spacing:-0.02em;
+  margin-bottom:26px;letter-spacing:-0.02em;
 }
-.hero-rule{width:32px;height:2px;background:var(--amber);margin-bottom:24px;}
+.hero-rule{width:32px;height:2px;background:var(--amber);margin-bottom:22px;}
 .hero-body{
-  font-size:15px;color:rgba(251,251,242,0.75);
-  line-height:1.8;max-width:480px;
-  margin-bottom:36px;font-weight:300;
+  font-size:14px;color:rgba(251,251,242,0.65);
+  line-height:1.8;max-width:520px;
+  margin-bottom:32px;font-weight:300;
 }
 .hero-body strong{font-weight:500;color:var(--paper);}
 .hero-cta-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 .btn-amber{
   font-size:10px;font-weight:600;letter-spacing:0.12em;
-  padding:14px 32px;background:var(--amber);color:var(--ink);
+  padding:13px 30px;background:var(--amber);color:var(--ink);
   text-decoration:none;text-transform:uppercase;
   transition:opacity 0.2s;display:inline-block;
 }
 .btn-amber:hover{opacity:0.85;}
 .btn-ghost{
-  font-size:12px;color:rgba(251,251,242,0.7);
-  border-bottom:0.5px solid rgba(251,251,242,0.4);
+  font-size:12px;color:rgba(251,251,242,0.6);
+  border-bottom:0.5px solid rgba(251,251,242,0.3);
   padding-bottom:2px;text-decoration:none;
   transition:color 0.2s,border-color 0.2s;
 }
 .btn-ghost:hover{color:var(--paper);border-color:var(--paper);}
-
-/* Pixel accent hero */
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:18px;}
 .hero-px-accent{
-  position:absolute;top:88px;right:48px;z-index:2;
-  display:grid;grid-template-columns:repeat(5,14px);
-  grid-template-rows:repeat(6,14px);gap:3px;
-  opacity:0.5;
+  display:grid;grid-template-columns:repeat(5,13px);
+  grid-template-rows:repeat(6,13px);gap:3px;
 }
+.hero-specs{display:flex;flex-direction:column;gap:7px;align-items:flex-end;}
+.hero-spec{
+  font-size:9px;letter-spacing:0.1em;
+  color:rgba(251,251,242,0.4);text-transform:uppercase;text-align:right;
+}
+.hero-spec span{color:var(--cyan);font-weight:500;}
 
 /* ── PROOF BAR ───────────────────────────────────────────────────── */
 .proof-bar{
-  background:var(--ink);
+  background:var(--wood);
+  border-top:0.5px solid rgba(251,251,242,0.1);
   display:flex;align-items:stretch;
   overflow-x:auto;
   -webkit-overflow-scrolling:touch;
 }
 .proof-bar::-webkit-scrollbar{display:none;}
 .proof-item{
-  padding:14px 20px;
-  border-right:0.5px solid rgba(251,251,242,0.07);
+  padding:13px 18px;
+  border-right:0.5px solid rgba(251,251,242,0.08);
   font-size:9px;font-weight:400;
   letter-spacing:0.12em;
-  color:rgba(251,251,242,0.45);
+  color:rgba(251,251,242,0.4);
   text-transform:uppercase;
   white-space:nowrap;
   display:flex;align-items:center;
 }
 .proof-item:last-child{border-right:none;}
 .t-cyan{color:var(--cyan);font-weight:500;}
-.t-moss{color:var(--moss);font-weight:500;}
+.t-moss{color:#7AC45A;font-weight:500;}
 .t-amber{color:var(--amber);font-weight:500;}
 
 /* ── SECTIONS SHARED ─────────────────────────────────────────────── */
@@ -341,7 +340,7 @@ section{padding:88px 48px;}
 .p-tech{font-size:10px;color:var(--cyan);font-weight:500;margin-top:8px;display:block;letter-spacing:0.04em;}
 
 /* ── NAULA ───────────────────────────────────────────────────────── */
-.naula{background:var(--cream);}
+.naula{background:var(--wood);}
 .naula-header{
   display:grid;grid-template-columns:1fr auto;
   gap:48px;margin-bottom:48px;align-items:end;
@@ -350,17 +349,17 @@ section{padding:88px 48px;}
   display:grid;grid-template-columns:repeat(8,18px);
   grid-template-rows:repeat(5,18px);gap:3px;
 }
-.naula-px div{background:var(--warm);}
-.naula-px div.i{background:var(--ink);}
+.naula-px div{background:rgba(251,251,242,0.1);}
+.naula-px div.i{background:rgba(251,251,242,0.3);}
 .naula-px div.a{background:var(--amber);}
 .naula-px div.c{background:var(--cyan);}
-.naula-px div.m{background:var(--moss);}
+.naula-px div.m{background:#7AC45A;}
 .steps{
   display:grid;grid-template-columns:repeat(4,1fr);
   gap:1px;background:var(--border);
   border:0.5px solid var(--border);margin-bottom:12px;
 }
-.step{background:var(--paper);padding:26px 20px;}
+.step{background:rgba(26,26,26,0.2);padding:26px 20px;overflow:hidden;}
 .st-num{
   font-family:'League Spartan',sans-serif;
   font-size:9px;font-weight:600;
@@ -370,10 +369,10 @@ section{padding:88px 48px;}
 .st-title{
   font-family:'League Spartan',sans-serif;
   font-size:12px;font-weight:700;
-  text-transform:uppercase;color:var(--ink);
+  text-transform:uppercase;color:var(--paper);
   margin-bottom:8px;line-height:1.2;display:block;
 }
-.st-body{font-size:11px;color:var(--muted);line-height:1.6;font-weight:300;}
+.st-body{font-size:11px;color:rgba(251,251,242,0.45);line-height:1.6;font-weight:300;}
 .proof-strip{
   display:flex;align-items:center;gap:10px;
   font-size:10px;color:var(--muted);
@@ -401,7 +400,7 @@ section{padding:88px 48px;}
 .origin-sub{font-size:10px;color:var(--muted);font-weight:300;margin-top:2px;}
 
 /* ── WHY ─────────────────────────────────────────────────────────── */
-.why{background:var(--ink);}
+.why{background:var(--wood);}
 .why-h2{
   font-family:'League Spartan',sans-serif;
   font-size:clamp(28px,4vw,42px);font-weight:700;
@@ -416,20 +415,20 @@ section{padding:88px 48px;}
 }
 .why-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:rgba(251,251,242,0.07);
+  gap:1px;background:rgba(251,251,242,0.1);
 }
 .why-card{
-  background:var(--ink);padding:36px 28px;
-  border:0.5px solid rgba(251,251,242,0.05);
+  background:rgba(26,26,26,0.2);padding:36px 28px;
+  border:0.5px solid rgba(251,251,242,0.06);
 }
 .why-px-bar{
   display:grid;grid-template-columns:repeat(6,8px);
   grid-template-rows:8px;gap:2px;margin-bottom:18px;
 }
-.why-px-bar div{background:rgba(251,251,242,0.07);}
+.why-px-bar div{background:rgba(251,251,242,0.1);}
 .why-px-bar div.a{background:var(--amber);}
 .why-px-bar div.c{background:var(--cyan);}
-.why-px-bar div.m{background:var(--moss);}
+.why-px-bar div.m{background:#7AC45A;}
 .wc-num{
   font-family:'League Spartan',sans-serif;
   font-size:9px;font-weight:600;
@@ -442,8 +441,8 @@ section{padding:88px 48px;}
   color:var(--paper);text-transform:uppercase;
   margin-bottom:10px;line-height:1.1;display:block;
 }
-.wc-body{font-size:12px;color:rgba(251,251,242,0.4);line-height:1.75;font-weight:300;}
-.wc-geo{font-size:10px;color:var(--moss);font-weight:500;margin-top:12px;display:block;letter-spacing:0.06em;}
+.wc-body{font-size:12px;color:rgba(251,251,242,0.45);line-height:1.75;font-weight:300;}
+.wc-geo{font-size:10px;color:#7AC45A;font-weight:500;margin-top:12px;display:block;letter-spacing:0.06em;}
 
 /* ── SLOGAN BREAK ────────────────────────────────────────────────── */
 .slogan-break{
@@ -659,42 +658,51 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-img"
-    src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg"
-    alt="TKG Lư Trung Hoả and Phú Đăng Hoả — Vietnamese botanical wellness">
-  <div class="hero-overlay"></div>
-
-  <!-- Pixel accent -->
-  <div class="hero-px-accent px-grid" style="grid-template-columns:repeat(5,14px);grid-template-rows:repeat(6,14px);">
-    <div style="background:var(--amber);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.3;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--amber);width:14px;height:14px;"></div>
-    <div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--moss);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div>
-    <div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--amber);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div>
-    <div style="width:14px;height:14px;"></div><div style="background:var(--moss);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div>
-    <div style="background:var(--amber);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--amber);width:14px;height:14px;"></div>
-    <div style="width:14px;height:14px;"></div><div style="background:var(--paper);opacity:0.2;width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div><div style="background:var(--amber);width:14px;height:14px;"></div><div style="width:14px;height:14px;"></div>
+  <div class="hero-img-wrap">
+    <img class="hero-img"
+      src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg"
+      alt="TKG Lư Trung Hoả and Phú Đăng Hoả — Vietnamese botanical wellness">
+    <div class="hero-overlay"></div>
   </div>
-
-  <div class="hero-content">
-    <span class="hero-eyebrow">Vietnamese botanical wellness</span>
-    <div class="hero-h1">Rooted in Vietnam.</div>
-    <div class="hero-h1b">Refined for the world.</div>
-    <div class="hero-rule"></div>
-    <p class="hero-body">Two botanicals. One preparation discipline. No shortcuts.<br>TKG is built on <strong>named ingredients</strong>, honest formulation, and a craft process rooted in Vietnamese herbal practice.</p>
-    <div class="hero-cta-row">
-      <a href="#products" class="btn-amber">Explore the products</a>
-      <a href="#naula" class="btn-ghost">Learn about Naula →</a>
+  <div class="hero-text-block">
+    <div>
+      <span class="hero-eyebrow">Vietnamese botanical wellness</span>
+      <div class="hero-h1">Rooted in Vietnam.</div>
+      <div class="hero-h1b">Refined for the world.</div>
+      <div class="hero-rule"></div>
+      <p class="hero-body">Two botanicals. One preparation discipline. No shortcuts.<br>TKG is built on <strong>named ingredients</strong>, honest formulation, and a craft process rooted in Vietnamese herbal practice.</p>
+      <div class="hero-cta-row">
+        <a href="#products" class="btn-amber">Explore the products</a>
+        <a href="#naula" class="btn-ghost">Learn about Naula →</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-px-accent">
+        <div style="background:var(--amber);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.2);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:var(--amber);width:13px;height:13px;"></div>
+        <div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:#7AC45A;width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div>
+        <div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:var(--amber);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div>
+        <div style="width:13px;height:13px;"></div><div style="background:#7AC45A;width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div>
+        <div style="background:var(--amber);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:var(--amber);width:13px;height:13px;"></div>
+        <div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:var(--amber);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div>
+      </div>
+      <div class="hero-specs">
+        <div class="hero-spec"><span>ISO/IEC 17025</span> tested</div>
+        <div class="hero-spec"><span>No detectable lead</span></div>
+        <div class="hero-spec">Long An, Vietnam</div>
+        <div class="hero-spec">Caffeine-free</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PROOF BAR -->
 <div class="proof-bar">
-  <div class="proof-item">Laboratory tested · Eurofins</div>
-  <div class="proof-item"><span class="t-cyan">ISO/IEC 17025</span> accredited</div>
-  <div class="proof-item"><span class="t-cyan">No detectable lead</span></div>
-  <div class="proof-item">No preservatives · No artificial flavoring</div>
+  <div class="proof-item">Eurofins · ISO/IEC 17025:2017 VILAS 238</div>
+  <div class="proof-item"><span class="t-cyan">Lead (Pb): Not detected</span> · LOD 0.017 mg/l</div>
+  <div class="proof-item"><span class="t-cyan">E. coli · Coliforms: Not detected</span></div>
+  <div class="proof-item">Yeast · Mold · Staph: Not detected</div>
   <div class="proof-item"><span class="t-moss">Single origin · Long An, Vietnam</span></div>
-  <div class="proof-item"><span class="t-amber">$34.99 · 32 sachets</span></div>
+  <div class="proof-item"><span class="t-amber">Report Oct 2025 · AR-25-VD-169691/169692</span></div>
 </div>
 
 <!-- INTRO -->
@@ -859,9 +867,9 @@ footer{
   <div class="section-inner">
     <div class="naula-header">
       <div>
-        <span class="eyebrow">How it's made</span>
-        <div class="h2">The Naula method.</div>
-        <div class="h2-lt">A discipline, not a brand name.</div>
+        <span class="eyebrow" style="color:rgba(251,251,242,0.5);">How it's made</span>
+        <div class="h2" style="color:var(--paper);">The Naula method.</div>
+        <div class="h2-lt" style="color:var(--amber);">A discipline, not a brand name.</div>
       </div>
       <div class="naula-px">
         <div></div><div class="i"></div><div></div><div class="a"></div><div></div><div class="m"></div><div></div><div class="c"></div>
@@ -873,39 +881,43 @@ footer{
     </div>
     <div class="steps">
       <div class="step">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/afee05b6375887fc787ff56a02c2b731.jpg" alt="Sourcing — fresh perilla" style="width:100%;height:160px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">01 · Sourcing</span>
         <span class="st-title">Named botanicals. Single origin.</span>
         <p class="st-body">Whole plants from Long An, Vietnam. Every ingredient named. Nothing blended or anonymous.</p>
       </div>
       <div class="step">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Screenshot%202026-03-21%20at%2020.40.52.png" alt="Naula preparation — cooking" style="width:100%;height:160px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">02 · Naula preparation</span>
         <span class="st-title">Slow-cooked whole.</span>
         <p class="st-body">Time, fire, and water — adjusted for each ingredient. No universal formula applied to everything.</p>
       </div>
       <div class="step">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9555.JPG" alt="Freeze-drying — trays in chamber" style="width:100%;height:160px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">03 · Freeze-drying</span>
         <span class="st-title">Locked at peak character.</span>
         <p class="st-body">Flash-frozen, sublimated in vacuum. Colour, aroma, character preserved without heat damage.</p>
       </div>
       <div class="step">
-        <span class="st-num">04 · Dual-chamber</span>
-        <span class="st-title">Powder and honey. Sealed separately.</span>
-        <p class="st-body">You decide the sweetness. No refined sugar in the botanical powder.</p>
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9557.JPG" alt="Quality check — weighing powder" style="width:100%;height:160px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
+        <span class="st-num">04 · Quality check</span>
+        <span class="st-title">Weighed. Tested. Sealed.</span>
+        <p class="st-body">Each batch weighed and verified before dual-chamber packaging. Eurofins tested. No shortcuts.</p>
       </div>
     </div>
-    <div class="proof-strip">
+    <div class="proof-strip" style="background:rgba(76,201,232,0.08);border-color:rgba(76,201,232,0.4);">
       <div class="proof-sq"></div>
-      <span>Eurofins · ISO/IEC 17025 · <span class="t-cyan">No detectable lead</span> · <span class="t-cyan">No microbial contamination</span> · Results available on request</span>
+      <span style="color:rgba(251,251,242,0.55);">Eurofins · ISO/IEC 17025:2017 VILAS 238 · <span class="t-cyan">Lead (Pb): Not detected</span> · <span class="t-cyan">E. coli: Not detected</span> · <span class="t-cyan">Coliforms: Not detected</span> · Yeast & mold: Not detected · Report AR-25-VD-169691/169692 · Oct 2025</span>
     </div>
-    <div class="origin-card">
+    <div class="origin-card" style="background:rgba(82,113,33,0.15);border-color:rgba(122,196,90,0.4);">
       <div class="origin-px-mini">
         <div></div><div></div><div></div>
         <div></div><div></div><div></div>
         <div></div><div></div><div></div>
       </div>
       <div>
-        <span class="origin-label">Single origin · Long An, Vietnam</span>
-        <p class="origin-sub">Whole plants purchased directly from local growers. Named. Traceable. Non-anonymous.</p>
+        <span class="origin-label" style="color:#7AC45A;">Single origin · Long An, Vietnam</span>
+        <p class="origin-sub" style="color:rgba(251,251,242,0.45);">Whole plants purchased directly from local growers. Named. Traceable. Non-anonymous.</p>
       </div>
     </div>
   </div>
@@ -1066,8 +1078,19 @@ footer{
       <div class="faq-group">
         <div class="faq-group-label">Where to buy</div>
         <div class="faq-item">
+          <div class="faq-q">What do the lab tests show?</div>
+          <div class="faq-a">Both products have been tested by Eurofins Sac Ky Hai Dang — accredited under ISO/IEC 17025:2017 (VILAS 238). Reports issued October 2025.<br><br>
+          <strong style="color:var(--ink);font-weight:500;">Lư Trung Hoả (Ginger Lemongrass)</strong><br>
+          Lead (Pb): Not detected (LOD = 0.017 mg/l) · E. coli: Not detected · Coliforms: Not detected · Staphylococcus aureus: Not detected · Total yeast and mold: Not detected · Streptococci faecal: Not detected · Pseudomonas aeruginosa: Not detected<br><br>
+          <strong style="color:var(--ink);font-weight:500;">Phú Đăng Hoả (Perilla Clove)</strong><br>
+          Lead (Pb): Not detected (LOD = 0.017 mg/l) · E. coli: Not detected · Coliforms: Not detected · Staphylococcus aureus: Not detected · Total yeast and mold: Not detected · Streptococci faecal: Not detected · Pseudomonas aeruginosa: Not detected<br><br>
+          Full reports available for download:<br>
+          <a href="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/743-2025-00162671.pdf" target="_blank" style="color:var(--amber);font-weight:500;">↓ Lư Trung Hoả — Eurofins Report AR-25-VD-169691</a><br>
+          <a href="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/743-2025-00162672.pdf" target="_blank" style="color:var(--amber);font-weight:500;">↓ Phú Đăng Hoả — Eurofins Report AR-25-VD-169692</a></div>
+        </div>
+        <div class="faq-item">
           <div class="faq-q">Where can I purchase TKG?</div>
-          <div class="faq-a">tkg-naula.com · Amazon · Target · Select grocery and wellness retailers.</div>
+          <div class="faq-a">tkg-naula.com. Order directly via email — TKG.naula@gmail.com.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Are there any discounts available?</div>
