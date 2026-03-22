@@ -240,9 +240,10 @@ section{padding:88px 48px;}
   gap:1px;background:var(--border);
   border:0.5px solid var(--border);
   margin-top:48px;
+  align-items:stretch;
 }
-.sku-card{overflow:hidden;}
-.sku-header{padding:36px 32px 28px;}
+.sku-card{display:flex;flex-direction:column;overflow:hidden;}
+.sku-header{padding:36px 32px 28px;position:relative;flex-shrink:0;}
 .sku-header.fire{background:var(--hoa-yellow);}
 .sku-header.perilla{background:var(--hoa-sage);}
 .sku-product-img{
@@ -264,14 +265,19 @@ section{padding:88px 48px;}
   display:block;margin-bottom:4px;
 }
 .sku-ing{font-size:10px;font-weight:300;color:rgba(251,251,242,0.5);}
-.sku-body-wrap.fire{padding:28px 32px;background:#D45D2A;}
-.sku-body-wrap.perilla{padding:28px 32px;background:#6B2B5C;}
+.sku-body-wrap{
+  padding:28px 32px;
+  display:flex;flex-direction:column;
+  flex:1;
+}
+.sku-body-wrap.fire{background:#D45D2A;}
+.sku-body-wrap.perilla{background:#6B2B5C;}
 .sku-tagline{
   font-size:14px;font-style:italic;
   color:rgba(251,251,242,0.9);line-height:1.5;
   margin-bottom:12px;font-weight:300;display:block;
 }
-.sku-desc{font-size:12px;color:rgba(251,251,242,0.65);line-height:1.75;margin-bottom:14px;}
+.sku-desc{font-size:12px;color:rgba(251,251,242,0.65);line-height:1.75;margin-bottom:14px;flex:1;}
 .sku-use{
   font-size:9px;font-weight:500;
   letter-spacing:0.14em;text-transform:uppercase;
@@ -450,6 +456,7 @@ section{padding:88px 48px;}
   background:var(--hoa-yellow);
   padding:36px 48px;
   display:flex;align-items:center;justify-content:space-between;
+  position:relative;overflow:hidden;
 }
 .slogan-text{
   font-family:'League Spartan',sans-serif;
@@ -554,8 +561,26 @@ footer{
 .footer-right{font-size:10px;color:var(--muted);text-align:right;font-weight:300;}
 .footer-right a{color:var(--amber);text-decoration:none;}
 
-/* ── PIXEL HELPERS ───────────────────────────────────────────────── */
-.px-grid{display:grid;gap:3px;}
+/* ── PIXEL SYSTEM · 14px · gap 1px ──────────────────────────────── */
+/* Base pixel unit */
+.px{width:14px;height:14px;flex-shrink:0;display:block;}
+/* Colors */
+.px-amber{background:var(--amber);}
+.px-cyan{background:var(--cyan);opacity:0.75;}
+.px-moss{background:#7AC45A;opacity:0.65;}
+.px-paper{background:var(--paper);opacity:0.2;}
+.px-ink{background:var(--ink);}
+.px-empty{background:transparent;}
+/* Grid helper */
+.px-cluster{display:grid;gap:1px;position:absolute;}
+.px-cluster.tl{top:0;left:0;}
+.px-cluster.tr{top:0;right:0;}
+.px-cluster.br{bottom:0;right:0;}
+.px-cluster.bl{bottom:0;left:0;}
+/* Divider row */
+.px-divider-row{display:flex;gap:1px;overflow:hidden;width:100%;}
+/* Edge tear column */
+.px-tear{display:flex;flex-direction:column;gap:1px;flex-shrink:0;align-self:stretch;}
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────── */
 @media(max-width:900px){
@@ -687,8 +712,25 @@ footer{
       src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg"
       alt="TKG Lư Trung Hoả and Phú Đăng Hoả — Vietnamese botanical wellness">
     <div class="hero-overlay"></div>
+    <!-- Variant C: bottom checkerboard edge — wood/paper transition into text block -->
+    <div style="position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;z-index:2;">
+      <div id="hero-check-row1" style="display:flex;gap:0;width:100%;overflow:hidden;"></div>
+      <div id="hero-check-row2" style="display:flex;gap:0;width:100%;overflow:hidden;"></div>
+    </div>
   </div>
   <div class="hero-text-block">
+    <!-- P1: Corner TL amber 3×3 -->
+    <div class="px-cluster tl" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);">
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div>
+      <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
+    </div>
+    <!-- P1: Corner TR cyan 3×3 -->
+    <div class="px-cluster tr" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);">
+      <div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-cyan"></div>
+      <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
+      <div class="px px-empty"></div><div class="px px-empty"></div><div class="px px-cyan"></div>
+    </div>
     <div>
       <span class="hero-eyebrow">Vietnamese botanical wellness</span>
       <div class="hero-h1">Rooted in Vietnam.</div>
@@ -770,38 +812,56 @@ footer{
 
 <!-- SKU -->
 <section class="sku-section fade-in" id="products">
-  <div class="section-inner">
+  <div class="section-inner" style="position:relative;">
+    <!-- P2: Header accent TR amber+cyan 4×4 -->
+    <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
+      <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
+      <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
+    </div>
     <span class="eyebrow">The products</span>
     <div class="h2">Two expressions.</div>
-    <div class="h2-lt">One philosophy.</div>
+    <div class="h2-lt" style="max-width:calc(100% - 80px);">One philosophy.</div>
     <div class="sku-grid">
       <!-- Lư Trung Hoả -->
       <div class="sku-card">
-        <div class="sku-header fire">
+        <div class="sku-header fire" style="position:relative;">
+          <div class="px-cluster br" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(3,14px);">
+            <div class="px px-paper"></div><div class="px px-empty"></div><div class="px px-paper"></div><div class="px px-empty"></div>
+            <div class="px px-empty"></div><div class="px px-paper"></div><div class="px px-empty"></div><div class="px px-paper"></div>
+            <div class="px px-paper"></div><div class="px px-empty"></div><div class="px px-paper"></div><div class="px px-empty"></div>
+          </div>
           <span class="sku-en">Lư Trung Hoả · Furnace Fire</span>
           <span class="sku-name">Ginger +<br>Lemongrass</span>
           <span class="sku-ing">Whole plant · Freeze-dried · Naula method</span>
           <img class="sku-product-img"
-            src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/ChatGPT%20Image%20Mar%209%2C%202026%2C%2009_55_31%20PM.png"
+            src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Gemini_Generated_Image_dvu58mdvu58mdvu5.png"
             alt="Lư Trung Hoả — Ginger Lemongrass">
+          <!-- Variant A: bottom staircase left→right -->
+          <div id="jagged-fire-bottom" style="position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;"></div>
         </div>
         <div class="sku-body-wrap fire">
+          <span class="sku-tagline">Bold. Direct. Warm from the first sip.</span>
           <p class="sku-desc">Whole ginger and lemongrass — freeze-dried at peak character. For mornings, cold days, and the kind of warmth that arrives immediately.</p>
           <span class="sku-use">Morning · Before work · Cold weather</span>
-          <div class="origin-tag">
-            <div class="origin-dot"></div>
-            <span class="origin-text">Long An, Vietnam</span>
-          </div>
+          <div class="origin-tag"><div class="origin-dot"></div><span class="origin-text">Long An, Vietnam</span></div>
         </div>
       </div>
       <!-- Phú Đăng Hoả -->
       <div class="sku-card">
         <div class="sku-header perilla">
+          <!-- P3: BR cluster semi-transparent 4×3 -->
+          <div class="px-cluster br" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(3,14px);">
+            <div class="px px-paper"></div><div class="px px-empty"></div><div class="px px-paper"></div><div class="px px-empty"></div>
+            <div class="px px-empty"></div><div class="px px-paper"></div><div class="px px-empty"></div><div class="px px-paper"></div>
+            <div class="px px-paper"></div><div class="px px-empty"></div><div class="px px-paper"></div><div class="px px-empty"></div>
+          </div>
           <span class="sku-en">Phú Đăng Hoả · Lamp Fire</span>
           <span class="sku-name">Perilla +<br>Clove</span>
           <span class="sku-ing">Whole plant · Freeze-dried · Naula method</span>
           <img class="sku-product-img"
-            src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/ChatGPT%20Image%20Mar%209%2C%202026%2C%2009_58_25%20PM.png"
+            src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/ChatGPT%20Image%20Mar%2010%2C%202026%2C%2012_09_58%20PM.png"
             alt="Phú Đăng Hoả — Perilla Clove">
         </div>
         <div class="sku-body-wrap perilla">
@@ -885,11 +945,24 @@ footer{
   </div>
 </section>
 
+<!-- P5: Edge tear between Prepare (ink) and Naula (wood) -->
+<div style="background:var(--ink);display:flex;justify-content:flex-end;padding:0 0 0 0;overflow:hidden;height:15px;">
+  <div class="px-divider-row">
+    <div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:transparent;width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:transparent;width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:transparent;width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:transparent;width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:transparent;width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:transparent;width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:transparent;width:14px;height:14px;"></div><div class="px" style="background:var(--wood);width:14px;height:14px;"></div><div class="px" style="background:var(--ink);width:14px;height:14px;"></div>
+  </div>
+</div>
+
 <!-- NAULA METHOD -->
 <section class="naula fade-in" id="naula">
   <div class="section-inner">
-    <div class="naula-header">
-      <div>
+    <div class="naula-header" style="position:relative;">
+      <!-- P1: TL amber 3×3 -->
+      <div class="px-cluster tl" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);">
+        <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div>
+        <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
+        <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
+      </div>
+      <div style="padding-top:48px;">
         <span class="eyebrow" style="color:rgba(251,251,242,0.5);">How it's made</span>
         <div class="h2" style="color:var(--paper);">The Naula method.</div>
         <div class="h2-lt" style="color:var(--amber);">A discipline, not a brand name.</div>
@@ -948,8 +1021,22 @@ footer{
 
 <!-- WHY TKG -->
 <section class="why fade-in">
-  <div class="section-inner">
-    <span class="eyebrow" style="color:var(--cyan);">Why TKG</span>
+  <div class="section-inner" style="position:relative;">
+    <!-- P1: TL amber 3×3 — z-index:0, content is z-index:1 -->
+    <div class="px-cluster tl" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);z-index:0;">
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div>
+      <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
+    </div>
+    <!-- P1: BR moss 3×3 — z-index:0 -->
+    <div class="px-cluster br" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);z-index:0;">
+      <div class="px px-empty"></div><div class="px px-moss"></div><div class="px px-empty"></div>
+      <div class="px px-moss"></div><div class="px px-empty"></div><div class="px px-moss"></div>
+      <div class="px px-empty"></div><div class="px px-moss"></div><div class="px px-empty"></div>
+    </div>
+    <!-- Content z-index:1 — always above corner pixels -->
+    <div style="position:relative;z-index:1;">
+      <span class="eyebrow" style="color:var(--cyan);">Why TKG</span>
     <div class="why-h2">Honest botanicals.</div>
     <div class="why-h2b">Carefully crafted.</div>
     <div class="why-grid">
@@ -973,11 +1060,16 @@ footer{
         <p class="wc-body">Designed to support daily warmth and balance. Not a cure. Not a miracle. A product that respects both its origin and the person drinking it.</p>
       </div>
     </div>
+    </div><!-- close z-index:1 content wrapper -->
   </div>
 </section>
 
 <!-- SLOGAN BREAK -->
 <div class="slogan-break">
+  <!-- P4: divider top edge -->
+  <div class="px-divider-row" style="position:absolute;top:0;left:0;right:0;">
+    <div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div>
+  </div>
   <div class="slogan-text">Well. <span class="bold">Wellness.</span> Naula.</div>
   <div class="slogan-px">
     <div></div><div></div><div></div><div></div><div></div><div></div>
@@ -990,7 +1082,14 @@ footer{
 <!-- ORDER -->
 <section class="order fade-in" id="order">
   <div class="section-inner">
-    <div class="order-grid">
+    <div class="order-grid" style="position:relative;">
+      <!-- P2: TR amber+cyan 4×4 -->
+      <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
+        <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
+        <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
+        <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
+        <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
+      </div>
       <div>
         <span class="eyebrow">Order</span>
         <div class="order-h2">Ready to try TKG?</div>
@@ -1032,10 +1131,17 @@ footer{
 
 <!-- FAQ -->
 <section class="faq-section fade-in" id="faq">
-  <div class="section-inner">
+  <div class="section-inner" style="position:relative;">
+    <!-- P2: TR amber+cyan 4×4 -->
+    <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
+      <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
+      <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
+    </div>
     <span class="eyebrow">FAQ</span>
-    <div class="h2">Common questions.</div>
-    <div class="h2-lt">Honest answers.</div>
+    <div class="h2" style="max-width:calc(100% - 80px);">Common questions.</div>
+    <div class="h2-lt" style="max-width:calc(100% - 80px);">Honest answers.</div>
     <div class="faq-grid">
 
       <div class="faq-group">
@@ -1177,7 +1283,44 @@ footer{
 </footer>
 
 <script>
-// Scroll fade-in
+// ── JAGGED EDGE VARIANTS ────────────────────────────────────────────
+// Variant C: Hero bottom checkerboard (wood/paper)
+function buildCheckerRow(containerId, offset, color1, color2) {
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  const count = Math.ceil(window.innerWidth / 14) + 4;
+  for(let i = 0; i < count; i++) {
+    const cell = document.createElement('div');
+    cell.style.cssText = `width:14px;height:14px;flex-shrink:0;display:block;background:${(i + offset) % 2 === 0 ? color1 : color2};`;
+    el.appendChild(cell);
+  }
+}
+buildCheckerRow('hero-check-row1', 0, '#8B5E3C', 'transparent');
+buildCheckerRow('hero-check-row2', 1, '#8B5E3C', 'transparent');
+
+// Variant A: SKU Fire card bottom staircase (fire→body transition)
+function buildJaggedA(containerId, color, bgColor, cols, rows) {
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  el.style.cssText = 'position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;overflow:hidden;pointer-events:none;';
+  // Pattern: each row steps 1 cell — creates staircase effect
+  const pattern = [cols, cols-1, cols-2, cols-1, cols, cols-1, cols-2, cols-3, cols-2, cols-1, cols, cols-1];
+  for(let r = 0; r < rows; r++) {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;gap:0;height:14px;';
+    const filled = pattern[r % pattern.length];
+    const total = cols;
+    for(let c = 0; c < total; c++) {
+      const cell = document.createElement('div');
+      const isFilled = c < filled;
+      cell.style.cssText = `width:14px;height:14px;flex-shrink:0;background:${isFilled ? color : bgColor};`;
+      row.appendChild(cell);
+    }
+    el.appendChild(row);
+  }
+}
+buildJaggedA('jagged-fire-bottom', '#D45D2A', 'var(--hoa-yellow)', 8, 4);
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
