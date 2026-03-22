@@ -49,14 +49,14 @@ body{
 }
 .h2{
   font-family:'League Spartan',sans-serif;
-  font-size:clamp(28px,4vw,42px);
+  font-size:clamp(32px,5vw,54px);
   font-weight:700;line-height:0.95;
   text-transform:uppercase;color:var(--ink);
   margin-bottom:3px;
 }
 .h2-lt{
   font-family:'League Spartan',sans-serif;
-  font-size:clamp(28px,4vw,42px);
+  font-size:clamp(32px,5vw,54px);
   font-weight:300;line-height:0.95;
   text-transform:uppercase;color:var(--wood);
   margin-bottom:28px;
@@ -205,7 +205,18 @@ section{padding:88px 48px;}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
 
 /* ── INTRO ───────────────────────────────────────────────────────── */
-.intro{background:var(--cream);}
+.intro{
+  background:var(--cream);
+  position:relative;overflow:hidden;
+}
+.intro-bg{
+  position:absolute;inset:0;
+  background-image:url('https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/ChatGPT%20Image%20Feb%2025%2C%202026%2C%2002_39_52%20PM.png');
+  background-size:cover;background-position:center;
+  opacity:0.3;
+  z-index:0;
+}
+.intro .section-inner{position:relative;z-index:1;}
 .spec-grid{
   display:grid;grid-template-columns:1fr 1fr;
   gap:1px;background:var(--border);
@@ -247,7 +258,7 @@ section{padding:88px 48px;}
 .sku-header.fire{background:var(--hoa-yellow);}
 .sku-header.perilla{background:var(--hoa-sage);}
 .sku-product-img{
-  width:100%;height:200px;
+  width:100%;height:240px;
   object-fit:contain;object-position:center;
   margin-top:20px;
 }
@@ -316,7 +327,7 @@ section{padding:88px 48px;}
   gap:1px;background:rgba(251,251,242,0.06);
 }
 .prepare-step{background:var(--ink);border:0.5px solid rgba(251,251,242,0.04);}
-.prepare-img-wrap{width:100%;height:240px;overflow:hidden;position:relative;}
+.prepare-img-wrap{width:100%;height:320px;overflow:hidden;position:relative;}
 .prepare-img{
   width:100%;height:100%;
   object-fit:cover;object-position:center top;
@@ -407,35 +418,35 @@ section{padding:88px 48px;}
 .origin-sub{font-size:10px;color:var(--muted);font-weight:300;margin-top:2px;}
 
 /* ── WHY ─────────────────────────────────────────────────────────── */
-.why{background:var(--wood);}
+.why{background:#527121;}
 .why-h2{
   font-family:'League Spartan',sans-serif;
-  font-size:clamp(28px,4vw,42px);font-weight:700;
+  font-size:clamp(32px,5vw,54px);font-weight:700;
   line-height:0.95;text-transform:uppercase;
   color:var(--paper);margin-bottom:3px;
 }
 .why-h2b{
   font-family:'League Spartan',sans-serif;
-  font-size:clamp(28px,4vw,42px);font-weight:300;
+  font-size:clamp(32px,5vw,54px);font-weight:300;
   line-height:0.95;text-transform:uppercase;
   color:var(--amber);margin-bottom:48px;
 }
 .why-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:rgba(251,251,242,0.1);
+  gap:1px;background:rgba(251,251,242,0.15);
 }
 .why-card{
-  background:rgba(26,26,26,0.2);padding:36px 28px;
-  border:0.5px solid rgba(251,251,242,0.06);
+  background:rgba(0,0,0,0.15);padding:36px 28px;
+  border:0.5px solid rgba(251,251,242,0.1);
 }
 .why-px-bar{
   display:grid;grid-template-columns:repeat(6,8px);
   grid-template-rows:8px;gap:2px;margin-bottom:18px;
 }
-.why-px-bar div{background:rgba(251,251,242,0.1);}
+.why-px-bar div{background:rgba(251,251,242,0.15);}
 .why-px-bar div.a{background:var(--amber);}
 .why-px-bar div.c{background:var(--cyan);}
-.why-px-bar div.m{background:#7AC45A;}
+.why-px-bar div.m{background:#C5F07A;}
 .wc-num{
   font-family:'League Spartan',sans-serif;
   font-size:9px;font-weight:600;
@@ -448,8 +459,8 @@ section{padding:88px 48px;}
   color:var(--paper);text-transform:uppercase;
   margin-bottom:10px;line-height:1.1;display:block;
 }
-.wc-body{font-size:12px;color:rgba(251,251,242,0.45);line-height:1.75;font-weight:300;}
-.wc-geo{font-size:10px;color:#7AC45A;font-weight:500;margin-top:12px;display:block;letter-spacing:0.06em;}
+.wc-body{font-size:12px;color:rgba(251,251,242,0.85);line-height:1.75;font-weight:300;}
+.wc-geo{font-size:10px;color:#C5F07A;font-weight:500;margin-top:12px;display:block;letter-spacing:0.06em;}
 
 /* ── SLOGAN BREAK ────────────────────────────────────────────────── */
 .slogan-break{
@@ -695,7 +706,7 @@ footer{
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/TKG-logo.png" alt="TKG" style="height:32px;width:auto;display:block;filter:brightness(0) saturate(100%);">
+    <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/TKG-logo.png" alt="TKG" style="height:44px;width:auto;display:block;filter:brightness(0) saturate(100%);">
   </a>
   <ul class="nav-links">
     <li><a href="#products">Products</a></li>
@@ -775,6 +786,7 @@ footer{
 
 <!-- INTRO -->
 <section class="intro fade-in">
+  <div class="intro-bg"></div>
   <div class="section-inner">
     <div class="two-col">
       <div>
@@ -838,7 +850,7 @@ footer{
           <span class="sku-name">Ginger +<br>Lemongrass</span>
           <span class="sku-ing">Whole plant · Freeze-dried · Naula method</span>
           <img class="sku-product-img"
-            src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Gemini_Generated_Image_dvu58mdvu58mdvu5.png"
+            src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018%20copy.jpg"
             alt="Lư Trung Hoả — Ginger Lemongrass">
           <!-- Variant A: bottom staircase left→right -->
           <div id="jagged-fire-bottom" style="position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;"></div>
@@ -979,25 +991,25 @@ footer{
     </div>
     <div class="steps">
       <div class="step">
-        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/afee05b6375887fc787ff56a02c2b731.jpg" alt="Sourcing — fresh perilla" style="width:100%;height:160px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/afee05b6375887fc787ff56a02c2b731.jpg" alt="Sourcing — fresh perilla" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">01 · Sourcing</span>
         <span class="st-title">Named botanicals. Single origin.</span>
         <p class="st-body">Whole plants from Long An, Vietnam. Every ingredient named. Nothing blended or anonymous.</p>
       </div>
       <div class="step">
-        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Screenshot%202026-03-21%20at%2020.40.52.png" alt="Naula preparation — cooking" style="width:100%;height:160px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Screenshot%202026-03-21%20at%2020.40.52.png" alt="Naula preparation — cooking" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">02 · Naula preparation</span>
         <span class="st-title">Slow-cooked whole.</span>
         <p class="st-body">Time, fire, and water — adjusted for each ingredient. No universal formula applied to everything.</p>
       </div>
       <div class="step">
-        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9555.JPG" alt="Freeze-drying — trays in chamber" style="width:100%;height:160px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9555.JPG" alt="Freeze-drying — trays in chamber" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">03 · Freeze-drying</span>
         <span class="st-title">Locked at peak character.</span>
         <p class="st-body">Flash-frozen, sublimated in vacuum. Colour, aroma, character preserved without heat damage.</p>
       </div>
       <div class="step">
-        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9557.JPG" alt="Quality check — weighing powder" style="width:100%;height:160px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9557.JPG" alt="Quality check — weighing powder" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">04 · Quality check</span>
         <span class="st-title">Weighed. Tested. Sealed.</span>
         <p class="st-body">Each batch weighed and verified before dual-chamber packaging. Eurofins tested. No shortcuts.</p>
