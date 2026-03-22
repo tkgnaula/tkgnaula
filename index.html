@@ -61,11 +61,11 @@ body{
   text-transform:uppercase;color:var(--wood);
   margin-bottom:28px;
 }
-.body-text{font-size:14px;color:var(--muted);line-height:1.85;font-weight:300;}
+.body-text{font-size:14px;color:var(--ink);line-height:1.85;font-weight:300;}
 .pull-quote{
   font-size:15px;font-style:italic;color:var(--ink);
   border-left:2px solid var(--amber);padding-left:18px;
-  line-height:1.6;margin-top:28px;font-weight:300;
+  line-height:1.6;margin-top:28px;font-weight:400;
 }
 
 /* ── NAV ─────────────────────────────────────────────────────────── */
@@ -213,7 +213,7 @@ section{padding:88px 48px;}
   position:absolute;inset:0;
   background-image:url('https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/ChatGPT%20Image%20Feb%2025%2C%202026%2C%2002_39_52%20PM.png');
   background-size:cover;background-position:center;
-  opacity:0.3;
+  opacity:0.2;
   z-index:0;
 }
 .intro .section-inner{position:relative;z-index:1;}
@@ -1036,21 +1036,9 @@ footer{
 <!-- WHY TKG -->
 <section class="why fade-in">
   <div class="section-inner" style="position:relative;">
-    <!-- P1: TL amber 3×3 — z-index:0, content is z-index:1 -->
-    <div class="px-cluster tl" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);z-index:0;">
-      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div>
-      <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
-      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
-    </div>
-    <!-- P1: BR moss 3×3 — z-index:0 -->
-    <div class="px-cluster br" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);z-index:0;">
-      <div class="px px-empty"></div><div class="px px-moss"></div><div class="px px-empty"></div>
-      <div class="px px-moss"></div><div class="px px-empty"></div><div class="px px-moss"></div>
-      <div class="px px-empty"></div><div class="px px-moss"></div><div class="px px-empty"></div>
-    </div>
-    <!-- Content z-index:1 — always above corner pixels -->
+    <!-- Content -->
     <div style="position:relative;z-index:1;">
-      <span class="eyebrow" style="color:var(--cyan);">Why TKG</span>
+      <span class="eyebrow" style="color:var(--amber);letter-spacing:0.22em;">Why TKG</span>
     <div class="why-h2">Honest botanicals.</div>
     <div class="why-h2b">Carefully crafted.</div>
     <div class="why-grid">
