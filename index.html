@@ -713,6 +713,7 @@ footer{
     <li><a href="#prepare">How to prepare</a></li>
     <li><a href="#naula">The Naula method</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
     <li><a href="#order">Order</a></li>
   </ul>
   <a href="#order" class="nav-cta">Order now</a>
@@ -1271,6 +1272,246 @@ footer{
     </div>
   </div>
 </section>
+
+<!-- PHILOSOPHY -->
+<section style="background:#1A1A1A;padding:72px 48px;position:relative;overflow:hidden;" id="philosophy">
+
+  <!-- Ambient star field canvas -->
+  <canvas id="sf-bg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+
+  <div style="position:relative;z-index:1;max-width:1080px;margin:0 auto;">
+
+    <span style="font-size:10px;font-weight:500;letter-spacing:0.22em;color:#FFB703;text-transform:uppercase;display:block;margin-bottom:18px;">Philosophy · Hidden layer</span>
+    <div style="font-family:'League Spartan',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:700;line-height:0.92;text-transform:uppercase;color:#FBFBF2;margin-bottom:4px;">Two ingredients.</div>
+    <div style="font-family:'League Spartan',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:0.92;text-transform:uppercase;color:rgba(251,251,242,0.3);margin-bottom:12px;">Two Hoa Giáp each.</div>
+    <p style="font-size:12px;font-weight:300;color:rgba(251,251,242,0.3);margin-bottom:48px;letter-spacing:0.04em;">Hover a star to reveal the story · Mỗi nguyên liệu mang một Hoa Giáp</p>
+
+    <!-- Constellation canvas -->
+    <div style="position:relative;width:100%;height:420px;" id="const-wrap">
+      <canvas id="const-cv" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+      <!-- Info panel -->
+      <div id="phil-panel" style="position:absolute;bottom:0;left:0;right:0;background:rgba(26,26,26,0.97);border-top:0.5px solid rgba(255,183,3,0.2);padding:24px 0;display:grid;grid-template-columns:1fr 1px 1fr;gap:0;opacity:0;transition:opacity 0.4s ease;pointer-events:none;">
+        <div id="phil-col-l" style="padding:0 28px;"></div>
+        <div style="background:rgba(255,183,3,0.15);align-self:stretch;"></div>
+        <div id="phil-col-r" style="padding:0 28px;"></div>
+      </div>
+    </div>
+    <p id="phil-hint" style="font-size:10px;font-weight:300;color:rgba(251,251,242,0.2);letter-spacing:0.12em;text-transform:uppercase;text-align:center;margin-top:12px;transition:opacity 0.3s;">← hover any star to begin →</p>
+
+    <!-- QR placeholder strip -->
+    <div style="margin-top:40px;border:0.5px solid rgba(255,183,3,0.15);padding:18px 24px;display:flex;align-items:center;gap:16px;">
+      <div style="width:40px;height:40px;border:0.5px solid rgba(255,183,3,0.3);display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:5px;flex-shrink:0;">
+        <div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div>
+        <div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div>
+        <div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div>
+      </div>
+      <p style="font-size:10px;font-weight:300;color:rgba(251,251,242,0.25);line-height:1.7;letter-spacing:0.04em;"><span style="color:rgba(255,183,3,0.5);font-weight:400;">AR Layer — coming soon</span><br>Scan to unlock the full Hoa Giáp story for each ingredient — origin, energy, and ritual. Built for TKG fan. Powered by Thiện Kiến AR.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+
+// ── STAR FIELD ────────────────────────────────────────────────────
+const sf = document.getElementById('sf-bg');
+const sfc = sf.getContext('2d');
+function drawBgStars(){
+  sf.width = sf.offsetWidth || 1200;
+  sf.height = sf.offsetHeight || 700;
+  sfc.clearRect(0,0,sf.width,sf.height);
+  for(let i=0;i<140;i++){
+    const x=Math.random()*sf.width, y=Math.random()*sf.height;
+    const r=Math.random()*0.9+0.2;
+    const a=Math.random()*0.2+0.04;
+    sfc.beginPath();sfc.arc(x,y,r,0,Math.PI*2);
+    sfc.fillStyle=`rgba(251,251,242,${a})`;sfc.fill();
+  }
+}
+drawBgStars();
+
+// ── DATA ──────────────────────────────────────────────────────────
+const SKUS=[
+  {
+    id:'lth',name:'Lư Trung Hoả',color:'#E8A020',
+    stars:[
+      {id:'ginger',label:'Ginger · Gừng',hg:'Bính Dần',element:'Hoả Dương',
+       desc:'Fierce, direct. The Yang fire of the Tiger year — bold energy that rises without hesitation. Ginger carries this: sharp, immediate, unapologetic warmth.',
+       vn:'Hoả dương mạnh mẽ. Gừng mang theo năng lượng Bính Dần — trực diện, không do dự. Ngụm đầu tiên đã là câu trả lời.',
+       x:0.18,y:0.30},
+      {id:'lemongrass',label:'Lemongrass · Sả',hg:'Đinh Mão',element:'Hoả Âm',
+       desc:'Refined, luminous. The Yin fire of the Rabbit year — light that illuminates without burning. Lemongrass lifts and brightens, the elegant counterpoint to ginger\'s directness.',
+       vn:'Hoả âm tinh tế. Sả mang theo ánh sáng Đinh Mão — soi rọi mà không đốt cháy. Hơi ấm đến sau, nhưng ở lại lâu hơn.',
+       x:0.38,y:0.20}
+    ],
+    cx:0.28,cy:0.62
+  },
+  {
+    id:'pdh',name:'Phú Đăng Hoả',color:'#8B5FC0',
+    stars:[
+      {id:'perilla',label:'Perilla · Tía tô',hg:'Giáp Thìn',element:'Mộc Dương',
+       desc:'Yang wood within the Dragon. Deep, structural — the kind of presence that anchors. Perilla carries an earthy complexity, green and dark at once, settled like a dragon resting in water.',
+       vn:'Mộc dương trong long. Tía tô mang chiều sâu của Giáp Thìn — trầm lặng, vững chắc như rồng nằm trong nước.',
+       x:0.62,y:0.26},
+      {id:'clove',label:'Clove · Đinh hương',hg:'Ất Tỵ',element:'Mộc Âm',
+       desc:'Yin wood within the Snake. Slow, penetrating warmth — the kind that arrives long after the first sip. Clove is ancient and deliberate, like a snake moving with complete intention.',
+       vn:'Mộc âm trong xà. Đinh hương đến chậm nhưng sâu — như con rắn di chuyển với chủ đích hoàn toàn. Ngụm cuối còn ấm.',
+       x:0.82,y:0.36}
+    ],
+    cx:0.72,cy:0.62
+  }
+];
+
+// ── CANVAS ────────────────────────────────────────────────────────
+const cv=document.getElementById('const-cv');
+const ctx=cv.getContext('2d');
+const cwrap=document.getElementById('const-wrap');
+let W,H,hovStar=null,hovSKU=null,tick=0;
+const SR=6;
+
+function resize(){
+  W=cwrap.clientWidth; H=cwrap.clientHeight;
+  cv.width=W; cv.height=H;
+}
+
+function spx(s){return{x:s.x*W,y:s.y*H};}
+function cpx(s){return{x:s.cx*W,y:s.cy*H};}
+
+function drawStarShape(cx,cy,outerR,innerR,color,alpha){
+  ctx.save(); ctx.globalAlpha=alpha||1;
+  ctx.beginPath();
+  for(let i=0;i<10;i++){
+    const r=i%2===0?outerR:innerR;
+    const a=Math.PI/5*i-Math.PI/2;
+    i===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));
+  }
+  ctx.closePath(); ctx.fillStyle=color; ctx.fill(); ctx.restore();
+}
+
+function frame(){
+  ctx.clearRect(0,0,W,H);
+  tick+=0.008;
+
+  SKUS.forEach(sku=>{
+    const isActive=hovSKU===sku.id;
+    const c=cpx(sku);
+    const s0=spx(sku.stars[0]), s1=spx(sku.stars[1]);
+
+    // star-to-star line
+    ctx.beginPath(); ctx.moveTo(s0.x,s0.y); ctx.lineTo(s1.x,s1.y);
+    ctx.strokeStyle=isActive?sku.color+'55':'rgba(251,251,242,0.04)';
+    ctx.lineWidth=0.5; ctx.setLineDash([2,8]); ctx.stroke(); ctx.setLineDash([]);
+
+    // lines to center
+    [s0,s1].forEach(p=>{
+      ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(c.x,c.y);
+      ctx.strokeStyle=isActive?sku.color+'88':'rgba(251,251,242,0.06)';
+      ctx.lineWidth=isActive?0.8:0.5;
+      ctx.setLineDash(isActive?[]:[3,6]); ctx.stroke(); ctx.setLineDash([]);
+    });
+
+    // center node
+    ctx.beginPath(); ctx.arc(c.x,c.y,isActive?5:3,0,Math.PI*2);
+    ctx.fillStyle=isActive?sku.color:sku.color+'55'; ctx.fill();
+    if(isActive){
+      ctx.beginPath(); ctx.arc(c.x,c.y,12,0,Math.PI*2);
+      ctx.strokeStyle=sku.color+'33'; ctx.lineWidth=1; ctx.stroke();
+    }
+    ctx.font="500 9px 'Be Vietnam Pro',sans-serif";
+    ctx.fillStyle=isActive?sku.color:'rgba(251,251,242,0.2)';
+    ctx.textAlign='center';
+    ctx.fillText(sku.name.toUpperCase(),c.x,c.y+20);
+
+    // ingredient stars
+    sku.stars.forEach(star=>{
+      const p=spx(star);
+      const isHov=hovStar===star.id;
+      const pulse=isHov?1:(Math.sin(tick*1.2+star.x*10)*0.12+0.88);
+
+      // halo
+      ctx.beginPath(); ctx.arc(p.x,p.y,isHov?20:13,0,Math.PI*2);
+      ctx.fillStyle=isHov?sku.color+'22':'rgba(251,251,242,0.03)'; ctx.fill();
+
+      // star shape
+      drawStarShape(p.x,p.y,isHov?SR+3:SR,isHov?SR*0.42:SR*0.4,
+        isHov?sku.color:(isActive?sku.color+'cc':'rgba(251,251,242,0.65)'),pulse);
+
+      // labels
+      ctx.font="300 10px 'Be Vietnam Pro',sans-serif";
+      ctx.fillStyle=isHov?'#FBFBF2':'rgba(251,251,242,0.3)';
+      ctx.textAlign='center';
+      ctx.fillText(star.hg,p.x,p.y-20);
+      ctx.font="400 9px 'Be Vietnam Pro',sans-serif";
+      ctx.fillStyle=isHov?sku.color:'rgba(251,251,242,0.18)';
+      ctx.fillText(star.element,p.x,p.y-10);
+    });
+  });
+
+  requestAnimationFrame(frame);
+}
+
+// ── HOVER ─────────────────────────────────────────────────────────
+function getHit(mx,my){
+  let found=null,foundSKU=null;
+  SKUS.forEach(sku=>sku.stars.forEach(star=>{
+    const p=spx(star);
+    if(Math.hypot(mx-p.x,my-p.y)<24){found=star;foundSKU=sku;}
+  }));
+  return{star:found,sku:foundSKU};
+}
+
+cv.addEventListener('mousemove',e=>{
+  const r=cv.getBoundingClientRect();
+  const mx=(e.clientX-r.left)*(W/r.width);
+  const my=(e.clientY-r.top)*(H/r.height);
+  const{star,sku}=getHit(mx,my);
+  if(star&&star.id!==hovStar){
+    hovStar=star.id; hovSKU=sku.id;
+    showPanel(star,sku);
+    document.getElementById('phil-hint').style.opacity='0';
+  } else if(!star&&hovStar){
+    hovStar=null; hovSKU=null; hidePanel();
+    document.getElementById('phil-hint').style.opacity='1';
+  }
+  cv.style.cursor=star?'pointer':'default';
+});
+
+cv.addEventListener('touchstart',e=>{
+  e.preventDefault();
+  const t0=e.touches[0];
+  const r=cv.getBoundingClientRect();
+  const mx=(t0.clientX-r.left)*(W/r.width);
+  const my=(t0.clientY-r.top)*(H/r.height);
+  const{star,sku}=getHit(mx,my);
+  if(star){hovStar=star.id;hovSKU=sku.id;showPanel(star,sku);}
+},{passive:false});
+
+function showPanel(star,sku){
+  document.getElementById('phil-col-l').innerHTML=`
+    <span style="font-size:9px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:${sku.color};display:block;margin-bottom:10px;">${sku.name}</span>
+    <span style="font-family:'League Spartan',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:#FBFBF2;display:block;margin-bottom:4px;">${star.label}</span>
+    <span style="font-size:11px;font-weight:300;font-style:italic;color:rgba(251,251,242,0.45);display:block;margin-bottom:10px;">${star.hg} · ${star.element}</span>
+    <p style="font-size:11px;font-weight:300;color:rgba(251,251,242,0.7);line-height:1.7;">${star.desc}</p>`;
+  document.getElementById('phil-col-r').innerHTML=`
+    <span style="font-size:9px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(251,251,242,0.25);display:block;margin-bottom:10px;">VN</span>
+    <span style="font-family:'League Spartan',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:rgba(251,251,242,0.35);display:block;margin-bottom:4px;">&nbsp;</span>
+    <span style="font-size:11px;color:rgba(251,251,242,0.0);display:block;margin-bottom:10px;">&nbsp;</span>
+    <p style="font-size:11px;font-weight:300;font-style:italic;color:rgba(251,251,242,0.35);line-height:1.7;">${star.vn}</p>`;
+  document.getElementById('phil-panel').style.opacity='1';
+}
+
+function hidePanel(){
+  document.getElementById('phil-panel').style.opacity='0';
+}
+
+// ── INIT ──────────────────────────────────────────────────────────
+resize();
+window.addEventListener('resize',()=>{resize();drawBgStars();});
+frame();
+
+})();
+</script>
 
 <!-- FOOTER -->
 <footer>
