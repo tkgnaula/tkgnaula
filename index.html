@@ -1,12 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>TKG Naula — Rooted in Vietnam. Refined for the world.</title>
-<meta name="description" content="TKG is a botanical wellness brand rooted in Vietnamese herbal practice, crafted through the Naula method.">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TKG · Naula — Rooted in Vietnam. Refined for the world.</title>
-<meta name="description" content="TKG is a botanical wellness brand rooted in Vietnamese herbal practice — crafted through the Naula method for modern daily life.">
+
+<!-- SEO: Title & Description -->
+<title>TKG Naula — Vietnamese Botanical Wellness | Rooted in Vietnam</title>
+<meta name="description" content="TKG Naula: Vietnamese botanical wellness drinks crafted through the Naula method. Ginger lemongrass & perilla clove. No preservatives. Lab tested. Order at tkg-naula.com.">
+<meta name="keywords" content="TKG, TKG Naula, Naula, Vietnamese botanical wellness, herbal drink, ginger lemongrass, perilla clove, freeze-dried botanical, Lư Trung Hoả, Phú Đăng Hoả">
+<meta name="robots" content="index, follow">
+<meta name="author" content="TKG Naula / Thiện Kiến">
+<link rel="canonical" href="https://tkg-naula.com/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="TKG Naula — Vietnamese Botanical Wellness">
+<meta property="og:description" content="Real botanicals. No artificial flavoring. Crafted through the Naula method. Rooted in Vietnam. Refined for the world.">
+<meta property="og:url" content="https://tkg-naula.com/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg">
+<meta property="og:site_name" content="TKG Naula">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TKG Naula — Vietnamese Botanical Wellness">
+<meta name="twitter:description" content="Real botanicals. No artificial flavoring. Crafted through the Naula method.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TKG Naula",
+  "alternateName": ["TKG", "Naula", "Thiện Kiến"],
+  "url": "https://tkg-naula.com",
+  "description": "TKG Naula is a Vietnamese botanical wellness brand crafted through the Naula method. Rooted in Vietnam. Refined for the world.",
+  "email": "TKG.naula@gmail.com",
+  "foundingLocation": "Vietnam",
+  "slogan": "Rooted in Vietnam. Refined for the world."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "TKG Naula Products",
+  "itemListElement": [
+    {
+      "@type": "Product",
+      "position": 1,
+      "name": "Lư Trung Hoả — Ginger Lemongrass",
+      "description": "Bold. Direct. Warm from the first sip. Whole ginger and lemongrass prepared through the Naula method, freeze-dried to preserve character.",
+      "brand": {"@type": "Brand", "name": "TKG Naula"},
+      "offers": {
+        "@type": "Offer",
+        "price": "34.99",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://tkg-naula.com/#products"
+      }
+    },
+    {
+      "@type": "Product",
+      "position": 2,
+      "name": "Phú Đăng Hoả — Perilla Clove",
+      "description": "Quiet. Considered. Warmth that arrives slowly. Perilla and clove prepared through the Naula method, freeze-dried at peak character.",
+      "brand": {"@type": "Brand", "name": "TKG Naula"},
+      "offers": {
+        "@type": "Offer",
+        "price": "34.99",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://tkg-naula.com/#products"
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -575,24 +647,19 @@ footer{
 .footer-right a{color:var(--amber);text-decoration:none;}
 
 /* ── PIXEL SYSTEM · 14px · gap 1px ──────────────────────────────── */
-/* Base pixel unit */
 .px{width:14px;height:14px;flex-shrink:0;display:block;}
-/* Colors */
 .px-amber{background:var(--amber);}
 .px-cyan{background:var(--cyan);opacity:0.75;}
 .px-moss{background:#7AC45A;opacity:0.65;}
 .px-paper{background:var(--paper);opacity:0.2;}
 .px-ink{background:var(--ink);}
 .px-empty{background:transparent;}
-/* Grid helper */
 .px-cluster{display:grid;gap:0px;position:absolute;}
 .px-cluster.tl{top:0;left:0;}
 .px-cluster.tr{top:0;right:0;}
 .px-cluster.br{bottom:0;right:0;}
 .px-cluster.bl{bottom:0;left:0;}
-/* Divider row */
 .px-divider-row{display:flex;gap:0px;overflow:hidden;width:100%;}
-/* Edge tear column */
 .px-tear{display:flex;flex-direction:column;gap:0px;flex-shrink:0;align-self:stretch;}
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────── */
@@ -699,8 +766,9 @@ footer{
     animation:none;
   }
 }
-.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
+.fade-in{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in.animate{opacity:0;transform:translateY(24px);}
+.fade-in.animate.visible{opacity:1;transform:translateY(0);}
 </style>
 </head>
 <body>
@@ -708,7 +776,7 @@ footer{
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/TKG-logo.png" alt="TKG" style="height:44px;width:auto;display:block;filter:brightness(0) saturate(100%);">
+    <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/TKG-logo.png" alt="TKG Naula" style="height:44px;width:auto;display:block;filter:brightness(0) saturate(100%);">
   </a>
   <ul class="nav-links">
     <li><a href="#products">Products</a></li>
@@ -716,6 +784,7 @@ footer{
     <li><a href="#naula">The Naula method</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#where">Find us</a></li>
     <li><a href="#order">Order</a></li>
   </ul>
   <a href="#order" class="nav-cta">Order now</a>
@@ -726,22 +795,19 @@ footer{
   <div class="hero-img-wrap">
     <img class="hero-img"
       src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg"
-      alt="TKG Lư Trung Hoả and Phú Đăng Hoả — Vietnamese botanical wellness">
+      alt="TKG Naula — Lư Trung Hoả and Phú Đăng Hoả Vietnamese botanical wellness drinks">
     <div class="hero-overlay"></div>
-    <!-- Variant C: bottom checkerboard edge — wood/paper transition into text block -->
     <div style="position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;z-index:2;">
       <div id="hero-check-row1" style="display:flex;gap:0;width:100%;overflow:hidden;"></div>
       <div id="hero-check-row2" style="display:flex;gap:0;width:100%;overflow:hidden;"></div>
     </div>
   </div>
   <div class="hero-text-block">
-    <!-- P1: Corner TL amber 3×3 -->
     <div class="px-cluster tl" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);">
       <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div>
       <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
       <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
     </div>
-    <!-- P1: Corner TR cyan 3×3 -->
     <div class="px-cluster tr" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);">
       <div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-cyan"></div>
       <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
@@ -752,7 +818,7 @@ footer{
       <div class="hero-h1">Rooted in Vietnam.</div>
       <div class="hero-h1b">Refined for the world.</div>
       <div class="hero-rule"></div>
-      <p class="hero-body">Two botanicals. One preparation discipline. No shortcuts.<br>TKG is built on <strong>named ingredients</strong>, honest formulation, and a craft process rooted in Vietnamese herbal practice.</p>
+      <p class="hero-body">Two botanicals. One preparation discipline. No shortcuts.<br>TKG Naula is built on <strong>named ingredients</strong>, honest formulation, and a craft process rooted in Vietnamese herbal practice.</p>
       <div class="hero-cta-row">
         <a href="#products" class="btn-amber">Explore the products</a>
         <a href="#naula" class="btn-ghost">Learn about Naula →</a>
@@ -793,11 +859,11 @@ footer{
   <div class="section-inner">
     <div class="two-col">
       <div>
-        <span class="eyebrow">What is TKG</span>
+        <span class="eyebrow">What is TKG Naula</span>
         <div class="h2">Not tea.</div>
         <div class="h2">Not supplement.</div>
         <div class="h2-lt">Something more considered.</div>
-        <p class="body-text">TKG beverages begin with whole plants — sourced by name, from a single origin in Long An, Vietnam. Prepared through the Naula method: slow-cooked, then freeze-dried to preserve character.</p>
+        <p class="body-text">TKG Naula beverages begin with whole plants — sourced by name, from a single origin in Long An, Vietnam. Prepared through the Naula method: slow-cooked, then freeze-dried to preserve character.</p>
         <p class="body-text" style="margin-top:12px;">No artificial flavoring. No preservatives. No industrial extraction.</p>
         <div class="pull-quote">"The honey is separate — because your sweetness is yours to decide."</div>
       </div>
@@ -830,7 +896,6 @@ footer{
 <!-- SKU -->
 <section class="sku-section fade-in" id="products">
   <div class="section-inner" style="position:relative;">
-    <!-- P2: Header accent TR amber+cyan 4×4 -->
     <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
       <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
       <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
@@ -854,8 +919,7 @@ footer{
           <span class="sku-ing">Whole plant · Freeze-dried · Naula method</span>
           <img class="sku-product-img"
             src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018%20copy.jpg"
-            alt="Lư Trung Hoả — Ginger Lemongrass">
-          <!-- Variant A: bottom staircase left→right -->
+            alt="Lư Trung Hoả — Ginger Lemongrass botanical wellness drink by TKG Naula">
           <div id="jagged-fire-bottom" style="position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;"></div>
         </div>
         <div class="sku-body-wrap fire">
@@ -868,7 +932,6 @@ footer{
       <!-- Phú Đăng Hoả -->
       <div class="sku-card">
         <div class="sku-header perilla">
-          <!-- P3: BR cluster semi-transparent 4×3 -->
           <div class="px-cluster br" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(3,14px);">
             <div class="px px-paper"></div><div class="px px-empty"></div><div class="px px-paper"></div><div class="px px-empty"></div>
             <div class="px px-empty"></div><div class="px px-paper"></div><div class="px px-empty"></div><div class="px px-paper"></div>
@@ -879,7 +942,7 @@ footer{
           <span class="sku-ing">Whole plant · Freeze-dried · Naula method</span>
           <img class="sku-product-img"
             src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/ChatGPT%20Image%20Mar%2010%2C%202026%2C%2012_09_58%20PM.png"
-            alt="Phú Đăng Hoả — Perilla Clove">
+            alt="Phú Đăng Hoả — Perilla Clove botanical wellness drink by TKG Naula">
         </div>
         <div class="sku-body-wrap perilla">
           <span class="sku-tagline">Quiet. Considered. Warmth that arrives slowly.</span>
@@ -906,7 +969,7 @@ footer{
         <div class="prepare-img-wrap">
           <img class="prepare-img"
             src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_8482.JPG"
-            alt="Step 1 — Open the sachet">
+            alt="Step 1 — Open the TKG Naula sachet">
           <div class="prepare-px-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="prepare-text">
@@ -920,7 +983,7 @@ footer{
         <div class="prepare-img-wrap">
           <img class="prepare-img"
             src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_8483.jpg"
-            alt="Step 2 — Pour the powder">
+            alt="Step 2 — Pour the botanical powder">
           <div class="prepare-px-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="prepare-text">
@@ -934,7 +997,7 @@ footer{
         <div class="prepare-img-wrap">
           <img class="prepare-img"
             src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_8485.jpg"
-            alt="Step 3 — Add honey">
+            alt="Step 3 — Add honey to TKG Naula">
           <div class="prepare-px-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="prepare-text">
@@ -948,7 +1011,7 @@ footer{
         <div class="prepare-img-wrap">
           <img class="prepare-img"
             src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_8486.png"
-            alt="Step 4 — Stir and drink">
+            alt="Step 4 — Stir and drink TKG Naula">
           <div class="prepare-px-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="prepare-text">
@@ -973,7 +1036,6 @@ footer{
 <section class="naula fade-in" id="naula">
   <div class="section-inner">
     <div class="naula-header" style="position:relative;">
-      <!-- P1: TL amber 3×3 -->
       <div class="px-cluster tl" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);">
         <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div>
         <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
@@ -994,25 +1056,25 @@ footer{
     </div>
     <div class="steps">
       <div class="step">
-        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/afee05b6375887fc787ff56a02c2b731.jpg" alt="Sourcing — fresh perilla" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/afee05b6375887fc787ff56a02c2b731.jpg" alt="Naula sourcing — fresh perilla from Long An Vietnam" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">01 · Sourcing</span>
         <span class="st-title">Named botanicals. Single origin.</span>
         <p class="st-body">Whole plants from Long An, Vietnam. Every ingredient named. Nothing blended or anonymous.</p>
       </div>
       <div class="step">
-        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Screenshot%202026-03-21%20at%2020.40.52.png" alt="Naula preparation — cooking" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Screenshot%202026-03-21%20at%2020.40.52.png" alt="Naula preparation — slow cooking Vietnamese botanicals" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">02 · Naula preparation</span>
         <span class="st-title">Slow-cooked whole.</span>
         <p class="st-body">Time, fire, and water — adjusted for each ingredient. No universal formula applied to everything.</p>
       </div>
       <div class="step">
-        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9555.JPG" alt="Freeze-drying — trays in chamber" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9555.JPG" alt="Freeze-drying — TKG Naula botanical powder production" style="width:100%;height:240px;object-fit:cover;object-position:center;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">03 · Freeze-drying</span>
         <span class="st-title">Locked at peak character.</span>
         <p class="st-body">Flash-frozen, sublimated in vacuum. Colour, aroma, character preserved without heat damage.</p>
       </div>
       <div class="step">
-        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9557.JPG" alt="Quality check — weighing powder" style="width:100%;height:240px;object-fit:cover;object-position:center 70%;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
+        <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/IMG_9557.JPG" alt="Quality check — TKG Naula weighing and testing botanical powder" style="width:100%;height:240px;object-fit:cover;object-position:center 70%;display:block;margin-bottom:16px;margin-top:-26px;margin-left:-20px;width:calc(100% + 40px);">
         <span class="st-num">04 · Quality check</span>
         <span class="st-title">Weighed. Tested. Sealed.</span>
         <p class="st-body">Each batch weighed and verified before dual-chamber packaging. Eurofins tested. No shortcuts.</p>
@@ -1039,9 +1101,8 @@ footer{
 <!-- WHY TKG -->
 <section class="why fade-in">
   <div class="section-inner" style="position:relative;">
-    <!-- Content -->
     <div style="position:relative;z-index:1;">
-      <span class="eyebrow" style="color:var(--amber);letter-spacing:0.22em;">Why TKG</span>
+      <span class="eyebrow" style="color:var(--amber);letter-spacing:0.22em;">Why TKG Naula</span>
     <div class="why-h2">Honest botanicals.</div>
     <div class="why-h2b">Carefully crafted.</div>
     <div class="why-grid">
@@ -1065,13 +1126,12 @@ footer{
         <p class="wc-body">Designed to support daily warmth and balance. Not a cure. Not a miracle. A product that respects both its origin and the person drinking it.</p>
       </div>
     </div>
-    </div><!-- close z-index:1 content wrapper -->
+    </div>
   </div>
 </section>
 
 <!-- SLOGAN BREAK -->
 <div class="slogan-break">
-  <!-- P4: divider top edge -->
   <div class="px-divider-row" style="position:absolute;top:0;left:0;right:0;">
     <div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div>
   </div>
@@ -1084,11 +1144,228 @@ footer{
   </div>
 </div>
 
+<!-- WHERE TO EXPERIENCE -->
+<section class="where-section fade-in" id="where">
+  <div class="section-inner" style="position:relative;">
+    <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
+      <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
+      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
+      <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
+    </div>
+
+    <span class="eyebrow">Where to experience TKG</span>
+    <div class="h2">Starting in Vietnam.</div>
+    <div class="h2-lt" style="max-width:calc(100% - 80px);">Expanding from there.</div>
+    <p class="body-text" style="max-width:560px;margin-bottom:48px;">TKG is rolling out at selected venues in Vietnam — restaurants, cafés, hotels, and wellness spaces that share our standard. Export markets are on the horizon. One step at a time.</p>
+
+    <!-- Vietnam block -->
+    <div class="where-market-label">
+      <div class="where-market-dot active"></div>
+      <span>Vietnam · Active rollout</span>
+    </div>
+    <div class="where-grid" style="margin-bottom:32px;">
+
+      <!-- VN CARD 1 -->
+      <div class="where-card where-soon">
+        <div class="where-card-inner">
+          <div class="where-soon-px">
+            <div class="ws-row"><span></span><span class="a"></span><span></span><span class="a"></span><span></span><span class="a"></span></div>
+            <div class="ws-row"><span class="a"></span><span></span><span class="a"></span><span></span><span class="a"></span><span></span></div>
+            <div class="ws-row"><span></span><span class="a"></span><span></span><span class="a"></span><span></span><span class="a"></span></div>
+          </div>
+          <span class="where-tag">Ho Chi Minh City</span>
+          <div class="where-name">—</div>
+          <div class="where-type">Restaurant · Café</div>
+          <div class="where-status soon">Announcing soon</div>
+        </div>
+      </div>
+
+      <!-- VN CARD 2 -->
+      <div class="where-card where-soon">
+        <div class="where-card-inner">
+          <div class="where-soon-px">
+            <div class="ws-row"><span></span><span class="c"></span><span></span><span class="c"></span><span></span><span class="c"></span></div>
+            <div class="ws-row"><span class="c"></span><span></span><span class="c"></span><span></span><span class="c"></span><span></span></div>
+            <div class="ws-row"><span></span><span class="c"></span><span></span><span class="c"></span><span></span><span class="c"></span></div>
+          </div>
+          <span class="where-tag">Ho Chi Minh City</span>
+          <div class="where-name">—</div>
+          <div class="where-type">Hotel · Spa</div>
+          <div class="where-status soon">Announcing soon</div>
+        </div>
+      </div>
+
+      <!-- VN CARD 3 -->
+      <div class="where-card where-soon">
+        <div class="where-card-inner">
+          <div class="where-soon-px">
+            <div class="ws-row"><span></span><span class="m"></span><span></span><span class="m"></span><span></span><span class="m"></span></div>
+            <div class="ws-row"><span class="m"></span><span></span><span class="m"></span><span></span><span class="m"></span><span></span></div>
+            <div class="ws-row"><span></span><span class="m"></span><span></span><span class="m"></span><span></span><span class="m"></span></div>
+          </div>
+          <span class="where-tag">Ho Chi Minh City</span>
+          <div class="where-name">—</div>
+          <div class="where-type">Wellness · Organic</div>
+          <div class="where-status soon">Announcing soon</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Export block — single card, quiet -->
+    <div class="where-market-label where-market-dim">
+      <div class="where-market-dot"></div>
+      <span>Export · Coming soon</span>
+    </div>
+    <div class="where-export-card">
+      <div class="where-export-inner">
+        <p class="where-export-text">TKG is building toward international distribution — thoughtfully, without rush. If you are interested in carrying TKG outside Vietnam, we would like to hear from you.</p>
+        <a href="mailto:TKG.naula@gmail.com" class="where-partner-link" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Get in touch → TKG.naula@gmail.com</a>
+      </div>
+    </div>
+
+    <!-- Bottom strip -->
+    <div class="where-partner-strip" style="margin-top:8px;">
+      <div class="proof-sq" style="background:var(--amber);flex-shrink:0;"></div>
+      <span class="where-partner-text">Interested in carrying TKG at your venue? <a href="mailto:TKG.naula@gmail.com" class="where-partner-link">TKG.naula@gmail.com →</a></span>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ── WHERE TO EXPERIENCE ─────────────────────────────────────────── */
+.where-section{background:var(--cream);}
+
+.where-market-label{
+  display:flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:500;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--ink);margin-bottom:12px;
+}
+.where-market-dim{color:var(--muted);opacity:0.5;}
+.where-market-dot{
+  width:8px;height:8px;flex-shrink:0;
+  background:var(--border);
+  border:1px dashed var(--muted);
+}
+.where-market-dot.active{
+  background:#7AC45A;
+  border:none;
+  box-shadow:0 0 0 3px rgba(122,196,90,0.2);
+}
+
+.where-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:0.5px solid var(--border);
+  margin-bottom:8px;
+}
+.where-card{
+  background:var(--paper);
+  min-height:220px;
+  position:relative;
+  overflow:hidden;
+}
+.where-card-inner{
+  padding:28px 24px 24px;
+  display:flex;flex-direction:column;
+  height:100%;
+}
+
+/* Pixel pattern */
+.where-soon-px{
+  display:flex;flex-direction:column;gap:3px;
+  margin-bottom:20px;
+  opacity:0.2;
+}
+.ws-row{display:flex;gap:3px;}
+.ws-row span{width:10px;height:10px;background:var(--border);flex-shrink:0;}
+.ws-row span.a{background:var(--amber);}
+.ws-row span.c{background:var(--cyan);}
+.ws-row span.m{background:#7AC45A;}
+
+.where-tag{
+  font-size:9px;font-weight:500;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:10px;
+}
+.where-name{
+  font-family:'League Spartan',sans-serif;
+  font-size:20px;font-weight:700;
+  text-transform:uppercase;color:var(--border);
+  margin-bottom:6px;line-height:1;
+}
+.where-type{
+  font-size:11px;font-weight:300;
+  color:var(--border);
+  margin-bottom:auto;padding-bottom:16px;
+}
+.where-status{
+  font-size:9px;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 10px;align-self:flex-start;
+}
+.where-status.soon{
+  color:var(--muted);
+  border:0.5px dashed var(--border);
+}
+.where-status.soon::before{
+  content:'';width:6px;height:6px;
+  border:1px dashed var(--muted);flex-shrink:0;
+}
+
+/* Export card */
+.where-export-card{
+  border:0.5px dashed var(--border);
+  background:var(--paper);
+  opacity:0.6;
+  margin-bottom:8px;
+}
+.where-export-inner{
+  padding:24px 28px;
+  display:flex;align-items:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.where-export-text{
+  font-size:12px;font-weight:300;
+  color:var(--muted);line-height:1.75;
+  flex:1;min-width:200px;
+}
+
+/* Partner strip */
+.where-partner-strip{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 18px;
+  border:0.5px solid rgba(255,183,3,0.3);
+  background:rgba(255,183,3,0.04);
+}
+.where-partner-text{font-size:11px;color:var(--muted);font-weight:300;}
+.where-partner-link{
+  color:var(--amber);font-weight:500;
+  text-decoration:none;
+  border-bottom:0.5px solid rgba(255,183,3,0.4);
+  padding-bottom:1px;
+  transition:border-color 0.2s;
+  white-space:nowrap;
+}
+.where-partner-link:hover{border-color:var(--amber);}
+
+@media(max-width:900px){
+  .where-grid{grid-template-columns:1fr;}
+  .where-export-inner{flex-direction:column;gap:16px;}
+}
+</style>
+
 <!-- ORDER -->
 <section class="order fade-in" id="order">
   <div class="section-inner">
     <div class="order-grid" style="position:relative;">
-      <!-- P2: TR amber+cyan 4×4 -->
       <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
         <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
         <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
@@ -1097,7 +1374,7 @@ footer{
       </div>
       <div>
         <span class="eyebrow">Order</span>
-        <div class="order-h2">Ready to try TKG?</div>
+        <div class="order-h2">Ready to try TKG Naula?</div>
         <div class="order-h2b">Order via email.</div>
         <p class="order-body">We are currently accepting orders via email. Each box contains 32 sachets — 16 botanical powder and 16 fresh honey, sealed separately.</p>
         <div class="spec-rows">
@@ -1106,7 +1383,7 @@ footer{
           <div class="spec-row"><span class="spec-k">Flat rate shipping</span><span class="spec-v">$9 (under $70)</span></div>
           <div class="spec-row"><span class="spec-k">Satisfaction guarantee</span><span class="spec-v">60 days</span></div>
         </div>
-        <a class="btn-order" href="mailto:TKG.naula@gmail.com">Order → TKG.naula@gmail.com</a>
+        <a class="btn-order" href="/cdn-cgi/l/email-protection#ffabb4b8d1919e8a939ebf98929e9693d19c9092">Order → <span class="__cf_email__" data-cfemail="5d09161a73333c28313c1d3a303c3431733e3230">[email&#160;protected]</span></a>
         <p class="order-note">For wholesale, distribution, or partnership inquiries — reach us at the same address.</p>
       </div>
       <div class="order-box">
@@ -1137,7 +1414,6 @@ footer{
 <!-- FAQ -->
 <section class="faq-section fade-in" id="faq">
   <div class="section-inner" style="position:relative;">
-    <!-- P2: TR amber+cyan 4×4 -->
     <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
       <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
       <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
@@ -1152,8 +1428,8 @@ footer{
       <div class="faq-group">
         <div class="faq-group-label">The product</div>
         <div class="faq-item">
-          <div class="faq-q">What is TKG botanical powder — and how is it different from regular tea?</div>
-          <div class="faq-a">Regular tea is brewed by steeping dried leaves and discarding the solids — you only receive what dissolves in water. TKG botanical powder is prepared through the Naula method: the whole plant is processed in full, then freeze-dried at sub-zero temperatures to preserve its natural properties, colour, and character. When you prepare it, you use everything — nothing is discarded.<br><br>Dual-chamber design: botanical powder and fresh honey are sealed separately. The honey is not pre-mixed because sweetness is your choice — and fresh honey requires proper preservation. No refined sugar. No preservatives.</div>
+          <div class="faq-q">What is TKG Naula botanical powder — and how is it different from regular tea?</div>
+          <div class="faq-a">Regular tea is brewed by steeping dried leaves and discarding the solids — you only receive what dissolves in water. TKG Naula botanical powder is prepared through the Naula method: the whole plant is processed in full, then freeze-dried at sub-zero temperatures to preserve its natural properties, colour, and character. When you prepare it, you use everything — nothing is discarded.<br><br>Dual-chamber design: botanical powder and fresh honey are sealed separately. The honey is not pre-mixed because sweetness is your choice — and fresh honey requires proper preservation. No refined sugar. No preservatives.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">What are the wellness benefits of Lư Trung Hoả and Phú Đăng Hoả?</div>
@@ -1165,7 +1441,7 @@ footer{
         </div>
         <div class="faq-item">
           <div class="faq-q">Why does the powder colour vary between batches?</div>
-          <div class="faq-a">Slight colour variation between batches is a sign of real ingredients — not a production error. Colour depends on harvest season and growing conditions. TKG does not standardise colour through additives — standardisation happens through the Naula method and independent testing.</div>
+          <div class="faq-a">Slight colour variation between batches is a sign of real ingredients — not a production error. Colour depends on harvest season and growing conditions. TKG Naula does not standardise colour through additives — standardisation happens through the Naula method and independent testing.</div>
         </div>
       </div>
 
@@ -1205,7 +1481,7 @@ footer{
         </div>
         <div class="faq-item">
           <div class="faq-q">Can it be used in cooking?</div>
-          <div class="faq-a">Yes — TKG botanical powder works well in culinary recipes, smoothies, cocktails, and mocktails.</div>
+          <div class="faq-a">Yes — TKG Naula botanical powder works well in culinary recipes, smoothies, cocktails, and mocktails.</div>
         </div>
       </div>
 
@@ -1223,8 +1499,8 @@ footer{
           <a href="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/743-2025-00162672.pdf" target="_blank" style="color:var(--amber);font-weight:500;">↓ Phú Đăng Hoả — Eurofins Report AR-25-VD-169692</a></div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Where can I purchase TKG?</div>
-          <div class="faq-a">tkg-naula.com. Order directly via email — TKG.naula@gmail.com.</div>
+          <div class="faq-q">Where can I purchase TKG Naula?</div>
+          <div class="faq-a">tkg-naula.com. Order directly via email — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="41150a066f2f20342d2001262c20282d6f222e2c">[email&#160;protected]</a>.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Are there any discounts available?</div>
@@ -1259,7 +1535,7 @@ footer{
           </div>
           <div class="rd-row">
             <div class="rd-label">How to request</div>
-            <div class="rd-val">Contact us with your order number and reason — <a href="mailto:TKG.naula@gmail.com" style="color:var(--amber);">TKG.naula@gmail.com</a></div>
+            <div class="rd-val">Contact us with your order number and reason — <a href="/cdn-cgi/l/email-protection#1c48575b32727d69707d5c7b717d7570327f7371" style="color:var(--amber);"><span class="__cf_email__" data-cfemail="580c131f7636392d3439183f35393134763b3735">[email&#160;protected]</span></a></div>
           </div>
           <div class="rd-row">
             <div class="rd-label">Return shipping</div>
@@ -1278,7 +1554,6 @@ footer{
 <!-- PHILOSOPHY -->
 <section style="background:#1A1A1A;padding:72px 48px;position:relative;overflow:hidden;" id="philosophy">
 
-  <!-- Ambient star field canvas -->
   <canvas id="sf-bg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
 
   <div style="position:relative;z-index:1;max-width:1080px;margin:0 auto;">
@@ -1288,10 +1563,8 @@ footer{
     <div style="font-family:'League Spartan',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:0.92;text-transform:uppercase;color:rgba(251,251,242,0.3);margin-bottom:12px;">Two Hoa Giáp each.</div>
     <p style="font-size:12px;font-weight:300;color:rgba(251,251,242,0.3);margin-bottom:48px;letter-spacing:0.04em;">Hover a star to reveal the story · Mỗi nguyên liệu mang một Hoa Giáp</p>
 
-    <!-- Constellation canvas -->
     <div style="position:relative;width:100%;height:420px;" id="const-wrap">
       <canvas id="const-cv" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
-      <!-- Info panel -->
       <div id="phil-panel" style="position:absolute;bottom:0;left:0;right:0;background:rgba(26,26,26,0.97);border-top:0.5px solid rgba(255,183,3,0.2);padding:24px 0;display:grid;grid-template-columns:1fr 1px 1fr;gap:0;opacity:0;transition:opacity 0.4s ease;pointer-events:none;">
         <div id="phil-col-l" style="padding:0 28px;"></div>
         <div style="background:rgba(255,183,3,0.15);align-self:stretch;"></div>
@@ -1300,23 +1573,21 @@ footer{
     </div>
     <p id="phil-hint" style="font-size:10px;font-weight:300;color:rgba(251,251,242,0.2);letter-spacing:0.12em;text-transform:uppercase;text-align:center;margin-top:12px;transition:opacity 0.3s;">← hover any star to begin →</p>
 
-    <!-- QR placeholder strip -->
     <div style="margin-top:40px;border:0.5px solid rgba(255,183,3,0.15);padding:18px 24px;display:flex;align-items:center;gap:16px;">
       <div style="width:40px;height:40px;border:0.5px solid rgba(255,183,3,0.3);display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:5px;flex-shrink:0;">
         <div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div>
         <div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div>
         <div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div>
       </div>
-      <p style="font-size:10px;font-weight:300;color:rgba(251,251,242,0.25);line-height:1.7;letter-spacing:0.04em;"><span style="color:rgba(255,183,3,0.5);font-weight:400;">AR Layer — coming soon</span><br>Scan to unlock the full Hoa Giáp story for each ingredient — origin, energy, and ritual. Built for TKG fan. Powered by Thiện Kiến AR.</p>
+      <p style="font-size:10px;font-weight:300;color:rgba(251,251,242,0.25);line-height:1.7;letter-spacing:0.04em;"><span style="color:rgba(255,183,3,0.5);font-weight:400;">AR Layer — coming soon</span><br>Scan to unlock the full Hoa Giáp story for each ingredient — origin, energy, and ritual. Built for TKG Naula fan. Powered by Thiện Kiến AR.</p>
     </div>
 
   </div>
 </section>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
 
-// ── STAR FIELD ────────────────────────────────────────────────────
 const sf = document.getElementById('sf-bg');
 const sfc = sf.getContext('2d');
 function drawBgStars(){
@@ -1333,7 +1604,6 @@ function drawBgStars(){
 }
 drawBgStars();
 
-// ── DATA ──────────────────────────────────────────────────────────
 const SKUS=[
   {
     id:'lth',name:'Lư Trung Hoả',color:'#E8A020',
@@ -1365,7 +1635,6 @@ const SKUS=[
   }
 ];
 
-// ── CANVAS ────────────────────────────────────────────────────────
 const cv=document.getElementById('const-cv');
 const ctx=cv.getContext('2d');
 const cwrap=document.getElementById('const-wrap');
@@ -1400,12 +1669,10 @@ function frame(){
     const c=cpx(sku);
     const s0=spx(sku.stars[0]), s1=spx(sku.stars[1]);
 
-    // star-to-star line
     ctx.beginPath(); ctx.moveTo(s0.x,s0.y); ctx.lineTo(s1.x,s1.y);
     ctx.strokeStyle=isActive?sku.color+'55':'rgba(251,251,242,0.04)';
     ctx.lineWidth=0.5; ctx.setLineDash([2,8]); ctx.stroke(); ctx.setLineDash([]);
 
-    // lines to center
     [s0,s1].forEach(p=>{
       ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(c.x,c.y);
       ctx.strokeStyle=isActive?sku.color+'88':'rgba(251,251,242,0.06)';
@@ -1413,7 +1680,6 @@ function frame(){
       ctx.setLineDash(isActive?[]:[3,6]); ctx.stroke(); ctx.setLineDash([]);
     });
 
-    // center node
     ctx.beginPath(); ctx.arc(c.x,c.y,isActive?5:3,0,Math.PI*2);
     ctx.fillStyle=isActive?sku.color:sku.color+'55'; ctx.fill();
     if(isActive){
@@ -1425,21 +1691,17 @@ function frame(){
     ctx.textAlign='center';
     ctx.fillText(sku.name.toUpperCase(),c.x,c.y+20);
 
-    // ingredient stars
     sku.stars.forEach(star=>{
       const p=spx(star);
       const isHov=hovStar===star.id;
       const pulse=isHov?1:(Math.sin(tick*1.2+star.x*10)*0.12+0.88);
 
-      // halo
       ctx.beginPath(); ctx.arc(p.x,p.y,isHov?20:13,0,Math.PI*2);
       ctx.fillStyle=isHov?sku.color+'22':'rgba(251,251,242,0.03)'; ctx.fill();
 
-      // star shape
       drawStarShape(p.x,p.y,isHov?SR+3:SR,isHov?SR*0.42:SR*0.4,
         isHov?sku.color:(isActive?sku.color+'cc':'rgba(251,251,242,0.65)'),pulse);
 
-      // labels
       ctx.font="300 10px 'Be Vietnam Pro',sans-serif";
       ctx.fillStyle=isHov?'#FBFBF2':'rgba(251,251,242,0.3)';
       ctx.textAlign='center';
@@ -1453,7 +1715,6 @@ function frame(){
   requestAnimationFrame(frame);
 }
 
-// ── HOVER ─────────────────────────────────────────────────────────
 function getHit(mx,my){
   let found=null,foundSKU=null;
   SKUS.forEach(sku=>sku.stars.forEach(star=>{
@@ -1507,7 +1768,6 @@ function hidePanel(){
   document.getElementById('phil-panel').style.opacity='0';
 }
 
-// ── INIT ──────────────────────────────────────────────────────────
 resize();
 window.addEventListener('resize',()=>{resize();drawBgStars();});
 frame();
@@ -1518,18 +1778,16 @@ frame();
 <!-- FOOTER -->
 <footer>
   <div>
-    <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/TKG-logo.png" alt="TKG" style="height:28px;width:auto;display:block;margin-bottom:6px;filter:brightness(0) saturate(100%);">
+    <img src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/TKG-logo.png" alt="TKG Naula — Vietnamese botanical wellness" style="height:28px;width:auto;display:block;margin-bottom:6px;filter:brightness(0) saturate(100%);">
     <div class="footer-tag">Rooted in Vietnam. Refined for the world.</div>
   </div>
   <div class="footer-right">
-    <a href="mailto:TKG.naula@gmail.com">TKG.naula@gmail.com</a><br>
+    <a href="/cdn-cgi/l/email-protection#4a1e010d64242b3f262b0a2d272b232664292527"><span class="__cf_email__" data-cfemail="25716e620b4b44504944654248444c490b464a48">[email&#160;protected]</span></a><br>
     <span style="font-size:9px;margin-top:4px;display:block;">© 2026 Thiện Kiến. All rights reserved.</span>
   </div>
 </footer>
 
-<script>
-// ── JAGGED EDGE VARIANTS ────────────────────────────────────────────
-// Variant C: Hero bottom checkerboard (wood/paper)
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function buildCheckerRow(containerId, offset, color1, color2) {
   const el = document.getElementById(containerId);
   if(!el) return;
@@ -1543,12 +1801,10 @@ function buildCheckerRow(containerId, offset, color1, color2) {
 buildCheckerRow('hero-check-row1', 0, '#8B5E3C', 'transparent');
 buildCheckerRow('hero-check-row2', 1, '#8B5E3C', 'transparent');
 
-// Variant A: SKU Fire card bottom staircase (fire→body transition)
 function buildJaggedA(containerId, color, bgColor, cols, rows) {
   const el = document.getElementById(containerId);
   if(!el) return;
   el.style.cssText = 'position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;overflow:hidden;pointer-events:none;';
-  // Pattern: each row steps 1 cell — creates staircase effect
   const pattern = [cols, cols-1, cols-2, cols-1, cols, cols-1, cols-2, cols-3, cols-2, cols-1, cols, cols-1];
   for(let r = 0; r < rows; r++) {
     const row = document.createElement('div');
@@ -1566,24 +1822,14 @@ function buildJaggedA(containerId, color, bgColor, cols, rows) {
 }
 buildJaggedA('jagged-fire-bottom', '#D45D2A', 'var(--hoa-yellow)', 8, 4);
 
+// Scroll fade-in with animate class
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
       entry.target.classList.add('visible');
     }
   });
-},{threshold:0.1});
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// Nav scroll effect
-window.addEventListener('scroll',()=>{
-  const nav = document.querySelector('nav');
-  if(window.scrollY > 50){
-    nav.style.boxShadow = '0 1px 20px rgba(26,26,26,0.08)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
-});
-</script>
-</body>
-</html>
+},{threshold:0.05});
+document.querySelectorAll('.fade-in').forEach(el => {
+  el.classList.add('animate');
+  observer.obse
