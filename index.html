@@ -648,30 +648,504 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
 </section>
 
 <section style="background:#1A1A1A;padding:72px 48px;position:relative;overflow:hidden;" id="philosophy">
-  <canvas id="sf-bg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
-  <div style="position:relative;z-index:1;max-width:1080px;margin:0 auto;">
-    <span style="font-size:10px;font-weight:500;letter-spacing:0.22em;color:#FFB703;text-transform:uppercase;display:block;margin-bottom:18px;">Philosophy · Hidden layer</span>
-    <div style="font-family:'League Spartan',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:700;line-height:0.92;text-transform:uppercase;color:#FBFBF2;margin-bottom:4px;">Two ingredients.</div>
-    <div style="font-family:'League Spartan',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:0.92;text-transform:uppercase;color:rgba(251,251,242,0.3);margin-bottom:12px;">Two Hoa Giáp each.</div>
-    <p style="font-size:12px;font-weight:300;color:rgba(251,251,242,0.3);margin-bottom:48px;letter-spacing:0.04em;">Hover a star to reveal the story · Mỗi nguyên liệu mang một Hoa Giáp</p>
-    <div style="position:relative;width:100%;height:420px;" id="const-wrap">
-      <canvas id="const-cv" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
-      <div id="phil-panel" style="position:absolute;bottom:0;left:0;right:0;background:rgba(26,26,26,0.97);border-top:0.5px solid rgba(255,183,3,0.2);padding:24px 0;display:grid;grid-template-columns:1fr 1px 1fr;gap:0;opacity:0;transition:opacity 0.4s ease;pointer-events:none;">
-        <div id="phil-col-l" style="padding:0 28px;"></div>
-        <div style="background:rgba(255,183,3,0.15);align-self:stretch;"></div>
-        <div id="phil-col-r" style="padding:0 28px;"></div>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKG — Philosophy Interactive</title>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#1A1A1A;--paper:#FBFBF2;--amber:#FFB703;--cyan:#4CC9E8;
+  --wood:#8B5E3C;--moss:#527121;--border:rgba(251,251,242,0.12);
+  --muted:rgba(251,251,242,0.45);--dim:rgba(251,251,242,0.2);
+  --fire-col:#E8A020;--perilla-col:#8B5FC0;
+}
+body{background:#0E0E0A;font-family:'Be Vietnam Pro',sans-serif;font-weight:300;color:#FBFBF2;overflow-x:hidden;}
+
+/* ── HEADER ── */
+.phil-header{padding:72px 48px 0;max-width:1080px;margin:0 auto;}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:0.22em;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:20px;}
+.h1{font-family:'League Spartan',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:700;line-height:0.9;text-transform:uppercase;color:#FBFBF2;margin-bottom:4px;}
+.h1b{font-family:'League Spartan',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:300;line-height:0.9;text-transform:uppercase;color:rgba(251,251,242,0.3);margin-bottom:24px;}
+.sub{font-size:12px;color:var(--muted);letter-spacing:0.06em;margin-bottom:8px;}
+
+/* ── INGREDIENT SELECTOR ── */
+.ing-nav{display:flex;gap:1px;background:var(--border);border:0.5px solid var(--border);max-width:1080px;margin:32px 48px 0;}
+.ing-btn{flex:1;padding:14px 20px;background:rgba(251,251,242,0.04);border:none;cursor:pointer;transition:background 0.2s;text-align:left;}
+.ing-btn:hover{background:rgba(251,251,242,0.08);}
+.ing-btn.active-fire{background:rgba(232,160,32,0.15);border-bottom:2px solid var(--fire-col);}
+.ing-btn.active-perilla{background:rgba(139,95,192,0.15);border-bottom:2px solid var(--perilla-col);}
+.ing-label{font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;}
+.ing-name{font-family:'League Spartan',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#FBFBF2;}
+.ing-sub{font-size:10px;color:var(--muted);margin-top:2px;}
+.ing-dot{width:6px;height:6px;border-radius:0;display:inline-block;margin-right:6px;vertical-align:middle;}
+
+/* ── CANVAS ZONE ── */
+.canvas-zone{position:relative;height:320px;max-width:1080px;margin:0 48px;}
+#const-cv{width:100%;height:100%;}
+.canvas-hint{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:10px;color:var(--dim);letter-spacing:0.12em;text-transform:uppercase;pointer-events:none;transition:opacity 0.3s;}
+
+/* ── DEEP PANEL ── */
+.deep-panel{max-width:1080px;margin:0 48px;overflow:hidden;transition:max-height 0.6s cubic-bezier(0.16,1,0.3,1),opacity 0.4s ease;max-height:0;opacity:0;}
+.deep-panel.open{max-height:900px;opacity:1;}
+
+.panel-top-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0 16px;border-bottom:0.5px solid var(--border);}
+.panel-ing-title{font-family:'League Spartan',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
+.panel-ing-sub{font-size:11px;color:var(--muted);margin-top:4px;font-style:italic;}
+.panel-close{background:none;border:0.5px solid var(--border);color:var(--muted);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;cursor:pointer;transition:all 0.2s;}
+.panel-close:hover{color:#FBFBF2;border-color:rgba(251,251,242,0.4);}
+
+/* 4-column grid */
+.panel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:1px;}
+.panel-col{background:#0E0E0A;padding:28px 24px;opacity:0;transform:translateY(16px);transition:opacity 0.4s ease,transform 0.4s ease;}
+.panel-col.visible{opacity:1;transform:translateY(0);}
+.panel-col:nth-child(1).visible{transition-delay:0.05s;}
+.panel-col:nth-child(2).visible{transition-delay:0.12s;}
+.panel-col:nth-child(3).visible{transition-delay:0.19s;}
+.panel-col:nth-child(4).visible{transition-delay:0.26s;}
+
+.col-num{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px;display:block;}
+.col-title{font-family:'League Spartan',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:#FBFBF2;margin-bottom:12px;line-height:1.2;display:block;}
+.col-body{font-size:11px;color:var(--muted);line-height:1.75;font-weight:300;}
+.col-body strong{color:#FBFBF2;font-weight:500;}
+
+/* Visual indicators per column */
+.hoa-giap-visual{margin-bottom:16px;}
+.hg-pair{display:flex;gap:8px;margin-bottom:8px;}
+.hg-pill{padding:5px 10px;font-size:10px;font-weight:500;letter-spacing:0.08em;border:0.5px solid;}
+.hg-can{border-color:var(--amber);color:var(--amber);background:rgba(255,183,3,0.08);}
+.hg-chi{border-color:var(--cyan);color:var(--cyan);background:rgba(76,201,232,0.08);}
+
+.nap-am-visual{margin-bottom:16px;}
+.nap-bar{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.nap-label{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);width:40px;flex-shrink:0;}
+.nap-track{flex:1;height:4px;background:rgba(251,251,242,0.08);}
+.nap-fill{height:100%;transition:width 0.8s ease;}
+.nap-val{font-size:10px;color:#FBFBF2;font-weight:500;width:60px;text-align:right;flex-shrink:0;}
+
+.hanh-visual{margin-bottom:16px;}
+.hanh-wheel{display:flex;flex-wrap:wrap;gap:4px;}
+.hanh-item{padding:4px 10px;font-size:10px;letter-spacing:0.06em;border:0.5px solid rgba(251,251,242,0.12);color:var(--muted);}
+.hanh-item.active{border-color:;color:#FBFBF2;}
+.hanh-item.fire-active{border-color:var(--fire-col);color:var(--fire-col);background:rgba(232,160,32,0.1);}
+.hanh-item.perilla-active{border-color:var(--perilla-col);color:var(--perilla-col);background:rgba(139,95,192,0.1);}
+
+.app-visual{margin-bottom:16px;}
+.app-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border:0.5px solid rgba(122,196,90,0.4);background:rgba(82,113,33,0.1);margin-bottom:6px;margin-right:4px;}
+.app-dot{width:5px;height:5px;background:#7AC45A;flex-shrink:0;}
+.app-text{font-size:9px;font-weight:500;letter-spacing:0.08em;color:#7AC45A;text-transform:uppercase;}
+
+/* ── SKU SWITCHER BAR ── */
+.sku-bar{max-width:1080px;margin:0 48px;display:flex;gap:1px;background:var(--border);border:0.5px solid var(--border);margin-top:24px;}
+.sku-btn{flex:1;padding:10px 16px;background:rgba(251,251,242,0.03);border:none;cursor:pointer;font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);transition:all 0.2s;display:flex;align-items:center;gap:6px;}
+.sku-btn:hover{background:rgba(251,251,242,0.08);color:#FBFBF2;}
+.sku-btn.active-lth{background:rgba(232,160,32,0.12);color:var(--fire-col);}
+.sku-btn.active-pdh{background:rgba(139,95,192,0.12);color:var(--perilla-col);}
+.sku-dot{width:6px;height:6px;flex-shrink:0;}
+
+/* ── FOOTER NOTE ── */
+.phil-footer{max-width:1080px;margin:32px 48px 72px;display:flex;align-items:center;gap:12px;border:0.5px solid rgba(255,183,3,0.15);padding:16px 20px;}
+.ar-placeholder{width:32px;height:32px;border:0.5px solid rgba(255,183,3,0.3);display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:4px;flex-shrink:0;}
+.ar-placeholder div{background:rgba(255,183,3,0.3);}
+.ar-placeholder div:nth-child(2n){background:transparent;}
+.phil-footer-text{font-size:10px;color:var(--muted);line-height:1.65;}
+.phil-footer-text span{color:rgba(255,183,3,0.6);font-weight:500;}
+
+@media(max-width:768px){
+  .phil-header,.ing-nav,.canvas-zone,.deep-panel,.sku-bar,.phil-footer{margin-left:24px;margin-right:24px;}
+  .panel-grid{grid-template-columns:1fr 1fr;}
+  .ing-nav{flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+
+<div class="phil-header">
+  <span class="eyebrow">Philosophy · Hidden layer</span>
+  <div class="h1">Four ingredients.</div>
+  <div class="h1b">Four cosmological identities.</div>
+  <p class="sub">Each botanical in TKG carries a Hoa Giáp designation — a Vietnamese calendar identity defined by its Heavenly Stem (Can), Earthly Branch (Chi), Nạp Âm element, and Five-Phase alignment. These are not decoration. They informed the formulation.</p>
+</div>
+
+<!-- SKU selector -->
+<div class="sku-bar" id="sku-bar">
+  <button class="sku-btn active-lth" data-sku="lth" onclick="setSKU('lth')">
+    <svg class="sku-dot" viewBox="0 0 6 6"><rect width="6" height="6" fill="#E8A020"/></svg>
+    Lư Trung Hoả — Ginger + Lemongrass
+  </button>
+  <button class="sku-btn" data-sku="pdh" onclick="setSKU('pdh')">
+    <svg class="sku-dot" viewBox="0 0 6 6"><rect width="6" height="6" fill="#8B5FC0"/></svg>
+    Phú Đăng Hoả — Perilla + Clove
+  </button>
+</div>
+
+<!-- Ingredient nav -->
+<div class="ing-nav" id="ing-nav"></div>
+
+<!-- Canvas -->
+<div class="canvas-zone">
+  <canvas id="const-cv"></canvas>
+  <div class="canvas-hint" id="canvas-hint">Click any node to explore its cosmological identity</div>
+</div>
+
+<!-- Deep panel -->
+<div class="deep-panel" id="deep-panel">
+  <div class="panel-top-bar">
+    <div>
+      <div class="panel-ing-title" id="panel-title">—</div>
+      <div class="panel-ing-sub" id="panel-sub">—</div>
     </div>
-    <p id="phil-hint" style="font-size:10px;font-weight:300;color:rgba(251,251,242,0.2);letter-spacing:0.12em;text-transform:uppercase;text-align:center;margin-top:12px;transition:opacity 0.3s;">← hover any star to begin →</p>
-    <div style="margin-top:40px;border:0.5px solid rgba(255,183,3,0.15);padding:18px 24px;display:flex;align-items:center;gap:16px;">
-      <div style="width:40px;height:40px;border:0.5px solid rgba(255,183,3,0.3);display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:5px;flex-shrink:0;">
-        <div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div>
-        <div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div>
-        <div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div>
-      </div>
-      <p style="font-size:10px;font-weight:300;color:rgba(251,251,242,0.25);line-height:1.7;letter-spacing:0.04em;"><span style="color:rgba(255,183,3,0.5);font-weight:400;">AR Layer — coming soon</span><br>Scan to unlock the full Hoa Giáp story for each ingredient — origin, energy, and ritual. Built for TKG Naula fan. Powered by Thiện Kiến AR.</p>
+    <button class="panel-close" onclick="closePanel()">Close ✕</button>
+  </div>
+  <div class="panel-grid" id="panel-grid">
+    <div class="panel-col" id="col-hoagiap">
+      <span class="col-num" style="color:var(--amber);">01 · Hoa Giáp</span>
+      <div class="hoa-giap-visual" id="hg-visual"></div>
+      <span class="col-title" id="hg-title">—</span>
+      <p class="col-body" id="hg-body">—</p>
+    </div>
+    <div class="panel-col" id="col-napam">
+      <span class="col-num" style="color:var(--cyan);">02 · Nạp Âm</span>
+      <div class="nap-am-visual" id="na-visual"></div>
+      <span class="col-title" id="na-title">—</span>
+      <p class="col-body" id="na-body">—</p>
+    </div>
+    <div class="panel-col" id="col-hanh">
+      <span class="col-num" style="color:#7AC45A;">03 · Hành · Five Phases</span>
+      <div class="hanh-visual" id="hanh-visual"></div>
+      <span class="col-title" id="hanh-title">—</span>
+      <p class="col-body" id="hanh-body">—</p>
+    </div>
+    <div class="panel-col" id="col-app">
+      <span class="col-num" style="color:#C5A0F0;">04 · Product Application</span>
+      <div class="app-visual" id="app-visual"></div>
+      <span class="col-title" id="app-title">—</span>
+      <p class="col-body" id="app-body">—</p>
     </div>
   </div>
+</div>
+
+<div class="phil-footer">
+  <div class="ar-placeholder"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <p class="phil-footer-text"><span>AR Layer — coming soon.</span> Scan the product label to unlock the full cosmological story for each ingredient — rendered in augmented reality. Powered by Thiện Kiến AR.</p>
+</div>
+
+<script>
+const INGREDIENTS = {
+  lth: [
+    {
+      id:'ginger', label:'Ginger', vn:'Gừng', color:'#E8A020', sku:'lth',
+      x:0.22, y:0.35,
+      hoagiap:{ can:'Bính · 丙', chi:'Dần · 寅', year:'Yang Fire Tiger', cyclePos:'3rd of 60' },
+      napam:{ name:'Lò Trung Hoả · Furnace Fire', type:'Yang Fire (Dương Hoả)', intensity:92, stability:60, description:'Fire contained within the hearth — the most concentrated, directional heat in the Nạp Âm system. Intense at contact, immediate in effect.' },
+      hanh:{ primary:'Hoả · Fire', secondary:'Mộc · Wood', cycle:'Mộc generates Hoả', glyph:'火', color:'fire' },
+      app:{ tags:['Warming', 'Circulatory', 'Yang energy'], why:'Bính Dần energy is forward-moving and bold. In the Lư Trung Hoả formulation, ginger anchors the Yang fire quality — it\'s why the warmth from this blend arrives immediately rather than building slowly.', pairing:'Paired with Đinh Mão (Lemongrass) — Yin Fire — to balance directness with luminosity.' }
+    },
+    {
+      id:'lemongrass', label:'Lemongrass', vn:'Sả', color:'#E8A020', sku:'lth',
+      x:0.44, y:0.22,
+      hoagiap:{ can:'Đinh · 丁', chi:'Mão · 卯', year:'Yin Fire Cat', cyclePos:'4th of 60' },
+      napam:{ name:'Lô Trung Hoả · Lamp Fire', type:'Yin Fire (Âm Hoả)', intensity:65, stability:82, description:'A refined, upward-moving fire — the flame of a lantern rather than a forge. Illuminating, sustained, and precise in direction.' },
+      hanh:{ primary:'Hoả · Fire', secondary:'Mộc · Wood', cycle:'Mộc generates Hoả', glyph:'火', color:'fire' },
+      app:{ tags:['Brightening', 'Clarifying', 'Yin energy'], why:'Đinh Mão\'s Yin Fire nature gives lemongrass its lifting, brightening quality in the blend. Where ginger pushes, lemongrass illuminates — the two Fire expressions create a complete arc of warmth.', pairing:'Paired with Bính Dần (Ginger) — Yang Fire — to provide elevation and brightness.' }
+    }
+  ],
+  pdh: [
+    {
+      id:'perilla', label:'Perilla', vn:'Tía tô', color:'#8B5FC0', sku:'pdh',
+      x:0.56, y:0.28,
+      hoagiap:{ can:'Giáp · 甲', chi:'Thìn · 辰', year:'Yang Wood Dragon', cyclePos:'41st of 60' },
+      napam:{ name:'Phú Đăng Hoả · Lantern Fire', type:'Yang Wood (Dương Mộc)', intensity:45, stability:90, description:'Wood rooted deeply in earth — the Dragon\'s energy is structural and patient. Perilla\'s warmth comes from depth rather than surface, anchored and slow to dissipate.' },
+      hanh:{ primary:'Mộc · Wood', secondary:'Thuỷ · Water', cycle:'Thuỷ generates Mộc', glyph:'木', color:'perilla' },
+      app:{ tags:['Grounding', 'Anti-inflammatory', 'Structural warmth'], why:'Giáp Thìn\'s Yang Wood identity gives perilla its anchoring, structural quality. In the Phú Đăng Hoả formulation, this creates warmth that settles rather than rises — the blend\'s character of arriving slowly and staying long.', pairing:'Paired with Ất Tỵ (Clove) — Yin Wood Snake — for depth and penetration.' }
+    },
+    {
+      id:'clove', label:'Clove', vn:'Đinh hương', color:'#8B5FC0', sku:'pdh',
+      x:0.78, y:0.40,
+      hoagiap:{ can:'Ất · 乙', chi:'Tỵ · 巳', year:'Yin Wood Snake', cyclePos:'42nd of 60' },
+      napam:{ name:'Phú Đăng Hoả · Lamp in the Wind', type:'Yin Wood (Âm Mộc)', intensity:38, stability:95, description:'Wood that bends without breaking — the Snake\'s energy is penetrating and deliberate, moving in precise spirals. Clove\'s warmth is ancient and patient, the kind that surfaces long after the first encounter.' },
+      hanh:{ primary:'Mộc · Wood', secondary:'Hoả · Fire', cycle:'Mộc generates Hoả', glyph:'木', color:'perilla' },
+      app:{ tags:['Deep warming', 'Antioxidant', 'Time-released'], why:'Ất Tỵ energy is the most penetrating in the Nạp Âm system — deliberately slow, intentionally deep. Clove is chosen for precisely this: the warmth it contributes to Phú Đăng Hoả arrives last, lingers longest, and connects the blend\'s character to something older than memory.', pairing:'Paired with Giáp Thìn (Perilla) — Yang Wood Dragon — for structural grounding.' }
+    }
+  ]
+};
+
+let currentSKU = 'lth';
+let currentIng = null;
+let hovStar = null;
+const W_ref = {}, H_ref = {};
+let W = 0, H = 0, tick = 0;
+
+// Canvas setup
+const cv = document.getElementById('const-cv');
+const ctx = cv.getContext('2d');
+
+function resize() {
+  const wrap = cv.parentElement;
+  W = wrap.clientWidth; H = wrap.clientHeight;
+  cv.width = W * devicePixelRatio; cv.height = H * devicePixelRatio;
+  cv.style.width = W + 'px'; cv.style.height = H + 'px';
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+}
+
+function ingPos(ing) {
+  return { x: ing.x * W, y: ing.y * H };
+}
+
+function currentIngs() {
+  return INGREDIENTS[currentSKU];
+}
+
+// Center of current SKU
+function skuCenter() {
+  const ings = currentIngs();
+  const xs = ings.map(i => i.x * W);
+  const ys = ings.map(i => i.y * H);
+  return { x: xs.reduce((a,b)=>a+b)/xs.length, y: ys.reduce((a,b)=>a+b)/ys.length + H*0.2 };
+}
+
+function drawStar(cx, cy, oR, iR, color, alpha) {
+  ctx.save(); ctx.globalAlpha = alpha || 1;
+  ctx.beginPath();
+  for (let i = 0; i < 10; i++) {
+    const r = i%2===0 ? oR : iR;
+    const a = Math.PI/5*i - Math.PI/2;
+    i===0 ? ctx.moveTo(cx+r*Math.cos(a), cy+r*Math.sin(a)) : ctx.lineTo(cx+r*Math.cos(a), cy+r*Math.sin(a));
+  }
+  ctx.closePath(); ctx.fillStyle = color; ctx.fill(); ctx.restore();
+}
+
+function frame() {
+  ctx.clearRect(0, 0, W, H);
+  tick += 0.006;
+  const ings = currentIngs();
+  const center = skuCenter();
+  const skuColor = currentSKU === 'lth' ? '#E8A020' : '#8B5FC0';
+
+  // Draw connections
+  ings.forEach(ing => {
+    const p = ingPos(ing);
+    ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(center.x, center.y);
+    const isActive = currentIng && currentIng.id === ing.id;
+    ctx.strokeStyle = isActive ? skuColor + 'aa' : 'rgba(251,251,242,0.07)';
+    ctx.lineWidth = isActive ? 1 : 0.5;
+    ctx.setLineDash(isActive ? [] : [3, 7]);
+    ctx.stroke(); ctx.setLineDash([]);
+  });
+
+  // Line between ingredients
+  if (ings.length === 2) {
+    const p0 = ingPos(ings[0]), p1 = ingPos(ings[1]);
+    ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y);
+    ctx.strokeStyle = 'rgba(251,251,242,0.04)'; ctx.lineWidth = 0.5;
+    ctx.setLineDash([2, 9]); ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  // Center node — SKU label
+  ctx.beginPath(); ctx.arc(center.x, center.y, 5, 0, Math.PI*2);
+  ctx.fillStyle = skuColor + '88'; ctx.fill();
+  ctx.font = "500 9px 'Be Vietnam Pro',sans-serif";
+  ctx.fillStyle = skuColor; ctx.textAlign = 'center';
+  const skuLabel = currentSKU === 'lth' ? 'LƯ TRUNG HOẢ' : 'PHÚ ĐĂNG HOẢ';
+  ctx.fillText(skuLabel, center.x, center.y + 20);
+
+  // Ingredient nodes
+  ings.forEach(ing => {
+    const p = ingPos(ing);
+    const isHov = hovStar === ing.id;
+    const isActive = currentIng && currentIng.id === ing.id;
+    const pulse = isHov ? 1 : (Math.sin(tick + ing.x * 8) * 0.1 + 0.9);
+
+    // Halo
+    if (isHov || isActive) {
+      ctx.beginPath(); ctx.arc(p.x, p.y, isHov ? 26 : 22, 0, Math.PI*2);
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 26);
+      g.addColorStop(0, ing.color + '22'); g.addColorStop(1, 'transparent');
+      ctx.fillStyle = g; ctx.fill();
+    }
+
+    // Outer ring if active
+    if (isActive) {
+      ctx.beginPath(); ctx.arc(p.x, p.y, 18, 0, Math.PI*2);
+      ctx.strokeStyle = ing.color + '55'; ctx.lineWidth = 1;
+      ctx.setLineDash([3, 5]); ctx.stroke(); ctx.setLineDash([]);
+    }
+
+    // Star shape
+    drawStar(p.x, p.y, isHov || isActive ? 9 : 7, isHov || isActive ? 3.8 : 3,
+      isHov || isActive ? ing.color : 'rgba(251,251,242,0.7)', pulse);
+
+    // Hoa Giap label above
+    ctx.font = "300 9px 'Be Vietnam Pro',sans-serif";
+    ctx.fillStyle = isHov || isActive ? '#FBFBF2' : 'rgba(251,251,242,0.3)';
+    ctx.textAlign = 'center';
+    ctx.fillText(ing.hoagiap.can + ' ' + ing.hoagiap.chi, p.x, p.y - 22);
+
+    // Ingredient name below
+    ctx.font = isHov || isActive ? "500 11px 'Be Vietnam Pro',sans-serif" : "300 10px 'Be Vietnam Pro',sans-serif";
+    ctx.fillStyle = isHov || isActive ? ing.color : 'rgba(251,251,242,0.4)';
+    ctx.fillText(ing.label.toUpperCase(), p.x, p.y + 22);
+
+    // Naula element below name
+    ctx.font = "300 9px 'Be Vietnam Pro',sans-serif";
+    ctx.fillStyle = isHov || isActive ? 'rgba(251,251,242,0.5)' : 'rgba(251,251,242,0.2)';
+    ctx.fillText(ing.napam.type, p.x, p.y + 34);
+  });
+
+  requestAnimationFrame(frame);
+}
+
+function getHit(mx, my) {
+  const ings = currentIngs();
+  for (const ing of ings) {
+    const p = ingPos(ing);
+    if (Math.hypot(mx - p.x, my - p.y) < 30) return ing;
+  }
+  return null;
+}
+
+cv.addEventListener('mousemove', e => {
+  const r = cv.getBoundingClientRect();
+  const mx = (e.clientX - r.left), my = (e.clientY - r.top);
+  const hit = getHit(mx, my);
+  hovStar = hit ? hit.id : null;
+  cv.style.cursor = hit ? 'pointer' : 'default';
+});
+
+cv.addEventListener('click', e => {
+  const r = cv.getBoundingClientRect();
+  const mx = (e.clientX - r.left), my = (e.clientY - r.top);
+  const hit = getHit(mx, my);
+  if (hit) openPanel(hit);
+});
+
+cv.addEventListener('touchend', e => {
+  e.preventDefault();
+  const t = e.changedTouches[0];
+  const r = cv.getBoundingClientRect();
+  const mx = t.clientX - r.left, my = t.clientY - r.top;
+  const hit = getHit(mx, my);
+  if (hit) openPanel(hit);
+});
+
+// Panel
+function openPanel(ing) {
+  currentIng = ing;
+
+  // Update ing nav highlight
+  document.querySelectorAll('.ing-btn').forEach(b => {
+    b.className = 'ing-btn';
+    if (b.dataset.ing === ing.id) b.classList.add(ing.sku === 'lth' ? 'active-fire' : 'active-perilla');
+  });
+
+  // Top bar
+  document.getElementById('panel-title').textContent = ing.label + ' · ' + ing.vn;
+  document.getElementById('panel-title').style.color = ing.color;
+  document.getElementById('panel-sub').textContent = ing.hoagiap.year + ' · ' + ing.hoagiap.cyclePos;
+
+  // Col 1: Hoa Giap
+  document.getElementById('hg-visual').innerHTML = `
+    <div class="hg-pair">
+      <div class="hg-pill hg-can">${ing.hoagiap.can}</div>
+      <div class="hg-pill hg-chi">${ing.hoagiap.chi}</div>
+    </div>`;
+  document.getElementById('hg-title').textContent = ing.hoagiap.year;
+  document.getElementById('hg-body').innerHTML = `<strong>Position:</strong> ${ing.hoagiap.cyclePos} in the 60-year Sexagenary Cycle. Each Hoa Giáp is a unique pairing of Heavenly Stem (Can) and Earthly Branch (Chi) — a cosmological fingerprint that recurs once every 60 years.`;
+
+  // Col 2: Nap Am
+  const iW = ing.napam.intensity;
+  const sW = ing.napam.stability;
+  const fc = ing.color;
+  document.getElementById('na-visual').innerHTML = `
+    <div class="nap-bar"><span class="nap-label">Intensity</span><div class="nap-track"><div class="nap-fill" style="width:${iW}%;background:${fc};"></div></div><span class="nap-val">${iW}/100</span></div>
+    <div class="nap-bar"><span class="nap-label">Stability</span><div class="nap-track"><div class="nap-fill" style="width:${sW}%;background:rgba(76,201,232,0.8);"></div></div><span class="nap-val">${sW}/100</span></div>`;
+  document.getElementById('na-title').textContent = ing.napam.name;
+  document.getElementById('na-body').innerHTML = `<strong>${ing.napam.type}.</strong> ${ing.napam.description}`;
+
+  // Col 3: Hanh
+  const fivePhases = ['Mộc · Wood','Hoả · Fire','Thổ · Earth','Kim · Metal','Thuỷ · Water'];
+  const wheelHtml = fivePhases.map(ph => {
+    const cls = ph === ing.hanh.primary ? (ing.sku === 'lth' ? 'fire-active' : 'perilla-active') : '';
+    return `<div class="hanh-item ${cls}">${ph}</div>`;
+  }).join('');
+  document.getElementById('hanh-visual').innerHTML = `<div class="hanh-wheel">${wheelHtml}</div>`;
+  document.getElementById('hanh-title').innerHTML = `<span style="font-size:28px;font-weight:300;opacity:0.6;margin-right:8px;">${ing.hanh.glyph}</span>${ing.hanh.primary}`;
+  document.getElementById('hanh-body').innerHTML = `<strong>Cycle relationship:</strong> ${ing.hanh.cycle}. Secondary resonance with ${ing.hanh.secondary}.`;
+
+  // Col 4: Application
+  const tagsHtml = ing.app.tags.map(t => `<div class="app-tag"><div class="app-dot"></div><span class="app-text">${t}</span></div>`).join('');
+  document.getElementById('app-visual').innerHTML = tagsHtml;
+  document.getElementById('app-title').textContent = 'Why this ingredient';
+  document.getElementById('app-body').innerHTML = ing.app.why + '<br><br><em style="color:rgba(251,251,242,0.35);">' + ing.app.pairing + '</em>';
+
+  // Open panel
+  const panel = document.getElementById('deep-panel');
+  panel.classList.add('open');
+
+  // Stagger columns
+  setTimeout(() => {
+    document.querySelectorAll('.panel-col').forEach((col, i) => {
+      setTimeout(() => col.classList.add('visible'), i * 70);
+    });
+  }, 50);
+
+  // Hide hint
+  document.getElementById('canvas-hint').style.opacity = '0';
+
+  // Scroll to panel
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+
+function closePanel() {
+  currentIng = null;
+  const panel = document.getElementById('deep-panel');
+  panel.classList.remove('open');
+  document.querySelectorAll('.panel-col').forEach(c => c.classList.remove('visible'));
+  document.querySelectorAll('.ing-btn').forEach(b => {
+    b.className = 'ing-btn';
+  });
+  document.getElementById('canvas-hint').style.opacity = '1';
+}
+
+// Build ingredient nav
+function buildIngNav() {
+  const nav = document.getElementById('ing-nav');
+  nav.innerHTML = '';
+  currentIngs().forEach(ing => {
+    const btn = document.createElement('button');
+    btn.className = 'ing-btn';
+    btn.dataset.ing = ing.id;
+    btn.innerHTML = `
+      <span class="ing-label"><span class="ing-dot" style="background:${ing.color};"></span>${ing.vn}</span>
+      <span class="ing-name">${ing.label}</span>
+      <span class="ing-sub">${ing.hoagiap.can} ${ing.hoagiap.chi} · ${ing.hoagiap.year}</span>`;
+    btn.onclick = () => openPanel(ing);
+    nav.appendChild(btn);
+  });
+}
+
+function setSKU(sku) {
+  currentSKU = sku;
+  closePanel();
+  buildIngNav();
+  // Update sku buttons
+  document.querySelectorAll('.sku-btn').forEach(b => {
+    b.className = 'sku-btn';
+    if (b.dataset.sku === sku) b.classList.add(sku === 'lth' ? 'active-lth' : 'active-pdh');
+  });
+}
+
+// Init
+resize();
+window.addEventListener('resize', resize);
+buildIngNav();
+frame();
+</script>
+</body>
+</html>
 </section>
 
 <footer>
