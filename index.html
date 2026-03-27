@@ -56,26 +56,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .nav-lang:hover,.nav-lang.active{color:var(--ink);border-color:var(--ink);}
 .nav-cta{font-size:10px;font-weight:500;letter-spacing:0.12em;padding:9px 22px;background:var(--amber);color:var(--ink);text-decoration:none;text-transform:uppercase;transition:opacity 0.2s;}
 .nav-cta:hover{opacity:0.85;}
-.hero{display:flex;flex-direction:column;margin-top:57px;}
-.hero-img-wrap{position:relative;width:100%;height:clamp(320px,55vw,600px);overflow:hidden;}
-.hero-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,26,26,0) 55%,rgba(139,94,60,0.3) 100%);}
-.hero-text-block{background:var(--wood);padding:52px 48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;position:relative;}
-.hero-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.22em;color:rgba(251,251,242,0.5);text-transform:uppercase;margin-bottom:18px;display:block;}
-.hero-h1{font-family:'League Spartan',sans-serif;font-size:clamp(36px,5.5vw,68px);font-weight:700;line-height:0.92;text-transform:uppercase;color:var(--paper);margin-bottom:4px;letter-spacing:-0.02em;}
-.hero-h1b{font-family:'League Spartan',sans-serif;font-size:clamp(36px,5.5vw,68px);font-weight:300;line-height:0.92;text-transform:uppercase;color:var(--amber);margin-bottom:26px;letter-spacing:-0.02em;}
+.hero{display:grid;grid-template-columns:auto 1fr;margin-top:57px;min-height:calc(100vh - 57px);background:var(--wood);}
+.hero-video-col{position:relative;width:clamp(260px,36vw,500px);overflow:hidden;flex-shrink:0;}
+.hero-video-col video{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.video-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(139,94,60,0) 65%,rgba(139,94,60,0.9) 100%);z-index:1;pointer-events:none;}
+.video-tear{position:absolute;right:0;top:0;bottom:0;width:22px;display:flex;flex-direction:column;z-index:2;pointer-events:none;}
+.video-proof{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:16px 14px;background:linear-gradient(to top,rgba(26,26,26,0.65),transparent);}
+.vp-item{font-size:8px;font-weight:400;letter-spacing:0.1em;color:rgba(251,251,242,0.45);text-transform:uppercase;display:flex;align-items:center;gap:5px;margin-bottom:4px;}
+.vp-item:last-child{margin-bottom:0;}
+.vp-dot{width:4px;height:4px;background:var(--cyan);flex-shrink:0;}
+.hero-text-col{background:var(--wood);padding:56px 52px 48px 48px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
+.hero-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.22em;color:rgba(251,251,242,0.5);text-transform:uppercase;margin-bottom:20px;display:block;}
+.hero-h1{font-family:'League Spartan',sans-serif;font-size:clamp(34px,4vw,68px);font-weight:700;line-height:0.9;text-transform:uppercase;color:var(--paper);margin-bottom:4px;letter-spacing:-0.02em;}
+.hero-h1b{font-family:'League Spartan',sans-serif;font-size:clamp(34px,4vw,68px);font-weight:300;line-height:0.9;text-transform:uppercase;color:var(--amber);margin-bottom:26px;letter-spacing:-0.02em;}
 .hero-rule{width:32px;height:2px;background:var(--amber);margin-bottom:22px;}
-.hero-body{font-size:14px;color:rgba(251,251,242,0.65);line-height:1.8;max-width:520px;margin-bottom:32px;font-weight:300;}
+.hero-body{font-size:14px;color:rgba(251,251,242,0.65);line-height:1.8;max-width:480px;margin-bottom:32px;font-weight:300;}
 .hero-body strong{font-weight:500;color:var(--paper);}
-.hero-cta-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.hero-cta-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:32px;}
 .btn-amber{font-size:10px;font-weight:600;letter-spacing:0.12em;padding:13px 30px;background:var(--amber);color:var(--ink);text-decoration:none;text-transform:uppercase;transition:opacity 0.2s;display:inline-block;}
 .btn-amber:hover{opacity:0.85;}
 .btn-ghost{font-size:12px;color:rgba(251,251,242,0.6);border-bottom:0.5px solid rgba(251,251,242,0.3);padding-bottom:2px;text-decoration:none;transition:color 0.2s,border-color 0.2s;}
 .btn-ghost:hover{color:var(--paper);border-color:var(--paper);}
-.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:18px;}
-.hero-specs{display:flex;flex-direction:column;gap:7px;align-items:flex-end;}
-.hero-spec{font-size:9px;letter-spacing:0.1em;color:rgba(251,251,242,0.4);text-transform:uppercase;text-align:right;}
-.hero-spec span{color:var(--cyan);font-weight:500;}
+.hero-px-strip{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:32px;}
+.hero-px-strip .hpx{width:10px;height:10px;flex-shrink:0;}
+.hero-specs-grid{border-top:0.5px solid rgba(251,251,242,0.12);padding-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;}
+.hsg-item .hsg-label{font-size:8px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(251,251,242,0.3);display:block;margin-bottom:3px;}
+.hsg-item .hsg-val{font-size:11px;color:rgba(251,251,242,0.65);}
+.hsg-item .hsg-val.hi{color:var(--cyan);}
 .proof-bar{background:var(--wood);border-top:0.5px solid rgba(251,251,242,0.1);display:flex;align-items:stretch;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .proof-bar::-webkit-scrollbar{display:none;}
 .proof-item{padding:13px 18px;border-right:0.5px solid rgba(251,251,242,0.08);font-size:9px;font-weight:400;letter-spacing:0.12em;color:rgba(251,251,242,0.4);text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;}
@@ -261,19 +268,28 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
 .px-divider-row{display:flex;gap:0px;overflow:hidden;width:100%;}
 @keyframes slideUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-.hero-text-block{animation:slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both;}
-.hero-eyebrow{animation:fadeIn 0.6s ease 0.5s both;}
-.hero-h1{animation:slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.55s both;}
-.hero-h1b{animation:slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.65s both;}
-.hero-rule{animation:fadeIn 0.5s ease 0.85s both;}
-.hero-body{animation:slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.9s both;}
-.hero-cta-row{animation:slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 1.05s both;}
-.hero-right{animation:fadeIn 0.8s ease 1.1s both;}
-@media(prefers-reduced-motion:reduce){.hero-text-block,.hero-eyebrow,.hero-h1,.hero-h1b,.hero-rule,.hero-body,.hero-cta-row,.hero-right{animation:none;}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-20px);}to{opacity:1;transform:translateX(0);}}
+.hero-video-col{animation:slideRight 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both;}
+.hero-eyebrow{animation:fadeIn 0.6s ease 0.4s both;}
+.hero-h1{animation:slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s both;}
+.hero-h1b{animation:slideUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.62s both;}
+.hero-rule{animation:fadeIn 0.5s ease 0.8s both;}
+.hero-body{animation:slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.85s both;}
+.hero-cta-row{animation:slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.98s both;}
+.hero-specs-grid{animation:fadeIn 0.8s ease 1.1s both;}
+@media(prefers-reduced-motion:reduce){.hero-video-col,.hero-eyebrow,.hero-h1,.hero-h1b,.hero-rule,.hero-body,.hero-cta-row,.hero-specs-grid{animation:none;}}
 .fade-in{opacity:1;transform:translateY(0);transition:opacity 0.6s ease,transform 0.6s ease;}
 .fade-in.animate{opacity:0;transform:translateY(24px);}
 .fade-in.animate.visible{opacity:1;transform:translateY(0);}
-@media(max-width:900px){nav{padding:14px 24px;}.nav-links{display:none;}section{padding:64px 24px;}.two-col,.order-grid,.returns-grid{grid-template-columns:1fr;gap:40px;}.sku-grid{grid-template-columns:1fr;}.prepare-grid{grid-template-columns:1fr 1fr;}.why-grid{grid-template-columns:1fr;}.steps{grid-template-columns:1fr 1fr;}.naula-header{grid-template-columns:1fr;}.naula-px{display:none;}.where-grid{grid-template-columns:1fr;}.where-export-inner{flex-direction:column;gap:16px;}.faq-grid{grid-template-columns:1fr;}.rd-row{grid-template-columns:1fr;gap:4px;}footer{flex-direction:column;gap:16px;text-align:center;padding:24px;}.footer-right{text-align:center;}.slogan-break{padding:28px 24px;}}
+@media(max-width:900px){nav{padding:14px 24px;}.nav-links{display:none;}section{padding:64px 24px;}.two-col,.order-grid,.returns-grid{grid-template-columns:1fr;gap:40px;}.sku-grid{grid-template-columns:1fr;}.prepare-grid{grid-template-columns:1fr 1fr;}.why-grid{grid-template-columns:1fr;}.steps{grid-template-columns:1fr 1fr;}.naula-header{grid-template-columns:1fr;}.naula-px{display:none;}.where-grid{grid-template-columns:1fr;}.where-export-inner{flex-direction:column;gap:16px;}.faq-grid{grid-template-columns:1fr;}.rd-row{grid-template-columns:1fr;gap:4px;}footer{flex-direction:column;gap:16px;text-align:center;padding:24px;}.footer-right{text-align:center;}.slogan-break{padding:28px 24px;}
+.hero{grid-template-columns:1fr;grid-template-rows:auto auto;min-height:auto;}
+.hero-video-col{width:100%;height:65vw;max-height:420px;}
+.hero-video-col video{object-position:center top;}
+.video-overlay{background:linear-gradient(to bottom,rgba(139,94,60,0) 55%,rgba(139,94,60,0.9) 100%);}
+.video-tear{display:none;}
+.hero-text-col{padding:40px 24px 44px;}
+.hero-specs-grid{grid-template-columns:1fr 1fr;}
+}
 @media(max-width:600px){.prepare-grid{grid-template-columns:1fr;}.steps{grid-template-columns:1fr;}.spec-grid{grid-template-columns:1fr;}.hero-h1,.hero-h1b{font-size:36px;}}
 </style>
 </head>
@@ -299,15 +315,25 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
 </nav>
 
 <section class="hero">
-  <div class="hero-img-wrap">
-    <img class="hero-img" src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg" alt="TKG Naula — Lư Trung Hoả and Phú Đăng Hoả Vietnamese botanical wellness drinks">
-    <div class="hero-overlay"></div>
-    <div style="position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;z-index:2;">
-      <div id="hero-check-row1" style="display:flex;gap:0;width:100%;overflow:hidden;"></div>
-      <div id="hero-check-row2" style="display:flex;gap:0;width:100%;overflow:hidden;"></div>
+
+  <!-- LEFT: Portrait video -->
+  <div class="hero-video-col">
+    <video
+      autoplay muted loop playsinline
+      poster="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg"
+      src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/1119-2.mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div class="video-tear" id="video-tear"></div>
+    <div class="video-proof">
+      <div class="vp-item"><div class="vp-dot"></div>Long An, Vietnam</div>
+      <div class="vp-item"><div class="vp-dot"></div>Eurofins ISO/IEC 17025 tested</div>
+      <div class="vp-item"><div class="vp-dot"></div>No detectable lead · No E. coli</div>
     </div>
   </div>
-  <div class="hero-text-block">
+
+  <!-- RIGHT: Text block -->
+  <div class="hero-text-col">
     <div class="px-cluster tl" style="grid-template-columns:repeat(3,14px);grid-template-rows:repeat(3,14px);">
       <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div>
       <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
@@ -318,6 +344,7 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
       <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
       <div class="px px-empty"></div><div class="px px-empty"></div><div class="px px-cyan"></div>
     </div>
+
     <div>
       <span class="hero-eyebrow">Vietnamese botanical wellness</span>
       <div class="hero-h1">Rooted in Vietnam.</div>
@@ -328,24 +355,19 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
         <a href="#products" class="btn-amber">Explore the products</a>
         <a href="#naula" class="btn-ghost">Learn about Naula →</a>
       </div>
+      <div class="hero-px-strip" id="hero-px-strip"></div>
     </div>
-    <div class="hero-right">
-      <div style="display:grid;grid-template-columns:repeat(5,13px);grid-template-rows:repeat(6,13px);gap:3px;">
-        <div style="background:var(--amber);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.2);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:var(--amber);width:13px;height:13px;"></div>
-        <div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:#7AC45A;width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div>
-        <div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:var(--amber);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div>
-        <div style="width:13px;height:13px;"></div><div style="background:#7AC45A;width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div>
-        <div style="background:var(--amber);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:var(--amber);width:13px;height:13px;"></div>
-        <div style="width:13px;height:13px;"></div><div style="background:rgba(251,251,242,0.15);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div><div style="background:var(--amber);width:13px;height:13px;"></div><div style="width:13px;height:13px;"></div>
-      </div>
-      <div class="hero-specs">
-        <div class="hero-spec"><span>ISO/IEC 17025</span> tested</div>
-        <div class="hero-spec"><span>No detectable lead</span></div>
-        <div class="hero-spec">Long An, Vietnam</div>
-        <div class="hero-spec">Caffeine-free</div>
-      </div>
+
+    <div class="hero-specs-grid">
+      <div class="hsg-item"><span class="hsg-label">Testing</span><span class="hsg-val hi">ISO/IEC 17025 · Eurofins</span></div>
+      <div class="hsg-item"><span class="hsg-label">Lead (Pb)</span><span class="hsg-val hi">Not detected</span></div>
+      <div class="hsg-item"><span class="hsg-label">Origin</span><span class="hsg-val">Long An, Vietnam</span></div>
+      <div class="hsg-item"><span class="hsg-label">Caffeine</span><span class="hsg-val">None</span></div>
+      <div class="hsg-item"><span class="hsg-label">Formulation</span><span class="hsg-val">No preservatives · No artificial colour</span></div>
+      <div class="hsg-item"><span class="hsg-label">Process</span><span class="hsg-val">Naula method · Freeze-dried</span></div>
     </div>
   </div>
+
 </section>
 
 <div class="proof-bar">
@@ -536,8 +558,8 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
       <div class="where-card"><div class="where-card-inner"><div class="where-soon-px"><div class="ws-row"><span></span><span class="m"></span><span></span><span class="m"></span><span></span><span class="m"></span></div><div class="ws-row"><span class="m"></span><span></span><span class="m"></span><span></span><span class="m"></span><span></span></div><div class="ws-row"><span></span><span class="m"></span><span></span><span class="m"></span><span></span><span class="m"></span></div></div><span class="where-tag">Ho Chi Minh City</span><div class="where-name">—</div><div class="where-type">Wellness · Organic</div><div class="where-status soon">Announcing soon</div></div></div>
     </div>
     <div class="where-market-label where-market-dim"><div class="where-market-dot"></div><span>Export · Coming soon</span></div>
-    <div class="where-export-card"><div class="where-export-inner"><p class="where-export-text">TKG is building toward international distribution — thoughtfully, without rush. If you are interested in carrying TKG outside Vietnam, we would like to hear from you.</p><a href="mailto:TKG.naula@gmail.com" class="where-partner-link" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Get in touch → TKG.naula@gmail.com</a></div></div>
-    <div class="where-partner-strip" style="margin-top:8px;"><div class="proof-sq" style="background:var(--amber);flex-shrink:0;"></div><span class="where-partner-text">Interested in carrying TKG at your venue? <a href="mailto:TKG.naula@gmail.com" class="where-partner-link">TKG.naula@gmail.com →</a></span></div>
+    <div class="where-export-card"><div class="where-export-inner"><p class="where-export-text">TKG is building toward international distribution — thoughtfully, without rush. If you are interested in carrying TKG outside Vietnam, we would like to hear from you.</p><a href="/cdn-cgi/l/email-protection#05514e422b6b64706964456268646c692b666a68" class="where-partner-link" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Get in touch → <span class="__cf_email__" data-cfemail="74203f335a1a15011815341319151d185a171b19">[email&#160;protected]</span></a></div></div>
+    <div class="where-partner-strip" style="margin-top:8px;"><div class="proof-sq" style="background:var(--amber);flex-shrink:0;"></div><span class="where-partner-text">Interested in carrying TKG at your venue? <a href="/cdn-cgi/l/email-protection#faaeb1bdd4949b8f969bba9d979b9396d4999597" class="where-partner-link"><span class="__cf_email__" data-cfemail="0f5b444821616e7a636e4f68626e6663216c6062">[email&#160;protected]</span> →</a></span></div>
   </div>
 </section>
 
@@ -561,7 +583,7 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
           <div class="spec-row"><span class="spec-k">Flat rate shipping</span><span class="spec-v">$9 (under $70)</span></div>
           <div class="spec-row"><span class="spec-k">Satisfaction guarantee</span><span class="spec-v">60 days</span></div>
         </div>
-        <a class="btn-order" href="mailto:TKG.naula@gmail.com">Order → TKG.naula@gmail.com</a>
+        <a class="btn-order" href="/cdn-cgi/l/email-protection#9ecad5d9b0f0ffebf2ffdef9f3fff7f2b0fdf1f3">Order → <span class="__cf_email__" data-cfemail="481c030f6626293d2429082f25292124662b2725">[email&#160;protected]</span></a>
         <p class="order-note">For wholesale, distribution, or partnership inquiries — reach us at the same address.</p>
       </div>
       <div class="order-box">
@@ -617,7 +639,7 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
       <div class="faq-group">
         <div class="faq-group-label">Where to buy</div>
         <div class="faq-item"><div class="faq-q">What do the lab tests show?</div><div class="faq-a">Both products tested by Eurofins — ISO/IEC 17025:2017 (VILAS 238). Reports issued October 2025.<br><br>Lead (Pb): Not detected · E. coli: Not detected · Coliforms: Not detected · Staph: Not detected · Yeast &amp; mold: Not detected<br><br><a href="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/743-2025-00162671.pdf" target="_blank" style="color:var(--amber);font-weight:500;">↓ Lư Trung Hoả — Eurofins Report AR-25-VD-169691</a><br><a href="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/743-2025-00162672.pdf" target="_blank" style="color:var(--amber);font-weight:500;">↓ Phú Đăng Hoả — Eurofins Report AR-25-VD-169692</a></div></div>
-        <div class="faq-item"><div class="faq-q">Where can I purchase TKG Naula?</div><div class="faq-a">tkg-naula.com. Order directly via email — TKG.naula@gmail.com.</div></div>
+        <div class="faq-item"><div class="faq-q">Where can I purchase TKG Naula?</div><div class="faq-a">tkg-naula.com. Order directly via email — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c48575b32727d69707d5c7b717d7570327f7371">[email&#160;protected]</a>.</div></div>
         <div class="faq-item"><div class="faq-q">Are there any discounts available?</div><div class="faq-a">Subscribe to the newsletter for a first-order offer. The Loyal-Naula Rewards programme earns points on every order. Subscribe &amp; Save is available for recurring orders.</div></div>
       </div>
     </div>
@@ -638,7 +660,7 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
         <div class="returns-detail">
           <div class="rd-row"><div class="rd-label">Window</div><div class="rd-val">60 days from purchase date</div></div>
           <div class="rd-row"><div class="rd-label">Eligible purchases</div><div class="rd-val">Official website and authorised sellers only</div></div>
-          <div class="rd-row"><div class="rd-label">How to request</div><div class="rd-val">Contact us with your order number and reason — <a href="mailto:TKG.naula@gmail.com" style="color:var(--amber);">TKG.naula@gmail.com</a></div></div>
+          <div class="rd-row"><div class="rd-label">How to request</div><div class="rd-val">Contact us with your order number and reason — <a href="/cdn-cgi/l/email-protection#67332c20490906120b0627000a060e0b4904080a" style="color:var(--amber);"><span class="__cf_email__" data-cfemail="aafee1ed84c4cbdfc6cbeacdc7cbc3c684c9c5c7">[email&#160;protected]</span></a></div></div>
           <div class="rd-row"><div class="rd-label">Return shipping</div><div class="rd-val">Customer's responsibility if return is required</div></div>
           <div class="rd-row" style="border-bottom:none;"><div class="rd-label">Note</div><div class="rd-val">Photos of the product or packaging may be requested to process the claim</div></div>
         </div>
@@ -647,31 +669,443 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
   </div>
 </section>
 
-<section style="background:#1A1A1A;padding:72px 48px;position:relative;overflow:hidden;" id="philosophy">
-  <canvas id="sf-bg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
-  <div style="position:relative;z-index:1;max-width:1080px;margin:0 auto;">
-    <span style="font-size:10px;font-weight:500;letter-spacing:0.22em;color:#FFB703;text-transform:uppercase;display:block;margin-bottom:18px;">Philosophy · Hidden layer</span>
-    <div style="font-family:'League Spartan',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:700;line-height:0.92;text-transform:uppercase;color:#FBFBF2;margin-bottom:4px;">Two ingredients.</div>
-    <div style="font-family:'League Spartan',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:300;line-height:0.92;text-transform:uppercase;color:rgba(251,251,242,0.3);margin-bottom:12px;">Two Hoa Giáp each.</div>
-    <p style="font-size:12px;font-weight:300;color:rgba(251,251,242,0.3);margin-bottom:48px;letter-spacing:0.04em;">Hover a star to reveal the story · Mỗi nguyên liệu mang một Hoa Giáp</p>
-    <div style="position:relative;width:100%;height:420px;" id="const-wrap">
-      <canvas id="const-cv" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
-      <div id="phil-panel" style="position:absolute;bottom:0;left:0;right:0;background:rgba(26,26,26,0.97);border-top:0.5px solid rgba(255,183,3,0.2);padding:24px 0;display:grid;grid-template-columns:1fr 1px 1fr;gap:0;opacity:0;transition:opacity 0.4s ease;pointer-events:none;">
-        <div id="phil-col-l" style="padding:0 28px;"></div>
-        <div style="background:rgba(255,183,3,0.15);align-self:stretch;"></div>
-        <div id="phil-col-r" style="padding:0 28px;"></div>
+<section style="background:#0C0C08;padding:0;position:relative;overflow:hidden;" id="philosophy">
+<style>
+/* ── PHILOSOPHY INTERACTIVE ─────────────────────────────────────── */
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px;}
+.header{padding:64px 0 0;}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:0.22em;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:18px;}
+.h1{font-family:'League Spartan',sans-serif;font-size:clamp(34px,5vw,58px);font-weight:700;line-height:0.9;text-transform:uppercase;color:#FBFBF2;margin-bottom:4px;}
+.h1b{font-family:'League Spartan',sans-serif;font-size:clamp(34px,5vw,58px);font-weight:300;line-height:0.9;text-transform:uppercase;color:rgba(251,251,242,0.22);margin-bottom:20px;}
+.sub{font-size:12px;color:var(--muted);line-height:1.75;max-width:620px;}
+.legend{display:flex;gap:24px;align-items:center;margin:12px 0 16px;flex-wrap:wrap;}
+.leg{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--muted);letter-spacing:0.05em;}
+.leg-dot{width:8px;height:8px;flex-shrink:0;}
+.cv-wrap{position:relative;width:100%;height:480px;margin-top:8px;}
+#cv{display:block;width:100%;height:100%;}
+.cv-hint{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:9px;color:rgba(251,251,242,0.18);letter-spacing:0.14em;text-transform:uppercase;pointer-events:none;transition:opacity 0.4s;}
+
+/* Panel */
+.panel{overflow:hidden;max-height:0;opacity:0;transition:max-height 0.65s cubic-bezier(0.16,1,0.3,1),opacity 0.4s ease;}
+.panel.open{max-height:1100px;opacity:1;margin-bottom:48px;}
+.panel-bar{display:flex;align-items:flex-start;justify-content:space-between;padding:22px 0 18px;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);}
+.p-name{font-family:'League Spartan',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;}
+.p-meta{font-size:11px;color:var(--muted);margin-top:5px;font-style:italic;}
+.p-close{background:none;border:0.5px solid var(--border);color:var(--muted);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:7px 14px;cursor:pointer;transition:all 0.2s;flex-shrink:0;margin-top:4px;}
+.p-close:hover{color:#FBFBF2;border-color:rgba(251,251,242,0.35);}
+
+/* Coming soon */
+.cs-wrap{padding:36px 0 28px;display:flex;align-items:center;gap:28px;}
+.cs-glyph{font-family:'League Spartan',sans-serif;font-size:68px;font-weight:300;line-height:1;color:rgba(251,251,242,0.07);}
+.cs-title{font-family:'League Spartan',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:rgba(251,251,242,0.3);margin-bottom:8px;}
+.cs-
+
+/* 4-col grid */
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(251,251,242,0.08);margin-top:1px;}
+.pcol{background:#0C0C08;padding:28px 22px;opacity:0;transform:translateY(14px);transition:opacity 0.4s ease,transform 0.4s ease;}
+.pcol.vis{opacity:1;transform:none;}
+.pcol:nth-child(1).vis{transition-delay:0.04s;}
+.pcol:nth-child(2).vis{transition-delay:0.11s;}
+.pcol:nth-child(3).vis{transition-delay:0.18s;}
+.pcol:nth-child(4).vis{transition-delay:0.25s;}
+.col-num{font-size:9px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;display:block;margin-bottom:14px;}
+.col-title{font-family:'League Spartan',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:#FBFBF2;margin-bottom:10px;line-height:1.2;display:block;}
+.col-
+.col-body strong{color:rgba(251,251,242,0.8);font-weight:500;}
+.hg-row{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
+.pill{padding:5px 10px;font-size:10px;font-weight:500;letter-spacing:0.07em;border:0.5px solid;display:inline-block;}
+.pcan{border-color:var(--amber);color:var(--amber);background:rgba(255,183,3,0.08);}
+.pchi{border-color:var(--cyan);color:var(--cyan);background:rgba(76,201,232,0.08);}
+.pcyc{border-color:rgba(251,251,242,0.18);color:rgba(251,251,242,0.4);font-size:9px;}
+.na-bar{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
+.na-lbl{font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(251,251,242,0.3);width:44px;flex-shrink:0;}
+.na-track{flex:1;height:3px;background:rgba(251,251,242,0.07);}
+.na-fill{height:100%;transition:width 1s cubic-bezier(0.16,1,0.3,1);}
+.na-val{font-size:10px;font-weight:500;color:rgba(251,251,242,0.55);width:44px;text-align:right;flex-shrink:0;}
+.hanh-wheel{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;}
+.htag{padding:4px 9px;font-size:10px;letter-spacing:0.05em;border:0.5px solid rgba(251,251,242,0.1);color:rgba(251,251,242,0.28);}
+.htag.hfire{border-color:var(--fire);color:var(--fire);background:rgba(232,160,32,0.1);}
+.htag.hperl{border-color:var(--perilla);color:var(--perilla);background:rgba(139,95,192,0.1);}
+.app-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;}
+.atag{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border:0.5px solid rgba(122,196,90,0.35);background:rgba(82,113,33,0.1);}
+.adot{width:5px;height:5px;background:var(--moss);flex-shrink:0;}
+.atxt{font-size:9px;font-weight:500;letter-spacing:0.07em;color:var(--moss);text-transform:uppercase;}
+
+/* Footer */
+.foot{display:flex;align-items:center;gap:14px;border:0.5px solid rgba(255,183,3,0.14);padding:16px 20px;margin:0 0 72px;}
+.ar-box{width:34px;height:34px;border:0.5px solid rgba(255,183,3,0.28);display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:4px;flex-shrink:0;}
+.ar-box div{background:rgba(255,183,3,0.3);}
+.ar-box div:nth-child(2n){background:transparent;}
+.foot-txt{font-size:10px;color:rgba(251,251,242,0.25);line-height:1.65;}
+.foot-txt span{color:rgba(255,183,3,0.55);font-weight:500;}
+@media(max-width:768px){
+  .wrap{padding:0 24px;}
+  .pgrid{grid-template-columns:1fr 1fr;}
+  .cv-wrap{height:380px;}
+  .cs-wrap{flex-direction:column;gap:14px;}
+}
+</style>
+<div class="wrap" style="background:#0C0C08;">
+<div class="wrap">
+  <div class="header">
+    <span class="eyebrow">Philosophy · Hidden layer</span>
+    <div class="h1">The Fire constellation.</div>
+    <div class="h1b">Six Nạp Âm. One Hành.</div>
+    <p class="sub">In the Vietnamese sexagenary calendar, six of the sixty Hoa Giáp carry the designation Hoả — Fire. TKG's two formulations draw from four of these six nodes. Click any node to reveal its identity.</p>
+  </div>
+
+  <div class="legend">
+    <div class="leg"><svg width="8" height="8"><rect width="8" height="8" fill="#E8A020"/></svg>Lư Trung Hoả — TKG active</div>
+    <div class="leg"><svg width="8" height="8"><rect width="8" height="8" fill="#8B5FC0"/></svg>Phú Đăng Hoả — TKG active</div>
+    <div class="leg"><svg width="8" height="8" style="opacity:0.3"><polygon points="4,0 8,4 4,8 0,4" fill="rgba(251,251,242,0.6)"/></svg>Other Hoả Nạp Âm — coming soon</div>
+  </div>
+
+  <div class="cv-wrap">
+    <canvas id="cv"></canvas>
+    <div class="cv-hint" id="hint">Click any node to explore its cosmological identity</div>
+  </div>
+
+  <div class="panel" id="panel">
+    <div class="panel-bar">
+      <div>
+        <div class="p-name" id="p-name">—</div>
+        <div class="p-meta" id="p-meta">—</div>
+      </div>
+      <button class="p-close" onclick="closePanel()">Close ✕</button>
+    </div>
+    <div id="cs-view" style="display:none;">
+      <div class="cs-wrap">
+        <div class="cs-glyph">火</div>
+        <div>
+          <div class="cs-title">Coming soon</div>
+          <p class="cs-body" id="cs-body">—</p>
+        </div>
       </div>
     </div>
-    <p id="phil-hint" style="font-size:10px;font-weight:300;color:rgba(251,251,242,0.2);letter-spacing:0.12em;text-transform:uppercase;text-align:center;margin-top:12px;transition:opacity 0.3s;">← hover any star to begin →</p>
-    <div style="margin-top:40px;border:0.5px solid rgba(255,183,3,0.15);padding:18px 24px;display:flex;align-items:center;gap:16px;">
-      <div style="width:40px;height:40px;border:0.5px solid rgba(255,183,3,0.3);display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:5px;flex-shrink:0;">
-        <div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div>
-        <div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div>
-        <div style="background:rgba(255,183,3,0.35);"></div><div style="background:transparent;"></div><div style="background:rgba(255,183,3,0.35);"></div>
+    <div id="act-view">
+      <div class="pgrid">
+        <div class="pcol" id="c1">
+          <span class="col-num" style="color:var(--amber);">01 · Hoa Giáp</span>
+          <div class="hg-row" id="hg-pills"></div>
+          <span class="col-title" id="hg-tit">—</span>
+          <p class="col-body" id="hg-bod">—</p>
+        </div>
+        <div class="pcol" id="c2">
+          <span class="col-num" style="color:var(--cyan);">02 · Nạp Âm</span>
+          <div id="na-bars" style="margin-bottom:12px;"></div>
+          <span class="col-title" id="na-tit">—</span>
+          <p class="col-body" id="na-bod">—</p>
+        </div>
+        <div class="pcol" id="c3">
+          <span class="col-num" style="color:var(--moss);">03 · Hành · Five Phases</span>
+          <div class="hanh-wheel" id="hanh-whl"></div>
+          <span class="col-title" id="hanh-tit">—</span>
+          <p class="col-body" id="hanh-bod">—</p>
+        </div>
+        <div class="pcol" id="c4">
+          <span class="col-num" style="color:#C5A0F0;">04 · Product application</span>
+          <div class="app-tags" id="app-tags"></div>
+          <span class="col-title" id="app-tit">—</span>
+          <p class="col-body" id="app-bod">—</p>
+        </div>
       </div>
-      <p style="font-size:10px;font-weight:300;color:rgba(251,251,242,0.25);line-height:1.7;letter-spacing:0.04em;"><span style="color:rgba(255,183,3,0.5);font-weight:400;">AR Layer — coming soon</span><br>Scan to unlock the full Hoa Giáp story for each ingredient — origin, energy, and ritual. Built for TKG Naula fan. Powered by Thiện Kiến AR.</p>
     </div>
   </div>
+
+  <div class="foot">
+    <div class="ar-box"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <p class="foot-txt"><span>AR Layer — coming soon.</span> Scan the product label to unlock the full cosmological story for each ingredient in augmented reality. Powered by Thiện Kiến AR.</p>
+  </div>
+</div>
+</div>
+<script>
+const FP=['Mộc · Wood','Hoả · Fire','Thổ · Earth','Kim · Metal','Thuỷ · Water'];
+
+const NODES=[
+  // ── LTH active ──
+  {id:'ginger',label:'Ginger',vn:'Gừng',napam:'Lư Trung Hoả',
+   active:true,sku:'lth',color:'#E8A020',angle:-100,r:0.35,
+   hg:{can:'Bính · 丙',chi:'Dần · Hổ',year:'Yang Fire Tiger',cycle:'3rd of 60',
+       note:'Heavenly Stem Bính (Yang Fire) + Earthly Branch Dần (Tiger). The most direct Fire expression in the Vietnamese calendar — unapologetic, forward-moving, immediate in its warmth.'},
+   na:{name:'Lư Trung Hoả · Furnace Fire',type:'Yang Fire (Dương Hoả)',int:92,stb:58,
+       desc:'Fire contained within the furnace — the most concentrated, directional heat. Intense at contact, immediate in effect. The forge-fire that shapes rather than spreads.'},
+   hanh:{pri:'Hoả · Fire',sec:'Mộc · Wood',cyc:'Wood generates Fire',gl:'火',hi:'hfire'},
+   app:{tags:['Warming','Circulatory','Yang energy','Morning ritual'],
+        title:'Why ginger was chosen',
+        body:'Bính Dần energy is forward-moving and bold. In the Lư Trung Hoả formulation, ginger anchors the Yang Fire quality — it\'s why the warmth from this blend arrives immediately rather than building slowly. Paired with Đinh Mão Lemongrass (Yin Fire) to balance directness with luminosity.'}},
+
+  {id:'lemongrass',label:'Lemongrass',vn:'Sả',napam:'Lư Trung Hoả',
+   active:true,sku:'lth',color:'#E8A020',angle:-40,r:0.35,
+   hg:{can:'Đinh · 丁',chi:'Mão · Mèo',year:'Yin Fire Cat',cycle:'4th of 60',
+       note:'Heavenly Stem Đinh (Yin Fire) + Earthly Branch Mão (Cat). A refined, luminous Fire — the flame of a lantern rather than a forge. In the Vietnamese calendar, Mão is the Cat, not the Rabbit.'},
+   na:{name:'Lư Trung Hoả · Furnace Fire',type:'Yin Fire (Âm Hoả)',int:65,stb:82,
+       desc:'A refined, upward-moving fire. The flame that illuminates a space without consuming it — sustained, elevated, and graceful in its reach.'},
+   hanh:{pri:'Hoả · Fire',sec:'Mộc · Wood',cyc:'Wood generates Fire',gl:'火',hi:'hfire'},
+   app:{tags:['Brightening','Clarifying','Yin energy','Aroma uplift'],
+        title:'Why lemongrass was chosen',
+        body:'Đinh Mão\'s Yin Fire nature gives lemongrass its lifting, brightening quality in the blend. Where ginger pushes heat forward, lemongrass illuminates the space around it — the two Fire expressions create a complete arc of warmth from base to peak.'}},
+
+  // ── PDH active ──
+  {id:'perilla',label:'Perilla',vn:'Tía tô',napam:'Phú Đăng Hoả',
+   active:true,sku:'pdh',color:'#8B5FC0',angle:40,r:0.35,
+   hg:{can:'Giáp · 甲',chi:'Thìn · Rồng',year:'Yang Wood Dragon',cycle:'41st of 60',
+       note:'Heavenly Stem Giáp (Yang Wood) + Earthly Branch Thìn (Dragon). Wood energy rooted in Earth — structural, patient, and deep. The Dragon\'s warmth comes from below, not above.'},
+   na:{name:'Phú Đăng Hoả · Lamp Fire',type:'Yang Wood → Hoả',int:44,stb:91,
+       desc:'Wood that generates Fire through patience — the Dragon holds energy in reserve. This Nạp Âm produces warmth that settles and stays rather than flaring and receding.'},
+   hanh:{pri:'Hoả · Fire',sec:'Mộc · Wood',cyc:'Wood generates Fire',gl:'火',hi:'hperl'},
+   app:{tags:['Grounding','Anti-inflammatory','Structural warmth','Evening ritual'],
+        title:'Why perilla was chosen',
+        body:'Giáp Thìn\'s Heavenly Stem (Giáp) is Yang Wood — but the Nạp Âm of this Hoa Giáp is Phú Đăng Hoả, placing it firmly in the Hoả constellation. Wood is the source that generates Fire; Giáp Thìn represents that generative relationship made permanent — the warmth that comes from deep roots, not from open flame.'}},
+
+  {id:'clove',label:'Clove',vn:'Đinh hương',napam:'Phú Đăng Hoả',
+   active:true,sku:'pdh',color:'#8B5FC0',angle:100,r:0.35,
+   hg:{can:'Ất · 乙',chi:'Tỵ · Rắn',year:'Yin Wood Snake',cycle:'42nd of 60',
+       note:'Heavenly Stem Ất (Yin Wood) + Earthly Branch Tỵ (Snake). The Snake moves with complete intention — penetrating and deliberate. Ất Tỵ energy is the most time-released in the Hoả constellation.'},
+   na:{name:'Phú Đăng Hoả · Lamp Fire',type:'Yin Wood → Hoả',int:37,stb:96,
+       desc:'The slowest-arriving fire in the system — ancient, deliberate, and patient. Surfaces long after the encounter. The kind of warmth the body recognises before the mind does.'},
+   hanh:{pri:'Hoả · Fire',sec:'Mộc · Wood',cyc:'Wood generates Fire',gl:'火',hi:'hperl'},
+   app:{tags:['Deep warming','Antioxidant','Time-released','Meditative focus'],
+        title:'Why clove was chosen',
+        body:'Ất Tỵ\'s Heavenly Stem (Ất) is Yin Wood — but the Nạp Âm is Phú Đăng Hoả, firmly in the Hoả constellation. The Snake\'s Wood energy feeds the fire slowly and deliberately. This is why clove\'s warmth in the blend is the last to arrive and the longest to remain — the fire it carries is built, not sparked.'}},
+
+  // ── Coming soon ──
+  {id:'thientuong',label:'Thiên Thượng Hoả',active:false,color:'rgba(251,251,242,0.3)',
+   angle:160,r:0.36,
+   csBody:'Thiên Thượng Hoả — Celestial Fire. The fire of the heavens, the most elevated Hoả Nạp Âm in the Vietnamese sexagenary calendar. A future TKG formulation will explore this energy.'},
+
+  {id:'ticlich',label:'Tích Lịch Hoả',active:false,color:'rgba(251,251,242,0.3)',
+   angle:-160,r:0.36,
+   csBody:'Tích Lịch Hoả — Thunder Fire. Sudden, explosive, transformative. The fire of lightning striking earth. A future TKG formulation will channel this energy.'},
+
+  {id:'sondau',label:'Sơn Đầu Hoả',active:false,color:'rgba(251,251,242,0.25)',
+   angle:-60,r:0.52,
+   csBody:'Sơn Đầu Hoả — Mountain Peak Fire. Fire born at altitude, where air is thin and flame burns pure. A future TKG formulation will draw on this clarity.'},
+
+  {id:'sonha',label:'Sơn Hạ Hoả',active:false,color:'rgba(251,251,242,0.25)',
+   angle:60,r:0.52,
+   csBody:'Sơn Hạ Hoả — Mountain Base Fire. Fire held in the roots of the mountain, slow heat absorbed by stone. A future TKG formulation will work with this deep, contained energy.'}
+];
+
+// ── Canvas setup ──
+const cv=document.getElementById('cv');
+const ctx=cv.getContext('2d');
+let W=0,H=0,CX=0,CY=0,tick=0,hovId=null,activeNode=null;
+
+function resize(){
+  const p=cv.parentElement;
+  W=p.clientWidth; H=p.clientHeight;
+  cv.width=W*devicePixelRatio; cv.height=H*devicePixelRatio;
+  cv.style.width=W+'px'; cv.style.height=H+'px';
+  ctx.scale(devicePixelRatio,devicePixelRatio);
+  CX=W*0.5; CY=H*0.45;
+}
+
+function npos(n){
+  const rad=n.angle*Math.PI/180;
+  const R=Math.min(W,H)*n.r;
+  return{x:CX+Math.cos(rad)*R,y:CY+Math.sin(rad)*R};
+}
+
+function drawStar(x,y,oR,iR,col,alpha){
+  ctx.save(); ctx.globalAlpha=alpha||1;
+  ctx.beginPath();
+  for(let i=0;i<10;i++){
+    const r=i%2===0?oR:iR,a=Math.PI/5*i-Math.PI/2;
+    i===0?ctx.moveTo(x+r*Math.cos(a),y+r*Math.sin(a)):ctx.lineTo(x+r*Math.cos(a),y+r*Math.sin(a));
+  }
+  ctx.closePath(); ctx.fillStyle=col; ctx.fill(); ctx.restore();
+}
+
+function drawDiamond(x,y,s,col,alpha){
+  ctx.save(); ctx.globalAlpha=alpha||1;
+  ctx.beginPath();
+  ctx.moveTo(x,y-s); ctx.lineTo(x+s,y); ctx.lineTo(x,y+s); ctx.lineTo(x-s,y);
+  ctx.closePath(); ctx.fillStyle=col; ctx.fill(); ctx.restore();
+}
+
+function frame(){
+  ctx.clearRect(0,0,W,H);
+  tick+=0.005;
+
+  // ── Center glyph bg ──
+  ctx.save(); ctx.globalAlpha=0.12*(Math.sin(tick)*0.08+0.92);
+  ctx.font='bold '+Math.round(H*0.3)+"px 'League Spartan',sans-serif";
+  ctx.fillStyle='#FFB703'; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText('火',CX,CY+4); ctx.restore();
+
+  // Center rings
+  [22,36,52].forEach((r,i)=>{
+    ctx.beginPath(); ctx.arc(CX,CY,r,0,Math.PI*2);
+    ctx.strokeStyle=i===0?'rgba(255,183,3,0.3)':'rgba(255,183,3,0.07)';
+    ctx.lineWidth=0.5; ctx.setLineDash(i>0?[3,7]:[]);
+    ctx.stroke(); ctx.setLineDash([]);
+  });
+  ctx.font="600 9px 'Be Vietnam Pro',sans-serif";
+  ctx.fillStyle='rgba(255,183,3,0.65)'; ctx.textAlign='center'; ctx.textBaseline='top';
+  ctx.fillText('HÀNH HOẢ',CX,CY+26);
+
+  // ── Connection lines ──
+  NODES.forEach(n=>{
+    const p=npos(n);
+    const isAct=activeNode&&activeNode.id===n.id;
+    const isHov=hovId===n.id;
+    ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(CX,CY);
+    if(n.active){
+      ctx.strokeStyle=isAct||isHov?n.color+'99':'rgba(251,251,242,0.07)';
+      ctx.lineWidth=isAct?1.2:0.5;
+      ctx.setLineDash(isAct?[]:[3,8]);
+    } else {
+      ctx.strokeStyle='rgba(251,251,242,0.04)';
+      ctx.lineWidth=0.5; ctx.setLineDash([2,10]);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  });
+
+  // Pair lines
+  [[0,1,'#E8A020'],[2,3,'#8B5FC0']].forEach(([a,b,col])=>{
+    const pa=npos(NODES[a]),pb=npos(NODES[b]);
+    ctx.beginPath(); ctx.moveTo(pa.x,pa.y); ctx.lineTo(pb.x,pb.y);
+    ctx.strokeStyle=col+'18'; ctx.lineWidth=0.5;
+    ctx.setLineDash([2,8]); ctx.stroke(); ctx.setLineDash([]);
+  });
+
+  // ── Nodes ──
+  NODES.forEach(n=>{
+    const p=npos(n);
+    const isAct=activeNode&&activeNode.id===n.id;
+    const isHov=hovId===n.id;
+
+    if(n.active){
+      const pulse=isHov||isAct?1:(Math.sin(tick*1.1+n.angle*0.04)*0.1+0.9);
+      // Halo
+      if(isHov||isAct){
+        ctx.beginPath(); ctx.arc(p.x,p.y,26,0,Math.PI*2);
+        const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,26);
+        g.addColorStop(0,n.color+'2a'); g.addColorStop(1,'transparent');
+        ctx.fillStyle=g; ctx.fill();
+      }
+      // Active orbit
+      if(isAct){
+        ctx.beginPath(); ctx.arc(p.x,p.y,17,0,Math.PI*2);
+        ctx.strokeStyle=n.color+'50'; ctx.lineWidth=0.8;
+        ctx.setLineDash([3,5]); ctx.stroke(); ctx.setLineDash([]);
+      }
+      drawStar(p.x,p.y,isHov||isAct?9:7,isHov||isAct?3.8:3,n.color,pulse);
+      // Napam label above
+      ctx.font="500 8px 'Be Vietnam Pro',sans-serif";
+      ctx.fillStyle=isHov||isAct?n.color+'cc':n.color+'55';
+      ctx.textAlign='center'; ctx.textBaseline='bottom';
+      ctx.fillText(n.napam.toUpperCase(),p.x,p.y-19);
+      // Name below
+      ctx.font=isHov||isAct?"500 10px 'Be Vietnam Pro',sans-serif":"300 9px 'Be Vietnam Pro',sans-serif";
+      ctx.fillStyle=isHov||isAct?'rgba(251,251,242,0.85)':'rgba(251,251,242,0.38)';
+      ctx.textBaseline='top';
+      ctx.fillText(n.label,p.x,p.y+15);
+    } else {
+      // Dim diamond
+      const s=isHov?6.5:5;
+      drawDiamond(p.x,p.y,s,'rgba(251,251,242,0.55)',isHov?0.4:0.2);
+      ctx.font="300 9px 'Be Vietnam Pro',sans-serif";
+      ctx.fillStyle=isHov?'rgba(251,251,242,0.4)':'rgba(251,251,242,0.18)';
+      ctx.textAlign='center'; ctx.textBaseline='top';
+      ctx.fillText(n.label,p.x,p.y+13);
+    }
+  });
+
+  requestAnimationFrame(frame);
+}
+
+// ── Hit test ──
+function getHit(mx,my){
+  for(const n of NODES){
+    const p=npos(n);
+    if(Math.hypot(mx-p.x,my-p.y)<(n.active?30:22)) return n;
+  }
+  return null;
+}
+
+cv.addEventListener('mousemove',e=>{
+  const r=cv.getBoundingClientRect();
+  const h=getHit(e.clientX-r.left,e.clientY-r.top);
+  hovId=h?h.id:null; cv.style.cursor=h?'pointer':'default';
+});
+cv.addEventListener('click',e=>{
+  const r=cv.getBoundingClientRect();
+  const h=getHit(e.clientX-r.left,e.clientY-r.top);
+  if(h) openPanel(h);
+});
+cv.addEventListener('touchend',e=>{
+  e.preventDefault();
+  const t=e.changedTouches[0],r=cv.getBoundingClientRect();
+  const h=getHit(t.clientX-r.left,t.clientY-r.top);
+  if(h) openPanel(h);
+},{passive:false});
+
+// ── Panel ──
+function openPanel(node){
+  activeNode=node;
+  document.getElementById('hint').style.opacity='0';
+  const pn=document.getElementById('panel');
+  const csV=document.getElementById('cs-view');
+  const actV=document.getElementById('act-view');
+
+  document.getElementById('p-name').textContent=node.napam||node.label;
+  document.getElementById('p-name').style.color=node.active?node.color:'rgba(251,251,242,0.35)';
+
+  if(!node.active){
+    document.getElementById('p-meta').textContent='Vietnamese sexagenary calendar · Hoả line · Coming soon';
+    csV.style.display='block'; actV.style.display='none';
+    document.getElementById('cs-body').textContent=node.csBody;
+  } else {
+    document.getElementById('p-meta').textContent=node.hg.year+' · Position '+node.hg.cycle;
+    csV.style.display='none'; actV.style.display='block';
+    fillActive(node);
+  }
+
+  document.querySelectorAll('.pcol').forEach(c=>c.classList.remove('vis'));
+  pn.classList.add('open');
+  setTimeout(()=>{
+    document.querySelectorAll('.pcol').forEach((c,i)=>setTimeout(()=>c.classList.add('vis'),i*70));
+    pn.scrollIntoView({behavior:'smooth',block:'nearest'});
+  },80);
+}
+
+function fillActive(n){
+  document.getElementById('hg-pills').innerHTML=
+    `<div class="pill pcan">${n.hg.can}</div>`+
+    `<div class="pill pchi">${n.hg.chi}</div>`+
+    `<div class="pill pcyc">${n.hg.cycle}</div>`;
+  document.getElementById('hg-tit').textContent=n.hg.year;
+  document.getElementById('hg-bod').textContent=n.hg.note;
+
+  document.getElementById('na-bars').innerHTML=
+    `<div class="na-bar"><span class="na-lbl">Intensity</span><div class="na-track"><div class="na-fill" style="width:${n.na.int}%;background:${n.color};"></div></div><span class="na-val">${n.na.int}/100</span></div>`+
+    `<div class="na-bar"><span class="na-lbl">Stability</span><div class="na-track"><div class="na-fill" style="width:${n.na.stb}%;background:rgba(76,201,232,0.75);"></div></div><span class="na-val">${n.na.stb}/100</span></div>`;
+  document.getElementById('na-tit').textContent=n.na.name;
+  document.getElementById('na-bod').innerHTML=`<strong>${n.na.type}.</strong> ${n.na.desc}`;
+
+  document.getElementById('hanh-whl').innerHTML=FP.map(ph=>{
+    const hi=ph===n.hanh.pri?n.hanh.hi:'';
+    return`<div class="htag ${hi}">${ph}</div>`;
+  }).join('');
+  document.getElementById('hanh-tit').innerHTML=`<span style="font-size:26px;font-weight:300;opacity:0.45;margin-right:8px;">${n.hanh.gl}</span>${n.hanh.pri}`;
+  document.getElementById('hanh-bod').innerHTML=`<strong>Generative cycle:</strong> ${n.hanh.cyc}. Secondary resonance: ${n.hanh.sec}.`;
+
+  document.getElementById('app-tags').innerHTML=n.app.tags.map(t=>
+    `<div class="atag"><div class="adot"></div><span class="atxt">${t}</span></div>`).join('');
+  document.getElementById('app-tit').textContent=n.app.title;
+  document.getElementById('app-bod').textContent=n.app.body;
+}
+
+function closePanel(){
+  activeNode=null;
+  document.getElementById('panel').classList.remove('open');
+  document.querySelectorAll('.pcol').forEach(c=>c.classList.remove('vis'));
+  document.getElementById('hint').style.opacity='1';
+}
+
+resize(); window.addEventListener('resize',resize); frame();
+</script>
 </section>
 
 <footer>
@@ -680,47 +1114,44 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
     <div class="footer-tag">Rooted in Vietnam. Refined for the world.</div>
   </div>
   <div class="footer-right">
-    <a href="mailto:TKG.naula@gmail.com">TKG.naula@gmail.com</a><br>
+    <a href="/cdn-cgi/l/email-protection#e7b3aca0c98986928b86a7808a868e8bc984888a"><span class="__cf_email__" data-cfemail="01554a462f6f60746d6041666c60686d2f626e6c">[email&#160;protected]</span></a><br>
     <span style="font-size:9px;margin-top:4px;display:block;">© 2026 Thiện Kiến. All rights reserved.</span>
   </div>
 </footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+// Video tear — pixel edge right side of video
 (function(){
-  // Star field
-  const sf=document.getElementById('sf-bg');
-  const sfc=sf.getContext('2d');
-  function drawBgStars(){sf.width=sf.offsetWidth||1200;sf.height=sf.offsetHeight||700;sfc.clearRect(0,0,sf.width,sf.height);for(let i=0;i<140;i++){const x=Math.random()*sf.width,y=Math.random()*sf.height,r=Math.random()*0.9+0.2,a=Math.random()*0.2+0.04;sfc.beginPath();sfc.arc(x,y,r,0,Math.PI*2);sfc.fillStyle=`rgba(251,251,242,${a})`;sfc.fill();}}
-  drawBgStars();
-  const SKUS=[{id:'lth',name:'Lư Trung Hoả',color:'#E8A020',stars:[{id:'ginger',label:'Ginger · Gừng',hg:'Bính Dần',element:'Hoả Dương',desc:'Fierce, direct. The Yang fire of the Tiger year — bold energy that rises without hesitation. Ginger carries this: sharp, immediate, unapologetic warmth.',vn:'Hoả dương mạnh mẽ. Gừng mang theo năng lượng Bính Dần — trực diện, không do dự. Ngụm đầu tiên đã là câu trả lời.',x:0.18,y:0.30},{id:'lemongrass',label:'Lemongrass · Sả',hg:'Đinh Mão',element:'Hoả Âm',desc:'Refined, luminous. The Yin fire of the Rabbit year — light that illuminates without burning. Lemongrass lifts and brightens, the elegant counterpoint to ginger\'s directness.',vn:'Hoả âm tinh tế. Sả mang theo ánh sáng Đinh Mão — soi rọi mà không đốt cháy. Hơi ấm đến sau, nhưng ở lại lâu hơn.',x:0.38,y:0.20}],cx:0.28,cy:0.62},{id:'pdh',name:'Phú Đăng Hoả',color:'#8B5FC0',stars:[{id:'perilla',label:'Perilla · Tía tô',hg:'Giáp Thìn',element:'Mộc Dương',desc:'Yang wood within the Dragon. Deep, structural — the kind of presence that anchors. Perilla carries an earthy complexity, green and dark at once, settled like a dragon resting in water.',vn:'Mộc dương trong long. Tía tô mang chiều sâu của Giáp Thìn — trầm lặng, vững chắc như rồng nằm trong nước.',x:0.62,y:0.26},{id:'clove',label:'Clove · Đinh hương',hg:'Ất Tỵ',element:'Mộc Âm',desc:'Yin wood within the Snake. Slow, penetrating warmth — the kind that arrives long after the first sip. Clove is ancient and deliberate, like a snake moving with complete intention.',vn:'Mộc âm trong xà. Đinh hương đến chậm nhưng sâu — như con rắn di chuyển với chủ đích hoàn toàn. Ngụm cuối còn ấm.',x:0.82,y:0.36}],cx:0.72,cy:0.62}];
-  const cv=document.getElementById('const-cv'),ctx=cv.getContext('2d'),cwrap=document.getElementById('const-wrap');
-  let W,H,hovStar=null,hovSKU=null,tick=0;const SR=6;
-  function resize(){W=cwrap.clientWidth;H=cwrap.clientHeight;cv.width=W;cv.height=H;}
-  function spx(s){return{x:s.x*W,y:s.y*H};}
-  function cpx(s){return{x:s.cx*W,y:s.cy*H};}
-  function drawStar(cx,cy,oR,iR,color,alpha){ctx.save();ctx.globalAlpha=alpha||1;ctx.beginPath();for(let i=0;i<10;i++){const r=i%2===0?oR:iR,a=Math.PI/5*i-Math.PI/2;i===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));}ctx.closePath();ctx.fillStyle=color;ctx.fill();ctx.restore();}
-  function frame(){ctx.clearRect(0,0,W,H);tick+=0.008;SKUS.forEach(sku=>{const isActive=hovSKU===sku.id,c=cpx(sku),s0=spx(sku.stars[0]),s1=spx(sku.stars[1]);ctx.beginPath();ctx.moveTo(s0.x,s0.y);ctx.lineTo(s1.x,s1.y);ctx.strokeStyle=isActive?sku.color+'55':'rgba(251,251,242,0.04)';ctx.lineWidth=0.5;ctx.setLineDash([2,8]);ctx.stroke();ctx.setLineDash([]);[s0,s1].forEach(p=>{ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(c.x,c.y);ctx.strokeStyle=isActive?sku.color+'88':'rgba(251,251,242,0.06)';ctx.lineWidth=isActive?0.8:0.5;ctx.setLineDash(isActive?[]:[3,6]);ctx.stroke();ctx.setLineDash([]);});ctx.beginPath();ctx.arc(c.x,c.y,isActive?5:3,0,Math.PI*2);ctx.fillStyle=isActive?sku.color:sku.color+'55';ctx.fill();if(isActive){ctx.beginPath();ctx.arc(c.x,c.y,12,0,Math.PI*2);ctx.strokeStyle=sku.color+'33';ctx.lineWidth=1;ctx.stroke();}ctx.font="500 9px 'Be Vietnam Pro',sans-serif";ctx.fillStyle=isActive?sku.color:'rgba(251,251,242,0.2)';ctx.textAlign='center';ctx.fillText(sku.name.toUpperCase(),c.x,c.y+20);sku.stars.forEach(star=>{const p=spx(star),isHov=hovStar===star.id,pulse=isHov?1:(Math.sin(tick*1.2+star.x*10)*0.12+0.88);ctx.beginPath();ctx.arc(p.x,p.y,isHov?20:13,0,Math.PI*2);ctx.fillStyle=isHov?sku.color+'22':'rgba(251,251,242,0.03)';ctx.fill();drawStar(p.x,p.y,isHov?SR+3:SR,isHov?SR*0.42:SR*0.4,isHov?sku.color:(isActive?sku.color+'cc':'rgba(251,251,242,0.65)'),pulse);ctx.font="300 10px 'Be Vietnam Pro',sans-serif";ctx.fillStyle=isHov?'#FBFBF2':'rgba(251,251,242,0.3)';ctx.textAlign='center';ctx.fillText(star.hg,p.x,p.y-20);ctx.font="400 9px 'Be Vietnam Pro',sans-serif";ctx.fillStyle=isHov?sku.color:'rgba(251,251,242,0.18)';ctx.fillText(star.element,p.x,p.y-10);});});requestAnimationFrame(frame);}
-  function getHit(mx,my){let found=null,foundSKU=null;SKUS.forEach(sku=>sku.stars.forEach(star=>{const p=spx(star);if(Math.hypot(mx-p.x,my-p.y)<24){found=star;foundSKU=sku;}}));return{star:found,sku:foundSKU};}
-  cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect(),mx=(e.clientX-r.left)*(W/r.width),my=(e.clientY-r.top)*(H/r.height),{star,sku}=getHit(mx,my);if(star&&star.id!==hovStar){hovStar=star.id;hovSKU=sku.id;showPanel(star,sku);document.getElementById('phil-hint').style.opacity='0';}else if(!star&&hovStar){hovStar=null;hovSKU=null;hidePanel();document.getElementById('phil-hint').style.opacity='1';}cv.style.cursor=star?'pointer':'default';});
-  cv.addEventListener('touchstart',e=>{e.preventDefault();const t0=e.touches[0],r=cv.getBoundingClientRect(),mx=(t0.clientX-r.left)*(W/r.width),my=(t0.clientY-r.top)*(H/r.height),{star,sku}=getHit(mx,my);if(star){hovStar=star.id;hovSKU=sku.id;showPanel(star,sku);}},{passive:false});
-  function showPanel(star,sku){document.getElementById('phil-col-l').innerHTML=`<span style="font-size:9px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:${sku.color};display:block;margin-bottom:10px;">${sku.name}</span><span style="font-family:'League Spartan',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:#FBFBF2;display:block;margin-bottom:4px;">${star.label}</span><span style="font-size:11px;font-weight:300;font-style:italic;color:rgba(251,251,242,0.45);display:block;margin-bottom:10px;">${star.hg} · ${star.element}</span><p style="font-size:11px;font-weight:300;color:rgba(251,251,242,0.7);line-height:1.7;">${star.desc}</p>`;document.getElementById('phil-col-r').innerHTML=`<span style="font-size:9px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(251,251,242,0.25);display:block;margin-bottom:10px;">VN</span><span style="font-family:'League Spartan',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:rgba(251,251,242,0.35);display:block;margin-bottom:4px;">&nbsp;</span><span style="font-size:11px;color:rgba(251,251,242,0.0);display:block;margin-bottom:10px;">&nbsp;</span><p style="font-size:11px;font-weight:300;font-style:italic;color:rgba(251,251,242,0.35);line-height:1.7;">${star.vn}</p>`;document.getElementById('phil-panel').style.opacity='1';}
-  function hidePanel(){document.getElementById('phil-panel').style.opacity='0';}
-  resize();window.addEventListener('resize',()=>{resize();drawBgStars();});frame();
+  const tear=document.getElementById('video-tear');
+  if(!tear)return;
+  const pat=[1,0,1,1,0,1,0,1,1,0,0,1,0,1,0,1,1,0,1,0,0,1,1,0,1,0,1,0,1,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,1];
+  for(let i=0;i<48;i++){
+    const c=document.createElement('div');
+    c.style.cssText='flex:1;background:'+(pat[i%pat.length]?'var(--wood)':'transparent')+';';
+    tear.appendChild(c);
+  }
 })();
 
-// Checker rows
-function buildCheckerRow(id,offset,c1,c2){const el=document.getElementById(id);if(!el)return;const n=Math.ceil(window.innerWidth/14)+4;for(let i=0;i<n;i++){const d=document.createElement('div');d.style.cssText=`width:14px;height:14px;flex-shrink:0;display:block;background:${(i+offset)%2===0?c1:c2};`;el.appendChild(d);}}
-buildCheckerRow('hero-check-row1',0,'#8B5E3C','transparent');
-buildCheckerRow('hero-check-row2',1,'#8B5E3C','transparent');
+// Hero pixel strip
+(function(){
+  const strip=document.getElementById('hero-px-strip');
+  if(!strip)return;
+  const cols=['var(--amber)','transparent','rgba(251,251,242,0.15)','transparent','var(--amber)','transparent','#7AC45A','transparent','rgba(251,251,242,0.15)','transparent','var(--amber)','transparent','transparent','rgba(251,251,242,0.15)','transparent','var(--amber)'];
+  for(let i=0;i<28;i++){
+    const px=document.createElement('div');
+    px.className='hpx';
+    px.style.background=cols[i%cols.length];
+    strip.appendChild(px);
+  }
+})();
 
 // Jagged edge
-function buildJagged(id,color,bg,cols,rows){const el=document.getElementById(id);if(!el)return;el.style.cssText='position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;overflow:hidden;pointer-events:none;';const pat=[cols,cols-1,cols-2,cols-1,cols,cols-1,cols-2,cols-3,cols-2,cols-1,cols,cols-1];for(let r=0;r<rows;r++){const row=document.createElement('div');row.style.cssText='display:flex;gap:0;height:14px;';const filled=pat[r%pat.length];for(let c=0;c<cols;c++){const cell=document.createElement('div');cell.style.cssText=`width:14px;height:14px;flex-shrink:0;background:${c<filled?color:bg};`;row.appendChild(cell);}el.appendChild(row);}}
+function buildJagged(id,color,bg,cols,rows){const el=document.getElementById(id);if(!el)return;el.style.cssText='position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;gap:0;overflow:hidden;pointer-events:none;';const pat=[cols,cols-1,cols-2,cols-1,cols,cols-1,cols-1,cols-2,cols-3,cols-2,cols-1,cols,cols-1];for(let r=0;r<rows;r++){const row=document.createElement('div');row.style.cssText='display:flex;gap:0;height:14px;';const filled=pat[r%pat.length];for(let c=0;c<cols;c++){const cell=document.createElement('div');cell.style.cssText=`width:14px;height:14px;flex-shrink:0;background:${c<filled?color:bg};`;row.appendChild(cell);}el.appendChild(row);}}
 buildJagged('jagged-fire-bottom','#D45D2A','var(--hoa-yellow)',8,4);
 
-// Scroll fade-in
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.05});
 document.querySelectorAll('.fade-in').forEach(el=>{el.classList.add('animate');obs.observe(el);});
 
-// Nav shadow
 window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>50?'0 1px 20px rgba(26,26,26,0.08)':'none';});
 </script>
 </body>
