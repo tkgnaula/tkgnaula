@@ -42,7 +42,7 @@
 :root{--ink:#1A1A1A;--paper:#FBFBF2;--cyan:#4CC9E8;--amber:#FFB703;--fire:#D45D2A;--perilla:#6B2B5C;--wood:#8B5E3C;--moss:#527121;--hoa-yellow:#E8A020;--hoa-sage:#7A9E5A;--border:#DDD5CA;--muted:#7A7268;--cream:#F0EBE3;--warm:#E8E0D5;}
 html{scroll-behavior:smooth;}
 body{font-family:'Be Vietnam Pro',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);font-size:16px;line-height:1.7;overflow-x:hidden;}
-.eyebrow{font-family:'Be Vietnam Pro',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.22em;color:var(--cyan);text-transform:uppercase;margin-bottom:14px;display:block;}
+.eyebrow{font-family:'Be Vietnam Pro',sans-serif;font-size:20px;font-weight:500;letter-spacing:0.12em;color:var(--cyan);text-transform:uppercase;margin-bottom:14px;display:block;}
 .h2{font-family:'League Spartan',sans-serif;font-size:clamp(32px,5vw,54px);font-weight:700;line-height:0.95;text-transform:uppercase;color:var(--ink);margin-bottom:3px;}
 .h2-lt{font-family:'League Spartan',sans-serif;font-size:clamp(32px,5vw,54px);font-weight:300;line-height:0.95;text-transform:uppercase;color:var(--wood);margin-bottom:28px;}
 .body-text{font-size:14px;color:var(--ink);line-height:1.85;font-weight:300;}
@@ -122,7 +122,7 @@ section{padding:88px 48px;}
 .origin-dot{width:6px;height:6px;background:#7AC45A;flex-shrink:0;border-radius:0;}
 .origin-text{font-size:9px;color:#7AC45A;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;}
 .prepare{background:var(--ink);padding:88px 48px;}
-.prepare-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.22em;color:var(--cyan);text-transform:uppercase;margin-bottom:14px;display:block;}
+.prepare-eyebrow{font-size:20px;font-weight:500;letter-spacing:0.12em;color:var(--cyan);text-transform:uppercase;margin-bottom:14px;display:block;}
 .prepare-h2{font-family:'League Spartan',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;line-height:0.95;text-transform:uppercase;color:var(--paper);margin-bottom:3px;}
 .prepare-h2b{font-family:'League Spartan',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:300;line-height:0.95;text-transform:uppercase;color:var(--amber);margin-bottom:48px;}
 .prepare-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(251,251,242,0.06);}
@@ -244,7 +244,7 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
 .footer-right a{color:var(--amber);text-decoration:none;}
 .faq-section{background:var(--paper);}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px;}
-.faq-group-label{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;padding-bottom:10px;border-bottom:0.5px solid var(--border);}
+.faq-group-label{font-family:'League Spartan',sans-serif;font-size:20px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;padding-bottom:10px;border-bottom:0.5px solid var(--border);}
 .faq-item{margin-bottom:20px;padding-bottom:20px;border-bottom:0.5px solid var(--border);}
 .faq-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
 .faq-q{font-family:'League Spartan',sans-serif;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;cursor:pointer;line-height:1.3;}
@@ -304,13 +304,11 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
     <li><a href="#naula">The Naula method</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#philosophy">Philosophy</a></li>
-    <li><a href="#where">Find us</a></li>
-    <li><a href="#order">Order</a></li>
   </ul>
   <div class="nav-right">
     <a href="/index.html?lang=en" class="nav-lang active">EN</a>
     <a href="/index-vn.html" class="nav-lang">VI</a>
-    <a href="#order" class="nav-cta">Order now</a>
+    <button onclick="openOrderModal()" class="nav-cta" style="border:none;cursor:pointer;">Order now</button>
   </div>
 </nav>
 
@@ -377,6 +375,27 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
   <div class="proof-item">Yeast · Mold · Staph: Not detected</div>
   <div class="proof-item"><span class="t-moss">Single origin · Long An, Vietnam</span></div>
   <div class="proof-item"><span class="t-amber">Report Oct 2025 · AR-25-VD-169691/169692</span></div>
+</div>
+
+<section class="why fade-in">
+  <div class="section-inner">
+    <span class="eyebrow" style="color:var(--amber);">Why TKG Naula</span>
+    <div class="why-h2">Honest botanicals.</div>
+    <div class="why-h2b">Carefully crafted.</div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-px-bar"><div class="a"></div><div></div><div class="c"></div><div></div><div class="a"></div><div></div></div><span class="wc-num">01</span><span class="wc-title">Real ingredients</span><p class="wc-body">Ginger. Lemongrass. Perilla. Clove. Every ingredient named. Nothing hidden in a blend. You know exactly what you are drinking.</p><span class="wc-geo">Origin · Long An, Vietnam</span></div>
+      <div class="why-card"><div class="why-px-bar"><div></div><div class="a"></div><div></div><div class="c"></div><div></div><div class="a"></div></div><span class="wc-num">02</span><span class="wc-title">Clean formulation</span><p class="wc-body">No preservatives. No artificial colours. No refined sugar. What's on the label is in the sachet — nothing added for convenience.</p></div>
+      <div class="why-card"><div class="why-px-bar"><div class="c"></div><div></div><div class="m"></div><div></div><div class="c"></div><div></div></div><span class="wc-num">03</span><span class="wc-title">Evidence, not claims</span><p class="wc-body">Designed to support daily warmth and balance. Not a cure. Not a miracle. A product that respects both its origin and the person drinking it.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="slogan-break">
+  <div class="px-divider-row" style="position:absolute;top:0;left:0;right:0;">
+    <div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div>
+  </div>
+  <div class="slogan-text">Well. <span class="bold">Wellness.</span> Naula.</div>
+  <div class="slogan-px"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>
 
 <section class="intro fade-in">
@@ -518,90 +537,8 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
   </div>
 </section>
 
-<section class="why fade-in">
-  <div class="section-inner">
-    <span class="eyebrow" style="color:var(--amber);">Why TKG Naula</span>
-    <div class="why-h2">Honest botanicals.</div>
-    <div class="why-h2b">Carefully crafted.</div>
-    <div class="why-grid">
-      <div class="why-card"><div class="why-px-bar"><div class="a"></div><div></div><div class="c"></div><div></div><div class="a"></div><div></div></div><span class="wc-num">01</span><span class="wc-title">Real ingredients</span><p class="wc-body">Ginger. Lemongrass. Perilla. Clove. Every ingredient named. Nothing hidden in a blend. You know exactly what you are drinking.</p><span class="wc-geo">Origin · Long An, Vietnam</span></div>
-      <div class="why-card"><div class="why-px-bar"><div></div><div class="a"></div><div></div><div class="c"></div><div></div><div class="a"></div></div><span class="wc-num">02</span><span class="wc-title">Clean formulation</span><p class="wc-body">No preservatives. No artificial colours. No refined sugar. What's on the label is in the sachet — nothing added for convenience.</p></div>
-      <div class="why-card"><div class="why-px-bar"><div class="c"></div><div></div><div class="m"></div><div></div><div class="c"></div><div></div></div><span class="wc-num">03</span><span class="wc-title">Evidence, not claims</span><p class="wc-body">Designed to support daily warmth and balance. Not a cure. Not a miracle. A product that respects both its origin and the person drinking it.</p></div>
-    </div>
-  </div>
-</section>
 
-<div class="slogan-break">
-  <div class="px-divider-row" style="position:absolute;top:0;left:0;right:0;">
-    <div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-empty" style="background:var(--hoa-yellow);"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div><div class="px px-ink"></div><div class="px px-amber" style="opacity:1;"></div>
-  </div>
-  <div class="slogan-text">Well. <span class="bold">Wellness.</span> Naula.</div>
-  <div class="slogan-px"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-</div>
 
-<section class="where-section fade-in" id="where">
-  <div class="section-inner" style="position:relative;">
-    <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
-      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
-      <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
-      <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
-      <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
-    </div>
-    <span class="eyebrow">Where to experience TKG</span>
-    <div class="h2">Starting in Vietnam.</div>
-    <div class="h2-lt" style="max-width:calc(100% - 80px);">Expanding from there.</div>
-    <p class="body-text" style="max-width:560px;margin-bottom:48px;">TKG is rolling out at selected venues in Vietnam — restaurants, cafés, hotels, and wellness spaces that share our standard. Export markets are on the horizon. One step at a time.</p>
-    <div class="where-market-label"><div class="where-market-dot active"></div><span>Vietnam · Active rollout</span></div>
-    <div class="where-grid" style="margin-bottom:32px;">
-      <div class="where-card"><div class="where-card-inner"><div class="where-soon-px"><div class="ws-row"><span></span><span class="a"></span><span></span><span class="a"></span><span></span><span class="a"></span></div><div class="ws-row"><span class="a"></span><span></span><span class="a"></span><span></span><span class="a"></span><span></span></div><div class="ws-row"><span></span><span class="a"></span><span></span><span class="a"></span><span></span><span class="a"></span></div></div><span class="where-tag">Ho Chi Minh City</span><div class="where-name">—</div><div class="where-type">Restaurant · Café</div><div class="where-status soon">Announcing soon</div></div></div>
-      <div class="where-card"><div class="where-card-inner"><div class="where-soon-px"><div class="ws-row"><span></span><span class="c"></span><span></span><span class="c"></span><span></span><span class="c"></span></div><div class="ws-row"><span class="c"></span><span></span><span class="c"></span><span></span><span class="c"></span><span></span></div><div class="ws-row"><span></span><span class="c"></span><span></span><span class="c"></span><span></span><span class="c"></span></div></div><span class="where-tag">Ho Chi Minh City</span><div class="where-name">—</div><div class="where-type">Hotel · Spa</div><div class="where-status soon">Announcing soon</div></div></div>
-      <div class="where-card"><div class="where-card-inner"><div class="where-soon-px"><div class="ws-row"><span></span><span class="m"></span><span></span><span class="m"></span><span></span><span class="m"></span></div><div class="ws-row"><span class="m"></span><span></span><span class="m"></span><span></span><span class="m"></span><span></span></div><div class="ws-row"><span></span><span class="m"></span><span></span><span class="m"></span><span></span><span class="m"></span></div></div><span class="where-tag">Ho Chi Minh City</span><div class="where-name">—</div><div class="where-type">Wellness · Organic</div><div class="where-status soon">Announcing soon</div></div></div>
-    </div>
-    <div class="where-market-label where-market-dim"><div class="where-market-dot"></div><span>Export · Coming soon</span></div>
-    <div class="where-export-card"><div class="where-export-inner"><p class="where-export-text">TKG is building toward international distribution — thoughtfully, without rush. If you are interested in carrying TKG outside Vietnam, we would like to hear from you.</p><a href="/cdn-cgi/l/email-protection#05514e422b6b64706964456268646c692b666a68" class="where-partner-link" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Get in touch → <span class="__cf_email__" data-cfemail="74203f335a1a15011815341319151d185a171b19">[email&#160;protected]</span></a></div></div>
-    <div class="where-partner-strip" style="margin-top:8px;"><div class="proof-sq" style="background:var(--amber);flex-shrink:0;"></div><span class="where-partner-text">Interested in carrying TKG at your venue? <a href="/cdn-cgi/l/email-protection#faaeb1bdd4949b8f969bba9d979b9396d4999597" class="where-partner-link"><span class="__cf_email__" data-cfemail="0f5b444821616e7a636e4f68626e6663216c6062">[email&#160;protected]</span> →</a></span></div>
-  </div>
-</section>
-
-<section class="order fade-in" id="order">
-  <div class="section-inner">
-    <div class="order-grid" style="position:relative;">
-      <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
-        <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
-        <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
-        <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
-        <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
-      </div>
-      <div>
-        <span class="eyebrow">Order</span>
-        <div class="order-h2">Ready to try TKG Naula?</div>
-        <div class="order-h2b">Order via email.</div>
-        <p class="order-body">We are currently accepting orders via email. Each box contains 32 sachets — 16 botanical powder and 16 fresh honey, sealed separately.</p>
-        <div class="spec-rows">
-          <div class="spec-row"><span class="spec-k">Price per box</span><span class="spec-v">$34.99</span></div>
-          <div class="spec-row"><span class="spec-k">Free shipping</span><span class="spec-v">Orders over $70</span></div>
-          <div class="spec-row"><span class="spec-k">Flat rate shipping</span><span class="spec-v">$9 (under $70)</span></div>
-          <div class="spec-row"><span class="spec-k">Satisfaction guarantee</span><span class="spec-v">60 days</span></div>
-        </div>
-        <a class="btn-order" href="/cdn-cgi/l/email-protection#9ecad5d9b0f0ffebf2ffdef9f3fff7f2b0fdf1f3">Order → <span class="__cf_email__" data-cfemail="481c030f6626293d2429082f25292124662b2725">[email&#160;protected]</span></a>
-        <p class="order-note">For wholesale, distribution, or partnership inquiries — reach us at the same address.</p>
-      </div>
-      <div class="order-box">
-        <div class="order-box-px"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-        <span class="box-label">What's in the box</span>
-        <div class="box-title">One box · Two SKUs available</div>
-        <div class="box-row"><span class="box-k">Total sachets</span><span class="box-v">32</span></div>
-        <div class="box-row"><span class="box-k">Botanical powder sachets</span><span class="box-v">16</span></div>
-        <div class="box-row"><span class="box-k">Fresh honey sachets</span><span class="box-v">16</span></div>
-        <div class="box-row"><span class="box-k">Servings per box</span><span class="box-v">16</span></div>
-        <div class="box-row"><span class="box-k">Cost per serving</span><span class="box-v tech">~$2.18</span></div>
-        <div class="box-row"><span class="box-k">Caffeine</span><span class="box-v tech">None</span></div>
-        <div class="box-row"><span class="box-k">Origin</span><span class="box-v geo">Long An, Vietnam</span></div>
-        <div class="box-price-row"><span class="box-price-label">Per box</span><span class="box-price">$34.99</span></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="faq-section fade-in" id="faq">
   <div class="section-inner" style="position:relative;">
@@ -674,7 +611,7 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
 /* ── PHILOSOPHY INTERACTIVE ─────────────────────────────────────── */
 .wrap{max-width:1100px;margin:0 auto;padding:0 48px;}
 .header{padding:64px 0 0;}
-.eyebrow{font-size:10px;font-weight:500;letter-spacing:0.22em;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:18px;}
+.eyebrow{font-size:20px;font-weight:500;letter-spacing:0.12em;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:18px;}
 .h1{font-family:'League Spartan',sans-serif;font-size:clamp(34px,5vw,58px);font-weight:700;line-height:0.9;text-transform:uppercase;color:#FBFBF2;margin-bottom:4px;}
 .h1b{font-family:'League Spartan',sans-serif;font-size:clamp(34px,5vw,58px);font-weight:300;line-height:0.9;text-transform:uppercase;color:rgba(251,251,242,0.22);margin-bottom:20px;}
 .sub{font-size:12px;color:var(--muted);line-height:1.75;max-width:620px;}
@@ -1153,6 +1090,95 @@ const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersec
 document.querySelectorAll('.fade-in').forEach(el=>{el.classList.add('animate');obs.observe(el);});
 
 window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>50?'0 1px 20px rgba(26,26,26,0.08)':'none';});
+</script>
+
+<!-- ORDER MODAL -->
+<style>
+.order-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(26,26,26,0.85);
+  align-items:center;justify-content:center;
+  padding:24px;
+}
+.order-modal-overlay.open{display:flex;}
+.order-modal{
+  background:var(--paper);
+  max-width:780px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  position:relative;
+  animation:modalIn 0.35s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.order-modal-close{
+  position:absolute;top:16px;right:16px;
+  background:none;border:0.5px solid var(--border);
+  color:var(--muted);font-size:9px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:7px 14px;cursor:pointer;z-index:2;transition:all 0.2s;
+}
+.order-modal-close:hover{color:var(--ink);border-color:var(--ink);}
+.order-modal-inner{padding:52px 48px 48px;}
+@media(max-width:600px){.order-modal-inner{padding:48px 24px 32px;}}
+</style>
+
+<div class="order-modal-overlay" id="order-modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="order-modal" id="order-modal">
+    <button class="order-modal-close" onclick="closeOrderModal()">Close ✕</button>
+    <div class="order-modal-inner">
+      <div class="order-grid" style="position:relative;">
+        <div class="px-cluster tr" style="grid-template-columns:repeat(4,14px);grid-template-rows:repeat(4,14px);">
+          <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div>
+          <div class="px px-empty"></div><div class="px px-cyan"></div><div class="px px-empty"></div><div class="px px-amber"></div>
+          <div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div>
+          <div class="px px-empty"></div><div class="px px-amber"></div><div class="px px-empty"></div><div class="px px-empty"></div>
+        </div>
+        <div>
+          <span class="eyebrow">Order</span>
+          <div class="order-h2">Ready to try TKG Naula?</div>
+          <div class="order-h2b">Order via email.</div>
+          <p class="order-body">We are currently accepting orders via email. Each box contains 32 sachets — 16 botanical powder and 16 fresh honey, sealed separately.</p>
+          <div class="spec-rows">
+            <div class="spec-row"><span class="spec-k">Price per box</span><span class="spec-v">$34.99</span></div>
+            <div class="spec-row"><span class="spec-k">Free shipping</span><span class="spec-v">Orders over $70</span></div>
+            <div class="spec-row"><span class="spec-k">Flat rate shipping</span><span class="spec-v">$9 (under $70)</span></div>
+            <div class="spec-row"><span class="spec-k">Satisfaction guarantee</span><span class="spec-v">60 days</span></div>
+          </div>
+          <a class="btn-order" href="mailto:TKG.naula@gmail.com">Order → TKG.naula@gmail.com</a>
+          <p class="order-note">For wholesale, distribution, or partnership inquiries — reach us at the same address.</p>
+        </div>
+        <div class="order-box">
+          <div class="order-box-px"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <span class="box-label">What's in the box</span>
+          <div class="box-title">One box · Two SKUs available</div>
+          <div class="box-row"><span class="box-k">Total sachets</span><span class="box-v">32</span></div>
+          <div class="box-row"><span class="box-k">Botanical powder sachets</span><span class="box-v">16</span></div>
+          <div class="box-row"><span class="box-k">Fresh honey sachets</span><span class="box-v">16</span></div>
+          <div class="box-row"><span class="box-k">Servings per box</span><span class="box-v">16</span></div>
+          <div class="box-row"><span class="box-k">Cost per serving</span><span class="box-v tech">~$2.18</span></div>
+          <div class="box-row"><span class="box-k">Caffeine</span><span class="box-v tech">None</span></div>
+          <div class="box-row"><span class="box-k">Origin</span><span class="box-v geo">Long An, Vietnam</span></div>
+          <div class="box-price-row"><span class="box-price-label">Per box</span><span class="box-price">$34.99</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openOrderModal(){
+  document.getElementById('order-modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeOrderModal(){
+  document.getElementById('order-modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function handleOverlayClick(e){
+  if(e.target===document.getElementById('order-modal-overlay')) closeOrderModal();
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeOrderModal();
+});
 </script>
 </body>
 </html>
