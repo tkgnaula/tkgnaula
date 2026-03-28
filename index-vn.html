@@ -5,7 +5,7 @@
   (function(){
     var lang = navigator.language || navigator.userLanguage || '';
     var isVN = lang.toLowerCase().startsWith('vi');
-    var isForced = window.location.search.indexOf('lang=en') > -1;
+    var isForced = window.location.search.indexOf('lang=vn') > -1;
     if(isVN && !isForced) window.location.replace('/index-vn.html');
   })();
 </script>
