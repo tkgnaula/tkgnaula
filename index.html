@@ -59,7 +59,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .hero{display:grid;grid-template-columns:auto 1fr;margin-top:57px;min-height:calc(100vh - 57px);background:var(--wood);}
 .hero-video-col{position:relative;width:clamp(260px,36vw,500px);overflow:hidden;flex-shrink:0;}
 .hero-video-col video{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.hero-video-col .video-fallback-img{display:none;width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;}
 .video-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(139,94,60,0) 65%,rgba(139,94,60,0.9) 100%);z-index:1;pointer-events:none;}
 .video-tear{position:absolute;right:0;top:0;bottom:0;width:22px;display:flex;flex-direction:column;z-index:2;pointer-events:none;}
 .video-proof{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:16px 14px;background:linear-gradient(to top,rgba(26,26,26,0.65),transparent);}
@@ -284,11 +283,8 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
 .fade-in.animate.visible{opacity:1;transform:translateY(0);}
 @media(max-width:900px){nav{padding:14px 24px;}.nav-links{display:none;}section{padding:64px 24px;}.two-col,.order-grid,.returns-grid{grid-template-columns:1fr;gap:40px;}.sku-grid{grid-template-columns:1fr;}.prepare-grid{grid-template-columns:1fr 1fr;}.why-grid{grid-template-columns:1fr;}.steps{grid-template-columns:1fr 1fr;}.naula-header{grid-template-columns:1fr;}.naula-px{display:none;}.where-grid{grid-template-columns:1fr;}.where-export-inner{flex-direction:column;gap:16px;}.faq-grid{grid-template-columns:1fr;}.rd-row{grid-template-columns:1fr;gap:4px;}footer{flex-direction:column;gap:16px;text-align:center;padding:24px;}.footer-right{text-align:center;}.slogan-break{padding:28px 24px;}
 .hero{grid-template-columns:1fr;grid-template-rows:auto auto;min-height:auto;}
-.hero-video-col{width:100%;height:70vw;max-height:460px;min-height:260px;}
-.hero-video-col video{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.hero-video-col .video-fallback-img{display:none;}
-.hero-video-col.video-failed video{display:none;}
-.hero-video-col.video-failed .video-fallback-img{display:block;}
+.hero-video-col{width:100%;height:65vw;max-height:420px;}
+.hero-video-col video{object-position:center top;}
 .video-overlay{background:linear-gradient(to bottom,rgba(139,94,60,0) 55%,rgba(139,94,60,0.9) 100%);}
 .video-tear{display:none;}
 .hero-text-col{padding:40px 24px 44px;}
@@ -319,18 +315,12 @@ footer{padding:32px 48px;border-top:0.5px solid var(--border);display:flex;justi
 <section class="hero">
 
   <!-- LEFT: Portrait video -->
-  <div class="hero-video-col" id="hero-video-col">
+  <div class="hero-video-col">
     <video
-      autoplay muted loop playsinline preload="auto"
+      autoplay muted loop playsinline
       poster="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg"
-      src="https://github.com/tkgnaula/tkgnaula/releases/download/v1.0/1119.2.mp4"
-      id="hero-video">
+      src="https://github.com/tkgnaula/tkgnaula/releases/download/v1.0/1119.2.mp4">
     </video>
-    <img
-      class="video-fallback-img"
-      src="https://raw.githubusercontent.com/tkgnaula/tkgnaula/main/Untitled_Artwork%2018.jpg"
-      alt="TKG Naula — Vietnamese Botanical Wellness"
-    >
     <div class="video-overlay"></div>
     <div class="video-tear" id="video-tear"></div>
     <div class="video-proof">
@@ -1100,33 +1090,6 @@ const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersec
 document.querySelectorAll('.fade-in').forEach(el=>{el.classList.add('animate');obs.observe(el);});
 
 window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.scrollY>50?'0 1px 20px rgba(26,26,26,0.08)':'none';});
-
-// Mobile video fallback
-(function(){
-  var vid = document.getElementById('hero-video');
-  var col = document.getElementById('hero-video-col');
-  if(!vid || !col) return;
-
-  // Nếu video lỗi → show fallback image
-  vid.addEventListener('error', function(){
-    col.classList.add('video-failed');
-  });
-
-  // Thử play (cần thiết trên một số Android browsers)
-  var playPromise = vid.play();
-  if(playPromise !== undefined){
-    playPromise.catch(function(){
-      // Autoplay bị chặn — video vẫn hiển thị poster, không cần fallback
-    });
-  }
-
-  // Nếu sau 4 giây video vẫn chưa có dữ liệu → show fallback
-  setTimeout(function(){
-    if(vid.readyState === 0){
-      col.classList.add('video-failed');
-    }
-  }, 4000);
-})();
 </script>
 
 <!-- ORDER MODAL -->
@@ -1180,7 +1143,7 @@ window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxSha
             <div class="spec-row"><span class="spec-k">Flat rate shipping</span><span class="spec-v">$9 (under $70)</span></div>
             <div class="spec-row"><span class="spec-k">Satisfaction guarantee</span><span class="spec-v">60 days</span></div>
           </div>
-          <a class="btn-order" href="/cdn-cgi/l/email-protection#feaab5b9d0909f8b929fbe99939f9792d09d9193">Order → <span class="__cf_email__" data-cfemail="8cd8c7cba2e2edf9e0edccebe1ede5e0a2efe3e1">[email&#160;protected]</span></a>
+          <a class="btn-order" href="mailto:TKG.naula@gmail.com">Order → TKG.naula@gmail.com</a>
           <p class="order-note">For wholesale, distribution, or partnership inquiries — reach us at the same address.</p>
         </div>
         <div class="order-box">
@@ -1201,11 +1164,21 @@ window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxSha
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function openOrderModal(){
   document.getElementById('order-modal-overlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
 function closeOrderModal(){
   document.getElementById('order-modal-overlay').classList.remove('open');
-  document.body.style.overflow='
+  document.body.style.overflow='';
+}
+function handleOverlayClick(e){
+  if(e.target===document.getElementById('order-modal-overlay')) closeOrderModal();
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeOrderModal();
+});
+</script>
+</body>
+</html>
