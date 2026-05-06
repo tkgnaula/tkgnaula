@@ -56,11 +56,9 @@ nav{
   max-width:1280px;margin:0 auto;padding:0 48px;
   height:56px;display:flex;align-items:center;justify-content:space-between;
 }
-.nav-logo{
-  font-family:var(--serif);font-size:17px;font-weight:500;
-  letter-spacing:.24em;text-transform:uppercase;color:var(--cream);
+.nav-logo img{
+  height:32px;width:auto;display:block;
 }
-.nav-logo b{color:var(--fire);font-weight:500}
 .nav-links{display:flex;align-items:center;gap:32px}
 .nav-links a{
   font-size:10.5px;font-weight:500;letter-spacing:.14em;
@@ -374,11 +372,9 @@ footer{
   max-width:1280px;margin:0 auto;padding:56px 80px 48px;
   display:grid;grid-template-columns:auto 1fr auto;gap:64px;align-items:start;
 }
-.foot-brand{
-  font-family:var(--serif);font-size:28px;font-weight:400;
-  letter-spacing:.28em;text-transform:uppercase;color:var(--cream);
+.foot-brand img{
+  height:48px;width:auto;display:block;opacity:.85;
 }
-.foot-brand b{color:var(--fire);font-weight:400}
 .foot-sub{
   font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
   color:var(--cream4);margin-top:6px;
@@ -457,7 +453,9 @@ footer{
 <!-- ═══ NAV ═══════════════════════════════════════ -->
 <nav>
   <div class="nav-w">
-    <div class="nav-logo">T<b>K</b>G</div>
+    <a href="#" class="nav-logo">
+      <img src="TKG-logo.png" alt="TKG">
+    </a>
     <div class="nav-links">
       <a href="#naula">Naula Prepared</a>
       <a href="#products">Products</a>
@@ -597,7 +595,7 @@ footer{
     File: Photo-landingpage/Naula.jpg
     Shows: hands, powder, cup — atmospheric preparation shot
   -->
-  <img src="Process.png" alt="Naula preparation">
+  <img src="Ritual.jpg" alt="Naula preparation">
   <!--
   <div class="ph" style="height:70vh">
     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -760,7 +758,7 @@ footer{
     SLOT — Lifestyle / brand photo
     File: Photo-landingpage/ChatGPT Image May 6, 2026, 02_31_47 PM.png OR Ritual.jpg
   -->
-  <img src="Ritual.jpg" alt="TKG lifestyle" style="width:100%;height:100%;object-fit:cover;">
+  <img src="Process.png" alt="TKG lifestyle" style="width:100%;height:100%;object-fit:cover;">
   <!--
   <div class="ph" style="height:100%;min-height:56vh;">
     <span>Lifestyle photo · wide</span>
@@ -783,7 +781,7 @@ footer{
 <footer id="faq">
   <div class="foot-top">
     <div>
-      <div class="foot-brand">T<b>K</b>G</div>
+      <div class="foot-brand"><img src="TKG-logo.png" alt="TKG"></div>
       <div class="foot-sub">Thien Kien</div>
       <div class="foot-sub2">Product of Vietnam</div>
     </div>
