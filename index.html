@@ -625,8 +625,14 @@ footer{
   .statement-h2{font-size:28px;line-height:1.1}
   
   /* Naula section mobile */
-  .naula-top{aspect-ratio:unset;min-height:56vw}
-  .naula-top-content{grid-template-columns:1fr;gap:16px;padding:24px 20px 32px}
+  .naula-top{aspect-ratio:16/9;overflow:hidden}
+  .naula-top-veil{display:none}
+  .naula-top-content{
+    position:static;
+    display:grid;grid-template-columns:1fr;
+    gap:16px;padding:28px 20px 32px;
+    height:auto;background:var(--bg);
+}
   .naula-left-head{font-size:18px;line-height:1.15}
   .naula-right-body{font-size:11.5px;line-height:1.7}
   .principle{padding:32px 20px 36px}
