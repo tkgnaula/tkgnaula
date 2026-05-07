@@ -60,6 +60,8 @@ nav{
   height:80px;width:auto;display:block;
 }
 .nav-links{display:flex;align-items:center;gap:32px}
+.nav-mobile-toggle{display:none;cursor:pointer;background:transparent;border:none;padding:8px}
+.nav-mobile-toggle span{display:block;width:20px;height:2px;background:var(--cream);margin:4px 0;transition:all .3s}
 .nav-links a{
   font-size:10.5px;font-weight:500;letter-spacing:.14em;
   text-transform:uppercase;color:var(--cream3);transition:color .2s;
@@ -521,21 +523,95 @@ footer{
   .foot-top{grid-template-columns:1fr;gap:36px;padding:48px 40px 40px}
   .foot-bottom{padding:20px 40px 28px}
   .closing{padding:72px 40px}
+
+    /* Modal responsive */
+  .modal-content{margin:20px;max-height:85vh}
+  .modal-header{padding:24px 24px 20px}
+  .modal-title{font-size:24px}
+  .order-form{padding:24px}
 }
-@media(max-width:640px){
-  .nav-w{padding:0 24px}
-  .hero-left{padding:48px 24px}
-  .hero-h1{font-size:38px}
-  .statement-text{padding:36px 24px}
-  .naula-top{padding:48px 24px 40px}
-  .principle{padding:36px 24px 40px}
-  .products-w{padding:48px 24px}
-  .ritual-left{padding:48px 24px}
-  .ritual-heading{font-size:56px}
-  .closing{padding:60px 24px}
-  .foot-top{padding:48px 24px 40px}
-  .foot-nav{flex-direction:column;gap:28px}
-  .foot-bottom{padding:16px 24px 24px;flex-direction:column;gap:8px;text-align:center}
+ /* Navigation mobile */
+  .nav-w{padding:0 20px}
+  .nav-mobile-toggle{display:block}
+  .nav-links{
+    position:fixed;top:56px;left:0;right:0;
+    background:rgba(18,17,11,.98);backdrop-filter:blur(14px);
+    flex-direction:column;gap:0;padding:20px 0;
+    transform:translateY(-100%);transition:transform .3s;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-links.active{transform:translateY(0)}
+  .nav-links a{padding:16px 24px;border-bottom:.5px solid var(--line);text-align:left}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-btn{margin:16px 24px}
+  
+  /* Hero mobile */
+  .hero-left{padding:40px 20px}
+  .hero-h1{font-size:32px;line-height:1.1}
+  .hero-label{font-size:9px;margin-bottom:24px}
+  .hero-sub{font-size:13px;max-width:100%}
+  .hero-actions{flex-direction:column;gap:12px}
+  .btn-primary{width:100%;justify-content:center}
+  
+  /* Statement mobile */
+  .statement{min-height:60vh}
+  .statement-text{padding:32px 20px}
+  .statement-eyebrow{font-size:10px}
+  .statement-h2{font-size:28px;line-height:1.1}
+  
+  /* Naula section mobile */
+  .naula-top{padding:40px 20px 32px;gap:24px}
+  .naula-left-head{font-size:26px;line-height:1.1}
+  .naula-right-body{font-size:13px;line-height:1.7}
+  .principle{padding:32px 20px 36px}
+  .p-head{font-size:20px;line-height:1.2}
+  .p-body{font-size:12px}
+  
+  /* Products mobile */
+  .products-w{padding:40px 20px}
+  .products-header{margin-bottom:32px}
+  .products-h2{font-size:26px;line-height:1.1}
+  .products-sub{font-size:12px;max-width:100%;margin-top:16px}
+  .sku-img{aspect-ratio:1/1}
+  .sku-body{padding:20px 20px 18px}
+  .sku-name{font-size:24px}
+  .sku-note{padding:12px 14px;margin-bottom:18px}
+  .sku-foot{padding-top:12px}
+  
+  /* Ritual mobile */
+  .ritual-left{padding:40px 20px}
+  .ritual-heading{font-size:42px;line-height:1;margin-bottom:32px}
+  .ritual-eyebrow{font-size:8px;margin-bottom:20px}
+  .step{padding:12px 0}
+  .step-title{font-size:12px}
+  .step-hint{font-size:10px}
+  .ritual-right{min-height:50vw}
+  
+  /* Closing mobile */
+  .closing{padding:48px 20px}
+  .closing-serif{font-size:22px;line-height:1.4}
+  
+  /* Footer mobile */
+  .foot-top{padding:40px 20px 32px;gap:28px}
+  .foot-brand img{height:40px}
+  .foot-nav{flex-direction:column;gap:24px}
+  .foot-bottom{padding:16px 20px 20px;flex-direction:column;gap:8px;text-align:center}
+  
+  /* Modal mobile */
+  .modal-content{margin:0;border-radius:0;max-height:100vh}
+  .modal-header{padding:20px 20px 16px}
+  .modal-title{font-size:22px}
+  .modal-subtitle{font-size:13px}
+  .order-form{padding:20px}
+  .form-group{margin-bottom:20px}
+  .form-group label{font-size:11px}
+  .form-group input,
+  .form-group select,
+  .form-group textarea{font-size:13px;padding:10px 14px}
+  .submit-btn{font-size:11px;padding:12px 20px}
+  .modal-footer{padding:20px}
+  .hotline-info{font-size:12px}
+  .product-origin{font-size:10px}
 }
 </style>
 </head>
@@ -554,6 +630,11 @@ footer{
       <a href="#faq">FAQ</a>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
+       <button class="nav-mobile-toggle" onclick="toggleMobileNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
 
@@ -976,6 +1057,19 @@ function closeOrderModal() {
   document.body.style.overflow = 'auto';
 }
 
+  function toggleMobileNav() {
+  const navLinks = document.querySelector('.nav-links');
+  navLinks.classList.toggle('active');
+  
+  // Close mobile nav when clicking on a link
+  const links = navLinks.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+}
+  
 function submitOrderForm(event) {
   event.preventDefault();
   
