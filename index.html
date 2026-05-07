@@ -409,6 +409,97 @@ footer{
 .ph svg{opacity:.22}
 .ph span{font-size:9px;letter-spacing:.1em;text-transform:uppercase}
 
+/* ─── ORDER POPUP MODAL ───────────────────────────── */
+.order-modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.8);z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;visibility:hidden;
+  transition:opacity .3s,visibility .3s;
+}
+.order-modal[style*="flex"]{
+  opacity:1;visibility:visible;
+}
+.modal-overlay{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.6);
+}
+.modal-content{
+  position:relative;background:var(--bg1);
+  border-radius:8px;max-width:480px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  border:1px solid var(--line2);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:32px;height:32px;border:none;background:transparent;
+  color:var(--cream3);font-size:20px;cursor:pointer;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;z-index:1;
+}
+.modal-close:hover{background:var(--line2);color:var(--cream)}
+.modal-header{
+  padding:32px 32px 24px;border-bottom:1px solid var(--line);
+}
+.modal-title{
+  font-family:var(--serif);font-size:28px;font-weight:400;
+  color:var(--cream);margin-bottom:8px;line-height:1.2;
+}
+.modal-subtitle{
+  font-size:14px;font-weight:300;color:var(--cream3);
+  line-height:1.5;
+}
+.order-form{
+  padding:32px;
+}
+.form-group{
+  margin-bottom:24px;
+}
+.form-group label{
+  display:block;font-size:12px;font-weight:500;
+  color:var(--cream2);margin-bottom:8px;letter-spacing:.02em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;padding:12px 16px;background:var(--bg);
+  border:1px solid var(--line2);border-radius:4px;
+  color:var(--cream);font-size:14px;font-family:var(--sans);
+  transition:border-color .2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  outline:none;border-color:var(--fire);
+}
+.form-group textarea{
+  resize:vertical;min-height:80px;
+}
+.submit-btn{
+  width:100%;background:var(--fire);color:#fff;
+  border:none;padding:14px 24px;border-radius:4px;
+  font-size:12px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;
+  transition:opacity .2s;
+}
+.submit-btn:hover{opacity:.85}
+.modal-footer{
+  padding:24px 32px 32px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:12px;
+}
+.hotline-info{
+  font-size:13px;color:var(--cream2);
+}
+.hotline-info strong{
+  color:var(--cream);
+}
+.product-origin{
+  font-size:11px;font-style:italic;
+  color:var(--cream4);text-align:center;
+  font-family:var(--serif);
+}
+  
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr}
@@ -813,5 +904,110 @@ footer{
   </div>
 </footer>
 
+<!-- ═══ ORDER POPUP MODAL ═════════════════════════ -->
+<div id="orderModal" class="order-modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeOrderModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeOrderModal()">×</button>
+    
+    <div class="modal-header">
+      <h3 class="modal-title">Order TKG Products</h3>
+      <p class="modal-subtitle">Place your order for Morning Ember or Still Ember</p>
+    </div>
+    
+    <form class="order-form" onsubmit="submitOrderForm(event)">
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      
+      <div class="form-group">
+        <label for="product">Product *</label>
+        <select id="product" name="product" required>
+          <option value="">Select a product</option>
+          <option value="morning-ember">Morning Ember - Lư Trung Hoả</option>
+          <option value="still-ember">Still Ember - Phú Đăng Hoả</option>
+          <option value="both">Both Products</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="quantity">Quantity *</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Additional Message</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">Send Order Request</button>
+    </form>
+    
+    <div class="modal-footer">
+      <div class="hotline-info">
+        <strong>Hotline:</strong> (+84) 976-847-789
+      </div>
+      <div class="product-origin">
+        Product of Vietnam
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openOrderModal() {
+  document.getElementById('orderModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOrderModal() {
+  document.getElementById('orderModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function submitOrderForm(event) {
+  event.preventDefault();
+  
+  const formData = new FormData(event.target);
+  const orderData = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    phone: formData.get('phone'),
+    product: formData.get('product'),
+    quantity: formData.get('quantity'),
+    message: formData.get('message')
+  };
+  
+  // Here you would typically send the data to your server
+  // For now, we'll create an email link
+  const subject = encodeURIComponent('TKG Order Request - ' + orderData.product);
+  const body = encodeURIComponent(`
+Name: ${orderData.name}
+Email: ${orderData.email}
+Phone: ${orderData.phone}
+Product: ${orderData.product}
+Quantity: ${orderData.quantity}
+Message: ${orderData.message}
+  `.trim());
+  
+  window.location.href = `mailto:orders@tkg-naula.com?subject=${subject}&body=${body}`;
+  
+  // Optional: Show confirmation message
+  alert('Thank you for your order request! We will contact you soon.');
+  closeOrderModal();
+}
+</script>
+  
 </body>
 </html>
