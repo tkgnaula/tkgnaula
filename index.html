@@ -177,8 +177,16 @@ nav{
 .naula-section{
   border-top:.5px solid var(--line);border-bottom:.5px solid var(--line);
 }
-.naula-top{display:flex; flex-direction:column; overflow:visible; aspect-ratio:unset; position:static}
-.naula-top-img{position:static; width:100%; aspect-ratio:16/9; object-fit:cover; height:auto; inset:unset}
+.naula-top{
+  position:relative;overflow:hidden;
+  aspect-ratio:16/9;
+}
+.naula-top-img{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+}
 .naula-top-veil{
   position:absolute;
   inset:0;
