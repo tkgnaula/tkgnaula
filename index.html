@@ -59,14 +59,38 @@ nav{
 .nav-logo img{
   height:80px;width:auto;display:block;
 }
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-mobile-toggle{display:none;cursor:pointer;background:transparent;border:none;padding:8px}
-.nav-mobile-toggle span{display:block;width:20px;height:2px;background:var(--cream);margin:4px 0;transition:all .3s}
-.nav-links a{
+  
+/* Desktop Navigation */
+.nav-desktop{display:flex;align-items:center;gap:32px}
+.nav-desktop a{
+  
   font-size:10.5px;font-weight:500;letter-spacing:.14em;
   text-transform:uppercase;color:var(--cream3);transition:color .2s;
 }
 .nav-links a:hover{color:var(--cream)}
+.nav-desktop a:hover{color:var(--cream)}
+
+/* Mobile Navigation */
+.nav-mobile-btn{display:none;cursor:pointer;background:transparent;border:none;padding:8px}
+.nav-mobile-btn span{display:block;width:20px;height:2px;background:var(--cream);margin:4px 0;transition:all .3s}
+.nav-mobile{
+  position:fixed;top:56px;left:0;right:0;
+  background:rgba(18,17,11,.98);backdrop-filter:blur(14px);
+  flex-direction:column;gap:0;padding:20px 0;
+  transform:translateY(-100%);transition:transform .3s;
+  border-bottom:1px solid var(--line);
+  display:none;
+}
+.nav-mobile.active{transform:translateY(0);display:flex}
+.nav-mobile a{
+  font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream3);transition:color .2s;
+  padding:16px 24px;border-bottom:.5px solid var(--line);text-align:left;
+}
+.nav-mobile a:last-child{border-bottom:none}
+.nav-mobile a:hover{color:var(--cream)}
+
+/* Navigation Button */
 .nav-btn{
   font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
   background:var(--fire);color:#fff;
@@ -532,18 +556,9 @@ footer{
 }
  /* Navigation mobile */
   .nav-w{padding:0 20px}
-  .nav-mobile-toggle{display:block}
-  .nav-links{
-    position:fixed;top:56px;left:0;right:0;
-    background:rgba(18,17,11,.98);backdrop-filter:blur(14px);
-    flex-direction:column;gap:0;padding:20px 0;
-    transform:translateY(-100%);transition:transform .3s;
-    border-bottom:1px solid var(--line);
-    display:flex; /* Override desktop display */
-  }
-  .nav-links.active{transform:translateY(0)}
-  .nav-links a{padding:16px 24px;border-bottom:.5px solid var(--line);text-align:left}
-  .nav-links a:last-child{border-bottom:none}
+  .nav-desktop{display:none}
+  .nav-mobile-btn{display:block}
+  .nav-mobile{display:flex}
   .nav-btn{margin:16px 24px}
   
   /* Hero mobile */
@@ -624,18 +639,28 @@ footer{
     <a href="#" class="nav-logo">
       <img src="TKG-logo.png" alt="TKG">
     </a>
-    <div class="nav-links">
+     <!-- Desktop Navigation -->
+    <div class="nav-desktop">
       <a href="#naula">Naula Prepared</a>
       <a href="#products">Products</a>
       <a href="#ritual">Ritual</a>
-      <a href="#faq">FAQ</a>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
-       <button class="nav-mobile-toggle" onclick="toggleMobileNav()">
+    
+      <!-- Mobile Navigation Button -->
+    <button class="nav-mobile-btn" onclick="toggleMobileNav()">
       <span></span>
       <span></span>
       <span></span>
     </button>
+
+        <!-- Mobile Navigation Menu -->
+    <div class="nav-mobile">
+      <a href="#naula">Naula Prepared</a>
+      <a href="#products">Products</a>
+      <a href="#ritual">Ritual</a>
+      <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
+    </div>
   </div>
 </nav>
 
@@ -1059,14 +1084,14 @@ function closeOrderModal() {
 }
 
   function toggleMobileNav() {
-  const navLinks = document.querySelector('.nav-links');
-  navLinks.classList.toggle('active');
+  const navMobile = document.querySelector('.nav-mobile');
+  navMobile.classList.toggle('active');
   
   // Close mobile nav when clicking on a link
-  const links = navLinks.querySelectorAll('a');
+  const links = navMobile.querySelectorAll('a');
   links.forEach(link => {
     link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
+      navMobile.classList.remove('active');
     });
   });
 }
