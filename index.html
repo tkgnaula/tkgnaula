@@ -540,6 +540,7 @@ footer{
   .ritual{grid-template-columns:1fr}
   .ritual-right{min-height:60vw}
   .ritual-left{padding:60px 40px}
+  /* tablet: keep stacked */  
   .statement-text{padding:48px 40px}
   .foot-top{grid-template-columns:1fr;gap:36px;padding:48px 40px 40px}
   .foot-bottom{padding:20px 40px 28px}
@@ -593,13 +594,40 @@ footer{
   .sku-foot{padding-top:12px}
   
   /* Ritual mobile */
-  .ritual-left{padding:40px 20px}
-  .ritual-heading{font-size:42px;line-height:1;margin-bottom:32px}
-  .ritual-eyebrow{font-size:8px;margin-bottom:20px}
-  .step{padding:12px 0}
-  .step-title{font-size:12px}
-  .step-hint{font-size:10px}
-  .ritual-right{min-height:50vw}
+  .ritual{
+    display:block; 
+    position:relative;
+    min-height:640px;
+  }
+
+  .ritual-right{
+    position:absolute; 
+    inset:0;
+    min-height:unset;
+  }
+
+  .ritual-right-veil{
+    background:linear-gradient(
+    to top,
+      rgba(18,17,11,.92) 0%, 
+      rgba(18,17,11,.70) 45%,
+      rgba(18,17,11,.25) 100% 
+      );
+  }
+
+  .ritual-left{
+    position:relative; 
+    z-index:2; 
+    background:transparent;
+    padding:40px 20px 52px;
+    justify-content:flex-end;
+  }
+
+  .ritual-heading{font-size:52px;line-height:.95;margin-bottom:32px}
+.ritual-eyebrow{font-size:8px;margin-bottom:20px}
+.step{padding:12px 0}
+.step-title{font-size:12px}
+.step-hint{font-size:10px}
   
   /* Closing mobile */
   .closing{padding:48px 20px}
