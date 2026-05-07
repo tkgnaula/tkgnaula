@@ -57,17 +57,14 @@ nav{
   height:56px;display:flex;align-items:center;justify-content:space-between;
 }
 .nav-logo img{
-  height:80px;width:auto;display:block;
+  height:40px;width:auto;display:block;
 }
-  
 /* Desktop Navigation */
 .nav-desktop{display:flex;align-items:center;gap:32px}
 .nav-desktop a{
-  
   font-size:10.5px;font-weight:500;letter-spacing:.14em;
   text-transform:uppercase;color:var(--cream3);transition:color .2s;
 }
-.nav-links a:hover{color:var(--cream)}
 .nav-desktop a:hover{color:var(--cream)}
 
 /* Mobile Navigation */
@@ -152,7 +149,7 @@ nav{
 
 /* ─── S2 · STATEMENT FULL-BLEED ─────────────────── */
 .statement{
-  position:relative;min-height:90vh;
+  position:relative;min-height:75vh;
   display:flex;align-items:flex-end;overflow:hidden;
 }
 .statement-media{position:absolute;inset:0}
@@ -215,7 +212,7 @@ nav{
 }
 .p-num::after{content:'';flex:1;height:.5px;background:var(--line2)}
 .p-tag{
-  font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
   color:var(--cream3);margin-bottom:12px;
 }
 .p-head{
@@ -228,7 +225,7 @@ nav{
 
 /* ─── S4 · MOODY FULL-BLEED PHOTO ───────────────── */
 .photo-break{
-  height:90vh;max-height:680px;overflow:hidden;position:relative;
+  height:70vh;max-height:680px;overflow:hidden;position:relative;
   border-top:.5px solid var(--line);
 }
 .photo-break img,.photo-break .ph{width:100%;height:100%}
@@ -311,7 +308,7 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
   padding-top:16px;border-top:.5px solid var(--line);
 }
-.sku-meta{font-size:11px;color:var(--cream4);letter-spacing:.05em}
+.sku-meta{font-size:9.5px;color:var(--cream4);letter-spacing:.05em}
 .btn-fire{
   font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   background:var(--fire);color:#fff;padding:8px 18px;border-radius:2px;
@@ -525,7 +522,7 @@ footer{
   color:var(--cream4);text-align:center;
   font-family:var(--serif);
 }
-  
+
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr}
@@ -547,14 +544,15 @@ footer{
   .foot-top{grid-template-columns:1fr;gap:36px;padding:48px 40px 40px}
   .foot-bottom{padding:20px 40px 28px}
   .closing{padding:72px 40px}
-
-    /* Modal responsive */
+  
+  /* Modal responsive */
   .modal-content{margin:20px;max-height:85vh}
   .modal-header{padding:24px 24px 20px}
   .modal-title{font-size:24px}
   .order-form{padding:24px}
 }
- /* Navigation mobile */
+@media(max-width:640px){
+  /* Navigation mobile */
   .nav-w{padding:0 20px}
   .nav-desktop{display:none}
   .nav-mobile-btn{display:block}
@@ -639,7 +637,8 @@ footer{
     <a href="#" class="nav-logo">
       <img src="TKG-logo.png" alt="TKG">
     </a>
-     <!-- Desktop Navigation -->
+    
+    <!-- Desktop Navigation -->
     <div class="nav-desktop">
       <a href="#naula">Naula Prepared</a>
       <a href="#products">Products</a>
@@ -647,14 +646,14 @@ footer{
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
     
-      <!-- Mobile Navigation Button -->
+    <!-- Mobile Navigation Button -->
     <button class="nav-mobile-btn" onclick="toggleMobileNav()">
       <span></span>
       <span></span>
       <span></span>
     </button>
-
-        <!-- Mobile Navigation Menu -->
+    
+    <!-- Mobile Navigation Menu -->
     <div class="nav-mobile">
       <a href="#naula">Naula Prepared</a>
       <a href="#products">Products</a>
@@ -687,7 +686,7 @@ footer{
     </p>
 
     <div class="hero-actions">
-       <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
+      <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
         Order Now
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
       </a>
@@ -702,7 +701,7 @@ footer{
       File: Photo-landingpage/Hero Section.jpg
       Shows: dramatic botanical / product photo
     -->
-    <img src="Hero-Section-1.png" alt="TKG — Botanical Blend Powder">
+    <img src="Photo-landingpage/Hero Section.jpg" alt="TKG — Botanical Blend Powder">
     <!--
     <div class="ph">
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -718,12 +717,12 @@ footer{
   <div class="statement-media">
     <!--
       SLOT — Full-bleed editorial photo
-      File: Naula-2.jpg
+      File: Photo-landingpage/ChatGPT Image May 6, 2026, 02_27_02 PM.png
       Shows: botanical ingredients / food-editorial
     -->
-    <img src="Naula-2.png" alt="Not a brand name. A preparation discipline.">
+    <img src="Photo-landingpage/ChatGPT Image May 6, 2026, 02_27_02 PM.png" alt="Not a brand name. A preparation discipline.">
     <!--
-    <div class="ph" style="min-height:90vh">
+    <div class="ph" style="min-height:56vh">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
       <span>Editorial photo · wide</span>
     </div>
@@ -793,9 +792,9 @@ footer{
     File: Photo-landingpage/Naula.jpg
     Shows: hands, powder, cup — atmospheric preparation shot
   -->
-  <img src="Ritual-2.png" alt="Naula preparation">
+  <img src="Photo-landingpage/Naula.jpg" alt="Naula preparation">
   <!--
-  <div class="ph" style="height:90vh">
+  <div class="ph" style="height:70vh">
     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
     <span>Naula.jpg — moody product photo</span>
   </div>
@@ -808,7 +807,7 @@ footer{
 
     <div class="products-header">
       <div>
-        <div class="products-tag">Products</div>
+        <div class="products-tag">Products · Sản phẩm</div>
         <h2 class="products-h2">For the start.<br>For the rest.</h2>
       </div>
       <p class="products-sub">Two formulations. Both named. Both whole-plant. Both Naula prepared.</p>
@@ -821,10 +820,10 @@ footer{
         <div class="sku-img">
           <!--
             SLOT — Morning Ember product photo
-            File: IMG_8647.JPG
+            File: Photo-landingpage/ChatGPT Image May 6, 2026, 02_20_46 PM.png
             Shows: orange tin box / product packaging
           -->
-          <img src="IMG_8647.JPG" alt="Morning Ember">
+          <img src="Photo-landingpage/ChatGPT Image May 6, 2026, 02_20_46 PM.png" alt="Morning Ember">
           <!--
           <div class="ph">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
@@ -833,7 +832,7 @@ footer{
           -->
         </div>
         <div class="sku-body">
-          <div class="sku-fam sku-fam-fire">Lư Trung Hoả</div>
+          <div class="sku-fam sku-fam-fire">Lư Trung Hoả · Fire</div>
           <div class="sku-name">Morning Ember</div>
           <div class="sku-tagline">A warm shot to start the day</div>
           <div class="sku-pills">
@@ -847,7 +846,7 @@ footer{
           </div>
           <div class="sku-foot">
             <div class="sku-meta">60g · 30 servings · 2 tsp / 100ml</div>
-             <a href="#" onclick="openOrderModal(); return false;" class="btn-fire">Order</a>
+            <a href="#" onclick="openOrderModal(); return false;" class="btn-fire">Order</a>
           </div>
         </div>
       </div>
@@ -857,10 +856,10 @@ footer{
         <div class="sku-img">
           <!--
             SLOT — Still Ember product photo
-            File: IMG_8648 copy.JPG
+            File: Photo-landingpage/ChatGPT Image May 6, 2026, 02_33_34 PM.png
             Shows: purple/dark tin box / product packaging
           -->
-          <img src="IMG_8648 copy.JPG" alt="Still Ember">
+          <img src="Photo-landingpage/ChatGPT Image May 6, 2026, 02_33_34 PM.png" alt="Still Ember">
           <!--
           <div class="ph">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
@@ -869,7 +868,7 @@ footer{
           -->
         </div>
         <div class="sku-body">
-          <div class="sku-fam sku-fam-perilla">Phú Đăng Hoả</div>
+          <div class="sku-fam sku-fam-perilla">Phú Đăng Hoả · Fire</div>
           <div class="sku-name">Still Ember</div>
           <div class="sku-tagline">A quiet moment before rest</div>
           <div class="sku-pills">
@@ -897,7 +896,7 @@ footer{
 
   <!-- left: huge type + steps -->
   <div class="ritual-left">
-    <div class="ritual-eyebrow">How to prepare</div>
+    <div class="ritual-eyebrow">How to prepare · Cách pha</div>
     <div class="ritual-heading">BREWING<br>RITUAL</div>
     <div class="steps">
       <div class="step">
@@ -938,7 +937,7 @@ footer{
       File: Photo-landingpage/Ritual.jpg OR Photo-landingpage/Cup of Naula.jpg
       Shows: hand holding cup, brewing context
     -->
-    <img src="Process.png" alt="Brewing ritual">
+    <img src="Photo-landingpage/Cup of Naula.jpg" alt="Brewing ritual">
     <!--
     <div class="ph">
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
@@ -956,7 +955,7 @@ footer{
     SLOT — Lifestyle / brand photo
     File: Photo-landingpage/ChatGPT Image May 6, 2026, 02_31_47 PM.png OR Ritual.jpg
   -->
-  <img src="Ending.png" alt="TKG lifestyle" style="width:100%;height:100%;object-fit:cover;">
+  <img src="Photo-landingpage/Ritual.jpg" alt="TKG lifestyle" style="width:100%;height:100%;object-fit:cover;">
   <!--
   <div class="ph" style="height:100%;min-height:56vh;">
     <span>Lifestyle photo · wide</span>
@@ -1083,7 +1082,7 @@ function closeOrderModal() {
   document.body.style.overflow = 'auto';
 }
 
-  function toggleMobileNav() {
+function toggleMobileNav() {
   const navMobile = document.querySelector('.nav-mobile');
   navMobile.classList.toggle('active');
   
@@ -1095,7 +1094,7 @@ function closeOrderModal() {
     });
   });
 }
-  
+
 function submitOrderForm(event) {
   event.preventDefault();
   
@@ -1121,13 +1120,13 @@ Quantity: ${orderData.quantity}
 Message: ${orderData.message}
   `.trim());
   
-  window.location.href = `mailto:tkg.naula@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:orders@tkg-naula.com?subject=${subject}&body=${body}`;
   
   // Optional: Show confirmation message
   alert('Thank you for your order request! We will contact you soon.');
   closeOrderModal();
 }
 </script>
-  
+
 </body>
 </html>
