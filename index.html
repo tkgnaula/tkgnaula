@@ -1052,8 +1052,11 @@ footer{
 <!-- ═══ S8 · CLOSING ══════════════════════════════ -->
 <section id="order" class="closing">
   <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-    <a href="#" class="btn-primary">Order Now</a>
-    <a href="#naula" style="display:inline-flex;align-items:center;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--cream3);padding:12px 0;transition:color .2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream3)'">Learn the method →</a>
+      <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
+        Order Now
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+      </a>
+      <a href="#naula" class="btn-ghost">Learn the method →</a>
   </div>
 </section>
 
