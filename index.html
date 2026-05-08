@@ -1340,6 +1340,54 @@ Message: ${orderData.message}
   alert('Thank you for your order request! We will contact you soon.');
   closeOrderModal();
 }
+
+// FAQ Modal Functions
+function openFaqModal() {
+  document.getElementById('faqModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFaqModal() {
+  document.getElementById('faqModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// Shipping Modal Functions
+function openShippingModal() {
+  const modal = document.getElementById('shippingModal');
+  modal.style.display = 'flex';
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeShippingModal() {
+  const modal = document.getElementById('shippingModal');
+  modal.style.display = 'none';
+  modal.classList.remove('show');
+  document.body.style.overflow = 'auto';
+}
+
+// FAQ Accordion Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', function() {
+      const faqItem = this.parentElement;
+      const isActive = faqItem.classList.contains('active');
+      
+      // Close all FAQ items
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Open clicked item if it wasn't active
+      if (!isActive) {
+        faqItem.classList.add('active');
+      }
+    });
+  });
+});
 </script>
 
 <!-- ═══ FAQ POPUP MODAL ═════════════════════════ -->
