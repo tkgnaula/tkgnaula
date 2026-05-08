@@ -1180,28 +1180,23 @@ footer{
   <div class="modal-overlay" onclick="closeOrderModal()"></div>
   <div class="modal-content">
     <button class="modal-close" onclick="closeOrderModal()">×</button>
-    
     <div class="modal-header">
       <h3 class="modal-title">Order TKG Products</h3>
       <p class="modal-subtitle">Place your order for Morning Ember or Still Ember</p>
     </div>
-    
     <form class="order-form" onsubmit="submitOrderForm(event)">
       <div class="form-group">
         <label for="name">Full Name *</label>
         <input type="text" id="name" name="name" required>
       </div>
-      
       <div class="form-group">
         <label for="email">Email Address *</label>
         <input type="email" id="email" name="email" required>
       </div>
-      
       <div class="form-group">
         <label for="phone">Phone Number</label>
         <input type="tel" id="phone" name="phone">
       </div>
-      
       <div class="form-group">
         <label for="product">Product *</label>
         <select id="product" name="product" required>
@@ -1211,197 +1206,37 @@ footer{
           <option value="both">Both Products</option>
         </select>
       </div>
-      
       <div class="form-group">
         <label for="quantity">Quantity *</label>
         <input type="number" id="quantity" name="quantity" min="1" value="1" required>
       </div>
-      
       <div class="form-group">
         <label for="message">Additional Message</label>
         <textarea id="message" name="message" rows="3"></textarea>
       </div>
-      
       <button type="submit" class="submit-btn">Send Order Request</button>
     </form>
-    
     <div class="modal-footer">
       <div class="hotline-info">
         <div class="sku-price">315.000 ₫<span class="sku-price-unit"> / box</span></div>
         <strong>Hotline:</strong> (+84) 976-847-789
       </div>
-      <div class="product-origin">
-        Product of Vietnam
-      </div>
+      <div class="product-origin">Product of Vietnam</div>
     </div>
   </div>
 </div>
-
-<script>
-function openOrderModal() {
-  document.getElementById('orderModal').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeOrderModal() {
-  document.getElementById('orderModal').style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
-
-function toggleMobileNav() {
-  const navMobile = document.querySelector('.nav-mobile');
-  navMobile.classList.toggle('active');
-  
-  // Close mobile nav when clicking on a link
-  const links = navMobile.querySelectorAll('a');
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      navMobile.classList.remove('active');
-    });
-  });
-}
-  
-// FAQ Modal Functions
-function openFaqModal() {
-  document.getElementById('faqModal').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeFaqModal() {
-  document.getElementById('faqModal').style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
-
-// Shipping Modal Functions
-function openShippingModal() {
- const modal = document.getElementById('shippingModal');
-  modal.style.display = 'flex';
-  modal.classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeShippingModal() {
-  const modal = document.getElementById('shippingModal');
-  modal.style.display = 'none';
-  modal.classList.remove('show');
-  document.body.style.overflow = 'auto';
-}
-
-// FAQ Accordion Toggle
-document.addEventListener('DOMContentLoaded', function() {
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', function() {
-      const faqItem = this.parentElement;
-      const isActive = faqItem.classList.contains('active');
-      
-      // Close all FAQ items
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      
-      // Open clicked item if it wasn't active
-      if (!isActive) {
-        faqItem.classList.add('active');
-      }
-    });
-  });
-});
-  
-function submitOrderForm(event) {
-  event.preventDefault();
-  
-  const formData = new FormData(event.target);
-  const orderData = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    phone: formData.get('phone'),
-    product: formData.get('product'),
-    quantity: formData.get('quantity'),
-    message: formData.get('message')
-  };
-  
-  // Here you would typically send the data to your server
-  // For now, we'll create an email link
-  const subject = encodeURIComponent('TKG Order Request - ' + orderData.product);
-  const body = encodeURIComponent(`
-Name: ${orderData.name}
-Email: ${orderData.email}
-Phone: ${orderData.phone}
-Product: ${orderData.product}
-Quantity: ${orderData.quantity}
-Message: ${orderData.message}
-  `.trim());
-  
-  window.location.href = `mailto:orders@tkg-naula.com?subject=${subject}&body=${body}`;
-  
-  // Optional: Show confirmation message
-  alert('Thank you for your order request! We will contact you soon.');
-  closeOrderModal();
-}
-
-// FAQ Modal Functions
-function openFaqModal() {
-  document.getElementById('faqModal').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeFaqModal() {
-  document.getElementById('faqModal').style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
-
-// Shipping Modal Functions
-function openShippingModal() {
-  const modal = document.getElementById('shippingModal');
-  modal.style.display = 'flex';
-  modal.classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeShippingModal() {
-  const modal = document.getElementById('shippingModal');
-  modal.style.display = 'none';
-  modal.classList.remove('show');
-  document.body.style.overflow = 'auto';
-}
-
-// FAQ Accordion Toggle
-document.addEventListener('DOMContentLoaded', function() {
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', function() {
-      const faqItem = this.parentElement;
-      const isActive = faqItem.classList.contains('active');
-      
-      // Close all FAQ items
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      
-      // Open clicked item if it wasn't active
-      if (!isActive) {
-        faqItem.classList.add('active');
-      }
-    });
-  });
-});
-</script>
-
-<!-- ═══ FAQ POPUP MODAL ═════════════════════════ -->
+ 
+<!-- ═══ FAQ MODAL ══════════════════════════════════════════════ -->
 <div id="faqModal" class="info-modal" style="display:none;">
   <div class="modal-overlay" onclick="closeFaqModal()"></div>
   <div class="modal-content">
     <button class="modal-close" onclick="closeFaqModal()">×</button>
-    
     <div class="modal-header">
       <h3 class="modal-title">Frequently Asked Questions</h3>
       <p class="modal-subtitle">Everything you need to know about TKG products</p>
     </div>
-    
     <div class="faq-content">
+ 
       <div class="faq-item">
         <div class="faq-question">
           <h4>What is TKG Freeze-Dried Herbal Tea Powder and how does it differ from regular teas?</h4>
@@ -1411,18 +1246,17 @@ document.addEventListener('DOMContentLoaded', function() {
           <p>Regular tea is brewed by soaking dried leaves and discarding the dregs — you only get the water-soluble parts. TKG herbal powder is processed using the Naula method: the entire herb is processed whole, then freeze-dried at sub-zero temperatures to preserve its natural medicinal properties, color, and components. When brewing, you consume everything — nothing is wasted. No refined sugar. No preservatives.</p>
         </div>
       </div>
-      
+ 
       <div class="faq-item">
         <div class="faq-question">
           <h4>Is it mandatory to use hot water to bring out the warmth?</h4>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p>Both products in the "Fire Element" (Hệ Hỏa) line are designed to support warmth and balance body temperature from within; they are not intended to treat or cure diseases.
-A special feature of the Fire Element line is the ability to maintain the thermal properties of the herbs whether brewed hot or cold. Brewing hot enhances relaxation and warms the body. Brewing cold provides a refreshing taste while still retaining the "Fire" characteristics inside—the warmth comes from the ingredients, not the temperature—supporting the digestive system and balancing body temperature. This is the philosophy of "warmth from the core": the temperature of the cup does not dictate the herb's effect.</p>
+          <p>Both products in the "Fire Element" (Hệ Hỏa) line are designed to support warmth and balance body temperature from within. A special feature of the Fire Element line is the ability to maintain the thermal properties of the herbs whether brewed hot or cold. Brewing hot enhances relaxation and warms the body. Brewing cold provides a refreshing taste while still retaining the "Fire" characteristics inside — the warmth comes from the ingredients, not the temperature.</p>
         </div>
       </div>
-      
+ 
       <div class="faq-item">
         <div class="faq-question">
           <h4>Health Benefits of Ginger Lemongrass Lime (Morning Ember — Lư Trung Hoả)</h4>
@@ -1430,153 +1264,151 @@ A special feature of the Fire Element line is the ability to maintain the therma
         </div>
         <div class="faq-answer">
           <p>Designed to promote warmth, digestive comfort, and everyday immune support.</p>
-           <p><strong>Ginger (Zingiber officinale):</strong></p>
-          <p>- Traditionally used to support healthy circulation and body warmth. <a href="https://www.tga.gov.au/resources/artg/372419" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></br>
-             - Traditionally used to support digestive comfort and help relieve nausea and bloating. <a href="https://pubmed.ncbi.nlm.nih.gov/30680163/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></br>
-             - Ginger naturally contains antioxidant compounds such as gingerols and shogaols, studied for their role in oxidative and inflammatory balance. <a href="https://pubmed.ncbi.nlm.nih.gov/30680163/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></p>
-           <p><strong>Lemongrass (Cymbopogon citratus):</strong></p>
-          <p>- Lemongrass naturally contains aromatic plant compounds including citral and polyphenols. <a href="https://pubmed.ncbi.nlm.nih.gov/25389117/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></br>
-            - Lemongrass has traditionally been used to support digestive comfort and promote relaxation. <a href="https://pubmed.ncbi.nlm.nih.gov/39072200/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></p>
-           <p><strong>Lime (Citrus aurantifolia):</strong></p>
-          <p>- Vitamin C contributes to normal immune function and antioxidant protection. <a href="https://ods.od.nih.gov/factsheets/VitaminC-HealthProfessional/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></p>
+          <p><strong>Ginger (Zingiber officinale):</strong></p>
+          <p>- Traditionally used to support healthy circulation and body warmth. <a href="https://www.tga.gov.au/resources/artg/372419" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a><br>
+             - Traditionally used to support digestive comfort and help relieve nausea and bloating. <a href="https://pubmed.ncbi.nlm.nih.gov/30680163/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a><br>
+             - Contains antioxidant compounds such as gingerols and shogaols. <a href="https://pubmed.ncbi.nlm.nih.gov/30680163/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a></p>
+          <p><strong>Lemongrass (Cymbopogon citratus):</strong></p>
+          <p>- Naturally contains aromatic plant compounds including citral and polyphenols. <a href="https://pubmed.ncbi.nlm.nih.gov/25389117/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a><br>
+             - Traditionally used to support digestive comfort and promote relaxation. <a href="https://pubmed.ncbi.nlm.nih.gov/39072200/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a></p>
+          <p><strong>Lime (Citrus aurantifolia):</strong></p>
+          <p>- Vitamin C contributes to normal immune function and antioxidant protection. <a href="https://ods.od.nih.gov/factsheets/VitaminC-HealthProfessional/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a></p>
         </div>
       </div>
-      
-<div class="faq-item">
+ 
+      <div class="faq-item">
         <div class="faq-question">
           <h4>Health Benefits of Perilla Clove Kumquat (Still Ember — Phú Đăng Hoả)</h4>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
           <p>Aims for relaxation, stress reduction, and internal protection.</p>
-           <p><strong>Perilla (Perilla frutescens):</strong></p>
-         <p>- Anti-inflammatory & Respiratory Support: Rosmarinic acid in perilla has been studied for its role in helping modulate inflammatory responses and supporting respiratory wellness. <a href="https://pubmed.ncbi.nlm.nih.gov/15630183/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></br>
-           - Relaxation & Sleep Support: Perilla has traditionally been used for calming support, and its aromatic compounds have been studied for their role in relaxation and restful sleep. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0378874120335157" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></br>
-           - Skin Antioxidant Protection: Anthocyanins naturally present in red perilla have been studied for their antioxidant properties and their role in helping protect skin cells from oxidative stress. <a href="https://pubmed.ncbi.nlm.nih.gov/34203482/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></p>
-           <p><strong>Clove (Syzygium aromaticum):</strong></p>
-        <p>- Rich in Antioxidant Compounds: Clove contains naturally occurring polyphenols and eugenol, compounds studied for their strong antioxidant activity. <a href="https://pubmed.ncbi.nlm.nih.gov/26948661/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></br>
-           - Digestive Support: Eugenol, a naturally occurring compound in clove, has been studied for its antispasmodic and aromatic properties associated with digestive comfort. <a href="https://pubmed.ncbi.nlm.nih.gov/33221144/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></p>
-           <p><strong>Kumquat (Citrus japonica / Kumquat):</strong></p>
-        <p>- Anti-inflammatory & Antioxidant: Kumquat contains naturally occurring citrus flavonoids studied for their antioxidant activity and support against oxidative stress. <a href="https://pubmed.ncbi.nlm.nih.gov/25308680/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></br>
-           - Kumquat provides naturally occurring vitamin C and carotenoids associated with antioxidant and immune support. <a href="https://pubmed.ncbi.nlm.nih.gov/30548041/" target="_blank" style="color: var(--fire); font-size: 12px;">[Source]</a></p>
+          <p><strong>Perilla (Perilla frutescens):</strong></p>
+          <p>- Rosmarinic acid has been studied for its role in helping modulate inflammatory responses. <a href="https://pubmed.ncbi.nlm.nih.gov/15630183/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a><br>
+             - Traditionally used for calming support and restful sleep. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0378874120335157" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a><br>
+             - Anthocyanins studied for antioxidant properties. <a href="https://pubmed.ncbi.nlm.nih.gov/34203482/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a></p>
+          <p><strong>Clove (Syzygium aromaticum):</strong></p>
+          <p>- Contains polyphenols and eugenol with strong antioxidant activity. <a href="https://pubmed.ncbi.nlm.nih.gov/26948661/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a><br>
+             - Eugenol associated with digestive comfort. <a href="https://pubmed.ncbi.nlm.nih.gov/33221144/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a></p>
+          <p><strong>Kumquat (Citrus japonica):</strong></p>
+          <p>- Contains citrus flavonoids for antioxidant activity. <a href="https://pubmed.ncbi.nlm.nih.gov/25308680/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a><br>
+             - Provides vitamin C and carotenoids for immune support. <a href="https://pubmed.ncbi.nlm.nih.gov/30548041/" target="_blank" style="color:var(--fire);font-size:12px;">[Source]</a></p>
         </div>
       </div>
-
-       <div class="faq-item">
+ 
+      <div class="faq-item">
         <div class="faq-question">
           <h4>Why does the tea powder color vary?</h4>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p>Color reflects real ingredients — no dyes or artificial coloring. Freeze-dried ginger and lemongrass give a natural light yellow-green. Perilla gives its characteristic purple-blue. Cloves add warm brown tones. Slight variations between batches are a sign of authentic raw materials, not a manufacturing defect, depending on the harvest season and farming conditions. TKG does not standardize color with additives; we standardize using the Naula method and independent testing.</p>
+          <p>Color reflects real ingredients — no dyes or artificial coloring. Freeze-dried ginger and lemongrass give a natural light yellow-green. Perilla gives its characteristic purple-blue. Cloves add warm brown tones. Slight variations between batches are a sign of authentic raw materials, not a manufacturing defect. TKG does not standardize color with additives; we standardize using the Naula method and independent testing.</p>
         </div>
       </div>
-
-        <div class="faq-item">
+ 
+      <div class="faq-item">
         <div class="faq-question">
           <h4>Why is there sediment in the product?</h4>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p>At TKG, we believe purity lies in nature's wholeness. The light sediment at the bottom of your cup is:</p>
-<p>- Pure starch from fresh herbs: The essence of Ginger, Lemongrass, Perilla, etc., preserved through the traditional "Nấu Lá" (Leaf Boiling) method.</br>
-   - A sign of real ingredients: Evidence that the material is completely natural, without chemical extraction or industrial filtration.</br>
-   - Nutrient preservation: Freeze-drying without extraction ensures you get the experience closest to the original plant.</p>
+          <p>The light sediment at the bottom of your cup is pure starch from fresh herbs — a sign of real ingredients, without chemical extraction or industrial filtration. Freeze-drying without extraction ensures you get the experience closest to the original plant.</p>
         </div>
       </div>
-
-<div class="faq-item">
+ 
+      <div class="faq-item">
         <div class="faq-question">
           <h4>Why might the color change after brewing?</h4>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p>When enjoying SKUs with Perilla and Clove, you may notice:</p>
-<p>- Natural color reactions: The water color may change slightly depending on the pH of your water source or when combined with other ingredients (like lime or kumquat). This is a natural reaction of Anthocyanin — a precious pigment in purple Perilla leaves. </br>
-   - Proof of clean ingredients: This confirms no artificial dyes or chemical stabilizers are used.</p>
+          <p>When enjoying SKUs with Perilla and Clove, the water color may change slightly depending on the pH of your water or when combined with other ingredients (like lime or kumquat). This is a natural reaction of Anthocyanin — a precious pigment in purple Perilla leaves. Proof of clean ingredients: no artificial dyes or chemical stabilizers.</p>
         </div>
       </div>
-
-<div class="faq-item">
+ 
+      <div class="faq-item">
         <div class="faq-question">
           <h4>Are there any other ways to use it?</h4>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p>- Natural Sweetness: Combine with wild honey, palm sugar, or stevia to soften the herbal warmth and provide pure energy.</br>
-             - Enjoyment Styles: Drink hot to awaken the senses and support digestion, or drink cold for instant nourishment and refreshment.</br>
+          <p>- Natural Sweetness: Combine with wild honey, palm sugar, or stevia.<br>
+             - Enjoyment Styles: Drink hot to awaken the senses and support digestion, or drink cold for instant nourishment and refreshment.<br>
              - Simple usage: Add your preferred sweetener, stir well to blend the herbal starch, and enjoy.</p>
         </div>
       </div>
-
-<div class="faq-item">
+ 
+      <div class="faq-item">
         <div class="faq-question">
           <h4>How is the product made?</h4>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p>01 · Sourcing: Fresh herbs purchased directly from Vietnamese cooperatives — specific types and origins. Whole-plant, no industrial extraction, no unknown blends.</br>
-             02 · Prepare (Naula x Freeze-drying): Fresh herbs are brewed into liquid form using the Naula method — a discipline where time, fire, and water are adjusted for each specific herb. The liquid is deep-frozen and placed in a vacuum chamber for sublimation (turning ice directly into vapor). This preserves color, scent, and medicinal properties without heat damage.</br>
-             03 · Present: Honest formulas. No preservatives. No artificial colors. No artificial sweeteners. Tested at Quatest 3.</p>
+          <p>01 · Sourcing: Fresh herbs purchased directly from Vietnamese cooperatives. Whole-plant, no industrial extraction.<br>
+             02 · Prepare (Naula x Freeze-drying): Fresh herbs are brewed into liquid form using the Naula method. The liquid is deep-frozen and placed in a vacuum chamber for sublimation, preserving color, scent, and medicinal properties without heat damage.<br>
+             03 · Present: No preservatives. No artificial colors. No artificial sweeteners. Tested at Quatest 3.</p>
         </div>
       </div>
-
-<div class="faq-item">
+ 
+      <div class="faq-item">
         <div class="faq-question">
-          <h4>Product & Quality</h4>
+          <h4>Product &amp; Quality</h4>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p><strong>Origin:</strong> Long An, Vietnam (purchased directly from cooperatives).</br>
-<strong>Standards:</strong> Non-GMO, gluten-free, dairy-free, vegan.</br>
-<strong>Caffeine:</strong> Caffeine-free.</br>
-<strong>Storage:</strong> Store in a cool, dry place. Seal the container immediately after use to avoid moisture.</p>
+          <p><strong>Origin:</strong> Long An, Vietnam (purchased directly from cooperatives).<br>
+             <strong>Standards:</strong> Non-GMO, gluten-free, dairy-free, vegan.<br>
+             <strong>Caffeine:</strong> Caffeine-free.<br>
+             <strong>Storage:</strong> Store in a cool, dry place. Seal the container immediately after use to avoid moisture.</p>
         </div>
       </div>
-
-<div class="faq-item">
+ 
+      <div class="faq-item">
         <div class="faq-question">
           <h4>Where to Buy?</h4>
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          <p>- tkg-naula.com</br>
-             - Authorized retail partners.</br>
-             - Discounts: Newsletter subscription, Loyal-Naula Rewards, Subscribe & Save.</p>
+          <p>- tkg-naula.com<br>
+             - Authorized retail partners.<br>
+             - Discounts: Newsletter subscription, Loyal-Naula Rewards, Subscribe &amp; Save.</p>
         </div>
       </div>
-      
-<!-- ═══ SHIPPING & RETURNS POPUP MODAL ═══════════════ -->
+ 
+    </div><!-- /faq-content -->
+  </div><!-- /modal-content -->
+</div><!-- /faqModal -->
+ 
+<!-- ═══ SHIPPING & RETURNS MODAL ══════════════════════════════ -->
+<!-- ĐÃ ĐƯA RA NGOÀI faqModal — là sibling, không còn lồng nhau -->
 <div id="shippingModal" class="info-modal" style="display:none;">
   <div class="modal-overlay" onclick="closeShippingModal()"></div>
   <div class="modal-content">
     <button class="modal-close" onclick="closeShippingModal()">×</button>
-    
     <div class="modal-header">
-      <h3 class="modal-title">Shipping & Returns</h3>
+      <h3 class="modal-title">Shipping &amp; Returns</h3>
       <p class="modal-subtitle">Delivery information and return policy</p>
     </div>
-    
     <div class="shipping-content">
+ 
       <div class="shipping-section">
         <h4>Shipping Information</h4>
         <div class="shipping-item">
           <h5>Domestic Shipping (Vietnam)</h5>
           <ul>
-            <li>We currently ship nationwide across Vietnam.</br>
-Orders of 2 boxes or more are eligible for free shipping within Vietnam.</br>
-For orders of 1 box, a flat nationwide shipping fee of 30,000 VND applies.</li>
-           
+            <li>We currently ship nationwide across Vietnam.</li>
+            <li>Orders of 2 boxes or more are eligible for free shipping within Vietnam.</li>
+            <li>For orders of 1 box, a flat nationwide shipping fee of 30,000 VND applies.</li>
           </ul>
         </div>
-      
+      </div>
+ 
       <div class="shipping-section">
         <h4>Return Policy</h4>
         <div class="shipping-item">
           <h5>30-Day Satisfaction Guarantee</h5>
           <p>If you're not completely satisfied with your TKG products, you may return them within 30 days of purchase for a full refund or exchange.</p>
         </div>
-        
         <div class="shipping-item">
           <h5>Return Conditions</h5>
           <ul>
@@ -1586,8 +1418,10 @@ For orders of 1 box, a flat nationwide shipping fee of 30,000 VND applies.</li>
             <li>Execution: If approved, the product must be returned at the customer's shipping expense. TKG reserves the right to refuse if fraud or abuse is suspected.</li>
           </ul>
         </div>
-  </div>
-</div>
-  
+      </div>
+ 
+    </div><!-- /shipping-content -->
+  </div><!-- /modal-content -->
+</div><!-- /shippingModal -->
 </body>
 </html>
