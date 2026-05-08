@@ -565,7 +565,7 @@ footer{
   padding:20px;opacity:0;visibility:hidden;
   transition:opacity .3s,visibility .3s;
 }
-.info-modal[style*="flex"]{
+.info-modal[style*="flex"], .info-modal.show{
   opacity:1;visibility:visible;
 }
 
@@ -1274,12 +1274,16 @@ function closeFaqModal() {
 
 // Shipping Modal Functions
 function openShippingModal() {
-  document.getElementById('shippingModal').style.display = 'flex';
+ const modal = document.getElementById('shippingModal');
+  modal.style.display = 'flex';
+  modal.classList.add('show');
   document.body.style.overflow = 'hidden';
 }
 
 function closeShippingModal() {
-  document.getElementById('shippingModal').style.display = 'none';
+  const modal = document.getElementById('shippingModal');
+  modal.style.display = 'none';
+  modal.classList.remove('show');
   document.body.style.overflow = 'auto';
 }
 
