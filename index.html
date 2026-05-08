@@ -556,7 +556,86 @@ footer{
   color:var(--cream4);text-align:center;
   font-family:var(--serif);
 }
+  
+/* ─── INFO MODALS (FAQ & SHIPPING) ─────────────────────── */
+.info-modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.8);z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;visibility:hidden;
+  transition:opacity .3s,visibility .3s;
+}
+.info-modal[style*="flex"]{
+  opacity:1;visibility:visible;
+}
 
+/* FAQ Content */
+.faq-content{
+  padding:32px;max-height:60vh;overflow-y:auto;
+}
+.faq-item{
+  border-bottom:1px solid var(--line);padding:20px 0;
+}
+.faq-item:last-child{border-bottom:none}
+.faq-question{
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;padding:8px 0;transition:color .2s;
+}
+.faq-question:hover h4{color:var(--fire)}
+.faq-question h4{
+  font-family:var(--serif);font-size:16px;font-weight:500;
+  color:var(--cream);margin:0;line-height:1.3;
+}
+.faq-toggle{
+  font-size:20px;color:var(--cream3);transition:transform .3s;
+}
+.faq-item.active .faq-toggle{
+  transform:rotate(45deg);color:var(--fire);
+}
+.faq-answer{
+  padding:0 8px;max-height:0;overflow:hidden;
+  transition:max-height .3s ease-out,padding .3s;
+}
+.faq-item.active .faq-answer{
+  padding:16px 8px 0;max-height:300px;
+}
+.faq-answer p{
+  font-size:14px;line-height:1.6;color:var(--cream2);
+  margin:0;
+}
+
+/* Shipping Content */
+.shipping-content{
+  padding:32px;max-height:60vh;overflow-y:auto;
+}
+.shipping-section{
+  margin-bottom:32px;
+}
+.shipping-section:last-child{margin-bottom:0}
+.shipping-section h4{
+  font-family:var(--serif);font-size:18px;font-weight:500;
+  color:var(--cream);margin-bottom:16px;line-height:1.3;
+}
+.shipping-item{
+  margin-bottom:20px;
+}
+.shipping-item:last-child{margin-bottom:0}
+.shipping-item h5{
+  font-size:14px;font-weight:600;color:var(--cream);
+  margin-bottom:12px;line-height:1.3;
+}
+.shipping-item p{
+  font-size:14px;line-height:1.6;color:var(--cream2);
+  margin:0;
+}
+.shipping-item ul{
+  margin:0;padding-left:20px;
+}
+.shipping-item li{
+  font-size:14px;line-height:1.6;color:var(--cream2);
+  margin-bottom:8px;
+}
+  
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:1024px){
    /* Navigation tablet */
@@ -1075,8 +1154,8 @@ footer{
       </div>
       <div class="foot-col">
         <div class="foot-col-title">Support</div>
-        <a href="#">FAQ</a>
-        <a href="#">Shipping &amp; Returns</a>
+        <a href="#" onclick="openFaqModal(); return false;">FAQ</a>
+        <a href="#" onclick="openShippingModal(); return false;">Shipping &amp; Returns</a>
         <a href="#">Contact</a>
       </div>
     </div>
@@ -1181,7 +1260,51 @@ function toggleMobileNav() {
     });
   });
 }
+  
+// FAQ Modal Functions
+function openFaqModal() {
+  document.getElementById('faqModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
 
+function closeFaqModal() {
+  document.getElementById('faqModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// Shipping Modal Functions
+function openShippingModal() {
+  document.getElementById('shippingModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeShippingModal() {
+  document.getElementById('shippingModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// FAQ Accordion Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', function() {
+      const faqItem = this.parentElement;
+      const isActive = faqItem.classList.contains('active');
+      
+      // Close all FAQ items
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Open clicked item if it wasn't active
+      if (!isActive) {
+        faqItem.classList.add('active');
+      }
+    });
+  });
+});
+  
 function submitOrderForm(event) {
   event.preventDefault();
   
@@ -1215,5 +1338,144 @@ Message: ${orderData.message}
 }
 </script>
 
+<!-- ═══ FAQ POPUP MODAL ═════════════════════════ -->
+<div id="faqModal" class="info-modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeFaqModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeFaqModal()">×</button>
+    
+    <div class="modal-header">
+      <h3 class="modal-title">Frequently Asked Questions</h3>
+      <p class="modal-subtitle">Everything you need to know about TKG products</p>
+    </div>
+    
+    <div class="faq-content">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h4>What is TKG Freeze-Dried Herbal Tea Powder and how does it differ from regular teas?</h4>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Regular tea is brewed by soaking dried leaves and discarding the dregs — you only get the water-soluble parts. TKG herbal powder is processed using the Naula method: the entire herb is processed whole, then freeze-dried at sub-zero temperatures to preserve its natural medicinal properties, color, and components. When brewing, you consume everything — nothing is wasted. No refined sugar. No preservatives.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h4>Is it mandatory to use hot water to bring out the warmth?</h4>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Both products in the "Fire Element" (Hệ Hỏa) line are designed to support warmth and balance body temperature from within; they are not intended to treat or cure diseases.
+A special feature of the Fire Element line is the ability to maintain the thermal properties of the herbs whether brewed hot or cold. Brewing hot enhances relaxation and warms the body. Brewing cold provides a refreshing taste while still retaining the "Fire" characteristics inside—the warmth comes from the ingredients, not the temperature—supporting the digestive system and balancing body temperature. This is the philosophy of "warmth from the core": the temperature of the cup does not dictate the herb's effect.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h4>Health Benefits of Ginger Lemongrass Lime (Morning Ember — Lư Trung Hoả)</h4>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Focuses on warmth, supporting digestion and the immune system.</p>
+           <p>Ginger (Zingiber officinale):</p>
+           <p>Warming effect: Ginger extract is proven to raise palm temperature and provide longer-lasting warmth than a placebo.</p>
+           <p>Digestive health support: Research suggests that ginger is highly effective at alleviating nausea and abdominal bloating.</p>
+           <p>Anti-inflammatory & Antioxidant: Contains gingerol and shogaol, which help inhibit inflammatory agents.</p>
+           <p>Lemongrass (Cymbopogon citratus):</p>
+           <p>Natural Antibacterial: Lemongrass essential oil (citral) is effective against various foodborne pathogens.</p>
+           <p>Bloating Relief & Relaxation: Proven to have carminative effects (relieving gas in the stomach) and mild sedative properties.</p>
+           <p>Lime (Citrus aurantifolia):</p>
+           <p>Immune Support & Antioxidant: A rich source of Vitamin C that helps strengthen the body's resistance.</p>
+           <p>Iron Absorption: Vitamin C significantly increases the absorption of non-heme iron (iron from non-animal sources).</p>
+        </div>
+      </div>
+      
+<div class="faq-item">
+        <div class="faq-question">
+          <h4>Health Benefits of Perilla Clove Kumquat (Still Ember — Phú Đăng Hoả)</h4>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Aims for relaxation, stress reduction, and internal protection.</p>
+           <p>Perilla (Perilla frutescens):</p>
+           <p>Anti-inflammatory & Anti-allergy: Rosmarinic acid in perilla helps inhibit inflammatory reactions and supports respiratory health.</p>
+           <p>Relaxation & Sleep Support: Perilla essential oil acts on the GABA system to help reduce stress and promote better sleep.</p>
+           <p>Skin Antioxidant Protection: High levels of Anthocyanin help protect skin cells from oxidative stress.</p>
+           <p>Clove (Syzygium aromaticum):</p>
+           <p>Superior Antioxidant Power: Clove is among the foods with the highest ORAC scores in the world.</p>
+           <p>Digestive Support & Antibacterial: Eugenol helps relax the smooth muscles of the digestive tract.</p>
+           <p>Kumquat (Citrus japonica / Kumquat):</p>
+           <p>Anti-inflammatory & Antioxidant: Contains high levels of signature flavonoids that support overall health.</p>
+           <p>Immune System: Provides Vitamin C and natural carotenoids that help protect the body.</p>
+        </div>
+      </div>
+      
+<!-- ═══ SHIPPING & RETURNS POPUP MODAL ═══════════════ -->
+<div id="shippingModal" class="info-modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeShippingModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeShippingModal()">×</button>
+    
+    <div class="modal-header">
+      <h3 class="modal-title">Shipping & Returns</h3>
+      <p class="modal-subtitle">Delivery information and return policy</p>
+    </div>
+    
+    <div class="shipping-content">
+      <div class="shipping-section">
+        <h4>Shipping Information</h4>
+        <div class="shipping-item">
+          <h5>Domestic Shipping (Vietnam)</h5>
+          <ul>
+            <li>Standard delivery: 3-5 business days</li>
+            <li>Express delivery: 1-2 business days</li>
+            <li>Free shipping on orders over 500,000 VND</li>
+            <li>Shipping fee: 30,000 VND for orders under 500,000 VND</li>
+          </ul>
+        </div>
+        
+        <div class="shipping-item">
+          <h5>International Shipping</h5>
+          <ul>
+            <li>Asia: 5-7 business days</li>
+            <li>Europe/Americas: 7-10 business days</li>
+            <li>Calculated at checkout based on destination</li>
+            <li>Customs duties may apply depending on your country</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="shipping-section">
+        <h4>Return Policy</h4>
+        <div class="shipping-item">
+          <h5>30-Day Satisfaction Guarantee</h5>
+          <p>If you're not completely satisfied with your TKG products, you may return them within 30 days of purchase for a full refund or exchange.</p>
+        </div>
+        
+        <div class="shipping-item">
+          <h5>Return Conditions</h5>
+          <ul>
+            <li>Products must be unopened and in original packaging</li>
+            <li>Include original receipt or proof of purchase</li>
+            <li>Customer is responsible for return shipping costs</li>
+            <li>Refunds processed within 5-7 business days of receipt</li>
+          </ul>
+        </div>
+        
+        <div class="shipping-item">
+          <h5>Damaged or Incorrect Items</h5>
+          <p>If you receive damaged products or incorrect items, please contact us within 48 hours of delivery. We will arrange for a replacement at no additional cost.</p>
+        </div>
+      </div>
+      
+      <div class="shipping-section">
+        <h4>Order Processing</h4>
+        <p>Orders are processed within 1-2 business days. You will receive a confirmation email with tracking information once your order ships.</p>
+      </div>
+    </div>
+  </div>
+</div>
+  
 </body>
 </html>
