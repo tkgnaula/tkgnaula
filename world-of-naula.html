@@ -134,31 +134,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 }
 .image-break-caption p{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cream3);}
 
-/* ─── ORIGINS ──────────────────────────────────────── */
-.origins{
-  max-width:1280px;margin:0 auto;
-  padding:88px 80px;
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
-}
-.origins-left{}
-.origins-tag{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--fire);margin-bottom:20px;}
-.origins-h2{font-family:var(--serif);font-size:clamp(28px,3vw,42px);font-weight:400;line-height:1.12;color:var(--cream);margin-bottom:28px;}
-.origins-h2 em{font-style:italic;}
-.origins-right{display:flex;flex-direction:column;gap:20px;}
-.ingredient-list{
-  display:flex;flex-direction:column;gap:0;
-  margin-top:8px;
-  border:.5px solid var(--line2);
-}
-.ingredient-row{
-  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-  padding:14px 20px;border-bottom:.5px solid var(--line);
-}
-.ingredient-row:last-child{border-bottom:none;}
-.ingredient-name{font-size:13px;font-weight:500;color:var(--cream);letter-spacing:.04em;}
-.ingredient-latin{font-size:11px;font-weight:300;color:var(--cream4);font-style:italic;}
-.ingredient-origin{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);}
-
 /* ─── CHAPTERS (coming soon) ───────────────────────── */
 .chapters-section{
   border-top:.5px solid var(--line);
@@ -336,7 +311,6 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
   .founders-inner{padding:64px 40px;}
   .founders-grid{grid-template-columns:1fr;gap:52px;}
   .image-break-caption{left:40px;}
-  .origins{grid-template-columns:1fr;gap:40px;padding:64px 40px;}
   .chapters-header{padding:56px 40px 40px;flex-direction:column;align-items:flex-start;}
   .chapters-header-right{text-align:left;}
   .chapter-row{grid-template-columns:60px 1fr;padding:28px 40px;}
@@ -355,7 +329,6 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
   .heritage-inner,.method-inner,.extraction-inner,.integrity-inner,.founders-inner{padding:48px 20px;}
   .method-opener{margin-bottom:36px;}
   .extraction-statement{margin-top:28px;padding-top:24px;}
-  .origins{padding:48px 20px;}
   .image-break-caption{left:20px;bottom:24px;}
   .chapters-header{padding:48px 20px 32px;}
   .chapter-row{grid-template-columns:1fr;padding:24px 20px;gap:8px;}
@@ -502,58 +475,6 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
     <p>Naula preparation · Long An, Vietnam</p>
   </div>
 </div>
-
-<!-- ═══ ORIGINS ════════════════════════════════════ -->
-<section class="origins">
-  <div class="origins-left">
-    <div class="origins-tag">Ingredients</div>
-    <h2 class="origins-h2">Six botanicals.<br>Every one <em>named.</em></h2>
-    <p style="font-size:13.5px;font-weight:300;line-height:1.82;color:var(--cream2);margin-top:20px;">
-      TKG uses six botanicals across two formulations. All are sourced whole. All are named by species on the label. There are no proprietary blends, no undisclosed inputs.
-    </p>
-    <p style="font-size:13.5px;font-weight:300;line-height:1.82;color:var(--cream2);margin-top:12px;">
-      The sourcing is direct: purchased from cooperatives in Long An province, Vietnam. Traceability is not a feature. It is the default.
-    </p>
-  </div>
-  <div class="origins-right">
-    <div class="ingredient-list">
-      <div class="ingredient-row">
-        <span class="ingredient-name">Ginger</span>
-        <span class="ingredient-latin">Zingiber officinale</span>
-        <span class="ingredient-origin">Long An · VN</span>
-      </div>
-      <div class="ingredient-row">
-        <span class="ingredient-name">Lemongrass</span>
-        <span class="ingredient-latin">Cymbopogon citratus</span>
-        <span class="ingredient-origin">Long An · VN</span>
-      </div>
-      <div class="ingredient-row">
-        <span class="ingredient-name">Lime</span>
-        <span class="ingredient-latin">Citrus aurantifolia</span>
-        <span class="ingredient-origin">Long An · VN</span>
-      </div>
-      <div class="ingredient-row">
-        <span class="ingredient-name">Perilla</span>
-        <span class="ingredient-latin">Perilla frutescens</span>
-        <span class="ingredient-origin">Long An · VN</span>
-      </div>
-      <div class="ingredient-row">
-        <span class="ingredient-name">Clove</span>
-        <span class="ingredient-latin">Syzygium aromaticum</span>
-        <span class="ingredient-origin">Long An · VN</span>
-      </div>
-      <div class="ingredient-row">
-        <span class="ingredient-name">Kumquat</span>
-        <span class="ingredient-latin">Citrus japonica</span>
-        <span class="ingredient-origin">Long An · VN</span>
-      </div>
-    </div>
-    <p style="font-size:11px;font-weight:300;color:var(--cream4);line-height:1.65;margin-top:12px;">
-      Non-GMO · Gluten-free · Dairy-free · Vegan · Caffeine-free<br>
-      Laboratory tested by Quatest 3 · No preservatives · No artificial colour or sweetener
-    </p>
-  </div>
-</section>
 
 <!-- ═══ 04 · INGREDIENT INTEGRITY ════════════════════ -->
 <section class="integrity-section">
