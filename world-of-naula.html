@@ -120,39 +120,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
   line-height:1.5;color:var(--cream);
 }
 
-/* ─── THREE PILLARS ────────────────────────────────── */
-.pillars-section{border-bottom:.5px solid var(--line);}
-.pillars-header{
-  max-width:1280px;margin:0 auto;
-  padding:72px 80px 0;
-  display:flex;align-items:flex-end;justify-content:space-between;gap:32px;
-}
-.pillars-header-tag{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cream4);margin-bottom:14px;}
-.pillars-header h2{font-family:var(--serif);font-size:clamp(26px,2.8vw,38px);font-weight:400;color:var(--cream);}
-.pillars-header h2 em{font-style:italic;color:var(--cream3);}
-.pillars-header-sub{font-size:13px;font-weight:300;color:var(--cream3);max-width:280px;line-height:1.7;text-align:right;}
-.pillars-grid{
-  max-width:1280px;margin:0 auto;
-  padding:48px 80px 80px;
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:2px;background:var(--line);
-}
-.pillar{background:var(--bg);padding:48px 40px 52px;position:relative;}
-.pillar::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:transparent;transition:background .3s;
-}
-.pillar:hover::before{background:var(--fire);}
-.pillar-num{
-  font-family:var(--serif);font-size:13px;font-weight:400;letter-spacing:.2em;
-  color:var(--cream4);margin-bottom:28px;
-  display:flex;align-items:center;gap:10px;
-}
-.pillar-num::after{content:'';flex:1;height:.5px;background:var(--line2);}
-.pillar-tag{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cream3);margin-bottom:10px;}
-.pillar-head{font-family:var(--serif);font-size:26px;font-weight:500;line-height:1.15;color:var(--cream);margin-bottom:20px;}
-.pillar-body{font-size:13px;font-weight:300;line-height:1.8;color:var(--cream3);}
-
 /* ─── FULL-BLEED IMAGE ─────────────────────────────── */
 .image-break{
   height:65vh;max-height:600px;overflow:hidden;position:relative;
@@ -368,9 +335,6 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
   .integrity-inner{grid-template-columns:1fr;gap:40px;padding:64px 40px;}
   .founders-inner{padding:64px 40px;}
   .founders-grid{grid-template-columns:1fr;gap:52px;}
-  .pillars-header{padding:56px 40px 0;flex-direction:column;align-items:flex-start;}
-  .pillars-header-sub{text-align:left;max-width:100%;}
-  .pillars-grid{grid-template-columns:1fr;padding:32px 40px 64px;}
   .image-break-caption{left:40px;}
   .origins{grid-template-columns:1fr;gap:40px;padding:64px 40px;}
   .chapters-header{padding:56px 40px 40px;flex-direction:column;align-items:flex-start;}
@@ -391,9 +355,6 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
   .heritage-inner,.method-inner,.extraction-inner,.integrity-inner,.founders-inner{padding:48px 20px;}
   .method-opener{margin-bottom:36px;}
   .extraction-statement{margin-top:28px;padding-top:24px;}
-  .pillars-header{padding:48px 20px 0;}
-  .pillars-grid{padding:24px 20px 48px;}
-  .pillar{padding:32px 20px 36px;}
   .origins{padding:48px 20px;}
   .image-break-caption{left:20px;bottom:24px;}
   .chapters-header{padding:48px 20px 32px;}
@@ -509,37 +470,6 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
         <p class="body-p">Rather than forcing herbs through aggressive industrial extraction, Naula approaches botanical processing through disciplined preparation, inspired by traditional herbal cooking practices in Vietnam.</p>
         <p class="method-close">The method is designed not to control nature completely, but to work with it.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ THREE PILLARS ══════════════════════════════ -->
-<section class="pillars-section">
-  <div class="pillars-header">
-    <div>
-      <div class="pillars-header-tag">The discipline</div>
-      <h2>Three principles.<br><em>Applied without exception.</em></h2>
-    </div>
-    <p class="pillars-header-sub">Applied consistently across every formulation — not as aspiration, but as constraint.</p>
-  </div>
-  <div class="pillars-grid">
-    <div class="pillar">
-      <div class="pillar-num">01</div>
-      <div class="pillar-tag">Source</div>
-      <div class="pillar-head">Whole botanicals.<br>Named at origin.</div>
-      <p class="pillar-body">Every ingredient traces back to a species, a place, a method. Real plants — sourced whole from Vietnamese cooperatives in Long An. Named on the label. No flavouring. No anonymous "natural extract" that could mean anything.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">02</div>
-      <div class="pillar-tag">Naula · Prepare</div>
-      <div class="pillar-head">Adjusted for<br>each ingredient.</div>
-      <p class="pillar-body">Fresh botanicals are prepared into liquid form through the Naula method — where heat, water, and time are calibrated individually for each plant. The liquid is then frozen and freeze-dried under vacuum. Not the same process for every ingredient. Each one, separately.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-num">03</div>
-      <div class="pillar-tag">Present</div>
-      <div class="pillar-head">Honest formulation.<br>Nothing added.</div>
-      <p class="pillar-body">No preservatives. No artificial colour. No artificial sweeteners. The product is allowed to taste like itself — including the sediment from ginger starch, including the colour shift from perilla anthocyanin. These are not flaws to be corrected.</p>
     </div>
   </div>
 </section>
