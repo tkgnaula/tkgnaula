@@ -83,19 +83,29 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 /* ─── MANIFESTO ────────────────────────────────────── */
 .manifesto{
   border-bottom:.5px solid var(--line);
-  padding:88px 80px;
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  display:grid;grid-template-columns:1fr 1fr;
   max-width:1280px;margin:0 auto;
 }
-.manifesto-left{}
-.manifesto-eyebrow{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cream4);margin-bottom:24px;}
-.manifesto-h2{
-  font-family:var(--serif);font-size:clamp(30px,3.2vw,46px);
-  font-weight:400;line-height:1.1;color:var(--cream);
+.manifesto-left{
+  position:relative;overflow:hidden;min-height:560px;
 }
+.manifesto-left img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+}
+.manifesto-left-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(18,17,11,.88) 0%,rgba(18,17,11,.5) 45%,rgba(18,17,11,.15) 100%);
+}
+.manifesto-left-text{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:40px 48px;z-index:2;
+}
+.manifesto-eyebrow{...;color:var(--fire);margin-bottom:16px;}
+.manifesto-h2{...;font-size:clamp(28px,3.2vw,44px);line-height:1.08;}
 .manifesto-h2 em{font-style:italic;color:var(--fire);}
 .manifesto-right{
   display:flex;flex-direction:column;justify-content:center;gap:24px;
+  padding:72px 64px;
 }
 .manifesto-p{font-size:13.5px;font-weight:300;line-height:1.82;color:var(--cream2);}
 .manifesto-quote{
@@ -439,13 +449,13 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
 <!-- ═══ MANIFESTO ══════════════════════════════════ -->
 <section class="manifesto">
   <div class="manifesto-left">
+  <img src="Naula-documentary.webp" alt="Naula documentary" loading="lazy">
+  <div class="manifesto-left-veil"></div>
+  <div class="manifesto-left-text">
     <div class="manifesto-eyebrow">Our position</div>
-    <h2 class="manifesto-h2">
-      Not trend-driven.<br>
-      Not export<br>
-      for <em>export's sake.</em>
-    </h2>
+    <h2 class="manifesto-h2">...</h2>
   </div>
+</div>
   <div class="manifesto-right">
     <p class="manifesto-p">
      TKG started from a simple question: how can Vietnamese herbs be recognized globally through the way our ancestors originally prepared them?
