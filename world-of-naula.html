@@ -60,12 +60,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
   padding:80px 80px 72px;
 }
 .won-hero-tag{
-  font-size:20px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
   color:var(--fire);margin-bottom:24px;
 }
 .won-hero-h1{
   font-family:var(--serif);
-  font-size:clamp(25px, 3.6vw, 54px);
+  font-size:clamp(30px,3.6vw,54px);
   font-weight:300;line-height:1.08;letter-spacing:-.02em;
   color:var(--cream);margin-bottom:32px;
   max-width:820px;
@@ -289,11 +289,70 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
 .hotline-info strong{color:var(--cream);}
 .product-origin{font-size:11px;font-style:italic;color:var(--cream4);text-align:center;font-family:var(--serif);}
 
+/* ─── SHARED SECTION TOKENS ──────────────────────── */
+.section-num{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cream4);margin-bottom:20px;}
+.body-p{font-size:13.5px;font-weight:300;line-height:1.82;color:var(--cream2);}
+
+/* ─── 01 · BOTANICAL HERITAGE ────────────────────── */
+.heritage-section{border-bottom:.5px solid var(--line);}
+.heritage-inner{max-width:1280px;margin:0 auto;padding:88px 80px;display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;}
+.heritage-left{display:flex;flex-direction:column;}
+.heritage-h2{font-family:var(--serif);font-size:clamp(26px,3vw,40px);font-weight:400;line-height:1.1;color:var(--cream);margin-top:16px;}
+.heritage-h2 em{font-style:italic;color:var(--cream2);}
+.heritage-right{display:flex;flex-direction:column;gap:18px;}
+.heritage-close{font-size:13.5px;font-weight:400;color:var(--cream);border-left:2px solid var(--fire);padding-left:20px;}
+
+/* ─── 02 · THE NAULA METHOD ───────────────────────── */
+.method-section{border-bottom:.5px solid var(--line);background:var(--bg1);}
+.method-inner{max-width:1280px;margin:0 auto;padding:88px 80px;}
+.method-opener{font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);font-style:italic;font-weight:300;line-height:1.5;color:var(--cream2);margin-bottom:56px;max-width:640px;}
+.method-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;}
+.method-h2{font-family:var(--serif);font-size:clamp(26px,3vw,40px);font-weight:400;line-height:1.1;color:var(--cream);margin-top:16px;}
+.method-h2 em{font-style:italic;color:var(--fire);}
+.method-ps{display:flex;flex-direction:column;gap:18px;}
+.method-close{font-size:13.5px;font-weight:300;color:var(--cream3);font-style:italic;}
+
+/* ─── 03 · TRADITIONAL EXTRACTION ────────────────── */
+.extraction-section{border-bottom:.5px solid var(--line);}
+.extraction-inner{max-width:1280px;margin:0 auto;padding:88px 80px;display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;}
+.extraction-h2{font-family:var(--serif);font-size:clamp(26px,3vw,40px);font-weight:400;line-height:1.1;color:var(--cream);margin-top:16px;}
+.extraction-h2 em{font-style:italic;color:var(--fire);}
+.extraction-statement{margin-top:40px;border-top:.5px solid var(--line);padding-top:32px;display:flex;flex-direction:column;gap:4px;}
+.extraction-stmt{font-family:var(--serif);font-size:20px;font-weight:400;font-style:italic;color:var(--cream);line-height:1.45;}
+.extraction-right{display:flex;flex-direction:column;gap:18px;}
+.freeze-keyword{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fire);}
+
+/* ─── 04 · INGREDIENT INTEGRITY ──────────────────── */
+.integrity-section{border-bottom:.5px solid var(--line);background:var(--bg1);}
+.integrity-inner{max-width:1280px;margin:0 auto;padding:88px 80px;display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;}
+.integrity-h2{font-family:var(--serif);font-size:clamp(26px,3vw,40px);font-weight:400;line-height:1.1;color:var(--cream);margin-top:16px;}
+.integrity-h2 em{font-style:italic;color:var(--cream2);}
+.integrity-right{display:flex;flex-direction:column;gap:18px;}
+.integrity-close{font-family:var(--serif);font-size:17px;font-weight:400;font-style:italic;line-height:1.55;color:var(--cream);border-left:2px solid var(--fire);padding-left:20px;}
+
+/* ─── 05 · FOUNDERS ──────────────────────────────── */
+.founders-section{border-bottom:.5px solid var(--line);}
+.founders-inner{max-width:1280px;margin:0 auto;padding:88px 80px;}
+.founders-eyebrow{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cream4);margin-bottom:56px;}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+.founder-divider{width:100%;height:.5px;background:var(--line2);margin-bottom:28px;}
+.founder-name{font-family:var(--serif);font-size:clamp(22px,2.2vw,30px);font-weight:400;color:var(--cream);line-height:1.15;margin-bottom:8px;}
+.founder-role{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--fire);margin-bottom:28px;}
+.founder-p{font-size:13.5px;font-weight:300;line-height:1.82;color:var(--cream2);margin-bottom:16px;}
+.founder-p:last-child{margin-bottom:0;}
+
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:1024px){
   .nav-desktop{display:none}.nav-mobile-btn{display:block}
-  .won-hero-content{padding:40px 40px 56px;}
+  .won-hero-content{padding:60px 40px 56px;}
   .manifesto{grid-template-columns:1fr;gap:40px;padding:64px 40px;}
+  .heritage-inner{grid-template-columns:1fr;gap:40px;padding:64px 40px;}
+  .method-inner{padding:64px 40px;}
+  .method-grid{grid-template-columns:1fr;gap:40px;}
+  .extraction-inner{grid-template-columns:1fr;gap:40px;padding:64px 40px;}
+  .integrity-inner{grid-template-columns:1fr;gap:40px;padding:64px 40px;}
+  .founders-inner{padding:64px 40px;}
+  .founders-grid{grid-template-columns:1fr;gap:52px;}
   .pillars-header{padding:56px 40px 0;flex-direction:column;align-items:flex-start;}
   .pillars-header-sub{text-align:left;max-width:100%;}
   .pillars-grid{grid-template-columns:1fr;padding:32px 40px 64px;}
@@ -309,9 +368,12 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
 }
 @media(max-width:640px){
   .nav-desktop{display:none}.nav-mobile-btn{display:block}
-  .won-hero-content{padding:30px 20px 44px;}
-  .won-hero-h1{font-size:15px;line-height:1.12;}
+  .won-hero-content{padding:48px 20px 44px;}
+  .won-hero-h1{font-size:30px;line-height:1.12;}
   .manifesto{padding:48px 20px;}
+  .heritage-inner,.method-inner,.extraction-inner,.integrity-inner,.founders-inner{padding:48px 20px;}
+  .method-opener{margin-bottom:36px;}
+  .extraction-statement{margin-top:28px;padding-top:24px;}
   .pillars-header{padding:48px 20px 0;}
   .pillars-grid{padding:24px 20px 48px;}
   .pillar{padding:32px 20px 36px;}
@@ -358,14 +420,13 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
 <!-- ═══ HERO ═══════════════════════════════════════ -->
 <section class="won-hero">
   <div class="won-hero-media">
-    <img src="Farmer.webp" alt="World of Naula" loading="eager">
+    <img src="Naula-2.webp" alt="World of Naula" loading="eager">
   </div>
   <div class="won-hero-veil"></div>
   <div class="won-hero-content">
     <div class="won-hero-tag">World of Naula</div>
     <h1 class="won-hero-h1">
-      Herbs were never separated from life in Vietnam.</br>
-They existed in <em>warmth, recovery, meals, rituals,</em> and <em>seasonal balance.</em>
+      Where plants<br>become <em>practice.</em>
     </h1>
     <div class="won-hero-rule">
       <div class="won-hero-rule-line"></div>
@@ -398,6 +459,40 @@ They existed in <em>warmth, recovery, meals, rituals,</em> and <em>seasonal bala
     <p class="manifesto-p">
       What we sell is the result of that discipline applied consistently. No extracts. No anonymised inputs. No flavouring added to compensate for what was removed.
     </p>
+  </div>
+</section>
+
+<!-- ═══ 01 · VIETNAMESE BOTANICAL HERITAGE ══════════ -->
+<section class="heritage-section">
+  <div class="heritage-inner">
+    <div class="heritage-left">
+      <div class="section-num">01 — Vietnamese Botanical Heritage</div>
+      <h2 class="heritage-h2">A botanical<br>culture already <em>lived.</em></h2>
+    </div>
+    <div class="heritage-right">
+      <p class="body-p">Vietnam holds a deeply rooted botanical culture shaped by tropical climate, fertile soil, and generations of herbal use woven into daily life.</p>
+      <p class="body-p">Here, wellness herbs are not separated from cuisine or healthcare. They appear naturally in meals, recovery, warmth, and seasonal nourishment.</p>
+      <p class="body-p">From ginger and lemongrass to perilla leaf and kumquat, Vietnamese botanical ingredients have long existed as part of everyday living — not as trends, but as habits carried across generations.</p>
+      <p class="heritage-close">Naula begins from this living botanical foundation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 · THE NAULA METHOD ════════════════════════ -->
+<section class="method-section">
+  <div class="method-inner">
+    <p class="method-opener">Every herb reacts differently to heat, water, and time.<br>Some require slow extraction. Others demand restraint.</p>
+    <div class="method-grid">
+      <div>
+        <div class="section-num">02 — The Naula Method</div>
+        <h2 class="method-h2">Adjusted for<br>each <em>ingredient.</em></h2>
+      </div>
+      <div class="method-ps">
+        <p class="body-p">The Naula Method is built on individually adjusting the cooking process for each botanical ingredient — balancing temperature, duration, and intensity to preserve its natural character.</p>
+        <p class="body-p">Rather than forcing herbs through aggressive industrial extraction, Naula approaches botanical processing through disciplined preparation, inspired by traditional herbal cooking practices in Vietnam.</p>
+        <p class="method-close">The method is designed not to control nature completely, but to work with it.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -438,9 +533,29 @@ They existed in <em>warmth, recovery, meals, rituals,</em> and <em>seasonal bala
   </div>
 </section>
 
+<!-- ═══ 03 · TRADITIONAL EXTRACTION, MODERN PRESERVATION ═══ -->
+<section class="extraction-section">
+  <div class="extraction-inner">
+    <div>
+      <div class="section-num">03 — Traditional Extraction, Modern Preservation</div>
+      <h2 class="extraction-h2">Prepared fresh.<br>Preserved <em>without compromise.</em></h2>
+      <div class="extraction-statement">
+        <span class="extraction-stmt">Traditional extraction.</span>
+        <span class="extraction-stmt">Modern preservation.</span>
+        <span class="extraction-stmt">Built for contemporary life.</span>
+      </div>
+    </div>
+    <div class="extraction-right">
+      <p class="body-p">Naula begins with fresh herbal extraction in liquid form.</p>
+      <p class="body-p">Only after the cooking process is complete does <span class="freeze-keyword">freeze-dried</span> preservation begin — freezing the extraction at deep temperatures before removing moisture through a controlled low-heat process.</p>
+      <p class="body-p">This freeze-dried approach helps preserve aroma, flavour, and botanical character while creating a lightweight format suited for modern wellness lifestyles.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ FULL-BLEED IMAGE ═══════════════════════════ -->
 <div class="image-break">
-  <img src="Ginger.webp" alt="Naula preparation process" loading="lazy">
+  <img src="Process-2.webp" alt="Naula preparation process" loading="lazy">
   <div class="image-break-veil"></div>
   <div class="image-break-caption">
     <p>Naula preparation · Long An, Vietnam</p>
@@ -496,6 +611,47 @@ They existed in <em>warmth, recovery, meals, rituals,</em> and <em>seasonal bala
       Non-GMO · Gluten-free · Dairy-free · Vegan · Caffeine-free<br>
       Laboratory tested by Quatest 3 · No preservatives · No artificial colour or sweetener
     </p>
+  </div>
+</section>
+
+<!-- ═══ 04 · INGREDIENT INTEGRITY ════════════════════ -->
+<section class="integrity-section">
+  <div class="integrity-inner">
+    <div>
+      <div class="section-num">04 — Ingredient Integrity</div>
+      <h2 class="integrity-h2">Real herbs.<br><em>Honest behaviour.</em></h2>
+    </div>
+    <div class="integrity-right">
+      <p class="body-p">Real herbs do not behave like engineered liquids.</p>
+      <p class="body-p">Natural sedimentation, seasonal variation, and subtle color changes are part of working with authentic botanical ingredients.</p>
+      <p class="body-p">At Naula, formulations are kept intentionally minimal — without artificial colour, unnecessary stabilizers, or excessive processing designed to erase the ingredient's natural behaviour.</p>
+      <p class="integrity-close">We believe botanical integrity is preserved not by controlling nature completely, but by interfering with it less.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 · FOUNDERS ════════════════════════════════ -->
+<section class="founders-section">
+  <div class="founders-inner">
+    <div class="founders-eyebrow">05 — Founders</div>
+    <div class="founders-grid">
+      <div class="founder">
+        <div class="founder-divider"></div>
+        <div class="founder-name">Hải Ninh Hoàng</div>
+        <div class="founder-role">Co-Founder · Chairwoman</div>
+        <p class="founder-p">Raised across different regions of Vietnam — from the highlands of Bảo Lộc to the coastal village of Thạch Kim — Hải Ninh grew up surrounded by local herbal practices, traditional food culture, and communities deeply connected to nature.</p>
+        <p class="founder-p">Influenced by generations of home cooking, folk remedies, and ingredient-based nourishment, she developed an early understanding that cuisine, wellness, and cultural memory have long existed together in Vietnamese daily life.</p>
+        <p class="founder-p">These experiences shaped her belief that Vietnamese botanical culture carries a depth far beyond traditional wellness trends — and deserves to be preserved through a contemporary form.</p>
+      </div>
+      <div class="founder">
+        <div class="founder-divider"></div>
+        <div class="founder-name">Đại Hoàng</div>
+        <div class="founder-role">Co-Founder</div>
+        <p class="founder-p">Born in Chợ Lớn, Sài Gòn, within a family shaped by Northern, Central, and Southern Vietnamese influences, Hoàng Đại developed a strong interest in Vietnamese cultural heritage from an early age.</p>
+        <p class="founder-p">His work across visual arts, historical reconstruction, and international film projects led him toward a broader question: how can traditional Vietnamese identity be translated into a contemporary language without losing its original spirit?</p>
+        <p class="founder-p">Together with Hải Ninh, he co-founded Thiện Kiến and helped shape Naula as a modern botanical project — where Vietnamese ingredients, processing philosophy, and cultural memory are reinterpreted for contemporary life.</p>
+      </div>
+    </div>
   </div>
 </section>
 
