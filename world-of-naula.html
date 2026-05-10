@@ -258,7 +258,14 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
   position:absolute;inset:0;
   background:rgba(18,17,11,.20);
 }
-.heritage-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:88px 80px;display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;}
+.heritage-inner{
+  position:relative;z-index:2;
+  max-width:1280px;margin:0 auto;padding:88px 80px;
+  display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;
+  background:rgba(18,17,11,.72);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+}
 .heritage-left{display:flex;flex-direction:column;}
 .heritage-h2{font-family:var(--serif);font-size:clamp(26px,3vw,40px);font-weight:400;line-height:1.1;color:var(--cream);margin-top:16px;}
 .heritage-h2 em{font-style:italic;color:var(--cream2);}
