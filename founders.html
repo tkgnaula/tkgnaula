@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message from Founders · TKG · Naula Prepared</title>
+<meta name="description" content="A letter from the people behind TKG. Why we started, what we believe, and the gap we are trying to close.">
+<link rel="canonical" href="https://www.tkg-naula.com/founders.html">
+<link rel="icon" type="image/png" href="TKG-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET + TOKENS ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:#12110B;color:#EDE8DC;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+:root{
+  --bg:#12110B;--bg1:#181610;--bg2:#1E1B13;
+  --fire:#D45E29;--fire2:rgba(212,94,41,.12);
+  --perilla:#74255E;--gold:#F9DA85;--herb:#CEE2B8;
+  --cream:#EDE8DC;--cream2:#C4BFB1;--cream3:#8A8679;--cream4:#4A4840;
+  --line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Be Vietnam Pro',system-ui,sans-serif;
+}
+
+/* ─── NAV ─────────────────────────────────────────── */
+nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:.5px solid var(--line);}
+.nav-w{max-width:1280px;margin:0 auto;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo img{height:80px;width:auto;display:block;}
+.nav-desktop{display:flex;align-items:center;gap:32px}
+.nav-desktop a{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream3);transition:color .2s;}
+.nav-desktop a:hover,.nav-desktop a.active{color:var(--cream)}
+.nav-mobile-btn{display:none;cursor:pointer;background:transparent;border:none;padding:8px}
+.nav-mobile-btn span{display:block;width:20px;height:2px;background:var(--cream);margin:4px 0;}
+.nav-mobile{position:fixed;top:56px;left:0;right:0;background:rgba(18,17,11,.98);backdrop-filter:blur(14px);flex-direction:column;gap:0;padding:20px 0;transform:translateY(-100%);transition:transform .3s;border-bottom:1px solid var(--line);display:none;}
+.nav-mobile.active{transform:translateY(0);display:flex}
+.nav-mobile a{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream3);padding:16px 24px;border-bottom:.5px solid var(--line);text-align:left;transition:color .2s;}
+.nav-mobile a:hover,.nav-mobile a.active{color:var(--cream)}
+.nav-btn{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--fire);color:#fff;padding:8px 20px;border-radius:2px;transition:opacity .2s;}
+.nav-btn:hover{opacity:.85}
+
+/* ─── HERO ─────────────────────────────────────────── */
+.f-hero{
+  position:relative;min-height:calc(100vh - 56px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;border-bottom:.5px solid var(--line);
+}
+.f-hero-media{position:absolute;inset:0;}
+.f-hero-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(18,17,11,.15) 0%,rgba(18,17,11,.5) 50%,rgba(18,17,11,.92) 100%);
+}
+.f-hero-content{
+  position:relative;z-index:2;
+  max-width:1280px;margin:0 auto;width:100%;
+  padding:80px 80px 72px;
+}
+.f-hero-tag{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--fire);margin-bottom:24px;}
+.f-hero-kicker{
+  font-family:var(--serif);font-size:clamp(13px,1.2vw,17px);
+  font-style:italic;font-weight:300;color:var(--cream3);
+  margin-bottom:20px;letter-spacing:.04em;
+}
+.f-hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(32px,4.2vw,62px);
+  font-weight:300;line-height:1.06;letter-spacing:-.02em;
+  color:var(--cream);margin-bottom:36px;max-width:760px;
+}
+.f-hero-h1 em{font-style:italic;color:var(--cream2);}
+.f-hero-meta{
+  display:flex;align-items:center;gap:24px;
+}
+.f-hero-date{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cream4);}
+.f-hero-dot{width:3px;height:3px;background:var(--cream4);border-radius:50%;}
+.f-hero-authors{font-size:10px;font-weight:500;letter-spacing:.12em;color:var(--cream3);}
+
+/* ─── LETTER SECTION ───────────────────────────────── */
+.letter-section{
+  max-width:800px;margin:0 auto;
+  padding:88px 80px;
+  border-bottom:.5px solid var(--line);
+}
+.letter-salutation{
+  font-family:var(--serif);font-size:22px;font-weight:400;
+  color:var(--cream);margin-bottom:36px;
+}
+.letter-p{
+  font-family:var(--serif);font-size:20px;font-weight:300;
+  line-height:1.82;color:var(--cream2);margin-bottom:28px;
+}
+.letter-p em{font-style:italic;color:var(--cream);}
+.letter-p strong{font-weight:500;color:var(--cream);}
+.letter-sig{
+  margin-top:52px;padding-top:36px;border-top:.5px solid var(--line);
+}
+.letter-sig-name{
+  font-family:var(--serif);font-size:26px;font-weight:400;
+  font-style:italic;color:var(--cream);line-height:1.3;
+}
+.letter-sig-role{
+  font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cream4);margin-top:8px;
+}
+
+/* ─── FULL-BLEED IMAGE BREAK ──────────────────────── */
+.f-image-break{
+  height:70vh;max-height:640px;overflow:hidden;
+  position:relative;
+  border-top:.5px solid var(--line);border-bottom:.5px solid var(--line);
+}
+.f-image-break-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(18,17,11,.55) 0%,rgba(18,17,11,.08) 60%);
+}
+.f-image-break-caption{
+  position:absolute;bottom:40px;left:80px;z-index:2;
+}
+.f-image-break-caption p{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cream3);}
+
+/* ─── EDITORIAL SECTION ────────────────────────────── */
+.editorial-section{
+  border-bottom:.5px solid var(--line);
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;align-items:start;
+}
+.editorial-photo{
+  position:relative;overflow:hidden;min-height:600px;
+}
+.editorial-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.editorial-photo-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(18,17,11,.0) 0%,rgba(18,17,11,.18) 100%);
+}
+.editorial-text{
+  display:flex;flex-direction:column;justify-content:center;gap:24px;
+  padding:80px 72px;
+  border-left:.5px solid var(--line);
+}
+.editorial-text.right-photo{
+  border-left:none;border-right:.5px solid var(--line);
+  padding:80px 72px;
+}
+.editorial-eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:4px;
+}
+.editorial-h2{
+  font-family:var(--serif);font-size:clamp(28px,3vw,42px);
+  font-weight:400;line-height:1.1;color:var(--cream);
+}
+.editorial-h2 em{font-style:italic;color:var(--cream2);}
+.editorial-p{font-size:13.5px;font-weight:300;line-height:1.82;color:var(--cream2);}
+.editorial-pull{
+  font-family:var(--serif);font-size:20px;font-weight:400;font-style:italic;
+  color:var(--cream);line-height:1.5;
+  border-left:2px solid var(--fire);padding-left:24px;
+}
+.editorial-section.reverse .editorial-photo{order:2;}
+.editorial-section.reverse .editorial-text{order:1;}
+
+/* ─── WIDE TEXT SECTION ────────────────────────────── */
+.wide-section{
+  border-bottom:.5px solid var(--line);
+  background:var(--bg1);
+}
+.wide-inner{
+  max-width:1280px;margin:0 auto;padding:88px 80px;
+  display:grid;grid-template-columns:280px 1fr;gap:80px;align-items:start;
+}
+.wide-label{
+  position:sticky;top:80px;
+}
+.wide-label-num{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--fire);margin-bottom:12px;}
+.wide-label-h3{font-family:var(--serif);font-size:clamp(22px,2.4vw,32px);font-weight:400;line-height:1.12;color:var(--cream);}
+.wide-label-h3 em{font-style:italic;color:var(--cream2);}
+.wide-body{display:flex;flex-direction:column;gap:22px;}
+.wide-p{font-size:13.5px;font-weight:300;line-height:1.82;color:var(--cream2);}
+.wide-highlight{
+  background:var(--bg2);border-left:2px solid var(--fire);
+  padding:28px 32px;
+}
+.wide-highlight p{
+  font-family:var(--serif);font-size:19px;font-weight:400;font-style:italic;
+  color:var(--cream);line-height:1.6;
+}
+
+/* ─── TIMELINE SECTION ─────────────────────────────── */
+.timeline-section{
+  border-bottom:.5px solid var(--line);
+  max-width:1280px;margin:0 auto;
+  padding:88px 80px;
+}
+.timeline-header{margin-bottom:56px;}
+.timeline-header .eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--fire);margin-bottom:16px;}
+.timeline-header h2{font-family:var(--serif);font-size:clamp(26px,2.8vw,38px);font-weight:400;color:var(--cream);line-height:1.1;}
+.timeline-header h2 em{font-style:italic;color:var(--cream2);}
+.timeline-list{display:flex;flex-direction:column;gap:0;}
+.timeline-item{
+  display:grid;grid-template-columns:120px 1px 1fr;gap:0 40px;
+  padding:36px 0;border-bottom:.5px solid var(--line);
+  align-items:start;
+}
+.timeline-item:last-child{border-bottom:none;}
+.timeline-year{
+  font-family:var(--serif);font-size:15px;font-weight:400;
+  color:var(--cream4);letter-spacing:.06em;padding-top:4px;text-align:right;
+}
+.timeline-divider{background:var(--line2);position:relative;}
+.timeline-divider::before{
+  content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);
+  width:7px;height:7px;border-radius:50%;background:var(--fire);
+  box-shadow:0 0 0 2px var(--bg),0 0 0 3px var(--fire);
+}
+.timeline-content{padding-left:0;}
+.timeline-title{
+  font-family:var(--serif);font-size:20px;font-weight:500;
+  color:var(--cream);margin-bottom:10px;line-height:1.2;
+}
+.timeline-title em{font-style:italic;}
+.timeline-desc{font-size:13px;font-weight:300;color:var(--cream3);line-height:1.75;max-width:560px;}
+
+/* ─── CLOSING CTA ──────────────────────────────────── */
+.f-cta{
+  border-top:.5px solid var(--line);
+  padding:88px 80px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.f-cta::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:700px;height:400px;
+  background:radial-gradient(ellipse,rgba(212,94,41,.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.f-cta-serif{
+  font-family:var(--serif);font-size:clamp(22px,2.6vw,36px);
+  font-style:italic;font-weight:300;line-height:1.4;
+  color:var(--cream2);letter-spacing:.04em;margin-bottom:40px;
+}
+.f-cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--fire);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:12px 28px;border-radius:2px;border:none;cursor:pointer;transition:opacity .2s;
+}
+.btn-primary:hover{opacity:.85}
+.btn-ghost{
+  font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cream3);transition:color .2s;display:flex;align-items:center;
+}
+.btn-ghost:hover{color:var(--cream)}
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer{background:var(--bg1);border-top:.5px solid var(--line);}
+.foot-top{max-width:1280px;margin:0 auto;padding:56px 80px 48px;display:grid;grid-template-columns:auto 1fr auto;gap:64px;align-items:start;}
+.foot-brand img{height:48px;width:auto;display:block;opacity:.85;}
+.foot-sub{font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cream4);margin-top:6px;}
+.foot-sub2{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--fire);margin-top:4px;}
+.foot-nav{display:flex;gap:48px;}
+.foot-col-title{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cream4);margin-bottom:14px;}
+.foot-col a{display:block;font-size:12px;font-weight:300;color:var(--cream3);margin-bottom:10px;transition:color .2s;}
+.foot-col a:hover{color:var(--cream)}
+.foot-bottom{max-width:1280px;margin:0 auto;padding:20px 80px 32px;display:flex;align-items:center;justify-content:space-between;border-top:.5px solid var(--line);}
+.foot-copy{font-size:9.5px;color:var(--cream4);letter-spacing:.06em}
+
+/* ─── ORDER MODAL ─────────────────────────────────── */
+.order-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;}
+.order-modal.open{display:flex;}
+.modal-overlay-bg{position:absolute;top:0;left:0;width:100%;height:100%;}
+.modal-content{position:relative;background:var(--bg1);border-radius:8px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid var(--line2);}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border:none;background:transparent;color:var(--cream3);font-size:20px;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;z-index:1;}
+.modal-close:hover{background:var(--line2);color:var(--cream)}
+.modal-header{padding:32px 32px 24px;border-bottom:1px solid var(--line);}
+.modal-title{font-family:var(--serif);font-size:28px;font-weight:400;color:var(--cream);margin-bottom:8px;}
+.modal-subtitle{font-size:14px;font-weight:300;color:var(--cream3);}
+.order-form{padding:32px;}
+.form-group{margin-bottom:24px;}
+.form-group label{display:block;font-size:12px;font-weight:500;color:var(--cream2);margin-bottom:8px;letter-spacing:.02em;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--line2);border-radius:4px;color:var(--cream);font-size:14px;font-family:var(--sans);transition:border-color .2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--fire);}
+.form-group textarea{resize:vertical;min-height:80px;}
+.submit-btn{width:100%;background:var(--fire);color:#fff;border:none;padding:14px 24px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;font-family:var(--sans);}
+.submit-btn:hover{opacity:.85}
+.modal-footer{padding:24px 32px 32px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px;}
+.hotline-info{font-size:13px;color:var(--cream2);}
+.hotline-info strong{color:var(--cream);}
+.product-origin{font-size:11px;font-style:italic;color:var(--cream4);text-align:center;font-family:var(--serif);}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:1024px){
+  .nav-desktop{display:none}.nav-mobile-btn{display:block}
+  .f-hero-content{padding:60px 40px 56px;}
+  .letter-section{padding:64px 40px;}
+  .letter-p{font-size:18px;}
+  .editorial-section{grid-template-columns:1fr;}
+  .editorial-section.reverse .editorial-photo{order:unset;}
+  .editorial-section.reverse .editorial-text{order:unset;}
+  .editorial-photo{min-height:420px;}
+  .editorial-text{padding:56px 40px;border-left:none;border-top:.5px solid var(--line);}
+  .editorial-text.right-photo{border-right:none;border-top:.5px solid var(--line);padding:56px 40px;}
+  .wide-inner{grid-template-columns:1fr;gap:40px;padding:64px 40px;}
+  .wide-label{position:static;}
+  .timeline-section{padding:64px 40px;}
+  .timeline-item{grid-template-columns:80px 1px 1fr;gap:0 24px;}
+  .f-image-break-caption{left:40px;}
+  .f-cta{padding:64px 40px;}
+  .foot-top{grid-template-columns:1fr;gap:36px;padding:48px 40px 40px;}
+  .foot-bottom{padding:20px 40px 28px;}
+}
+@media(max-width:640px){
+  .nav-desktop{display:none}.nav-mobile-btn{display:block}
+  .f-hero-content{padding:48px 20px 44px;}
+  .f-hero-h1{font-size:30px;}
+  .letter-section{padding:48px 20px;}
+  .letter-p{font-size:16px;line-height:1.78;}
+  .editorial-photo{min-height:300px;}
+  .editorial-text{padding:40px 20px;}
+  .editorial-text.right-photo{padding:40px 20px;}
+  .editorial-pull{font-size:17px;}
+  .wide-inner{padding:48px 20px;}
+  .timeline-section{padding:48px 20px;}
+  .timeline-item{grid-template-columns:60px 1px 1fr;gap:0 16px;}
+  .timeline-year{font-size:12px;}
+  .f-image-break-caption{left:20px;bottom:24px;}
+  .f-cta{padding:48px 20px;}
+  .f-cta-actions{flex-direction:column;align-items:center;}
+  .foot-top{padding:40px 20px 32px;}
+  .foot-nav{flex-direction:column;gap:24px;}
+  .foot-bottom{padding:16px 20px 20px;flex-direction:column;gap:8px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════ -->
+<nav>
+  <div class="nav-w">
+    <a href="index.html" class="nav-logo"><img src="TKG-logo.png" alt="TKG"></a>
+    <div class="nav-desktop">
+      <a href="index.html#naula">Naula Prepared</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#ritual">Ritual</a>
+      <a href="world-of-naula.html">World of Naula</a>
+      <a href="founders.html" class="active">Founders</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
+    </div>
+    <button class="nav-mobile-btn" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+    <div class="nav-mobile">
+      <a href="index.html#naula">Naula Prepared</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#ritual">Ritual</a>
+      <a href="world-of-naula.html">World of Naula</a>
+      <a href="founders.html" class="active">Founders</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════ -->
+<section class="f-hero">
+  <div class="f-hero-media">
+    <img src="Farmer.webp" alt="Message from Founders" loading="eager">
+  </div>
+  <div class="f-hero-veil"></div>
+  <div class="f-hero-content">
+    <div class="f-hero-tag">Message from Founders</div>
+    <p class="f-hero-kicker">A letter from the people behind TKG</p>
+    <h1 class="f-hero-h1">
+      We did not start<br>with a product.<br>We started with <em>a question.</em>
+    </h1>
+    <div class="f-hero-meta">
+      <span class="f-hero-date">May 2026</span>
+      <span class="f-hero-dot"></span>
+      <span class="f-hero-authors">Thiện Kiến Founders</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPENING LETTER ═════════════════════════════ -->
+<section class="letter-section">
+  <p class="letter-salutation">To anyone reading this —</p>
+
+  <p class="letter-p">
+    We grew up with Vietnamese herbs the way most Vietnamese families do: not as a category, not as wellness, and certainly not as a product. They were just <em>there</em> — in the kitchen, in the morning drink someone's grandmother made, in the smell that came from a pot left simmering too long.
+  </p>
+
+  <p class="letter-p">
+    Ginger was for warmth. Lemongrass was for flavor and recovery. Perilla was for the end of the day when the body needed quiet. Nobody called them adaptogens or botanicals. They were just what people used, because they worked, and because their parents had used them before that.
+  </p>
+
+  <p class="letter-p">
+    When we began thinking about TKG, the question we kept returning to was a simple one: <strong>why, when Vietnamese herbs travel across borders, do they lose everything that made them worth using in the first place?</strong>
+  </p>
+
+  <p class="letter-p">
+    The answer, we found, is almost always the same. They get extracted, anonymised, reformulated, and flavoured back into something approximating their original character. The plant becomes an ingredient. The ingredient becomes a note. The note becomes a product.
+  </p>
+
+  <p class="letter-p">
+    We wanted to try something different — to start from the plant, name everything on the label, and build a preparation method around preserving what was actually there.
+  </p>
+
+  <p class="letter-p">
+    That is what TKG is. Not a brand built around a concept. A brand built around a practice — the Naula preparation discipline — applied consistently to Vietnamese botanicals that deserve to be recognized for what they actually are.
+  </p>
+
+  <div class="letter-sig">
+    <div class="letter-sig-name">Thiện Kiến</div>
+    <div class="letter-sig-role">Founders · TKG · Ho Chi Minh City, Vietnam</div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 01 · THE GAP WE SAW ═══════════════ -->
+<section class="editorial-section" style="border-top:.5px solid var(--line);">
+  <div class="editorial-text" style="border-left:none;border-right:.5px solid var(--line);">
+    <div class="editorial-eyebrow">01 — The Gap We Saw</div>
+    <h2 class="editorial-h2">
+      Recognized everywhere.<br><em>Understood nowhere.</em>
+    </h2>
+    <p class="editorial-p">
+      Vietnamese herbs are known globally. Ginger, lemongrass, perilla — they appear on menus, in supplements, in supermarket aisles across Europe and Asia. But the version that travels is rarely the version that was actually used. What arrives is an extract, a concentrate, a powder made from something that may once have been a real plant but has since been processed into something uniform, stable, and forgettable.
+    </p>
+    <p class="editorial-p">
+      The preparation traditions that made these herbs worth knowing — the specific heat, the specific timing, the respect for how each botanical behaves differently — rarely survive the journey. What remains is a suggestion of the original. A flavour rather than a substance.
+    </p>
+    <div class="editorial-pull">
+      "The plant becomes an ingredient. The ingredient becomes a note. The note becomes a product."
+    </div>
+  </div>
+  <div class="editorial-photo">
+    <img src="veget-market.webp" alt="Vietnamese vegetable market" loading="lazy">
+    <div class="editorial-photo-veil"></div>
+  </div>
+</section>
+
+<!-- ═══ FULL-BLEED IMAGE BREAK ════════════════════ -->
+<div class="f-image-break">
+  <img src="Naula-documentary.webp" alt="Naula preparation process" loading="lazy">
+  <div class="f-image-break-veil"></div>
+  <div class="f-image-break-caption">
+    <p>Naula preparation · Long An, Vietnam</p>
+  </div>
+</div>
+
+<!-- ═══ SECTION 02 · WHY NAULA ════════════════════ -->
+<section class="wide-section">
+  <div class="wide-inner">
+    <div class="wide-label">
+      <div class="wide-label-num">02 — Why Naula</div>
+      <h3 class="wide-label-h3">
+        A method,<br>not a <em>marketing name.</em>
+      </h3>
+    </div>
+    <div class="wide-body">
+      <p class="wide-p">
+        Naula is the name we gave to the preparation discipline at the center of TKG. It is not a brand concept invented for export. It is a structured approach to cooking and preserving Vietnamese botanical ingredients — one that adjusts the process for each herb individually rather than applying a single industrial method to all of them.
+      </p>
+      <p class="wide-p">
+        The core principle is straightforward: every botanical ingredient behaves differently under heat, water, and time. Ginger root requires different treatment than lemongrass. Perilla leaf reacts to pH in ways that clove does not. A method that works for one will compromise another. Naula is built around that recognition.
+      </p>
+      <div class="wide-highlight">
+        <p>"We are not trying to control nature completely. We are trying to interfere with it less — and to preserve what was already there."</p>
+      </div>
+      <p class="wide-p">
+        After preparation in liquid form, the extraction is preserved through freeze-drying — a process that removes moisture under deep cold and vacuum rather than heat. It is more expensive. It is slower. It preserves more of the aroma, color, and botanical character than alternatives. For us, there was no other serious option.
+      </p>
+      <p class="wide-p">
+        The result is a powder that dissolves in water and behaves like the herb it came from — including the parts that most processed products try to eliminate. The natural sedimentation. The color that shifts with pH. The taste that is not identical every single time because the ingredient it came from is a living thing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 03 · THE INGREDIENT ══════════════ -->
+<section class="editorial-section reverse" style="border-top:.5px solid var(--line);">
+  <div class="editorial-photo">
+    <img src="Ginger.webp" alt="Fresh ginger root" loading="lazy">
+    <div class="editorial-photo-veil"></div>
+  </div>
+  <div class="editorial-text">
+    <div class="editorial-eyebrow">03 — The Ingredient</div>
+    <h2 class="editorial-h2">
+      Named on the label.<br><em>Every time.</em>
+    </h2>
+    <p class="editorial-p">
+      One of the things that frustrated us about botanical products — including many we respected — was ingredient anonymity. "Natural flavoring." "Botanical extract." "Herbal blend." These phrases tell you nothing about where the ingredient came from, how it was processed, or whether the original plant was involved at all in any meaningful way.
+    </p>
+    <p class="editorial-p">
+      At TKG, every ingredient is named. Not as a marketing strategy, but as a commitment. Ginger root. Lemongrass stalk. Lime peel. Perilla leaf. Clove. Kumquat. When you dissolve a serving of Morning Ember or Still Ember, you know exactly what you are drinking — because it says so on the label, and because nothing else has been added to confuse it.
+    </p>
+    <p class="editorial-p">
+      We test through Quatest 3. We do not use artificial color, artificial sweetener, or preservatives. We keep the formulation as short as possible, because we believe a shorter ingredient list is usually a more honest one.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ FULL-BLEED IMAGE BREAK 2 ══════════════════ -->
+<div class="f-image-break">
+  <img src="Process-2.webp" alt="The Naula process" loading="lazy">
+  <div class="f-image-break-veil" style="background:linear-gradient(to left,rgba(18,17,11,.55) 0%,rgba(18,17,11,.08) 60%);"></div>
+  <div class="f-image-break-caption" style="left:auto;right:80px;">
+    <p>Freeze-dried · Long An facility, Vietnam</p>
+  </div>
+</div>
+
+<!-- ═══ TIMELINE · HOW WE GOT HERE ════════════════ -->
+<section class="timeline-section" style="border-top:.5px solid var(--line);">
+  <div class="timeline-header">
+    <div class="eyebrow">How we got here</div>
+    <h2>A record of <em>decisions made.</em></h2>
+  </div>
+  <div class="timeline-list">
+    <div class="timeline-item">
+      <div class="timeline-year">Early</div>
+      <div class="timeline-divider"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">The original <em>question</em></div>
+        <div class="timeline-desc">Observing how Vietnamese herbs were exported and processed. Noticing the gap between how herbs were actually used in Vietnam and what arrived on the other side of the supply chain. Beginning to ask whether a different approach was viable.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Research</div>
+      <div class="timeline-divider"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">Building the <em>Naula Method</em></div>
+        <div class="timeline-desc">Testing botanical preparation approaches. Identifying how each ingredient responds differently to heat, water ratio, and duration. Developing individual protocols for ginger, lemongrass, lime, perilla, clove, and kumquat. Choosing freeze-drying over spray-drying after understanding the trade-offs.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2025</div>
+      <div class="timeline-divider"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">First two products: <em>Morning Ember & Still Ember</em></div>
+        <div class="timeline-desc">Launched the first two formulations under the Hệ Hỏa (Fire Element) line. Morning Ember: ginger, lemongrass, lime — a warm start. Still Ember: perilla, clove, kumquat — a quiet close. Laboratory tested through Quatest 3. No artificial additions. Products named, not branded.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2026</div>
+      <div class="timeline-divider"></div>
+      <div class="timeline-content">
+        <div class="timeline-title"><em>World of Naula</em> — publishing the thinking</div>
+        <div class="timeline-desc">Beginning to document the practice in writing. Why freeze-drying. What the color change in Still Ember means. What Hệ Hỏa actually is. Writing slowly, publishing only when complete. The goal is not content — it is a record of decisions made and the reasoning behind them.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Next</div>
+      <div class="timeline-divider"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">Expanding the <em>botanical range</em></div>
+        <div class="timeline-desc">Continuing to develop within the Vietnamese botanical vocabulary. More ingredients. More formulations. The same discipline. Nothing released before it is ready — and nothing released that contradicts the practice we have built.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING CTA ════════════════════════════════ -->
+<section class="f-cta">
+  <p class="f-cta-serif">
+    "The same discipline in the kitchen<br>and in the cup."
+  </p>
+  <div class="f-cta-actions">
+    <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
+      Order Now
+      <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+    </a>
+    <a href="world-of-naula.html" class="btn-ghost">Read World of Naula →</a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══════════════════════════════════ -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand"><img src="TKG-logo.png" alt="TKG"></div>
+      <div class="foot-sub">Thien Kien</div>
+      <div class="foot-sub2">Product of Vietnam</div>
+    </div>
+    <div class="foot-nav">
+      <div class="foot-col">
+        <div class="foot-col-title">Navigate</div>
+        <a href="index.html#naula">Naula Method</a>
+        <a href="index.html#products">Products</a>
+        <a href="index.html#ritual">Ritual</a>
+        <a href="world-of-naula.html">World of Naula</a>
+        <a href="founders.html">Founders</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title">Support</div>
+        <a href="faq.html">FAQ</a>
+        <a href="shipping.html">Shipping &amp; Returns</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-col-title">Manufactured by THIEN KIEN Services - Trading Limited Company</div>
+      <div class="foot-col">
+        <a href="#">Address: 279 level 2 Hau Giang street, Binh Tay Ward, Hochiminh city, Vietnam</a>
+        <a href="#">Tax Number: 0317374438</a>
+        <a href="#">Email: tkg.naula@gmail.com</a>
+        <a href="#">Hotline: (+84) 976-847-789</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 Thiện Kiến · tkg-naula.com</div>
+    <div class="foot-copy" style="font-style:italic;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.06em;color:var(--cream4);">naula. naula. well. wellness.</div>
+  </div>
+</footer>
+
+<!-- ═══ ORDER MODAL ════════════════════════════════ -->
+<div id="orderModal" class="order-modal">
+  <div class="modal-overlay-bg" onclick="closeOrderModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeOrderModal()">×</button>
+    <div class="modal-header">
+      <h3 class="modal-title">Order TKG Products</h3>
+      <p class="modal-subtitle">Place your order for Morning Ember or Still Ember</p>
+    </div>
+    <form class="order-form" onsubmit="submitOrderForm(event)">
+      <div class="form-group"><label>Full Name *</label><input type="text" name="name" required></div>
+      <div class="form-group"><label>Email Address *</label><input type="email" name="email" required></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" name="phone"></div>
+      <div class="form-group"><label>Product *</label>
+        <select name="product" required>
+          <option value="">Select a product</option>
+          <option value="morning-ember">Morning Ember - Lư Trung Hoả</option>
+          <option value="still-ember">Still Ember - Phú Đăng Hoả</option>
+          <option value="both">Both Products</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Quantity *</label><input type="number" name="quantity" min="1" value="1" required></div>
+      <div class="form-group"><label>Additional Message</label><textarea name="message" rows="3"></textarea></div>
+      <button type="submit" class="submit-btn">Send Order Request</button>
+    </form>
+    <div class="modal-footer">
+      <div class="hotline-info">
+        <div style="font-size:18px;font-weight:500;color:var(--cream);margin-bottom:4px;">315.000 ₫<span style="font-size:12px;font-weight:300;color:var(--cream3);"> / box</span></div>
+        <strong>Hotline:</strong> (+84) 976-847-789
+      </div>
+      <div class="product-origin">Product of Vietnam</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleMobileNav(){document.querySelector('.nav-mobile').classList.toggle('active');}
+function openOrderModal(){document.getElementById('orderModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeOrderModal(){document.getElementById('orderModal').classList.remove('open');document.body.style.overflow='auto';}
+function submitOrderForm(e){
+  e.preventDefault();var d=new FormData(e.target);
+  var sub=encodeURIComponent('TKG Order Request - '+d.get('product'));
+  var body=encodeURIComponent('Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\nPhone: '+d.get('phone')+'\nProduct: '+d.get('product')+'\nQuantity: '+d.get('quantity')+'\nMessage: '+d.get('message'));
+  window.location.href='mailto:tkg.naula@gmail.com?subject='+sub+'&body='+body;
+  alert('Thank you for your order request! We will contact you soon.');closeOrderModal();
+}
+</script>
+
+</body>
+</html>

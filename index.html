@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKG · Botanical Blend Powder · Naula Prepared</title>
+<meta name="description" content="Three botanicals. One method. Named and traceable. TKG is a botanical preparation discipline rooted in Vietnamese practice.">
+<link rel="icon" type="image/png" href="TKG-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="Hero-Section-1.webp" fetchpriority="high">
+
+<style>
+/* ─── RESET ─────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Be Vietnam Pro',system-ui,sans-serif;
+  background:#12110B;
+  color:#EDE8DC;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+
+/* ─── TOKENS ─────────────────────────────────────── */
+:root{
+  --bg:       #12110B;
+  --bg1:      #181610;
+  --bg2:      #1E1B13;
+  --fire:     #D45E29;
+  --fire2:    rgba(212,94,41,.14);
+  --perilla:  #74255E;
+  --perilla2: rgba(116,37,94,.18);
+  --gold:     #F9DA85;
+  --herb:     #CEE2B8;
+  --cream:    #EDE8DC;
+  --cream2:   #C4BFB1;
+  --cream3:   #8A8679;
+  --cream4:   #4A4840;
+  --line:     rgba(255,255,255,.07);
+  --line2:    rgba(255,255,255,.12);
+  --serif:    'Cormorant Garamond',Georgia,serif;
+  --sans:     'Be Vietnam Pro',system-ui,sans-serif;
+}
+
+/* ─── NAV ────────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(18,17,11,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:.5px solid var(--line);
+}
+.nav-w{
+  max-width:1280px;margin:0 auto;padding:0 48px;
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo img{
+  height:80px;width:auto;display:block;
+}
+/* Desktop Navigation */
+.nav-desktop{display:flex;align-items:center;gap:32px}
+.nav-desktop a{
+  font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream3);transition:color .2s;
+}
+.nav-desktop a:hover{color:var(--cream)}
+
+/* Mobile Navigation */
+.nav-mobile-btn{display:none;cursor:pointer;background:transparent;border:none;padding:8px}
+.nav-mobile-btn span{display:block;width:20px;height:2px;background:var(--cream);margin:4px 0;transition:all .3s}
+.nav-mobile{
+  position:fixed;top:56px;left:0;right:0;
+  background:rgba(18,17,11,.98);backdrop-filter:blur(14px);
+  flex-direction:column;gap:0;padding:20px 0;
+  transform:translateY(-100%);transition:transform .3s;
+  border-bottom:1px solid var(--line);
+  display:none;
+}
+.nav-mobile.active{transform:translateY(0);display:flex}
+.nav-mobile a{
+  font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream3);transition:color .2s;
+  padding:16px 24px;border-bottom:.5px solid var(--line);text-align:left;
+}
+.nav-mobile a:last-child{border-bottom:none}
+.nav-mobile a:hover{color:var(--cream)}
+
+/* Navigation Button */
+.nav-btn{
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--fire);color:#fff;
+  padding:8px 20px;border-radius:2px;transition:opacity .2s;
+}
+.nav-btn:hover{opacity:.85}
+
+/* ─── S1 · HERO ──────────────────────────────────── */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - 56px);
+  border-bottom:.5px solid var(--line);
+}
+.hero-left{
+  background:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 64px 80px 80px;
+}
+.hero-label{
+  font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--cream3);margin-bottom:36px;
+}
+.hero-h1{
+  font-family:var(--serif);font-size:clamp(46px,4.6vw,72px);font-weight:400;
+  line-height:1.05;letter-spacing:-.01em;margin-bottom:32px;
+}
+.hero-h1 em{color:var(--fire);font-style:normal}
+.hero-rule{
+  display:flex;align-items:center;gap:16px;margin-bottom:36px;
+}
+.hero-rule-line{flex:1;height:.5px;background:var(--line2)}
+.hero-rule span{
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);white-space:nowrap;
+}
+.hero-sub{
+  font-size:13.5px;font-weight:300;line-height:1.78;color:var(--cream2);
+  max-width:380px;margin-bottom:40px;
+}
+.hero-actions{display:flex;align-items:center;gap:16px}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--fire);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:12px 28px;border-radius:2px;border:none;cursor:pointer;transition:opacity .2s;
+}
+.btn-primary:hover{opacity:.85}
+.btn-ghost{
+  font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cream3);transition:color .2s;
+}
+.btn-ghost:hover{color:var(--cream)}
+
+.hero-right{
+  position:relative;overflow:hidden;
+}
+.hero-right img,.hero-right .ph{position:absolute;inset:0;width:100%;height:100%}
+
+/* ─── S2 · STATEMENT FULL-BLEED ─────────────────── */
+.statement{
+  position:relative;min-height:75vh;
+  display:flex;align-items:flex-end;overflow:hidden;
+}
+.statement-media{position:absolute;inset:0}
+.statement-media img,.statement-media .ph{width:100%;height:100%;object-position:bottom}
+.statement-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(18,17,11,.18) 0%,rgba(18,17,11,.72) 100%);
+}
+.statement-text{
+  position:relative;z-index:2;
+  padding:60px 80px;width:100%;
+}
+.statement-eyebrow{
+  font-size:20px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:14px;
+}
+.statement-h2{
+  font-family:var(--serif);font-size:clamp(34px,3.8vw,58px);
+  font-weight:400;line-height:1.08;color:var(--cream);
+  max-width:680px;
+}
+.statement-h2 em{font-style:italic;color:var(--cream2)}
+
+/* ─── S3 · NAULA PREPARED ────────────────────────── */
+.naula-section{
+  border-top:.5px solid var(--line);border-bottom:.5px solid var(--line);
+}
+.naula-top{
+  position:relative;overflow:hidden;
+  aspect-ratio:16/9;
+}
+.naula-top-img{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.naula-top-veil{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(18,17,11,.88) 0%,
+    rgba(18,17,11,.55) 50%,
+    rgba(18,17,11,.18) 100%
+  );
+}
+.naula-top-content{
+  position:relative;
+  z-index:2;
+  max-width:1280px;
+  margin:0 auto;
+  padding:56px 80px 60px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:end;
+  height:100%;
+}
+.naula-left-tag{
+ font-size:20px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:14px;
+}
+.naula-left-head{
+  font-size:clamp(18px,1.8vw,26px);
+  font-weight:400;line-height:1.12;color:var(--cream);
+}
+.naula-right-body{
+  font-size:12px;font-weight:300;line-height:1.8;color:var(--cream2);
+}
+
+/* Three principles */
+.principles{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:.5px solid var(--line);
+}
+.principle{
+  padding:48px 40px 52px;
+  border-right:.5px solid var(--line);
+  position:relative;
+}
+.principle:last-child{border-right:none}
+.p-num{
+  font-family:var(--serif);font-size:20px;font-weight:400;
+  letter-spacing:.16em;color:var(--cream4);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.p-num::after{content:'';flex:1;height:.5px;background:var(--line2)}
+.p-tag{
+  font-size:15px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--cream3);margin-bottom:12px;
+}
+.p-head{
+  font-family:var(--serif);font-size:24px;font-weight:500;
+  line-height:1.18;color:var(--cream);margin-bottom:16px;
+}
+.p-body{
+  font-size:13px;font-weight:300;line-height:1.78;color:var(--cream3);
+}
+
+/* ─── S4 · MOODY FULL-BLEED PHOTO ───────────────── */
+.photo-break{
+  height:70vh;max-height:680px;overflow:hidden;position:relative;
+  border-top:.5px solid var(--line);
+}
+.photo-break img,.photo-break .ph{width:100%;height:100%}
+
+/* ─── S5 · PRODUCTS ──────────────────────────────── */
+.products{
+  border-top:.5px solid var(--line);
+  background:var(--bg);
+}
+.products-w{
+  max-width:1280px;margin:0 auto;padding:72px 80px;
+}
+.products-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:48px;gap:24px;
+}
+.products-tag{
+  font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--cream3);margin-bottom:12px;
+}
+.products-h2{
+  font-family:var(--serif);font-size:clamp(30px,3vw,46px);
+  font-weight:400;line-height:1.08;color:var(--cream);
+}
+.products-sub{
+  font-size:13px;font-weight:300;line-height:1.7;
+  color:var(--cream3);max-width:300px;text-align:right;
+}
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+
+/* SKU card */
+.sku{border:.5px solid var(--line2);border-radius:4px;overflow:hidden;position:relative}
+.sku-fire{background:linear-gradient(160deg,#1D1208 0%,#160E08 100%)}
+.sku-fire::before{
+  content:'';position:absolute;top:0;right:0;
+  width:240px;height:240px;pointer-events:none;
+  background:radial-gradient(circle at top right,rgba(212,94,41,.13) 0%,transparent 70%);
+}
+.sku-perilla{background:linear-gradient(160deg,#130812 0%,#0E0710 100%)}
+.sku-perilla::before{
+  content:'';position:absolute;top:0;right:0;
+  width:240px;height:240px;pointer-events:none;
+  background:radial-gradient(circle at top right,rgba(116,37,94,.16) 0%,transparent 70%);
+}
+.sku-img{
+  width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;
+}
+.sku-img img,.sku-img .ph{width:100%;height:100%}
+.sku-body{padding:28px 28px 24px;position:relative;z-index:1}
+.sku-fam{
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.sku-fam-fire{color:var(--fire)}
+.sku-fam-perilla{color:#997393}
+.sku-name{
+  font-family:var(--serif);font-size:30px;font-weight:500;
+  line-height:1.06;color:var(--cream);margin-bottom:4px;
+}
+.sku-tagline{
+  font-size:12px;font-weight:300;font-style:italic;
+  color:var(--cream3);margin-bottom:14px;
+}
+.sku-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.sku-pill{
+  font-size:9.5px;font-weight:500;letter-spacing:.07em;
+  padding:4px 11px;border-radius:20px;
+  border:.5px solid var(--line2);color:var(--cream3);
+  background:rgba(255,255,255,.03);
+}
+.sku-note{border-radius:3px;padding:14px 16px;margin-bottom:22px}
+.sku-note-fire{border-left:2px solid var(--fire);background:rgba(212,94,41,.07)}
+.sku-note-perilla{border-left:2px solid var(--perilla);background:rgba(116,37,94,.08)}
+.sku-note-lbl{
+  font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream4);margin-bottom:6px;
+}
+.sku-note-txt{font-size:11.5px;font-weight:300;line-height:1.65;color:var(--cream3)}
+.sku-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:16px;border-top:.5px solid var(--line);
+}
+.sku-meta{font-size:13px;color:var(--cream4);letter-spacing:.05em}
+.sku-price{font-size:20px;font-weight:500;color:var(--cream);letter-spacing:.02em;margin:10px 0 16px}
+.sku-price-unit{font-size:12px;font-weight:300;color:var(--cream3)}
+.btn-fire{
+  font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--fire);color:#fff;padding:8px 18px;border-radius:2px;
+  border:none;cursor:pointer;transition:opacity .2s;
+}
+.btn-fire:hover{opacity:.85}
+.btn-perilla{
+  font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--perilla);color:#fff;padding:8px 18px;border-radius:2px;
+  border:none;cursor:pointer;transition:opacity .2s;
+}
+.btn-perilla:hover{opacity:.85}
+
+/* ─── S6 · BREWING RITUAL ────────────────────────── */
+.ritual{
+  border-top:.5px solid var(--line);
+  display:block;
+  position:relative;
+  min-height:600px;
+  overflow:hidden;
+}
+.ritual-left{
+  position:relative;z-index:2;
+  background:transparent;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 72px 80px 80px;
+  max-width:52%;
+}
+.ritual-eyebrow{
+  font-size:20px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--cream4);margin-bottom:28px;
+}
+.ritual-heading{
+  font-family:var(--serif);font-size:clamp(52px,7vw,112px);
+  font-weight:300;line-height:.95;letter-spacing:-.02em;color:var(--cream);
+  margin-bottom:48px;
+}
+.steps{display:flex;flex-direction:column;gap:0}
+.step{
+  display:flex;align-items:flex-start;gap:20px;
+  padding:16px 0;border-bottom:.5px solid var(--line);
+}
+.step:last-child{border-bottom:none}
+.step-num{
+  display:flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;
+  border:.5px solid var(--fire);flex-shrink:0;margin-top:1px;
+}
+.step-num span{font-size:9px;font-weight:700;color:var(--fire)}
+.step-title{font-size:13px;font-weight:500;color:var(--cream);line-height:1.3}
+.step-hint{font-size:11px;font-weight:300;color:var(--cream3);margin-top:3px;line-height:1.5}
+
+.ritual-right{
+  position:absolute;inset:0;
+}
+.ritual-right img,.ritual-right .ph{position:absolute;inset:0;width:100%;height:100%}
+.ritual-right-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(18,17,11,.92) 0%,rgba(18,17,11,.65) 45%,rgba(18,17,11,.08) 100%);
+}
+
+/* ─── S7 · CLOSING ───────────────────────────────── */
+.closing{
+  border-top:.5px solid var(--line);
+  padding:100px 80px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.closing::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:600px;height:320px;
+  background:radial-gradient(ellipse,rgba(212,94,41,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.closing-serif{
+  font-family:var(--serif);font-size:clamp(26px,2.8vw,40px);
+  font-style:italic;font-weight:300;line-height:1.4;
+  color:var(--cream2);letter-spacing:.04em;
+  position:relative;
+}
+
+/* ─── S8 · FOOTER ────────────────────────────────── */
+footer{
+  background:var(--bg1);
+  border-top:.5px solid var(--line);
+}
+.foot-top{
+  max-width:1280px;margin:0 auto;padding:56px 80px 48px;
+  display:grid;grid-template-columns:auto 1fr auto;gap:64px;align-items:start;
+}
+.foot-brand img{
+  height:48px;width:auto;display:block;opacity:.85;
+}
+.foot-sub{
+  font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream4);margin-top:6px;
+}
+.foot-sub2{
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--fire);margin-top:4px;
+}
+.foot-nav{display:flex;gap:48px}
+.foot-col-title{
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream4);margin-bottom:14px;
+}
+.foot-col a{
+  display:block;font-size:12px;font-weight:300;color:var(--cream3);
+  margin-bottom:10px;transition:color .2s;
+}
+.foot-col a:hover{color:var(--cream)}
+.foot-bottom{
+  max-width:1280px;margin:0 auto;padding:20px 80px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:.5px solid var(--line);
+}
+.foot-copy{font-size:9.5px;color:var(--cream4);letter-spacing:.06em}
+
+/* ─── PLACEHOLDER ────────────────────────────────── */
+.ph{
+  background:var(--bg2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;color:var(--cream4);
+}
+.ph svg{opacity:.22}
+.ph span{font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+
+/* ─── ORDER POPUP MODAL ───────────────────────────── */
+.order-modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.8);z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;visibility:hidden;
+  transition:opacity .3s,visibility .3s;
+}
+.order-modal[style*="flex"]{
+  opacity:1;visibility:visible;
+}
+.modal-overlay{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.6);
+}
+.modal-content{
+  position:relative;background:var(--bg1);
+  border-radius:8px;max-width:480px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  border:1px solid var(--line2);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:32px;height:32px;border:none;background:transparent;
+  color:var(--cream3);font-size:20px;cursor:pointer;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;z-index:1;
+}
+.modal-close:hover{background:var(--line2);color:var(--cream)}
+.modal-header{
+  padding:32px 32px 24px;border-bottom:1px solid var(--line);
+}
+.modal-title{
+  font-family:var(--serif);font-size:28px;font-weight:400;
+  color:var(--cream);margin-bottom:8px;line-height:1.2;
+}
+.modal-subtitle{
+  font-size:14px;font-weight:300;color:var(--cream3);
+  line-height:1.5;
+}
+.order-form{
+  padding:32px;
+}
+.form-group{
+  margin-bottom:24px;
+}
+.form-group label{
+  display:block;font-size:12px;font-weight:500;
+  color:var(--cream2);margin-bottom:8px;letter-spacing:.02em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;padding:12px 16px;background:var(--bg);
+  border:1px solid var(--line2);border-radius:4px;
+  color:var(--cream);font-size:14px;font-family:var(--sans);
+  transition:border-color .2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  outline:none;border-color:var(--fire);
+}
+.form-group textarea{
+  resize:vertical;min-height:80px;
+}
+.submit-btn{
+  width:100%;background:var(--fire);color:#fff;
+  border:none;padding:14px 24px;border-radius:4px;
+  font-size:12px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;
+  transition:opacity .2s;
+}
+.submit-btn:hover{opacity:.85}
+.modal-footer{
+  padding:24px 32px 32px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:12px;
+}
+.hotline-info{
+  font-size:13px;color:var(--cream2);
+}
+.hotline-info strong{
+  color:var(--cream);
+}
+.product-origin{
+  font-size:11px;font-style:italic;
+  color:var(--cream4);text-align:center;
+  font-family:var(--serif);
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:1024px){
+  .nav-desktop{display:none}
+  .nav-mobile-btn{display:block}
+  .nav-mobile{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-right{min-height:60vw}
+  .hero-left{padding:60px 40px}
+  .naula-top{aspect-ratio:4/3}
+  .naula-top-content{grid-template-columns:1fr;gap:20px;padding:40px 40px 48px}
+  .naula-right-body{margin-top:0}
+  .principles{grid-template-columns:repeat(3,1fr)}
+  .products-w{padding:56px 40px}
+  .products-header{flex-direction:column;align-items:flex-start}
+  .products-sub{text-align:left}
+  .products-grid{grid-template-columns:1fr 1fr}
+  .ritual{
+    display:block;
+    position:relative;
+    min-height:640px;
+  }
+  .ritual-right{
+    position:absolute;
+    inset:0;
+    min-height:unset;
+  }
+  .ritual-right-veil{
+    background:linear-gradient(
+      to top,
+      rgba(18,17,11,.92) 0%,
+      rgba(18,17,11,.70) 45%,
+      rgba(18,17,11,.25) 100%
+    );
+  }
+  .ritual-left{
+    position:relative;
+    z-index:2;
+    background:transparent;
+    padding:60px 40px 72px;
+    justify-content:flex-end;
+  }
+  .statement-text{padding:48px 40px}
+  .foot-top{grid-template-columns:1fr;gap:36px;padding:48px 40px 40px}
+  .foot-bottom{padding:20px 40px 28px}
+  .closing{padding:72px 40px}
+  .modal-content{margin:20px;max-height:85vh}
+  .modal-header{padding:24px 24px 20px}
+  .modal-title{font-size:24px}
+  .order-form{padding:24px}
+}
+@media(max-width:640px){
+  .nav-desktop{display:none}
+  .nav-mobile-btn{display:block}
+  .nav-mobile{display:none}
+  .hero-left{padding:40px 20px}
+  .hero-h1{font-size:32px;line-height:1.1}
+  .hero-label{font-size:9px;margin-bottom:24px}
+  .hero-sub{font-size:13px;max-width:100%}
+  .hero-actions{flex-direction:column;gap:12px}
+  .btn-primary{width:100%;justify-content:center}
+  .statement{min-height:60vh}
+  .statement-text{padding:32px 20px}
+  .statement-eyebrow{font-size:10px}
+  .statement-h2{font-size:28px;line-height:1.1}
+  .naula-top{aspect-ratio:16/9;overflow:hidden}
+  .naula-top-veil{display:none}
+  .naula-top-content{
+    position:static;
+    display:grid;grid-template-columns:1fr;
+    gap:16px;padding:28px 20px 32px;
+    height:auto;background:var(--bg);
+  }
+  .naula-left-head{font-size:18px;line-height:1.15}
+  .naula-right-body{font-size:11.5px;line-height:1.7}
+  .principle{padding:32px 20px 36px}
+  .p-head{font-size:20px;line-height:1.2}
+  .p-body{font-size:12px}
+  .products-w{padding:40px 20px}
+  .products-header{margin-bottom:32px}
+  .products-h2{font-size:26px;line-height:1.1}
+  .products-sub{font-size:12px;max-width:100%;margin-top:16px}
+  .sku-img{aspect-ratio:1/1}
+  .sku-body{padding:20px 20px 18px}
+  .sku-name{font-size:24px}
+  .sku-price{font-size:15px;margin:8px 0 12px}
+  .sku-note{padding:12px 14px;margin-bottom:18px}
+  .sku-foot{flex-direction:column;align-items:center;gap:8px;}
+  .sku-meta{font-size:11px;text-align:center}
+  .btn-fire,.btn-perilla{width:100%;text-align:center;padding:10px 0}
+  .ritual-left{
+    position:relative;
+    z-index:2;
+    background:transparent;
+    padding:40px 20px 52px;
+    justify-content:flex-end;
+  }
+  .ritual-heading{font-size:52px;line-height:.95;margin-bottom:32px}
+  .ritual-eyebrow{font-size:8px;margin-bottom:20px}
+  .step{padding:12px 0}
+  .step-title{font-size:12px}
+  .step-hint{font-size:10px}
+  .closing{padding:48px 20px}
+  .closing-serif{font-size:22px;line-height:1.4}
+  .foot-top{padding:40px 20px 32px;gap:28px}
+  .foot-brand img{height:40px}
+  .foot-nav{flex-direction:column;gap:24px}
+  .foot-bottom{padding:16px 20px 20px;flex-direction:column;gap:8px;text-align:center}
+  .modal-content{margin:0;border-radius:0;max-height:100vh}
+  .modal-header{padding:20px 20px 16px}
+  .modal-title{font-size:22px}
+  .modal-subtitle{font-size:13px}
+  .order-form{padding:20px}
+  .form-group{margin-bottom:20px}
+  .form-group label{font-size:11px}
+  .form-group input,
+  .form-group select,
+  .form-group textarea{font-size:13px;padding:10px 14px}
+  .submit-btn{font-size:11px;padding:12px 20px}
+  .modal-footer{padding:20px}
+  .hotline-info{font-size:12px}
+  .product-origin{font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════ -->
+<nav>
+  <div class="nav-w">
+    <a href="#" class="nav-logo">
+      <img src="TKG-logo.png" alt="TKG">
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="nav-desktop">
+      <a href="#naula">Naula Prepared</a>
+      <a href="#products">Products</a>
+      <a href="#ritual">Ritual</a>
+      <a href="world-of-naula.html">World of Naula</a>
+      <a href="founders.html">Founders</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
+    </div>
+
+    <!-- Mobile Navigation Button -->
+    <button class="nav-mobile-btn" onclick="toggleMobileNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="nav-mobile">
+      <a href="#naula">Naula Prepared</a>
+      <a href="#products">Products</a>
+      <a href="#ritual">Ritual</a>
+      <a href="world-of-naula.html">World of Naula</a>
+      <a href="founders.html">Founders</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ S1 · HERO ══════════════════════════════════ -->
+<section class="hero">
+
+  <!-- left: text -->
+  <div class="hero-left">
+    <div class="hero-label">Botanical Blend Powder</div>
+
+    <h1 class="hero-h1">
+      Rooted in <em>Vietnam.</em><br>
+      Prepared with <em>Care.</em>
+    </h1>
+
+    <div class="hero-rule">
+      <div class="hero-rule-line"></div>
+      <span>Three Botanicals &nbsp;·&nbsp; One Method &nbsp;·&nbsp; Named and Traceable</span>
+      <div class="hero-rule-line"></div>
+    </div>
+
+    <p class="hero-sub">
+      TKG is a botanical wellness brand built around a preparation discipline rooted in Vietnamese herbal practice. Whole plants, named at origin, freeze-dried through the Naula method.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
+        Order Now
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+      </a>
+      <a href="#naula" class="btn-ghost">Learn the method →</a>
+    </div>
+  </div>
+
+  <!-- right: photo -->
+  <div class="hero-right">
+    <img src="Hero-Section-1.webp" alt="TKG — Botanical Blend Powder" fetchpriority="high" loading="eager">
+  </div>
+
+</section>
+
+<!-- ═══ S2 · BRAND STATEMENT (full-bleed image + overlay) ═══ -->
+<section class="statement">
+  <div class="statement-media">
+    <img src="Naula-2.webp" alt="Not a brand name. A preparation discipline." loading="lazy">
+  </div>
+  <div class="statement-veil"></div>
+  <div class="statement-text">
+    <div class="statement-eyebrow">Naula Prepared</div>
+    <h2 class="statement-h2">
+      Not a brand name.<br><em>A Preparation Discipline.</em>
+    </h2>
+  </div>
+</section>
+
+<!-- ═══ S3 · NAULA PREPARED — PRINCIPLES ══════════ -->
+<section id="naula" class="naula-section">
+
+  <div class="naula-top">
+    <img class="naula-top-img" src="Freeze-dried-1.webp" alt="Naula prepared" loading="lazy">
+    <div class="naula-top-veil"></div>
+    <div class="naula-top-content">
+      <div>
+      <div class="naula-left-tag">Naula X Freeze-dried</div>
+      <h2 class="naula-left-head">
+        A controlled botanical<br>preparation system designed<br>to preserve the integrity<br>of whole ingredients.
+      </h2>
+    </div>
+    <p class="naula-right-body">
+      Three principles, applied consistently across every formulation. Not trend-driven. Not export for export's sake. The same discipline in the kitchen and in the cup — whole leaves and roots, named at origin, prepared through the Naula method.
+    </p>
+  </div>
+</div>
+  <div class="principles">
+
+    <div class="principle">
+      <div class="p-num">01 <span style="color:var(--cream4);font-size:9px;letter-spacing:.18em;text-transform:uppercase;">Source</span></div>
+      <div class="p-tag">Sourced</div>
+      <div class="p-head">Whole botanicals.<br>Named at origin.</div>
+      <p class="p-body">
+        Real plants — Ginger, Lemongrass, Lime, Perilla, Clove, Kumquat — sourced whole and named on the label. No flavouring, no anonymous "natural extract." Every ingredient traces back to a species, a place, a method.
+      </p>
+    </div>
+
+    <div class="principle">
+      <div class="p-num">02 <span style="color:var(--cream4);font-size:9px;letter-spacing:.18em;text-transform:uppercase;">Naula</span></div>
+      <div class="p-tag">Prepare</div>
+      <div class="p-head">Naula.<br>Freeze-dried.</div>
+      <p class="p-body">
+       Fresh botanicals are prepared into liquid form through the Naula method — where heat, water, and time are adjusted for each ingredient individually. The liquid is then frozen and freeze-dried under vacuum, preserving the natural colour, aroma, and botanical character without heat damage.
+      </p>
+    </div>
+
+    <div class="principle">
+      <div class="p-num">03 <span style="color:var(--cream4);font-size:9px;letter-spacing:.18em;text-transform:uppercase;">Present</span></div>
+      <div class="p-tag">Present</div>
+      <div class="p-head">Honest formulation.<br>Nothing added.</div>
+      <p class="p-body">
+        No preservatives. No artificial colour. No artificial sweeteners. Clean formulation, laboratory tested by Quatest 3. The product is allowed to taste like itself.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ═══ S4 · MOODY FULL-BLEED PHOTO ═══════════════ -->
+<div class="photo-break">
+  <img src="Process-2.webp" alt="Naula preparation" loading="lazy">
+</div>
+
+<!-- ═══ S5 · PRODUCTS ══════════════════════════════ -->
+<section id="products" class="products">
+  <div class="products-w">
+
+    <div class="products-header">
+      <div>
+        <div class="products-tag">Products</div>
+        <h2 class="products-h2">For the start.<br>For the rest.</h2>
+      </div>
+      <p class="products-sub">Two formulations. Both named. Both whole-plant. Both Naula prepared.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Morning Ember -->
+      <div class="sku sku-fire">
+        <div class="sku-img">
+          <img src="Morning Ember-texture.webp" alt="Morning Ember" loading="lazy">
+        </div>
+        <div class="sku-body">
+          <div class="sku-fam sku-fam-fire">Lư Trung Hoả · Fire</div>
+          <div class="sku-name">Morning Ember</div>
+          <div class="sku-tagline">A warm shot to start the day</div>
+          <div class="sku-pills">
+            <span class="sku-pill">Ginger</span>
+            <span class="sku-pill">Lemongrass</span>
+            <span class="sku-pill">Lime</span>
+          </div>
+          <div class="sku-note sku-note-fire">
+            <div class="sku-note-lbl">Sensory Note</div>
+            <div class="sku-note-txt">Natural sediment after mixing is whole starch from fresh ginger and lemongrass — a sign of real ingredients, unextracted. Bold. Direct. Warm from the first shot.</div>
+          </div>
+          <div class="sku-foot">
+            <div class="sku-meta">60g · 30 servings · 2 tsp / 100ml</div>
+            <div class="sku-price">315.000 ₫<span class="sku-price-unit"> / box</span></div>
+            <a href="#" onclick="openOrderModal(); return false;" class="btn-fire">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Still Ember -->
+      <div class="sku sku-perilla">
+        <div class="sku-img">
+          <img src="Still-Ember-texture.webp" alt="Still Ember" loading="lazy">
+        </div>
+        <div class="sku-body">
+          <div class="sku-fam sku-fam-perilla">Phú Đăng Hoả · Fire</div>
+          <div class="sku-name">Still Ember</div>
+          <div class="sku-tagline">A quiet moment before rest</div>
+          <div class="sku-pills">
+            <span class="sku-pill">Perilla</span>
+            <span class="sku-pill">Clove</span>
+            <span class="sku-pill">Kumquat</span>
+          </div>
+          <div class="sku-note sku-note-perilla">
+            <div class="sku-note-lbl">Sensory Note</div>
+            <div class="sku-note-txt">Colour shifts after mixing are a natural pH response from perilla leaf — no artificial colour, no chemical stabiliser. Drink immediately for best colour. Quiet. Considered.</div>
+          </div>
+          <div class="sku-foot">
+            <div class="sku-meta">60g · 30 servings · 2 tsp / 100ml</div>
+            <div class="sku-price">315.000 ₫<span class="sku-price-unit"> / box</span></div>
+            <a href="#" onclick="openOrderModal(); return false;" class="btn-perilla">Order</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S6 · BREWING RITUAL ════════════════════════ -->
+<section id="ritual" class="ritual">
+
+  <!-- left: huge type + steps -->
+  <div class="ritual-left">
+    <div class="ritual-eyebrow">How to prepare</div>
+    <div class="ritual-heading">BREWING<br>RITUAL</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"><span>1</span></div>
+        <div>
+          <div class="step-title">Add 2 teaspoons to a cup</div>
+          <div class="step-hint">~5–6g per serving. Adjust to taste.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"><span>2</span></div>
+        <div>
+          <div class="step-title">Pour 100ml water</div>
+          <div class="step-hint">Hot or cold — both work.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"><span>3</span></div>
+        <div>
+          <div class="step-title">Stir until fully dissolved</div>
+          <div class="step-hint">Natural sediment is expected — whole botanicals.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"><span>4</span></div>
+        <div>
+          <div class="step-title">Enjoy a cup</div>
+          <div class="step-hint">Drink immediately for best colour and aroma.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- right: ritual photo -->
+  <div class="ritual-right">
+    <img src="Ritual-2.webp" alt="Brewing ritual" loading="lazy">
+    <div class="ritual-right-veil"></div>
+  </div>
+
+</section>
+
+<!-- ═══ S7 · LIFESTYLE FULL-BLEED ════════════════ -->
+<div style="margin-top: 20px solid var(--line);height:100vh;max-height:800px;overflow:hidden;position:relative;">
+  <img src="Ending-1.webp" alt="TKG lifestyle" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+</div>
+
+<!-- ═══ S8 · CLOSING ══════════════════════════════ -->
+<section id="order" class="closing">
+  <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
+        Order Now
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+      </a>
+      <a href="#naula" class="btn-ghost">Learn the method →</a>
+  </div>
+</section>
+
+<!-- ═══ S9 · FOOTER ═══════════════════════════════ -->
+<footer id="faq">
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand"><img src="TKG-logo.png" alt="TKG"></div>
+      <div class="foot-sub">Thien Kien</div>
+      <div class="foot-sub2">Product of Vietnam</div>
+    </div>
+    <div class="foot-nav">
+      <div class="foot-col">
+        <div class="foot-col-title">Navigate</div>
+        <a href="#naula">Naula Method</a>
+        <a href="#products">Products</a>
+        <a href="#ritual">Ritual</a>
+        <a href="world-of-naula.html">World of Naula</a>
+        <a href="founders.html">Founders</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title">Support</div>
+        <a href="faq.html">FAQ</a>
+        <a href="shipping.html">Shipping &amp; Returns</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-col-title">Manufactured by THIEN KIEN Services - Trading Limited Company</div>
+      <div class="foot-col">
+        <a href="#">Address: 279 level 2 Hau Giang street, Binh Tay Ward, Hochiminh city, Vietnam</a>
+        <a href="#">Tax Number: 0317374438</a>
+        <a href="#">Email: tkg.naula@gmail.com</a>
+        <a href="#">Hotline: (+84) 976-847-789</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 Thiện Kiến · tkg-naula.com</div>
+    <div class="foot-copy" style="font-style:italic;font-family:var(--serif);font-size:12px;letter-spacing:.06em;color:var(--cream4);">naula. naula. well. wellness.</div>
+  </div>
+</footer>
+
+<!-- ═══ ORDER POPUP MODAL ═════════════════════════ -->
+<div id="orderModal" class="order-modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeOrderModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeOrderModal()">×</button>
+    <div class="modal-header">
+      <h3 class="modal-title">Order TKG Products</h3>
+      <p class="modal-subtitle">Place your order for Morning Ember or Still Ember</p>
+    </div>
+    <form class="order-form" onsubmit="submitOrderForm(event)">
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="product">Product *</label>
+        <select id="product" name="product" required>
+          <option value="">Select a product</option>
+          <option value="morning-ember">Morning Ember - Lư Trung Hoả</option>
+          <option value="still-ember">Still Ember - Phú Đăng Hoả</option>
+          <option value="both">Both Products</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity *</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Additional Message</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Order Request</button>
+    </form>
+    <div class="modal-footer">
+      <div class="hotline-info">
+        <div class="sku-price">315.000 ₫<span class="sku-price-unit"> / box</span></div>
+        <strong>Hotline:</strong> (+84) 976-847-789
+      </div>
+      <div class="product-origin">Product of Vietnam</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ─── Order Modal ─── */
+function openOrderModal() {
+  document.getElementById('orderModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeOrderModal() {
+  document.getElementById('orderModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+/* ─── Mobile Nav ─── */
+function toggleMobileNav() {
+  const navMobile = document.querySelector('.nav-mobile');
+  navMobile.classList.toggle('active');
+  navMobile.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navMobile.classList.remove('active'));
+  });
+}
+
+/* ─── Order Form Submit ─── */
+function submitOrderForm(event) {
+  event.preventDefault();
+  var formData = new FormData(event.target);
+  var subject = encodeURIComponent('TKG Order Request - ' + formData.get('product'));
+  var body = encodeURIComponent(
+    'Name: ' + formData.get('name') +
+    '\nEmail: ' + formData.get('email') +
+    '\nPhone: ' + formData.get('phone') +
+    '\nProduct: ' + formData.get('product') +
+    '\nQuantity: ' + formData.get('quantity') +
+    '\nMessage: ' + formData.get('message')
+  );
+  window.location.href = 'mailto:orders@tkg-naula.com?subject=' + subject + '&body=' + body;
+  alert('Thank you for your order request! We will contact you soon.');
+  closeOrderModal();
+}
+</script>
+
+</body>
+</html>
