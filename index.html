@@ -342,6 +342,27 @@ nav{
   color:var(--cream4);margin-bottom:6px;
 }
 .sku-note-txt{font-size:11.5px;font-weight:300;line-height:1.65;color:var(--cream3)}
+.nf-block{margin-bottom:22px;border:.5px solid rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.nf-block-hdr{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;cursor:pointer;user-select:none;border-bottom:.5px solid rgba(255,255,255,.08)}
+.nf-block-hdr-lbl{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream3)}
+.nf-block-hdr-sub{font-size:9.5px;color:var(--cream4)}
+.nf-block-toggle{font-size:10px;color:var(--cream4);transition:transform .25s}
+.nf-block-toggle.open{transform:rotate(180deg)}
+.nf-block-body{display:none;padding:12px 14px;font-family:'Helvetica Neue',Arial,sans-serif}
+.nf-block-body.open{display:block}
+.nf-t{font-size:18px;font-weight:900;line-height:1;color:var(--cream);border-bottom:6px solid var(--cream);padding-bottom:3px;margin-bottom:4px}
+.nf-sv{font-size:9px;color:var(--cream2);line-height:1.5}
+.nf-sv-row{display:flex;justify-content:space-between;font-weight:700;font-size:10px;color:var(--cream);margin-bottom:3px}
+.nf-bar-thick{height:3px;background:var(--cream);margin:3px 0}
+.nf-cal-row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid var(--cream);padding-bottom:2px;margin-bottom:2px}
+.nf-cal-lbl{font-size:10px;font-weight:700;color:var(--cream2)}
+.nf-cal-n{font-size:32px;font-weight:900;color:var(--cream);line-height:1}
+.nf-dv{font-size:8px;color:var(--cream3);border-bottom:3px solid var(--cream);padding-bottom:2px;margin-bottom:2px}
+.nf-row{display:flex;justify-content:space-between;border-bottom:.5px solid rgba(255,255,255,.12);padding:2px 0;font-size:9.5px;color:var(--cream)}
+.nf-row-main{font-weight:700}
+.nf-row-sub{padding-left:10px;font-weight:400;color:var(--cream2)}
+.nf-row-sub2{padding-left:18px;font-weight:400;color:var(--cream2)}
+.nf-foot{font-size:7.5px;color:var(--cream4);margin-top:4px;border-top:.5px solid rgba(255,255,255,.1);padding-top:3px;line-height:1.4}
 .sku-foot{
   display:flex;align-items:center;justify-content:space-between;
   padding-top:16px;border-top:.5px solid var(--line);
@@ -867,12 +888,43 @@ footer{
             <span class="sku-pill">Lemongrass</span>
             <span class="sku-pill">Lime</span>
           </div>
+          <div class="nf-block">
+            <div class="nf-block-hdr" onclick="toggleNF(this)">
+              <div>
+                <div class="nf-block-hdr-lbl">Nutrition Facts</div>
+                <div class="nf-block-hdr-sub">Per 2 tsp (2g) serving</div>
+              </div>
+              <span class="nf-block-toggle">▾</span>
+            </div>
+            <div class="nf-block-body">
+              <div class="nf-t">Nutrition Facts</div>
+              <div class="nf-sv">30 servings per container</div>
+              <div class="nf-sv-row"><span>Serving size</span><span>2 tsp (2g)</span></div>
+              <div class="nf-bar-thick"></div>
+              <div class="nf-cal-row">
+                <div><div class="nf-cal-lbl">Amount per serving</div><div class="nf-cal-lbl">Calories</div></div>
+                <div class="nf-cal-n">4</div>
+              </div>
+              <div class="nf-dv">% Daily Value*</div>
+              <div class="nf-row nf-row-main"><span>Total Fat 0g</span><span>0%</span></div>
+              <div class="nf-row nf-row-sub"><span>Saturated Fat 0g</span><span>0%</span></div>
+              <div class="nf-row nf-row-sub"><span><em>Trans</em> Fat 0g</span><span></span></div>
+              <div class="nf-row nf-row-main"><span>Cholesterol 0mg</span><span>0%</span></div>
+              <div class="nf-row nf-row-main"><span>Sodium 6mg</span><span>0%</span></div>
+              <div class="nf-row nf-row-main"><span>Total Carbohydrate 1g</span><span>0%</span></div>
+              <div class="nf-row nf-row-sub"><span>Dietary Fiber 1g</span><span>4%</span></div>
+              <div class="nf-row nf-row-sub"><span>Total Sugars 0g</span><span></span></div>
+              <div class="nf-row nf-row-sub2"><span>Incl. 0g Added Sugars</span><span>0%</span></div>
+              <div class="nf-row nf-row-main" style="border-bottom:2px solid rgba(255,255,255,.3)"><span>Protein 0g</span><span></span></div>
+              <div class="nf-foot">*The % Daily Value tells you how much a nutrient in a serving contributes to a daily diet. 2,000 calories a day is used for general nutrition advice. Laboratory tested by Quatest 3.</div>
+            </div>
+          </div>
           <div class="sku-note sku-note-fire">
             <div class="sku-note-lbl">Sensory Note</div>
             <div class="sku-note-txt">Natural sediment after mixing is whole starch from fresh ginger and lemongrass — a sign of real ingredients, unextracted. Bold. Direct. Warm from the first shot.</div>
           </div>
           <div class="sku-foot">
-            <div class="sku-meta">60g · 30 servings · 2 tsp / 100ml</div>
+            <div class="sku-meta">60g · 30 servings · 2 tsp (2g) / 100ml</div>
             <a href="#" onclick="openOrderModal(); return false;" class="btn-fire">Order</a>
           </div>
         </div>
@@ -892,12 +944,43 @@ footer{
             <span class="sku-pill">Clove</span>
             <span class="sku-pill">Kumquat</span>
           </div>
+          <div class="nf-block">
+            <div class="nf-block-hdr" onclick="toggleNF(this)">
+              <div>
+                <div class="nf-block-hdr-lbl">Nutrition Facts</div>
+                <div class="nf-block-hdr-sub">Per 2 tsp (2g) serving</div>
+              </div>
+              <span class="nf-block-toggle">▾</span>
+            </div>
+            <div class="nf-block-body">
+              <div class="nf-t">Nutrition Facts</div>
+              <div class="nf-sv">30 servings per container</div>
+              <div class="nf-sv-row"><span>Serving size</span><span>2 tsp (2g)</span></div>
+              <div class="nf-bar-thick"></div>
+              <div class="nf-cal-row">
+                <div><div class="nf-cal-lbl">Amount per serving</div><div class="nf-cal-lbl">Calories</div></div>
+                <div class="nf-cal-n">3</div>
+              </div>
+              <div class="nf-dv">% Daily Value*</div>
+              <div class="nf-row nf-row-main"><span>Total Fat 0g</span><span>0%</span></div>
+              <div class="nf-row nf-row-sub"><span>Saturated Fat 0g</span><span>0%</span></div>
+              <div class="nf-row nf-row-sub"><span><em>Trans</em> Fat 0g</span><span></span></div>
+              <div class="nf-row nf-row-main"><span>Cholesterol 0mg</span><span>0%</span></div>
+              <div class="nf-row nf-row-main"><span>Sodium 9mg</span><span>0%</span></div>
+              <div class="nf-row nf-row-main"><span>Total Carbohydrate 1g</span><span>0%</span></div>
+              <div class="nf-row nf-row-sub"><span>Dietary Fiber 1g</span><span>4%</span></div>
+              <div class="nf-row nf-row-sub"><span>Total Sugars 0g</span><span></span></div>
+              <div class="nf-row nf-row-sub2"><span>Incl. 0g Added Sugars</span><span>0%</span></div>
+              <div class="nf-row nf-row-main" style="border-bottom:2px solid rgba(255,255,255,.3)"><span>Protein 0g</span><span></span></div>
+              <div class="nf-foot">*The % Daily Value tells you how much a nutrient in a serving contributes to a daily diet. 2,000 calories a day is used for general nutrition advice. Laboratory tested by Quatest 3.</div>
+            </div>
+          </div>
           <div class="sku-note sku-note-perilla">
             <div class="sku-note-lbl">Sensory Note</div>
             <div class="sku-note-txt">Colour shifts after mixing are a natural pH response from perilla leaf — no artificial colour, no chemical stabiliser. Drink immediately for best colour. Quiet. Considered.</div>
           </div>
           <div class="sku-foot">
-            <div class="sku-meta">60g · 30 servings · 2 tsp / 100ml</div>
+            <div class="sku-meta">60g · 30 servings · 2 tsp (2g) / 100ml</div>
             <a href="#" onclick="openOrderModal(); return false;" class="btn-perilla">Order</a>
           </div>
         </div>
@@ -919,7 +1002,7 @@ footer{
         <div class="step-num"><span>1</span></div>
         <div>
           <div class="step-title">Scoop 2 teaspoons into a cup</div>
-          <div class="step-hint">~5–6g per serving. Adjust to taste.</div>
+          <div class="step-hint">2g per serving. Adjust to taste.</div>
         </div>
       </div>
       <div class="step">
@@ -1096,6 +1179,13 @@ function submitOrderForm(event) {
   window.location.href = 'mailto:orders@tkg-naula.com?subject=' + subject + '&body=' + body;
   alert('Thank you for your order request! We will contact you soon.');
   closeOrderModal();
+}
+function toggleNF(hdr){
+  var toggle=hdr.querySelector('.nf-block-toggle');
+  var body=hdr.nextElementSibling;
+  var open=body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  toggle.classList.toggle('open',!open);
 }
 </script>
 
