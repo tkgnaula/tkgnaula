@@ -50,7 +50,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 .nav-btn:hover{opacity:.85}
 
 /* ── HERO ── */
-/* Split: text left, photo right — mirrors tkg_landing_v4 hero */
 .hero{
   display:grid;grid-template-columns:1fr 1fr;
   min-height:calc(100vh - 56px);
@@ -99,7 +98,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 .body-text{font-size:15px;line-height:1.85;font-weight:300;color:var(--cream3)}
 .body-vi{margin-top:10px;font-size:13px;line-height:1.8;color:var(--cream4);font-style:italic}
 
-/* ── MISSION — text left, 3-photo mosaic right (PDF p.2) ── */
+/* ── MISSION ── */
 .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:520px}
 .mission-text{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
 .mission-photos{display:grid;grid-template-rows:1fr 1fr;grid-template-columns:1fr 1fr;gap:2px}
@@ -108,7 +107,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 .mission-photo:hover img{transform:scale(1.04)}
 .mission-photo--tall{grid-row:1/3;grid-column:1/2}
 
-/* ── PILLARS (PDF p.3) ── */
+/* ── PILLARS ── */
 .pillars-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:.5px solid var(--line)}
 .pillars-text{padding:80px 64px;background:var(--bg)}
 .pillars-photo{position:relative;overflow:hidden;min-height:440px}
@@ -124,7 +123,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 .pillar-vi{font-size:10px;letter-spacing:.1em;color:var(--gold);margin-bottom:8px}
 .pillar-desc{font-size:12.5px;line-height:1.7;color:var(--cream4);font-weight:300}
 
-/* ── ALLIANCE (PDF p.4) ── */
+/* ── ALLIANCE ── */
 .alliance-hero{position:relative;height:480px;overflow:hidden;border-bottom:.5px solid var(--line)}
 .alliance-hero img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .alliance-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,17,11,.9) 0%,rgba(18,17,11,.4) 50%,transparent 80%)}
@@ -150,7 +149,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 .alliance-quote blockquote em{color:var(--gold)}
 .alliance-quote cite{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream4);font-style:normal}
 
-/* ── NAULA / TKG PRODUCTS (PDF p.5-6) ── */
+/* ── NAULA ── */
 .naula-hero{position:relative;height:420px;overflow:hidden;border-bottom:.5px solid var(--line)}
 .naula-hero img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
 .naula-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,17,11,1) 0%,rgba(18,17,11,.6) 40%,rgba(18,17,11,.1) 100%)}
@@ -169,7 +168,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 .naula-feature-vi{font-size:10px;color:var(--gold);letter-spacing:.08em;margin-bottom:7px}
 .naula-feature p{font-size:13px;line-height:1.75;color:var(--cream3);font-weight:300}
 
-/* Products: 2 tins side by side */
 .naula-products{background:var(--bg2);padding:64px 40px;display:flex;flex-direction:column;justify-content:center;gap:24px}
 .naula-products-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .product-card{border-radius:4px;overflow:hidden;position:relative;border:.5px solid var(--line2)}
@@ -197,25 +195,19 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
 .footer-links a{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream4);transition:color .2s}
 .footer-links a:hover{color:var(--cream2)}
 
-/* ── PARTNER LOGOS ── */
+/* ── PARTNER LOGOS (WebP transparent) ── */
 .vg2-logo-hero{
-  margin-bottom:32px;
+  margin-bottom:28px;
 }
 .vg2-logo-hero img{
-  height:88px;width:auto;display:block;
-  /* white bg logo on dark — keep as-is since background is white */
-  background:rgba(255,255,255,0.06);
-  border-radius:8px;padding:10px 14px;
+  height:140px;width:auto;display:block;
 }
 
 .partner-logo-wrap{
   display:flex;align-items:center;gap:10px;margin-bottom:20px;
 }
 .partner-logo-wrap img{
-  height:40px;width:auto;display:block;
-  /* logos are on white bg — show on dark card with slight bg */
-  background:rgba(255,255,255,0.92);
-  border-radius:6px;padding:6px 10px;
+  width:auto;display:block;
   opacity:.9;transition:opacity .2s;
 }
 .partner-logo-wrap img:hover{opacity:1}
@@ -265,29 +257,37 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
       <span class="nav-logo-text">TKG · Naula</span>
     </a>
     <div class="nav-desktop">
-      <a href="https://tkg-naula.com#naula">Naula Prepared</a>
-      <a href="https://tkg-naula.com#products">Products</a>
-      <a href="https://tkg-naula.com#ritual">Ritual</a>
+      <a href="index.html#naula">Naula Prepared</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#ritual">Ritual</a>
+      <a href="world-of-naula.html">World of Naula</a>
+      <a href="founders.html">Founders</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="#" class="active">VG2 Program</a>
-      <a href="https://tkg-naula.com" class="nav-btn">Order</a>
+      <a href="index.html" class="nav-btn">Order</a>
     </div>
     <button class="nav-mobile-btn" onclick="toggleMobileNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="mobileNav">
-    <a href="https://tkg-naula.com#naula">Naula Prepared</a>
-    <a href="https://tkg-naula.com#products">Products</a>
-    <a href="https://tkg-naula.com#ritual">Ritual</a>
+    <a href="index.html#naula">Naula Prepared</a>
+    <a href="index.html#products">Products</a>
+    <a href="index.html#ritual">Ritual</a>
+    <a href="world-of-naula.html">World of Naula</a>
+    <a href="founders.html">Founders</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
     <a href="#" class="active">VG2 Program</a>
-    <a href="https://tkg-naula.com" class="nav-btn" style="margin:12px 24px 0;text-align:center;border-radius:2px">Order</a>
+    <a href="index.html" class="nav-btn" style="margin:12px 24px 0;text-align:center;border-radius:2px">Order</a>
   </div>
 </nav>
 
-<!-- ══ HERO — text left / photo right (PDF p.1) ══ -->
+<!-- ══ HERO ══ -->
 <section class="hero" style="position:relative">
   <div class="hero-left">
-    <!-- VG2 logo — top of hero left column -->
+    <!-- VG2 logo — transparent WebP, top of hero -->
     <div class="vg2-logo-hero fu">
       <img src="VG2_final_logo.webp" alt="VG2 — Very Good Viet Goods">
     </div>
@@ -314,7 +314,7 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
   </div>
 </section>
 
-<!-- ══ MISSION — text left / 3-photo mosaic right (PDF p.2) ══ -->
+<!-- ══ MISSION ══ -->
 <section class="section section--alt" style="padding:0;border-bottom:.5px solid var(--line)" id="about">
   <div class="mission-grid">
     <div class="mission-text fu">
@@ -324,15 +324,12 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
       <p class="body-vi">Dự án VG2 ra đời để thiết lập chuẩn mực mới cho hàng Việt trên sân chơi toàn cầu. Với tư duy đổi mới và chính trực trong kinh doanh, hàng Việt hoàn toàn có thể chinh phục thị trường quốc tế khắt khe nhất.</p>
     </div>
     <div class="mission-photos fu fu-d1">
-      <!-- tall left photo -->
       <div class="mission-photo mission-photo--tall">
         <img src="VG2_2.webp" alt="Vietnamese market foods">
       </div>
-      <!-- top-right -->
       <div class="mission-photo">
         <img src="VG2_3.webp" alt="TEC coconuts">
       </div>
-      <!-- bottom-right -->
       <div class="mission-photo">
         <img src="VG2_4.webp" alt="Herbal gift packages">
       </div>
@@ -340,7 +337,7 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
   </div>
 </section>
 
-<!-- ══ PILLARS — text + list left / full photo right (PDF p.3) ══ -->
+<!-- ══ PILLARS ══ -->
 <section class="section" style="padding:0;border-bottom:.5px solid var(--line)" id="pillars">
   <div class="pillars-wrap">
     <div class="pillars-text">
@@ -389,7 +386,6 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
         </div>
       </div>
     </div>
-    <!-- Full-height photo right -->
     <div class="pillars-photo fu fu-d2">
       <img src="VG2_5.webp" alt="SAVVi entrepreneur community">
       <div class="pillars-photo-overlay"></div>
@@ -397,9 +393,8 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
   </div>
 </section>
 
-<!-- ══ ALLIANCE — full-width photo banner + 2-col text+photo (PDF p.4) ══ -->
+<!-- ══ ALLIANCE ══ -->
 <section style="border-bottom:.5px solid var(--line)" id="alliance">
-  <!-- Full-width handshake banner -->
   <div class="alliance-hero fu">
     <img src="VG2_6.webp" alt="Thien Kien × SAVVi partnership">
     <div class="alliance-hero-overlay"></div>
@@ -409,12 +404,12 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
     </div>
   </div>
 
-  <!-- 2-col: TK left / SAVVi right, each with photo -->
   <div class="alliance-body">
     <div class="alliance-col alliance-col--left fu">
       <div class="alliance-card">
+        <!-- Thiện Kiện logo — transparent WebP -->
         <div class="partner-logo-wrap">
-          <img src="Thien-Kien-logo.webp" alt="Thiện Kiện logo" style="height:52px">
+          <img src="Thien-Kien-logo.webp" alt="Thiện Kiện logo" style="height:80px">
         </div>
         <div class="alliance-card-tag">Thien Kien · TKG</div>
         <h3>The Pioneer</h3>
@@ -426,8 +421,9 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
     </div>
     <div class="alliance-col alliance-col--right fu fu-d1">
       <div class="alliance-card">
+        <!-- SAVVi Code logo — transparent WebP -->
         <div class="partner-logo-wrap">
-          <img src="SAVVI.webp" alt="SAVVi Code logo" style="height:36px">
+          <img src="SAVVI.webp" alt="SAVVi Code logo" style="height:56px">
         </div>
         <div class="alliance-card-tag">SAVVi Code</div>
         <h3>The Framework</h3>
@@ -445,9 +441,8 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
   </div>
 </section>
 
-<!-- ══ NAULA — dark food banner + features left / 2 tins right (PDF p.5-6) ══ -->
+<!-- ══ NAULA ══ -->
 <section style="border-bottom:.5px solid var(--line)" id="naula">
-  <!-- Full-width botanical banner -->
   <div class="naula-hero fu">
     <img src="Naula-3.webp" alt="Naula botanical preparation">
     <div class="naula-hero-overlay"></div>
@@ -457,7 +452,6 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
     </div>
   </div>
 
-  <!-- Features left / Product tins right -->
   <div class="naula-body">
     <div class="naula-text fu">
       <div class="section-label">The Naula Process · Quy trình Naula</div>
@@ -501,7 +495,6 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
       </div>
     </div>
 
-    <!-- 2 product tins -->
     <div class="naula-products fu fu-d1">
       <p class="naula-tagline">The First Expression</p>
       <div class="naula-products-grid">
