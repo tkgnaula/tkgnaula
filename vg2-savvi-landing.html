@@ -196,11 +196,13 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
 .footer-links a:hover{color:var(--cream2)}
 
 /* ── PARTNER LOGOS (WebP transparent) ── */
-.vg2-logo-hero{
+.vg2-logo-hero-wrap{
+  display:flex;flex-direction:column;align-items:center;
   margin-bottom:28px;
 }
+.vg2-logo-hero{margin-bottom:16px;}
 .vg2-logo-hero img{
-  height:140px;width:auto;display:block;
+  height:200px;width:auto;display:block;
 }
 
 .partner-logo-wrap{
@@ -287,14 +289,16 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
 <!-- ══ HERO ══ -->
 <section class="hero" style="position:relative">
   <div class="hero-left">
-    <!-- VG2 logo — transparent WebP, top of hero -->
-    <div class="vg2-logo-hero fu">
-      <img src="VG2_final_logo.webp" alt="VG2 — Very Good Viet Goods">
-    </div>
-    <div class="hero-badge fu">
-      <span class="hero-badge-dot"></span>
-      Strategic Partnership · Hợp tác chiến lược
-      <span class="hero-badge-dot"></span>
+    <!-- VG2 logo + badge — centered together -->
+    <div class="vg2-logo-hero-wrap">
+      <div class="vg2-logo-hero fu">
+        <img src="VG2_final_logo.webp" alt="VG2 — Very Good Viet Goods">
+      </div>
+      <div class="hero-badge fu">
+        <span class="hero-badge-dot"></span>
+        Strategic Partnership · Hợp tác chiến lược
+        <span class="hero-badge-dot"></span>
+      </div>
     </div>
     <div class="hero-partners fu fu-d1">
       <div class="hero-partner-chip">TKG · Naula</div>
