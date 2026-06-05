@@ -235,13 +235,13 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
   .alliance-col{padding:48px 32px}
   .naula-text{padding:48px 32px}
   .naula-products{padding:48px 32px}
-  /* alliance hero — show full image, no crop */
-  .alliance-hero{height:auto;overflow:visible}
-  .alliance-hero img{height:auto;object-fit:unset;display:block}
-  .alliance-hero-overlay{background:linear-gradient(to top,rgba(18,17,11,.95) 0%,rgba(18,17,11,.5) 30%,transparent 60%)}
-  .alliance-hero-caption{position:relative;bottom:auto;left:auto;transform:none;
-    padding:32px 24px 40px;background:rgba(18,17,11,.0);text-align:center;
-    margin-top:-80px}
+  /* alliance hero — show full image, caption below */
+  .alliance-hero{height:auto;overflow:visible;display:flex;flex-direction:column}
+  .alliance-hero img{height:auto;object-fit:unset;display:block;width:100%}
+  .alliance-hero-overlay{display:none}
+  .alliance-hero-caption{position:static;transform:none;
+    background:var(--bg);padding:36px 24px 40px;text-align:center;
+    border-bottom:.5px solid var(--line)}
 }
 @media(max-width:680px){
   .nav-w{padding:0 20px}
