@@ -197,6 +197,29 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
 .footer-links a{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream4);transition:color .2s}
 .footer-links a:hover{color:var(--cream2)}
 
+/* ── PARTNER LOGOS ── */
+.vg2-logo-hero{
+  margin-bottom:32px;
+}
+.vg2-logo-hero img{
+  height:88px;width:auto;display:block;
+  /* white bg logo on dark — keep as-is since background is white */
+  background:rgba(255,255,255,0.06);
+  border-radius:8px;padding:10px 14px;
+}
+
+.partner-logo-wrap{
+  display:flex;align-items:center;gap:10px;margin-bottom:20px;
+}
+.partner-logo-wrap img{
+  height:40px;width:auto;display:block;
+  /* logos are on white bg — show on dark card with slight bg */
+  background:rgba(255,255,255,0.92);
+  border-radius:6px;padding:6px 10px;
+  opacity:.9;transition:opacity .2s;
+}
+.partner-logo-wrap img:hover{opacity:1}
+
 /* ── FADE-UP ── */
 .fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
 .fu.vis{opacity:1;transform:translateY(0)}
@@ -262,8 +285,12 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
 </nav>
 
 <!-- ══ HERO — text left / photo right (PDF p.1) ══ -->
-<section class="hero">
+<section class="hero" style="position:relative">
   <div class="hero-left">
+    <!-- VG2 logo — top of hero left column -->
+    <div class="vg2-logo-hero fu">
+      <img src="vg2-imgs/logo-vg2.png" alt="VG2 — Very Good Viet Goods">
+    </div>
     <div class="hero-badge fu">
       <span class="hero-badge-dot"></span>
       Strategic Partnership · Hợp tác chiến lược
@@ -282,7 +309,7 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
     </p>
   </div>
   <div class="hero-right">
-    <img src="VG2_1.webp" alt="TKG × SAVVi Code team">
+    <img src="vg2-imgs/hero-group.jpg" alt="TKG × SAVVi Code team">
     <div class="hero-right-overlay"></div>
   </div>
 </section>
@@ -299,15 +326,15 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
     <div class="mission-photos fu fu-d1">
       <!-- tall left photo -->
       <div class="mission-photo mission-photo--tall">
-        <img src="VG2_2.webp" alt="Vietnamese market foods">
+        <img src="vg2-imgs/market-food.jpg" alt="Vietnamese market foods">
       </div>
       <!-- top-right -->
       <div class="mission-photo">
-        <img src="VG2_3.webp" alt="TEC coconuts">
+        <img src="vg2-imgs/coconuts.jpg" alt="TEC coconuts">
       </div>
       <!-- bottom-right -->
       <div class="mission-photo">
-        <img src="VG2_4.webp" alt="Herbal gift packages">
+        <img src="vg2-imgs/soap-gifts.jpg" alt="Herbal gift packages">
       </div>
     </div>
   </div>
@@ -364,7 +391,7 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
     </div>
     <!-- Full-height photo right -->
     <div class="pillars-photo fu fu-d2">
-      <img src="VG2_5.webp" alt="SAVVi entrepreneur community">
+      <img src="vg2-imgs/savvi-group.jpg" alt="SAVVi entrepreneur community">
       <div class="pillars-photo-overlay"></div>
     </div>
   </div>
@@ -374,7 +401,7 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
 <section style="border-bottom:.5px solid var(--line)" id="alliance">
   <!-- Full-width handshake banner -->
   <div class="alliance-hero fu">
-    <img src="VG2_6.webp" alt="Thien Kien × SAVVi partnership">
+    <img src="vg2-imgs/handshake.jpg" alt="Thien Kien × SAVVi partnership">
     <div class="alliance-hero-overlay"></div>
     <div class="alliance-hero-caption">
       <div class="alliance-hero-label">Strategic Alliance · Liên minh chiến lược</div>
@@ -386,6 +413,9 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
   <div class="alliance-body">
     <div class="alliance-col alliance-col--left fu">
       <div class="alliance-card">
+        <div class="partner-logo-wrap">
+          <img src="vg2-imgs/logo-thienkien.png" alt="Thiện Kiện logo" style="height:52px">
+        </div>
         <div class="alliance-card-tag">Thien Kien · TKG</div>
         <h3>The Pioneer</h3>
         <p>Thien Kien is proud to be the pioneer unit, working alongside SAVVi to lay the foundation for the VG2 program. As the strategic execution partner, Thien Kien serves as the "trailblazer," manifesting VG2's rigorous standards through its core product line, TKG.<em>Thiên Kiện là đơn vị tiên phong, đặt nền móng cho VG2 và hiện thực hóa các tiêu chuẩn khắt khe qua dòng sản phẩm TKG.</em></p>
@@ -396,6 +426,9 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
     </div>
     <div class="alliance-col alliance-col--right fu fu-d1">
       <div class="alliance-card">
+        <div class="partner-logo-wrap">
+          <img src="vg2-imgs/logo-savvi.png" alt="SAVVi Code logo" style="height:36px">
+        </div>
         <div class="alliance-card-tag">SAVVi Code</div>
         <h3>The Framework</h3>
         <p>SAVVi Code provides the technological framework, systematic mindset, and entrepreneurial network that elevates Vietnamese products to meet global standards. This partnership establishes the benchmark for all future VG2 members.<em>SAVVi Code mang lại nền tảng công nghệ và mạng lưới khởi nghiệp — nâng tầm hàng Việt lên chuẩn quốc tế.</em></p>
