@@ -362,6 +362,46 @@ nav{
 }
 .btn-perilla:hover{opacity:.85}
 
+/* ─── NUTRITION FACTS ────────────────────────────── */
+.sku-nf{
+  margin:14px 0 0;
+  border:.5px solid var(--line2);
+  border-radius:3px;
+  overflow:hidden;
+}
+.sku-nf-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px;cursor:pointer;
+  background:rgba(255,255,255,.03);
+  user-select:none;
+}
+.sku-nf-title{
+  font-size:8.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream3);
+}
+.sku-nf-serving{font-size:10px;color:var(--cream4);letter-spacing:.04em}
+.sku-nf-chevron{
+  width:12px;height:12px;stroke:var(--cream4);fill:none;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .2s;flex-shrink:0;
+}
+.sku-nf.open .sku-nf-chevron{transform:rotate(180deg)}
+.sku-nf-body{display:none;padding:0 12px 10px}
+.sku-nf.open .sku-nf-body{display:block}
+.sku-nf-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:5px 0;border-bottom:.5px solid var(--line);
+  font-size:11px;
+}
+.sku-nf-row:last-child{border-bottom:none}
+.sku-nf-label{color:var(--cream3);font-weight:300}
+.sku-nf-val{color:var(--cream2);font-weight:500;letter-spacing:.02em}
+.sku-nf-nrv{color:var(--cream4);font-size:10px;margin-left:6px}
+.sku-nf-disclaimer{
+  font-size:9.5px;color:var(--cream4);margin-top:8px;line-height:1.5;
+  font-style:italic;
+}
+
 /* ─── S6 · BREWING RITUAL ────────────────────────── */
 .ritual{
   border-top:.5px solid var(--line);
@@ -874,6 +914,41 @@ footer{
             <div class="sku-note-lbl">Sensory Note</div>
             <div class="sku-note-txt">Natural sediment after mixing is whole starch from fresh ginger and lemongrass — a sign of real ingredients, unextracted. Bold. Direct. Warm from the first shot.</div>
           </div>
+          <!-- Nutrition Facts -->
+          <div class="sku-nf" id="nf-morning">
+            <div class="sku-nf-head" onclick="toggleNF('nf-morning')">
+              <span class="sku-nf-title">Nutrition Facts</span>
+              <span class="sku-nf-serving">per 2 g serving</span>
+              <svg class="sku-nf-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sku-nf-body">
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Energy</span>
+                <span class="sku-nf-val">4.44 kcal <span class="sku-nf-nrv">0.22% NRV</span></span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Protein</span>
+                <span class="sku-nf-val">0.13 g <span class="sku-nf-nrv">0.26% NRV</span></span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Carbohydrate</span>
+                <span class="sku-nf-val">0.45 g <span class="sku-nf-nrv">0.14% NRV</span></span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label" style="padding-left:10px">— of which sugars</span>
+                <span class="sku-nf-val">0.29 g</span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Total Fat</span>
+                <span class="sku-nf-val">0.01 g <span class="sku-nf-nrv">0.02% NRV</span></span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Sodium</span>
+                <span class="sku-nf-val">6.24 mg <span class="sku-nf-nrv">0.31% NRV</span></span>
+              </div>
+              <div class="sku-nf-disclaimer">Tested by Quatest 3 · Q326C053953 · 01/06/2026</div>
+            </div>
+          </div>
           <div class="sku-foot">
             <div class="sku-meta">60g · 30 servings · 2 tsp / 100ml</div>
             <a href="#" onclick="openOrderModal(); return false;" class="btn-fire">Order</a>
@@ -898,6 +973,41 @@ footer{
           <div class="sku-note sku-note-perilla">
             <div class="sku-note-lbl">Sensory Note</div>
             <div class="sku-note-txt">Colour shifts after mixing are a natural pH response from perilla leaf — no artificial colour, no chemical stabiliser. Drink immediately for best colour. Quiet. Considered.</div>
+          </div>
+          <!-- Nutrition Facts -->
+          <div class="sku-nf" id="nf-still">
+            <div class="sku-nf-head" onclick="toggleNF('nf-still')">
+              <span class="sku-nf-title">Nutrition Facts</span>
+              <span class="sku-nf-serving">per 2 g serving</span>
+              <svg class="sku-nf-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="sku-nf-body">
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Energy</span>
+                <span class="sku-nf-val">3.08 kcal <span class="sku-nf-nrv">0.15% NRV</span></span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Protein</span>
+                <span class="sku-nf-val">0.09 g <span class="sku-nf-nrv">0.18% NRV</span></span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Carbohydrate</span>
+                <span class="sku-nf-val">0.03 g <span class="sku-nf-nrv">0.01% NRV</span></span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label" style="padding-left:10px">— of which sugars</span>
+                <span class="sku-nf-val">0.02 g</span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Total Fat</span>
+                <span class="sku-nf-val">0.00 g <span class="sku-nf-nrv">0.00% NRV</span></span>
+              </div>
+              <div class="sku-nf-row">
+                <span class="sku-nf-label">Sodium</span>
+                <span class="sku-nf-val">9.10 mg <span class="sku-nf-nrv">0.46% NRV</span></span>
+              </div>
+              <div class="sku-nf-disclaimer">Tested by Quatest 3 · Q326C053953 · 01/06/2026</div>
+            </div>
           </div>
           <div class="sku-foot">
             <div class="sku-meta">60g · 30 servings · 2 tsp / 100ml</div>
@@ -1073,6 +1183,11 @@ function openOrderModal() {
 function closeOrderModal() {
   document.getElementById('orderModal').style.display = 'none';
   document.body.style.overflow = 'auto';
+}
+
+/* ─── Nutrition Facts toggle ─── */
+function toggleNF(id) {
+  document.getElementById(id).classList.toggle('open');
 }
 
 /* ─── Mobile Nav ─── */
