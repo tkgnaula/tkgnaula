@@ -16,6 +16,8 @@
 <meta name="description" content="Three botanicals. One method. Named and traceable. TKG brings Vietnamese botanical practice to your cup — whole plants, freeze-dried through the Naula method.">
 <link rel="icon" type="image/png" href="TKG-logo.png">
 <link rel="canonical" href="https://www.tkg-naula.com/">
+<link rel="alternate" hreflang="en" href="https://www.tkg-naula.com/">
+<link rel="alternate" hreflang="vi" href="https://www.tkg-naula.com/index_vi.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
@@ -106,6 +108,20 @@ nav{
   padding:8px 20px;border-radius:2px;transition:opacity .2s;
 }
 .nav-btn:hover{opacity:.85}
+
+/* Language Toggle */
+.lang-toggle{
+  display:flex;align-items:center;
+  border:.5px solid var(--line2);border-radius:20px;
+  overflow:hidden;flex-shrink:0;
+}
+.lang-toggle a{
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--cream4);padding:6px 12px;transition:color .2s,background .2s;
+}
+.lang-toggle a.active{color:#fff;background:var(--fire)}
+.lang-toggle a:not(.active):hover{color:var(--cream)}
+.nav-mobile .lang-toggle{margin:4px 24px 12px}
 
 /* ─── S1 · HERO ──────────────────────────────────── */
 .hero{
@@ -749,6 +765,10 @@ footer{
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="vg2-savvi-landing.html">VG2 Program</a>
       <a href="faq.html">FAQ</a>
+      <div class="lang-toggle">
+        <a href="#" onclick="switchLang('en'); return false;" class="active">EN</a>
+        <a href="#" onclick="switchLang('vi'); return false;">VI</a>
+      </div>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
 
@@ -769,6 +789,10 @@ footer{
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="vg2-savvi-landing.html">VG2 Program</a>
       <a href="faq.html">FAQ</a>
+      <div class="lang-toggle">
+        <a href="#" onclick="switchLang('en'); return false;" class="active">EN</a>
+        <a href="#" onclick="switchLang('vi'); return false;">VI</a>
+      </div>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
   </div>
@@ -1199,6 +1223,14 @@ function openOrderModal() {
 function closeOrderModal() {
   document.getElementById('orderModal').style.display = 'none';
   document.body.style.overflow = 'auto';
+}
+
+/* ─── Language Toggle ─── */
+function switchLang(lang) {
+  if (lang === 'vi') {
+    window.location.href = 'index_vi.html' + window.location.hash;
+  }
+  // already on EN (index.html); no-op when lang === 'en'
 }
 
 /* ─── Nutrition Facts toggle ─── */
