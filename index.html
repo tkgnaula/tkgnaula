@@ -622,11 +622,21 @@ footer{
   font-family:var(--serif);
 }
 
+/* ─── S7 · LIFESTYLE FULL-BLEED ─────────────────── */
+.lifestyle-bleed{
+  height:100vh;max-height:800px;overflow:hidden;position:relative;
+}
+.lifestyle-bleed-img{
+  width:100%;height:100%;object-fit:cover;object-position:center 75%;
+}
+
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:1024px){
   .nav-desktop{display:none}
   .nav-mobile-btn{display:block}
   .nav-mobile{display:none}
+  .lifestyle-bleed{height:70vh;max-height:560px}
+  .lifestyle-bleed-img{object-position:center 70%}
   .hero{grid-template-columns:1fr}
   .hero-right{min-height:60vw}
   .hero-left{padding:60px 40px}
@@ -677,6 +687,8 @@ footer{
   .nav-desktop{display:none}
   .nav-mobile-btn{display:block}
   .nav-mobile{display:none}
+  .lifestyle-bleed{height:50vh;max-height:420px}
+  .lifestyle-bleed-img{object-position:center 65%}
   .hero-left{padding:40px 20px}
   .hero-h1{font-size:32px;line-height:1.1}
   .hero-label{font-size:9px;margin-bottom:24px}
@@ -700,7 +712,9 @@ footer{
   }
   .naula-left-head{font-size:18px;line-height:1.15}
   .naula-right-body{font-size:12.5px;line-height:1.75}
-  .principle{padding:32px 20px 36px}
+  .principles{grid-template-columns:1fr}
+  .principle{padding:32px 20px 36px;border-right:none;border-bottom:.5px solid var(--line)}
+  .principle:last-child{border-bottom:none}
   .p-head{font-size:20px;line-height:1.25}
   .p-body{font-size:12.5px;line-height:1.7}
   .products-w{padding:40px 20px}
@@ -1112,8 +1126,8 @@ footer{
 </section>
 
 <!-- ═══ S7 · LIFESTYLE FULL-BLEED ════════════════ -->
-<div style="margin-top: 20px solid var(--line);height:100vh;max-height:800px;overflow:hidden;position:relative;">
-  <img src="Ending-1.webp" alt="TKG lifestyle" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+<div class="lifestyle-bleed">
+  <img src="Ending-1.webp" alt="TKG lifestyle" class="lifestyle-bleed-img" loading="lazy">
 </div>
 
 <!-- ═══ S8 · CLOSING ══════════════════════════════ -->
