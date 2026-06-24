@@ -53,6 +53,13 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 .nav-btn{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--fire);color:#fff;padding:8px 20px;border-radius:2px;transition:opacity .2s;}
 .nav-btn:hover{opacity:.85}
 
+/* Language Toggle */
+.lang-toggle{display:flex;align-items:center;border:.5px solid var(--line2);border-radius:20px;overflow:hidden;flex-shrink:0;}
+.lang-toggle a{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cream4);padding:6px 12px;transition:color .2s,background .2s;}
+.lang-toggle a.active{color:#fff;background:var(--fire)}
+.lang-toggle a:not(.active):hover{color:var(--cream)}
+.nav-mobile .lang-toggle{margin:4px 24px 12px}
+
 /* ─── HERO ─────────────────────────────────────────── */
 .f-hero{
   position:relative;min-height:calc(100vh - 56px);
@@ -367,6 +374,10 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="vg2-savvi-landing.html">VG2 Program</a>
       <a href="faq.html">FAQ</a>
+      <div class="lang-toggle">
+        <a href="#" onclick="switchLang('en'); return false;" class="active">EN</a>
+        <a href="#" onclick="switchLang('vi'); return false;">VI</a>
+      </div>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
     <button class="nav-mobile-btn" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
@@ -379,6 +390,10 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="vg2-savvi-landing.html">VG2 Program</a>
       <a href="faq.html">FAQ</a>
+      <div class="lang-toggle">
+        <a href="#" onclick="switchLang('en'); return false;" class="active">EN</a>
+        <a href="#" onclick="switchLang('vi'); return false;">VI</a>
+      </div>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
   </div>
@@ -398,7 +413,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
     <div class="f-hero-tag">Message from Founders</div>
     <p class="f-hero-kicker">A letter from the people behind TKG</p>
     <h1 class="f-hero-h1">
-      We did not start with a product. </br>We started with <em>a question.</em>
+      We did not start with a product. <br>We started with <em>a question.</em>
     </h1>
     <div class="f-hero-meta">
       <span class="f-hero-date">May 2026</span>
@@ -718,6 +733,13 @@ function submitOrderForm(e){
   var body=encodeURIComponent('Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\nPhone: '+d.get('phone')+'\nProduct: '+d.get('product')+'\nQuantity: '+d.get('quantity')+'\nMessage: '+d.get('message'));
   window.location.href='mailto:tkg.naula@gmail.com?subject='+sub+'&body='+body;
   alert('Thank you for your order request! We will contact you soon.');closeOrderModal();
+}
+/* ─── Language Toggle ─── */
+function switchLang(lang) {
+  if (lang === 'vi') {
+    window.location.href = 'founders_vi.html' + window.location.hash;
+  }
+  // already on EN (founders.html); no-op when lang === 'en'
 }
 </script>
 
