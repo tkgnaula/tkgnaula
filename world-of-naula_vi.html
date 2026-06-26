@@ -55,10 +55,14 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 
 /* Language Toggle */
 .lang-toggle{display:flex;align-items:center;border:.5px solid var(--line2);border-radius:20px;overflow:hidden;flex-shrink:0;}
-.lang-toggle a{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cream4);padding:6px 12px;transition:color .2s,background .2s;}
-.lang-toggle a.active{color:#fff;background:var(--fire)}
-.lang-toggle a:not(.active):hover{color:var(--cream)}
-.nav-mobile .lang-toggle{margin:4px 24px 12px}
+.lang-toggle a{display:flex;align-items:center;justify-content:center;width:28px;height:22px;padding:0;transition:opacity .2s,background .2s;opacity:.45;}
+.lang-toggle a svg{display:block;width:18px;height:13px;border-radius:2px}
+.lang-toggle a.active{opacity:1;background:rgba(255,255,255,.06)}
+.lang-toggle a:not(.active):hover{opacity:.75}
+.nav-mobile .lang-toggle{display:none}
+
+/* Mobile language toggle — sits next to logo, always visible */
+.nav-right-mobile{display:none;align-items:center;gap:8px}
 
 /* ─── HERO ─────────────────────────────────────────── */
 .won-hero{
@@ -351,7 +355,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
 
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:1024px){
-  .nav-desktop{display:none}.nav-mobile-btn{display:block}
+  .nav-desktop{display:none}.nav-mobile-btn{display:block}.nav-right-mobile{display:flex}
   .won-hero-content{padding:60px 40px 56px;}
   .manifesto{grid-template-columns:1fr;}
   .manifesto-left{min-height:400px;}
@@ -376,7 +380,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
   .foot-bottom{padding:20px 40px 28px;}
 }
 @media(max-width:640px){
-  .nav-desktop{display:none}.nav-mobile-btn{display:block}
+  .nav-desktop{display:none}.nav-mobile-btn{display:block}.nav-right-mobile{display:flex}
   .won-hero-content{padding:48px 20px 44px;}
   .won-hero-h1{font-size:30px;line-height:1.12;}
   .manifesto-left{min-height:320px;}
@@ -414,7 +418,6 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
   <div class="nav-w">
     <a href="index_vi.html" class="nav-logo"><img src="TKG-logo.png" alt="TKG"></a>
     <div class="nav-desktop">
-      <a href="index_vi.html#naula">Phương pháp Naula</a>
       <a href="index_vi.html#products">Sản phẩm</a>
       <a href="index_vi.html#ritual">Pha chế</a>
       <a href="world-of-naula_vi.html" class="active">Thế giới Naula</a>
@@ -423,14 +426,27 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
       <a href="vg2-savvi-landing.html">Chương trình VG2</a>
       <a href="faq.html">Câu hỏi thường gặp</a>
       <div class="lang-toggle">
-        <a href="#" onclick="switchLang('en'); return false;">EN</a>
-        <a href="#" onclick="switchLang('vi'); return false;" class="active">VI</a>
+        <a href="#" onclick="switchLang('en'); return false;" aria-label="English">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
+        </a>
+        <a href="#" onclick="switchLang('vi'); return false;" class="active" aria-label="Tiếng Việt">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
+        </a>
       </div>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Đặt hàng</a>
     </div>
-    <button class="nav-mobile-btn" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+    <div class="nav-right-mobile">
+      <div class="lang-toggle">
+        <a href="#" onclick="switchLang('en'); return false;" aria-label="English">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
+        </a>
+        <a href="#" onclick="switchLang('vi'); return false;" class="active" aria-label="Tiếng Việt">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
+        </a>
+      </div>
+      <button class="nav-mobile-btn" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+    </div>
     <div class="nav-mobile">
-      <a href="index_vi.html#naula">Phương pháp Naula</a>
       <a href="index_vi.html#products">Sản phẩm</a>
       <a href="index_vi.html#ritual">Pha chế</a>
       <a href="world-of-naula_vi.html" class="active">Thế giới Naula</a>
@@ -438,10 +454,6 @@ footer{background:var(--bg1);border-top:.5px solid var(--line);}
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="vg2-savvi-landing.html">Chương trình VG2</a>
       <a href="faq.html">Câu hỏi thường gặp</a>
-      <div class="lang-toggle">
-        <a href="#" onclick="switchLang('en'); return false;">EN</a>
-        <a href="#" onclick="switchLang('vi'); return false;" class="active">VI</a>
-      </div>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Đặt hàng</a>
     </div>
   </div>
@@ -652,7 +664,6 @@ Không xuất khẩu chỉ vì thành tích."</p>
     <div class="foot-nav">
       <div class="foot-col">
         <div class="foot-col-title">Điều hướng</div>
-        <a href="index_vi.html#naula">Phương pháp Naula</a>
         <a href="index_vi.html#products">Sản phẩm</a>
         <a href="index_vi.html#ritual">Pha chế</a>
         <a href="world-of-naula_vi.html">Thế giới Naula</a>
