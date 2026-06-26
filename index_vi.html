@@ -323,10 +323,15 @@ nav{
 }
 .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
 
-/* Fire Element intro block — below products grid */
-.fire-intro{
+/* ─── S4.5 · FIRE ELEMENT (standalone, before products) ── */
+.fire-element{
   border-top:.5px solid var(--line);
-  margin-top:56px;padding-top:48px;
+  background:var(--bg);
+}
+.fire-element-w{
+  max-width:1280px;margin:0 auto;padding:72px 80px;
+}
+.fire-intro{
   text-align:center;
 }
 .fire-intro-tag{
@@ -706,6 +711,7 @@ footer{
   .naula-right-body{margin-top:0}
   .principles{grid-template-columns:repeat(3,1fr)}
   .products-w{padding:56px 40px}
+  .fire-element-w{padding:56px 40px}
   .products-header{flex-direction:column;align-items:flex-start}
   .products-sub{text-align:left}
   .products-grid{grid-template-columns:1fr 1fr}
@@ -773,8 +779,18 @@ footer{
   .hero-sub{font-size:14.5px;line-height:1.85;max-width:100%}
   .hero-actions{flex-direction:column;gap:12px}
   .btn-primary{width:100%;justify-content:center}
-  .statement{min-height:60vh}
-  .statement-text{padding:32px 20px}
+  .statement{
+    min-height:unset;
+    display:flex;flex-direction:column;
+    overflow:visible;
+  }
+  .statement-media{position:relative;aspect-ratio:4/5;inset:auto}
+  .statement-veil{display:none}
+  .statement-text{
+    position:relative;z-index:1;
+    background:var(--bg);
+    padding:32px 20px 40px;width:100%;
+  }
   .statement-eyebrow{font-size:10px}
   .statement-h2{font-size:28px;line-height:1.1}
   .naula-top{aspect-ratio:16/9;overflow:hidden}
@@ -839,9 +855,9 @@ footer{
   .product-origin{font-size:10px}
 }
 
-/* ─── FIRE INTRO BLOCK · MOBILE ──────────────────── */
+/* ─── FIRE ELEMENT SECTION · MOBILE ──────────────── */
 @media(max-width:640px){
-  .fire-intro{padding-top:36px;margin-top:40px}
+  .fire-element-w{padding:40px 20px}
   .fire-intro-skus{gap:28px;flex-direction:column}
   .btn-explore-collection{width:100%;justify-content:center;padding:16px 24px}
 }
@@ -1103,8 +1119,41 @@ footer{
 
 <!-- ═══ S4 · MOODY FULL-BLEED PHOTO ═══════════════ -->
 <div class="photo-break">
-  <img src="Freeze-dried-1.webp" alt="Chế biến theo phương pháp Naula" loading="lazy">
+  <img src="Freeze-dried-3.webp" alt="Chế biến theo phương pháp Naula" loading="lazy">
 </div>
+
+<!-- ═══ S4.5 · FIRE ELEMENT (standalone intro) ═══════ -->
+<section id="fire-element" class="fire-element">
+  <div class="fire-element-w">
+    <div class="fire-intro">
+      <div class="fire-intro-tag">Sản phẩm đang mở bán</div>
+      <h3 class="fire-intro-h3">Hệ Hoả</h3>
+      <p class="fire-intro-lead">Hệ thống sản phẩm thảo mộc đầu tiên của chúng tôi.</p>
+      <p class="fire-intro-body">
+        Một bộ sưu tập các dòng thảo mộc dạng bột sấy thăng hoa, được thiết kế xoay quanh các nguyên liệu theo truyền thống thường gắn liền với sự ấm áp, hương thơm và cảm giác thư thái mỗi ngày.
+      </p>
+      <div class="fire-intro-skus">
+        <div class="fire-intro-sku">
+          <span class="fire-intro-sku-name">Morning Ember</span>
+          <span class="fire-intro-sku-concept">Lư Trung Hoả</span>
+          <span class="fire-intro-sku-ing">Gừng · Sả · Chanh</span>
+        </div>
+        <div class="fire-intro-sku">
+          <span class="fire-intro-sku-name">Still Ember</span>
+          <span class="fire-intro-sku-concept">Phú Đăng Hoả</span>
+          <span class="fire-intro-sku-ing">Tía tô · Đinh hương · Tắc</span>
+        </div>
+      </div>
+      <p class="fire-intro-body" style="margin-top:8px;">
+        Được chế biến bằng phương pháp Naula và thiết kế để sử dụng tiện lợi, hòa tan tức thì với nước nóng hoặc nước lạnh.
+      </p>
+      <button type="button" class="btn-explore-collection" onclick="openCollectionModal()">
+        Khám phá Bộ sưu tập
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
 
 <!-- ═══ S5 · PRODUCTS ══════════════════════════════ -->
 <section id="products" class="products">
@@ -1256,34 +1305,6 @@ footer{
         </div>
       </div>
 
-    </div>
-
-    <div class="fire-intro">
-      <div class="fire-intro-tag">Sản phẩm đang mở bán</div>
-      <h3 class="fire-intro-h3">Hệ Hoả</h3>
-      <p class="fire-intro-lead">Hệ thống sản phẩm thảo mộc đầu tiên của chúng tôi.</p>
-      <p class="fire-intro-body">
-        Một bộ sưu tập các dòng thảo mộc dạng bột sấy thăng hoa, được thiết kế xoay quanh các nguyên liệu theo truyền thống thường gắn liền với sự ấm áp, hương thơm và cảm giác thư thái mỗi ngày.
-      </p>
-      <div class="fire-intro-skus">
-        <div class="fire-intro-sku">
-          <span class="fire-intro-sku-name">Morning Ember</span>
-          <span class="fire-intro-sku-concept">Lư Trung Hoả</span>
-          <span class="fire-intro-sku-ing">Gừng · Sả · Chanh</span>
-        </div>
-        <div class="fire-intro-sku">
-          <span class="fire-intro-sku-name">Still Ember</span>
-          <span class="fire-intro-sku-concept">Phú Đăng Hoả</span>
-          <span class="fire-intro-sku-ing">Tía tô · Đinh hương · Tắc</span>
-        </div>
-      </div>
-      <p class="fire-intro-body" style="margin-top:8px;">
-        Được chế biến bằng phương pháp Naula và thiết kế để sử dụng tiện lợi, hòa tan tức thì với nước nóng hoặc nước lạnh.
-      </p>
-      <button type="button" class="btn-explore-collection" onclick="openCollectionModal()">
-        Khám phá Bộ sưu tập
-        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
-      </button>
     </div>
 
   </div>
