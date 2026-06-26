@@ -116,12 +116,18 @@ nav{
   overflow:hidden;flex-shrink:0;
 }
 .lang-toggle a{
-  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--cream4);padding:6px 12px;transition:color .2s,background .2s;
+  display:flex;align-items:center;justify-content:center;
+  width:28px;height:22px;padding:0;
+  transition:opacity .2s,background .2s;
+  opacity:.45;
 }
-.lang-toggle a.active{color:#fff;background:var(--fire)}
-.lang-toggle a:not(.active):hover{color:var(--cream)}
-.nav-mobile .lang-toggle{margin:4px 24px 12px}
+.lang-toggle a svg{display:block;width:18px;height:13px;border-radius:2px}
+.lang-toggle a.active{opacity:1;background:rgba(255,255,255,.06)}
+.lang-toggle a:not(.active):hover{opacity:.75}
+.nav-mobile .lang-toggle{display:none}
+
+/* Mobile language toggle — sits next to logo, always visible */
+.nav-right-mobile{display:none;align-items:center;gap:8px}
 
 /* ─── S1 · HERO ──────────────────────────────────── */
 .hero{
@@ -701,6 +707,7 @@ footer{
   .nav-desktop{display:none}
   .nav-mobile-btn{display:block}
   .nav-mobile{display:none}
+  .nav-right-mobile{display:flex}
   .lifestyle-bleed{height:70vh;max-height:560px}
   .lifestyle-bleed-img{object-position:center 70%}
   .hero{aspect-ratio:4/5;min-height:520px}
@@ -753,6 +760,7 @@ footer{
   .nav-desktop{display:none}
   .nav-mobile-btn{display:block}
   .nav-mobile{display:none}
+  .nav-right-mobile{display:flex}
   .lifestyle-bleed{height:50vh;max-height:420px}
   .lifestyle-bleed-img{object-position:center 65%}
   .hero{
@@ -980,18 +988,34 @@ footer{
       <a href="vg2-savvi-landing.html">VG2 Program</a>
       <a href="faq.html">FAQ</a>
       <div class="lang-toggle">
-        <a href="#" onclick="switchLang('en'); return false;" class="active">EN</a>
-        <a href="#" onclick="switchLang('vi'); return false;">VI</a>
+        <a href="#" onclick="switchLang('en'); return false;" class="active" aria-label="English">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
+        </a>
+        <a href="#" onclick="switchLang('vi'); return false;" aria-label="Tiếng Việt">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
+        </a>
       </div>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
 
-    <!-- Mobile Navigation Button -->
-    <button class="nav-mobile-btn" onclick="toggleMobileNav()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <!-- Mobile: language toggle + hamburger -->
+    <div class="nav-right-mobile">
+      <div class="lang-toggle">
+        <a href="#" onclick="switchLang('en'); return false;" class="active" aria-label="English">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
+        </a>
+        <a href="#" onclick="switchLang('vi'); return false;" aria-label="Tiếng Việt">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile Navigation Button -->
+      <button class="nav-mobile-btn" onclick="toggleMobileNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
 
     <!-- Mobile Navigation Menu -->
     <div class="nav-mobile">
@@ -1002,10 +1026,6 @@ footer{
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="vg2-savvi-landing.html">VG2 Program</a>
       <a href="faq.html">FAQ</a>
-      <div class="lang-toggle">
-        <a href="#" onclick="switchLang('en'); return false;" class="active">EN</a>
-        <a href="#" onclick="switchLang('vi'); return false;">VI</a>
-      </div>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
   </div>
@@ -1039,18 +1059,18 @@ footer{
     </p>
 
     <div class="hero-actions">
-      <a href="#products" class="btn-primary">
+      <a href="#fire-element" class="btn-primary">
         Explore Fire Element
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
       </a>
-      <a href="#naula" class="btn-ghost">What is TKG?</a>
+      <a href="#statement" class="btn-ghost">What is TKG?</a>
     </div>
   </div>
 
 </section>
 
 <!-- ═══ S2 · BRAND STATEMENT (full-bleed image + overlay) ═══ -->
-<section class="statement">
+<section id="statement" class="statement">
   <div class="statement-media">
     <img src="Botanical House.webp" alt="TKG is a botanical house." loading="lazy">
   </div>
@@ -1119,7 +1139,7 @@ footer{
 
 <!-- ═══ S4 · MOODY FULL-BLEED PHOTO ═══════════════ -->
 <div class="photo-break">
-  <img src="Freeze-dried-3.webp" alt="Naula preparation" loading="lazy">
+  <img src="Freeze-dried-1.webp" alt="Naula preparation" loading="lazy">
 </div>
 
 <!-- ═══ S4.5 · FIRE ELEMENT (standalone intro) ═══════ -->
