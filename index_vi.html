@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="Hero-Section-1.webp" fetchpriority="high">
+<link rel="preload" as="image" href="TKG_16_9.webp" fetchpriority="high">
 
 <style>
 /* ─── RESET ─────────────────────────────────────── */
@@ -125,26 +125,44 @@ nav{
 
 /* ─── S1 · HERO ──────────────────────────────────── */
 .hero{
-  display:grid;grid-template-columns:1fr 1fr;
-  min-height:calc(100vh - 56px);
+  position:relative;
+  width:100%;aspect-ratio:16/9;
   border-bottom:.5px solid var(--line);
+  overflow:hidden;
+}
+.hero-media{position:absolute;inset:0}
+.hero-media img,.hero-media .ph{width:100%;height:100%;object-fit:cover}
+.hero-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(18,17,11,.88) 0%,
+    rgba(18,17,11,.55) 38%,
+    rgba(18,17,11,.12) 68%,
+    rgba(18,17,11,0) 100%
+  );
 }
 .hero-left{
-  background:var(--bg);
-  display:flex;flex-direction:column;justify-content:center;
-  padding:80px 64px 80px 80px;
+  position:relative;z-index:2;
+  height:100%;
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;
+  padding:0 80px 64px 64px;
+  max-width:680px;
+  margin-left:auto;
+  text-align:right;
 }
 .hero-label{
-  font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--cream3);margin-bottom:36px;
+  font-size:10px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--cream2);margin-bottom:24px;
 }
 .hero-h1{
-  font-family:var(--serif);font-size:clamp(46px,4.6vw,50px);font-weight:400;
-  line-height:1.05;letter-spacing:-.01em;margin-bottom:32px;
+  font-family:var(--sans);font-size:clamp(40px,4.2vw,55px);font-weight:800;
+  line-height:1.05;letter-spacing:-.01em;margin-bottom:24px;
+  color:var(--cream);
 }
 .hero-h1 em{color:var(--fire);font-style:normal}
 .hero-rule{
-  display:flex;align-items:center;gap:16px;margin-bottom:36px;
+  display:flex;align-items:center;gap:16px;margin-bottom:24px;
 }
 .hero-rule-line{flex:1;height:.5px;background:var(--line2)}
 .hero-rule span{
@@ -153,7 +171,7 @@ nav{
 }
 .hero-sub{
   font-size:13.5px;font-weight:300;line-height:1.78;color:var(--cream2);
-  max-width:380px;margin-bottom:40px;
+  max-width:440px;margin-bottom:32px;
 }
 .hero-actions{display:flex;align-items:center;gap:16px}
 .btn-primary{
@@ -165,14 +183,9 @@ nav{
 .btn-primary:hover{opacity:.85}
 .btn-ghost{
   font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--cream3);transition:color .2s;
+  color:var(--cream2);transition:color .2s;
 }
 .btn-ghost:hover{color:var(--cream)}
-
-.hero-right{
-  position:relative;overflow:hidden;
-}
-.hero-right img,.hero-right .ph{position:absolute;inset:0;width:100%;height:100%}
 
 /* ─── S2 · STATEMENT FULL-BLEED ─────────────────── */
 .statement{
@@ -309,6 +322,54 @@ nav{
   color:var(--cream3);max-width:300px;text-align:right;
 }
 .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+
+/* Fire Element intro block — below products grid */
+.fire-intro{
+  border-top:.5px solid var(--line);
+  margin-top:56px;padding-top:48px;
+  text-align:center;
+}
+.fire-intro-tag{
+  font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:14px;
+}
+.fire-intro-h3{
+  font-family:var(--serif);font-size:clamp(28px,2.8vw,40px);
+  font-weight:400;line-height:1.1;color:var(--cream);margin-bottom:8px;
+}
+.fire-intro-lead{
+  font-size:14px;font-weight:300;font-style:italic;color:var(--cream2);
+  margin-bottom:18px;
+}
+.fire-intro-body{
+  font-size:13px;font-weight:300;line-height:1.78;color:var(--cream3);
+  max-width:560px;margin:0 auto;
+}
+.fire-intro-skus{
+  display:flex;justify-content:center;gap:48px;flex-wrap:wrap;
+  margin:32px 0 0;padding:24px 0;
+  border-top:.5px solid var(--line);border-bottom:.5px solid var(--line);
+}
+.fire-intro-sku{display:flex;flex-direction:column;align-items:center;gap:4px}
+.fire-intro-sku-name{
+  font-family:var(--serif);font-size:19px;font-weight:500;color:var(--cream);
+}
+.fire-intro-sku-concept{
+  font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--cream4);
+}
+.fire-intro-sku-ing{
+  font-size:11.5px;font-weight:300;color:var(--cream3);margin-top:2px;
+}
+.btn-explore-collection{
+  display:inline-flex;align-items:center;gap:10px;
+  background:transparent;color:var(--cream);
+  border:.5px solid var(--line2);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:16px 40px;border-radius:2px;cursor:pointer;
+  margin-top:32px;transition:border-color .2s,background .2s;
+  font-family:var(--sans);
+}
+.btn-explore-collection:hover{border-color:var(--fire);background:var(--fire2)}
 
 /* SKU card */
 .sku{border:.5px solid var(--line2);border-radius:4px;overflow:hidden;position:relative}
@@ -637,9 +698,8 @@ footer{
   .nav-mobile{display:none}
   .lifestyle-bleed{height:70vh;max-height:560px}
   .lifestyle-bleed-img{object-position:center 70%}
-  .hero{grid-template-columns:1fr}
-  .hero-right{min-height:60vw}
-  .hero-left{padding:60px 40px}
+  .hero{aspect-ratio:4/5;min-height:520px}
+  .hero-left{padding:0 40px 48px}
   .hero-rule span{white-space:normal;line-height:1.6}
   .naula-top{aspect-ratio:4/3}
   .naula-top-content{grid-template-columns:1fr;gap:20px;padding:40px 40px 48px}
@@ -689,7 +749,22 @@ footer{
   .nav-mobile{display:none}
   .lifestyle-bleed{height:50vh;max-height:420px}
   .lifestyle-bleed-img{object-position:center 65%}
-  .hero-left{padding:40px 20px}
+  .hero{
+    aspect-ratio:auto;min-height:unset;
+    display:flex;flex-direction:column;
+    overflow:visible;
+  }
+  .hero-media{position:relative;aspect-ratio:4/5;inset:auto}
+  .hero-veil{display:none}
+  .hero-left{
+    position:relative;z-index:1;
+    height:auto;
+    background:var(--bg);
+    align-items:flex-start;text-align:left;
+    margin-left:0;
+    padding:32px 20px 40px;
+    max-width:100%;
+  }
   .hero-h1{font-size:32px;line-height:1.1}
   .hero-label{font-size:9px;margin-bottom:24px}
   .hero-rule{flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:28px}
@@ -763,6 +838,111 @@ footer{
   .hotline-info{font-size:12px}
   .product-origin{font-size:10px}
 }
+
+/* ─── FIRE INTRO BLOCK · MOBILE ──────────────────── */
+@media(max-width:640px){
+  .fire-intro{padding-top:36px;margin-top:40px}
+  .fire-intro-skus{gap:28px;flex-direction:column}
+  .btn-explore-collection{width:100%;justify-content:center;padding:16px 24px}
+}
+
+/* ─── COLLECTION MODAL (6-SKU POPUP) ─────────────── */
+.collection-modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.8);z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;opacity:0;visibility:hidden;
+  transition:opacity .3s,visibility .3s;
+}
+.collection-modal[style*="flex"]{opacity:1;visibility:visible}
+.collection-modal-overlay{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.6);
+}
+.collection-modal-content{
+  position:relative;background:var(--bg1);
+  border-radius:8px;max-width:1040px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  border:1px solid var(--line2);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+.collection-modal-close{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;border:none;background:rgba(255,255,255,.04);
+  color:var(--cream3);font-size:20px;cursor:pointer;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;z-index:2;
+}
+.collection-modal-close:hover{background:var(--line2);color:var(--cream)}
+.collection-modal-header{
+  padding:40px 40px 24px;border-bottom:.5px solid var(--line);
+}
+.collection-modal-tag{
+  font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:12px;
+}
+.collection-modal-title{
+  font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:400;
+  color:var(--cream);line-height:1.1;
+}
+.collection-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);
+}
+.collection-card{
+  background:var(--bg1);padding:0;position:relative;
+  display:flex;flex-direction:column;
+}
+.collection-card-img{
+  width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;
+}
+.collection-card-img img,.collection-card-img .ph{width:100%;height:100%}
+.collection-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.collection-card-name{
+  font-family:var(--serif);font-size:20px;font-weight:500;
+  color:var(--cream);line-height:1.15;margin-bottom:4px;
+}
+.collection-card-ing{
+  font-size:11.5px;font-weight:300;color:var(--cream3);margin-bottom:8px;
+}
+.collection-card-concept{
+  font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cream4);margin-top:auto;
+}
+.collection-card-soon{
+  display:flex;flex-direction:column;
+}
+.collection-card-soon-img{
+  width:100%;aspect-ratio:4/3;
+  background:var(--bg2);
+  display:flex;align-items:center;justify-content:center;
+}
+.collection-card-soon-body{
+  padding:20px 22px 24px;flex:1;
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;
+}
+.collection-card-soon-icon{
+  width:28px;height:28px;opacity:.22;
+}
+.collection-card-soon-label{
+  font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream4);
+}
+.collection-card-soon-concept{
+  font-size:13px;font-weight:300;font-style:italic;color:var(--cream3);
+  font-family:var(--serif);
+}
+@media(max-width:900px){
+  .collection-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .collection-modal{padding:0}
+  .collection-modal-content{max-height:100vh;border-radius:0;max-width:100%}
+  .collection-modal-header{padding:28px 20px 20px}
+  .collection-grid{grid-template-columns:1fr 1fr}
+  .collection-card-body{padding:16px 16px 18px}
+  .collection-card-name{font-size:17px}
+}
 </style>
 </head>
 <body>
@@ -776,11 +956,10 @@ footer{
 
     <!-- Desktop Navigation -->
     <div class="nav-desktop">
-      <a href="#naula">Phương pháp Naula</a>
       <a href="#products">Sản phẩm</a>
       <a href="#ritual">Pha chế</a>
-      <a href="world-of-naula_vi.html">Thế giới Naula</a>
-      <a href="founders_vi.html">Người sáng lập</a>
+      <a href="world-of-naula.html">Thế giới Naula</a>
+      <a href="founders.html">Người sáng lập</a>
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="vg2-savvi-landing.html">Chương trình VG2</a>
       <a href="faq.html">Câu hỏi thường gặp</a>
@@ -800,11 +979,10 @@ footer{
 
     <!-- Mobile Navigation Menu -->
     <div class="nav-mobile">
-      <a href="#naula">Phương pháp Naula</a>
       <a href="#products">Sản phẩm</a>
       <a href="#ritual">Pha chế</a>
-      <a href="world-of-naula_vi.html">Thế giới Naula</a>
-      <a href="founders_vi.html">Người sáng lập</a>
+      <a href="world-of-naula.html">Thế giới Naula</a>
+      <a href="founders.html">Người sáng lập</a>
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="vg2-savvi-landing.html">Chương trình VG2</a>
       <a href="faq.html">Câu hỏi thường gặp</a>
@@ -820,37 +998,37 @@ footer{
 <!-- ═══ S1 · HERO ══════════════════════════════════ -->
 <section class="hero">
 
-  <!-- left: text -->
+  <!-- background image 16:9 -->
+  <div class="hero-media">
+    <img src="TKG_16_9.webp" alt="TKG — Hỗn hợp Thảo mộc Dạng bột" fetchpriority="high" loading="eager">
+  </div>
+  <div class="hero-veil"></div>
+
+  <!-- text overlay -->
   <div class="hero-left">
-    <div class="hero-label">Bột Hỗn hợp Thảo mộc</div>
+    <div class="hero-label">Bén rễ từ Việt Nam, chế biến bằng sự tận tâm.</div>
 
     <h1 class="hero-h1">
-      Bắt rễ từ <em>Việt Nam.</em><br>
-      Chế biến bằng <em>Sự tận tâm.</em>
+      Hỗn hợp Thảo mộc <em><br>Dạng bột</em>
     </h1>
 
     <div class="hero-rule">
       <div class="hero-rule-line"></div>
-      <span>Ba thảo mộc &nbsp;·&nbsp; Một phương pháp &nbsp;·&nbsp; Rõ tên gọi và Truy xuất</span>
+      <span>Sấy thăng hoa &nbsp;·&nbsp; Phương thức Naula &nbsp;·&nbsp; Uống nóng hoặc lạnh</span>
       <div class="hero-rule-line"></div>
     </div>
 
     <p class="hero-sub">
-      TKG là một ngôi nhà thảo mộc được xây dựng dựa trên nguyên tắc chế biến thảo mộc truyền thống của người Việt. Toàn bộ thảo mộc, được định danh rõ nguồn gốc, được sấy thăng hoa từ phương pháp Naula.
+      Các sản phẩm thảo mộc được khơi nguồn cảm hứng từ kiến thức thảo mộc truyền thống và được cải tiến để phù hợp với lối sống hiện đại. Một sự kết hợp thảo mộc dạng bột sấy thăng hoa mang lại cảm giác ấm áp tự nhiên — được chế biến theo phương pháp Naula. Hòa tan tức thì với nước nóng hoặc nước lạnh.
     </p>
 
     <div class="hero-actions">
-      <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
-        Đặt hàng ngay
+      <a href="#products" class="btn-primary">
+        Khám phá hệ Hoả
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
       </a>
-      <a href="#naula" class="btn-ghost">Tìm hiểu phương pháp →</a>
+      <a href="#naula" class="btn-ghost">TKG là gì?</a>
     </div>
-  </div>
-
-  <!-- right: photo -->
-  <div class="hero-right">
-    <img src="Hero-Section-1.webp" alt="TKG — Bột Hỗn hợp Thảo mộc" fetchpriority="high" loading="eager">
   </div>
 
 </section>
@@ -858,14 +1036,17 @@ footer{
 <!-- ═══ S2 · BRAND STATEMENT (full-bleed image + overlay) ═══ -->
 <section class="statement">
   <div class="statement-media">
-    <img src="Naula-2.webp" alt="Không phải tên gọi. Mà là kỷ luật chế biến." loading="lazy">
+    <img src="Botanical House.webp" alt="TKG là một ngôi nhà thảo mộc." loading="lazy">
   </div>
   <div class="statement-veil"></div>
   <div class="statement-text">
-    <div class="statement-eyebrow">Phương pháp Naula</div>
+    <div class="statement-eyebrow">TKG là gì?</div>
     <h2 class="statement-h2">
-      Không phải là tên gọi.<br><em>Mà là một kỷ luật chế biến.</em>
+      TKG là <em>một ngôi nhà thảo mộc.</em>
     </h2>
+    <p style="font-size:13.5px;font-weight:300;line-height:1.78;color:var(--cream2);max-width:480px;margin-top:20px;">
+      Chúng tôi nghiên cứu, chế biến và phát triển các ứng dụng từ thảo mộc trong đời sống hàng ngày — từ thực phẩm, đồ uống cho đến các dòng thực phẩm bổ sung và sản phẩm chăm sóc sức khỏe. Hệ thống sản phẩm được cấu trúc dựa trên triết lý Ngũ hành, nơi mỗi hành sẽ mở ra một phương thức ứng dụng thảo mộc khác nhau.
+    </p>
   </div>
 </section>
 
@@ -873,7 +1054,7 @@ footer{
 <section id="naula" class="naula-section">
 
   <div class="naula-top">
-    <img class="naula-top-img" src="Freeze-dried-1.webp" alt="Phương pháp Naula" loading="lazy">
+    <img class="naula-top-img" src="Naula-2.webp" alt="Phương pháp Naula" loading="lazy">
     <div class="naula-top-veil"></div>
     <div class="naula-top-content">
       <div>
@@ -890,7 +1071,7 @@ footer{
   <div class="principles">
 
     <div class="principle">
-      <div class="p-num"><strong>01</strong> <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Thu thập</span></div>
+      <div class="p-num"><strong>01 <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Thu thập</strong></span></div>
       <div class="p-tag">Thu thập</div>
       <div class="p-head">Thảo mộc toàn phần.<br>Thảo mộc nguyên bản.</div>
       <p class="p-body">
@@ -899,7 +1080,7 @@ footer{
     </div>
 
     <div class="principle">
-      <div class="p-num"><strong>02</strong> <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Naula</span></div>
+      <div class="p-num"><strong>02 <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Naula</strong></span></div>
       <div class="p-tag">Chế biến</div>
       <div class="p-head">Naula.<br>Sấy thăng hoa.</div>
       <p class="p-body">
@@ -908,7 +1089,7 @@ footer{
     </div>
 
     <div class="principle">
-      <div class="p-num"><strong>03</strong> <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Trình bày</span></div>
+      <div class="p-num"><strong>03 <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Trình bày</strong></span></div>
       <div class="p-tag">Trình bày</div>
       <div class="p-head">Công thức rõ ràng.<br>Không thêm phụ gia.</div>
       <p class="p-body">
@@ -922,7 +1103,7 @@ footer{
 
 <!-- ═══ S4 · MOODY FULL-BLEED PHOTO ═══════════════ -->
 <div class="photo-break">
-  <img src="Process-2.webp" alt="Chế biến theo phương pháp Naula" loading="lazy">
+  <img src="Freeze-dried-1.webp" alt="Chế biến theo phương pháp Naula" loading="lazy">
 </div>
 
 <!-- ═══ S5 · PRODUCTS ══════════════════════════════ -->
@@ -1076,6 +1257,35 @@ footer{
       </div>
 
     </div>
+
+    <div class="fire-intro">
+      <div class="fire-intro-tag">Sản phẩm đang mở bán</div>
+      <h3 class="fire-intro-h3">Hệ Hoả</h3>
+      <p class="fire-intro-lead">Hệ thống sản phẩm thảo mộc đầu tiên của chúng tôi.</p>
+      <p class="fire-intro-body">
+        Một bộ sưu tập các dòng thảo mộc dạng bột sấy thăng hoa, được thiết kế xoay quanh các nguyên liệu theo truyền thống thường gắn liền với sự ấm áp, hương thơm và cảm giác thư thái mỗi ngày.
+      </p>
+      <div class="fire-intro-skus">
+        <div class="fire-intro-sku">
+          <span class="fire-intro-sku-name">Morning Ember</span>
+          <span class="fire-intro-sku-concept">Lư Trung Hoả</span>
+          <span class="fire-intro-sku-ing">Gừng · Sả · Chanh</span>
+        </div>
+        <div class="fire-intro-sku">
+          <span class="fire-intro-sku-name">Still Ember</span>
+          <span class="fire-intro-sku-concept">Phú Đăng Hoả</span>
+          <span class="fire-intro-sku-ing">Tía tô · Đinh hương · Tắc</span>
+        </div>
+      </div>
+      <p class="fire-intro-body" style="margin-top:8px;">
+        Được chế biến bằng phương pháp Naula và thiết kế để sử dụng tiện lợi, hòa tan tức thì với nước nóng hoặc nước lạnh.
+      </p>
+      <button type="button" class="btn-explore-collection" onclick="openCollectionModal()">
+        Khám phá Bộ sưu tập
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+      </button>
+    </div>
+
   </div>
 </section>
 
@@ -1156,8 +1366,8 @@ footer{
         <a href="#naula">Phương pháp Naula</a>
         <a href="#products">Sản phẩm</a>
         <a href="#ritual">Pha chế</a>
-        <a href="world-of-naula_vi.html">Thế giới Naula</a>
-        <a href="founders_vi.html">Người sáng lập</a>
+        <a href="world-of-naula.html">Thế giới Naula</a>
+        <a href="founders.html">Người sáng lập</a>
         <a href="vg2-savvi-landing.html">Chương trình VG2</a>
       </div>
       <div class="foot-col">
@@ -1233,6 +1443,89 @@ footer{
   </div>
 </div>
 
+<!-- ═══ COLLECTION POPUP MODAL (6-SKU GRID) ════════ -->
+<div id="collectionModal" class="collection-modal" style="display:none;">
+  <div class="collection-modal-overlay" onclick="closeCollectionModal()"></div>
+  <div class="collection-modal-content">
+    <button class="collection-modal-close" onclick="closeCollectionModal()">×</button>
+    <div class="collection-modal-header">
+      <div class="collection-modal-tag">Hệ Hoả</div>
+      <h3 class="collection-modal-title">Bộ sưu tập</h3>
+    </div>
+    <div class="collection-grid">
+
+      <!-- Morning Ember -->
+      <div class="collection-card">
+        <div class="collection-card-img">
+          <img src="Morning Ember-texture.webp" alt="Morning Ember" loading="lazy">
+        </div>
+        <div class="collection-card-body">
+          <div class="collection-card-name">Morning Ember</div>
+          <div class="collection-card-ing">Gừng · Sả · Chanh</div>
+          <div class="collection-card-concept">Tên gọi: Lư Trung Hoả</div>
+        </div>
+      </div>
+
+      <!-- Still Ember -->
+      <div class="collection-card">
+        <div class="collection-card-img">
+          <img src="Still-Ember-texture.webp" alt="Still Ember" loading="lazy">
+        </div>
+        <div class="collection-card-body">
+          <div class="collection-card-name">Still Ember</div>
+          <div class="collection-card-ing">Tía tô · Đinh hương · Tắc</div>
+          <div class="collection-card-concept">Tên gọi: Phú Đăng Hoả</div>
+        </div>
+      </div>
+
+      <!-- Coming soon · Sơn Hạ Hoả -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-img">
+          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
+        </div>
+        <div class="collection-card-soon-body">
+          <div class="collection-card-soon-label">Sắp ra mắt</div>
+          <div class="collection-card-soon-concept">Sơn Hạ Hoả</div>
+        </div>
+      </div>
+
+      <!-- Coming soon · Sơn Đầu Hoả -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-img">
+          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
+        </div>
+        <div class="collection-card-soon-body">
+          <div class="collection-card-soon-label">Sắp ra mắt</div>
+          <div class="collection-card-soon-concept">Sơn Đầu Hoả</div>
+        </div>
+      </div>
+
+      <!-- Coming soon · Tích Lịch Hoả -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-img">
+          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
+        </div>
+        <div class="collection-card-soon-body">
+          <div class="collection-card-soon-label">Sắp ra mắt</div>
+          <div class="collection-card-soon-concept">Tích Lịch Hoả</div>
+        </div>
+      </div>
+
+      <!-- Coming soon · Thiên Thượng Hoả -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-img">
+          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
+        </div>
+        <div class="collection-card-soon-body">
+          <div class="collection-card-soon-label">Sắp ra mắt</div>
+          <div class="collection-card-soon-concept">Thiên Thượng Hoả</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
 /* ─── Order Modal ─── */
 function openOrderModal() {
@@ -1241,6 +1534,16 @@ function openOrderModal() {
 }
 function closeOrderModal() {
   document.getElementById('orderModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+/* ─── Collection Modal (Explore the Collection popup) ─── */
+function openCollectionModal() {
+  document.getElementById('collectionModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCollectionModal() {
+  document.getElementById('collectionModal').style.display = 'none';
   document.body.style.overflow = 'auto';
 }
 
