@@ -310,6 +310,54 @@ nav{
 }
 .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
 
+/* Fire Element intro block — below products grid */
+.fire-intro{
+  border-top:.5px solid var(--line);
+  margin-top:56px;padding-top:48px;
+  text-align:center;
+}
+.fire-intro-tag{
+  font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:14px;
+}
+.fire-intro-h3{
+  font-family:var(--serif);font-size:clamp(28px,2.8vw,40px);
+  font-weight:400;line-height:1.1;color:var(--cream);margin-bottom:8px;
+}
+.fire-intro-lead{
+  font-size:14px;font-weight:300;font-style:italic;color:var(--cream2);
+  margin-bottom:18px;
+}
+.fire-intro-body{
+  font-size:13px;font-weight:300;line-height:1.78;color:var(--cream3);
+  max-width:560px;margin:0 auto;
+}
+.fire-intro-skus{
+  display:flex;justify-content:center;gap:48px;flex-wrap:wrap;
+  margin:32px 0 0;padding:24px 0;
+  border-top:.5px solid var(--line);border-bottom:.5px solid var(--line);
+}
+.fire-intro-sku{display:flex;flex-direction:column;align-items:center;gap:4px}
+.fire-intro-sku-name{
+  font-family:var(--serif);font-size:19px;font-weight:500;color:var(--cream);
+}
+.fire-intro-sku-concept{
+  font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--cream4);
+}
+.fire-intro-sku-ing{
+  font-size:11.5px;font-weight:300;color:var(--cream3);margin-top:2px;
+}
+.btn-explore-collection{
+  display:inline-flex;align-items:center;gap:10px;
+  background:transparent;color:var(--cream);
+  border:.5px solid var(--line2);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:16px 40px;border-radius:2px;cursor:pointer;
+  margin-top:32px;transition:border-color .2s,background .2s;
+  font-family:var(--sans);
+}
+.btn-explore-collection:hover{border-color:var(--fire);background:var(--fire2)}
+
 /* SKU card */
 .sku{border:.5px solid var(--line2);border-radius:4px;overflow:hidden;position:relative}
 .sku-fire{background:linear-gradient(160deg,#1D1208 0%,#160E08 100%)}
@@ -763,6 +811,101 @@ footer{
   .hotline-info{font-size:12px}
   .product-origin{font-size:10px}
 }
+
+/* ─── FIRE INTRO BLOCK · MOBILE ──────────────────── */
+@media(max-width:640px){
+  .fire-intro{padding-top:36px;margin-top:40px}
+  .fire-intro-skus{gap:28px;flex-direction:column}
+  .btn-explore-collection{width:100%;justify-content:center;padding:16px 24px}
+}
+
+/* ─── COLLECTION MODAL (6-SKU POPUP) ─────────────── */
+.collection-modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.8);z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;opacity:0;visibility:hidden;
+  transition:opacity .3s,visibility .3s;
+}
+.collection-modal[style*="flex"]{opacity:1;visibility:visible}
+.collection-modal-overlay{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.6);
+}
+.collection-modal-content{
+  position:relative;background:var(--bg1);
+  border-radius:8px;max-width:1040px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  border:1px solid var(--line2);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+.collection-modal-close{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;border:none;background:rgba(255,255,255,.04);
+  color:var(--cream3);font-size:20px;cursor:pointer;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;z-index:2;
+}
+.collection-modal-close:hover{background:var(--line2);color:var(--cream)}
+.collection-modal-header{
+  padding:40px 40px 24px;border-bottom:.5px solid var(--line);
+}
+.collection-modal-tag{
+  font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:12px;
+}
+.collection-modal-title{
+  font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:400;
+  color:var(--cream);line-height:1.1;
+}
+.collection-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);
+}
+.collection-card{
+  background:var(--bg1);padding:0;position:relative;
+  display:flex;flex-direction:column;
+}
+.collection-card-img{
+  width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;
+}
+.collection-card-img img,.collection-card-img .ph{width:100%;height:100%}
+.collection-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.collection-card-name{
+  font-family:var(--serif);font-size:20px;font-weight:500;
+  color:var(--cream);line-height:1.15;margin-bottom:4px;
+}
+.collection-card-ing{
+  font-size:11.5px;font-weight:300;color:var(--cream3);margin-bottom:8px;
+}
+.collection-card-concept{
+  font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cream4);margin-top:auto;
+}
+.collection-card-soon{
+  aspect-ratio:4/3;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+  background:var(--bg2);
+}
+.collection-card-soon-label{
+  font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream4);
+}
+.collection-card-soon-concept{
+  font-size:13px;font-weight:300;font-style:italic;color:var(--cream3);
+  font-family:var(--serif);
+}
+@media(max-width:900px){
+  .collection-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .collection-modal{padding:0}
+  .collection-modal-content{max-height:100vh;border-radius:0;max-width:100%}
+  .collection-modal-header{padding:28px 20px 20px}
+  .collection-grid{grid-template-columns:1fr 1fr}
+  .collection-card-body{padding:16px 16px 18px}
+  .collection-card-name{font-size:17px}
+}
 </style>
 </head>
 <body>
@@ -822,29 +965,28 @@ footer{
 
   <!-- left: text -->
   <div class="hero-left">
-    <div class="hero-label">Botanical Blend Powder</div>
+    <div class="hero-label">Rooted in Vietnam. Prepared with care.</div>
 
     <h1 class="hero-h1">
-      Rooted in <em>Vietnam.</em><br>
-      Prepared with <em>Care.</em>
+      Introducing <em>Fire Element</em>
     </h1>
 
     <div class="hero-rule">
       <div class="hero-rule-line"></div>
-      <span>Three Botanicals &nbsp;·&nbsp; One Method &nbsp;·&nbsp; Named and Traceable</span>
+      <span>Freeze-Dried &nbsp;·&nbsp; Naula Prepared &nbsp;·&nbsp; Hot or Cold</span>
       <div class="hero-rule-line"></div>
     </div>
 
     <p class="hero-sub">
-      TKG is a botanical house built around a preparation discipline rooted in Vietnamese herbal practice. Whole plants, named at origin, freeze-dried through the Naula method.
+      Botanical products inspired by traditional plant knowledge and adapted for contemporary use. A freeze-dried botanical blend powder with a naturally warming sensory profile — prepared using the Naula method. Mix instantly with hot or cold water.
     </p>
 
     <div class="hero-actions">
-      <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
-        Order Now
+      <a href="#products" class="btn-primary">
+        Explore Fire Element
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
       </a>
-      <a href="#naula" class="btn-ghost">Learn the method →</a>
+      <a href="#naula" class="btn-ghost">What is TKG?</a>
     </div>
   </div>
 
@@ -858,14 +1000,17 @@ footer{
 <!-- ═══ S2 · BRAND STATEMENT (full-bleed image + overlay) ═══ -->
 <section class="statement">
   <div class="statement-media">
-    <img src="Naula-2.webp" alt="Not a brand name. A preparation discipline." loading="lazy">
+    <img src="Naula-2.webp" alt="TKG is a botanical house." loading="lazy">
   </div>
   <div class="statement-veil"></div>
   <div class="statement-text">
-    <div class="statement-eyebrow">Naula Prepared</div>
+    <div class="statement-eyebrow">What Is TKG?</div>
     <h2 class="statement-h2">
-      Not a brand name.<br><em>A Preparation Discipline.</em>
+      TKG is <em>a botanical house.</em>
     </h2>
+    <p style="font-size:13.5px;font-weight:300;line-height:1.78;color:var(--cream2);max-width:480px;margin-top:20px;">
+      We research, prepare, and develop botanical applications across everyday life — from food and beverages to supplements and healthcare products. Each product system is structured through a five-element framework, where every element explores a different botanical application.
+    </p>
   </div>
 </section>
 
@@ -890,7 +1035,7 @@ footer{
   <div class="principles">
 
     <div class="principle">
-      <div class="p-num"><strong>01</strong> <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Source</span></div>
+      <div class="p-num"><strong>01 <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Source</strong></span></div>
       <div class="p-tag">Sourced</div>
       <div class="p-head">Whole botanicals.<br>Named at origin.</div>
       <p class="p-body">
@@ -899,7 +1044,7 @@ footer{
     </div>
 
     <div class="principle">
-      <div class="p-num"><strong>02</strong> <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Naula</span></div>
+      <div class="p-num"><strong>02 <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Naula</strong></span></div>
       <div class="p-tag">Prepare</div>
       <div class="p-head">Naula.<br>Freeze-dried.</div>
       <p class="p-body">
@@ -908,7 +1053,7 @@ footer{
     </div>
 
     <div class="principle">
-      <div class="p-num"><strong>03</strong> <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Present</span></div>
+      <div class="p-num"><strong>03 <span style="color:var(--cream3);font-size:12px;letter-spacing:.18em;text-transform:uppercase;">Present</strong></span></div>
       <div class="p-tag">Present</div>
       <div class="p-head">Honest formulation.<br>Nothing added.</div>
       <p class="p-body">
@@ -1076,6 +1221,35 @@ footer{
       </div>
 
     </div>
+
+    <div class="fire-intro">
+      <div class="fire-intro-tag">Currently Available</div>
+      <h3 class="fire-intro-h3">Fire Element</h3>
+      <p class="fire-intro-lead">Our first botanical system.</p>
+      <p class="fire-intro-body">
+        A collection of freeze-dried botanical blend powders designed around ingredients traditionally associated with warmth, aroma, and everyday comfort.
+      </p>
+      <div class="fire-intro-skus">
+        <div class="fire-intro-sku">
+          <span class="fire-intro-sku-name">Morning Ember</span>
+          <span class="fire-intro-sku-concept">Lư Trung Hoả</span>
+          <span class="fire-intro-sku-ing">Ginger · Lemongrass · Lime</span>
+        </div>
+        <div class="fire-intro-sku">
+          <span class="fire-intro-sku-name">Still Ember</span>
+          <span class="fire-intro-sku-concept">Phú Đăng Hoả</span>
+          <span class="fire-intro-sku-ing">Perilla · Clove · Kumquat</span>
+        </div>
+      </div>
+      <p class="fire-intro-body" style="margin-top:8px;">
+        Prepared using the Naula method and designed for instant use with hot or cold water.
+      </p>
+      <button type="button" class="btn-explore-collection" onclick="openCollectionModal()">
+        Explore the Collection
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+      </button>
+    </div>
+
   </div>
 </section>
 
@@ -1233,6 +1407,69 @@ footer{
   </div>
 </div>
 
+<!-- ═══ COLLECTION POPUP MODAL (6-SKU GRID) ════════ -->
+<div id="collectionModal" class="collection-modal" style="display:none;">
+  <div class="collection-modal-overlay" onclick="closeCollectionModal()"></div>
+  <div class="collection-modal-content">
+    <button class="collection-modal-close" onclick="closeCollectionModal()">×</button>
+    <div class="collection-modal-header">
+      <div class="collection-modal-tag">Fire Element</div>
+      <h3 class="collection-modal-title">The Collection</h3>
+    </div>
+    <div class="collection-grid">
+
+      <!-- Morning Ember -->
+      <div class="collection-card">
+        <div class="collection-card-img">
+          <img src="Morning Ember-texture.webp" alt="Morning Ember" loading="lazy">
+        </div>
+        <div class="collection-card-body">
+          <div class="collection-card-name">Morning Ember</div>
+          <div class="collection-card-ing">Ginger · Lemongrass · Lime</div>
+          <div class="collection-card-concept">Concept name: Lư Trung Hoả</div>
+        </div>
+      </div>
+
+      <!-- Still Ember -->
+      <div class="collection-card">
+        <div class="collection-card-img">
+          <img src="Still-Ember-texture.webp" alt="Still Ember" loading="lazy">
+        </div>
+        <div class="collection-card-body">
+          <div class="collection-card-name">Still Ember</div>
+          <div class="collection-card-ing">Perilla · Clove · Kumquat</div>
+          <div class="collection-card-concept">Concept name: Phú Đăng Hoả</div>
+        </div>
+      </div>
+
+      <!-- Coming soon · Sơn Hạ Hoả -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-label">Coming soon</div>
+        <div class="collection-card-soon-concept">Sơn Hạ Hoả</div>
+      </div>
+
+      <!-- Coming soon · Sơn Đầu Hoả -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-label">Coming soon</div>
+        <div class="collection-card-soon-concept">Sơn Đầu Hoả</div>
+      </div>
+
+      <!-- Coming soon · Tích Lịch Hoả -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-label">Coming soon</div>
+        <div class="collection-card-soon-concept">Tích Lịch Hoả</div>
+      </div>
+
+      <!-- Coming soon · Thiên Thượng Hoả -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-label">Coming soon</div>
+        <div class="collection-card-soon-concept">Thiên Thượng Hoả</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
 /* ─── Order Modal ─── */
 function openOrderModal() {
@@ -1241,6 +1478,16 @@ function openOrderModal() {
 }
 function closeOrderModal() {
   document.getElementById('orderModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+/* ─── Collection Modal (Explore the Collection popup) ─── */
+function openCollectionModal() {
+  document.getElementById('collectionModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCollectionModal() {
+  document.getElementById('collectionModal').style.display = 'none';
   document.body.style.overflow = 'auto';
 }
 
