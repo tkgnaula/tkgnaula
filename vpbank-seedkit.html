@@ -52,10 +52,10 @@
   }
   .wordmark{font-weight:700; letter-spacing:0.14em; font-size:14px; text-transform:uppercase;}
   .wordmark span{color:var(--tia-to-soft);}
-  .lang-switch{font-size:13px; letter-spacing:0.02em;}
-  .lang-switch a{text-decoration:none; color:var(--paper-dim); border-bottom:1px solid transparent;}
-  .lang-switch a.active{color:var(--paper); border-color:var(--gold);}
-  .lang-switch span{opacity:0.3; margin:0 6px;}
+  .lang-switch{display:flex; align-items:center; gap:10px;}
+  .lang-switch a{text-decoration:none; font-size:20px; line-height:1; opacity:0.4; filter:grayscale(0.5); transition:opacity 0.15s ease, filter 0.15s ease;}
+  .lang-switch a.active{opacity:1; filter:none;}
+  .lang-switch a:hover{opacity:0.75;}
 
   /* ---------- hero ---------- */
   .hero{
@@ -227,9 +227,8 @@
   <div class="topbar-inner wrap" style="padding-left:0; padding-right:0;">
     <div class="wordmark">TKG <span>· Naula</span></div>
     <div class="lang-switch">
-      <a href="vpbank-seedkit.html" class="active">EN</a>
-      <span>/</span>
-      <a href="vpbank-seedkit_vi.html">VI</a>
+      <a href="vpbank-seedkit.html" class="active" aria-label="English" title="English">🇺🇸</a>
+      <a href="vpbank-seedkit_vi.html" aria-label="Tiếng Việt" title="Tiếng Việt">🇻🇳</a>
     </div>
   </div>
 </div>
@@ -250,9 +249,7 @@
         <div class="photo-frame">
           <img src="REPLACE_WITH_PHOTO_URL.jpg" alt="Runner with a TKG seed" class="photo-img"
                onerror="this.style.display='none';">
-          <div class="photo-fallback">
-            <span>Place a runner / seed photo here<br>(vertical, ~3:4 recommended)</span>
-          </div>
+          <div class="photo-fallback"></div>
         </div>
       </div>
       <div class="growth-line">
