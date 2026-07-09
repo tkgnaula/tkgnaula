@@ -242,9 +242,7 @@
         <div class="photo-frame">
           <img src="REPLACE_WITH_PHOTO_URL.jpg" alt="Runner cùng hạt giống TKG" class="photo-img"
                onerror="this.style.display='none';">
-          <div class="photo-fallback">
-            <span>Đặt ảnh runner / hạt giống tại đây<br>(tỉ lệ khuyến nghị dọc, ~3:4)</span>
-          </div>
+          <div class="photo-fallback"></div>
         </div>
       </div>
       <div class="growth-line">
@@ -387,11 +385,11 @@
               <label for="typeElite">Elite Runner</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="typeChallenge" name="receiveType" value="Thử thách tại booth" required>
+              <input type="radio" id="typeChallenge" name="receiveType" value="Booth Challenge" required>
               <label for="typeChallenge">Thử thách tại booth</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="typeOther" name="receiveType" value="Khác" required>
+              <input type="radio" id="typeOther" name="receiveType" value="Other" required>
               <label for="typeOther">Khác</label>
             </div>
           </div>
@@ -485,8 +483,8 @@
     data.append(FIELD_MAP.bib, form.bib.value);
     const receiveTypeEl = form.querySelector('input[name="receiveType"]:checked');
     data.append(FIELD_MAP.receiveType, receiveTypeEl ? receiveTypeEl.value : "");
-    data.append(FIELD_MAP.consentUpdates, form.consentUpdates.checked ? "Có" : "Không");
-    data.append(FIELD_MAP.consentPhotos, form.consentPhotos.checked ? "Có" : "Không");
+    data.append(FIELD_MAP.consentUpdates, form.consentUpdates.checked ? "Yes" : "No");
+    data.append(FIELD_MAP.consentPhotos, form.consentPhotos.checked ? "Yes" : "No");
 
     try {
       await fetch(GOOGLE_FORM_ACTION_URL, {
