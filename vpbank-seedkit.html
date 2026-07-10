@@ -84,6 +84,11 @@
     font-style:normal;
     color:var(--tia-to-soft);
   }
+  .hero-thesis{
+    font-size:17px; font-style:italic; color:var(--tia-to-soft); max-width:42ch;
+    margin:0 0 24px; padding-left:16px; border-left:2px solid var(--tia-to);
+    line-height:1.6; font-weight:400;
+  }
   .hero-sub{
     font-size:18px; color:var(--paper-dim); max-width:44ch; margin:0 0 34px; font-weight:300;
   }
@@ -141,20 +146,6 @@
   .kit-item h3{font-size:18px; font-weight:600; margin:0 0 10px;}
   .kit-item p{font-size:14.5px; color:var(--paper-dim); margin:0;}
 
-  .kit-item-highlight{
-    background:linear-gradient(150deg, var(--tia-to) 0%, #5a3a63 55%, var(--brand-dark) 130%);
-  }
-  .kit-item-highlight .kit-num{color:rgba(251,251,242,0.7);}
-  .kit-item-highlight h3{color:var(--paper);}
-  .discount-pills{display:flex; gap:14px; margin:16px 0;}
-  .discount-pill{
-    background:rgba(251,251,242,0.12); border:1px solid rgba(251,251,242,0.22);
-    border-radius:12px; padding:12px 16px; text-align:center; flex:1;
-  }
-  .discount-pill strong{display:block; font-size:26px; font-weight:900; color:var(--gold); line-height:1.1;}
-  .discount-pill span{display:block; font-size:12px; color:var(--paper); margin-top:4px;}
-  .kit-item-highlight .discount-note{font-size:13px; color:rgba(251,251,242,0.75); margin:0;}
-
   /* ---------- how it works ---------- */
   .steps{counter-reset:step; display:flex; flex-direction:column;}
   .step{
@@ -209,6 +200,10 @@
   footer{padding:48px 0 60px; border-top:1px solid var(--paper-faint);}
   .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
   .footer-tag{font-size:13px; color:var(--paper-dim);}
+  .footer-social{font-size:13px;}
+  .footer-social a{color:var(--paper-dim); text-decoration:none;}
+  .footer-social a:hover{color:var(--paper);}
+  .footer-social span{opacity:0.4; margin:0 6px;}
 
   @media (max-width:640px){
     .hero-grid{grid-template-columns:1fr;}
@@ -238,7 +233,8 @@
     <div>
       <div class="eyebrow">For runners who brought a TKG seed home</div>
       <h1>You crossed the finish line.<br>This seed is just <em>getting started.</em></h1>
-      <p class="hero-sub">In your hand is a perilla seed. TKG will follow this journey with you — from the day you plant it to its first leaf.</p>
+      <p class="hero-thesis">This seed isn't a reward.<br>It's a reminder that good things take time to grow.</p>
+      <p class="hero-sub">In your hand is a perilla seed.<br>Some journeys last a few hours.<br>Some last a few weeks.<br>TKG will follow this journey with you — from the day you plant it to its first leaf.</p>
       <div class="cta-row">
         <a href="#register" class="btn btn-primary">Register your kit</a>
         <a href="#kit" class="btn btn-ghost">What's inside</a>
@@ -273,21 +269,21 @@
 <section class="section-alt">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-eyebrow">Bring a seed home</div>
-      <h2>Get a TKG seed kit when you:</h2>
+      <div class="section-eyebrow">Today</div>
+      <h2>What are you taking home today?</h2>
     </div>
-    <div class="kit-grid">
-      <div class="kit-item">
-        <h3>Finish and visit the TKG booth</h3>
-        <p>The TKG team is at the booth all 3 event days.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>A perilla seed</h3></div>
       </div>
-      <div class="kit-item">
-        <h3>Take a photo at the booth</h3>
-        <p>A moment at the TKG booth, however you like it.</p>
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>A discount code</h3></div>
       </div>
-      <div class="kit-item">
-        <h3>Post or share a story</h3>
-        <p>Tag <strong>#tkgnaula</strong> and <strong>#naula</strong>, and follow the TKG fanpage.</p>
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>A promise from TKG</h3></div>
       </div>
     </div>
   </div>
@@ -303,28 +299,18 @@
     <div class="kit-grid">
       <div class="kit-item">
         <div class="kit-num">01</div>
-        <h3>Perilla seeds</h3>
-        <p>The same perilla used in Still Ember (Phú Đăng Hoả), prepared through the Naula method.</p>
+        <h3>Perilla seed</h3>
+        <p>A familiar plant in Vietnamese kitchens. Given enough time and care, its first leaves appear within a few weeks.</p>
       </div>
       <div class="kit-item">
         <div class="kit-num">02</div>
-        <h3>Growing card</h3>
-        <p>A short, printed guide on the basics of planting and caring for your perilla.</p>
+        <h3>A journey of care</h3>
+        <p>A short, printed guide to get you started — plus a few updates from TKG over the coming weeks.</p>
       </div>
-      <div class="kit-item kit-item-highlight">
+      <div class="kit-item">
         <div class="kit-num">03</div>
         <h3>TKG discount code</h3>
-        <div class="discount-pills">
-          <div class="discount-pill">
-            <strong>5%</strong>
-            <span>Fresh drinks</span>
-          </div>
-          <div class="discount-pill">
-            <strong>10%</strong>
-            <span>Powder format</span>
-          </div>
-        </div>
-        <p class="discount-note">Valid on your first TKG order. A separate offer at Nanaya Izakaya is being finalized — TKG will announce it soon.</p>
+        <p>5% off fresh drinks, 10% off powder, valid on your first order. A separate offer at Nanaya Izakaya is being finalized.</p>
       </div>
     </div>
   </div>
@@ -339,15 +325,15 @@
     <div class="steps">
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Register below</h3><p>Takes under a minute — name, email, and a phone number if you'd like updates by Zalo too.</p></div>
+        <div><h3>Get your Seed Kit</h3><p>You already received a TKG perilla seed today, at the event.</p></div>
       </div>
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Get your code</h3><p>5% off fresh drinks, 10% off powder — arrives by email shortly after you register.</p></div>
+        <div><h3>Register the journey</h3><p>Leave your details below — it takes less than a minute.</p></div>
       </div>
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Grow, and stay in touch</h3><p>We'll check in over the following weeks with short growing notes — and if you'd like, your photos may appear on the TKG website or Instagram.</p></div>
+        <div><h3>Plant, and stay in touch</h3><p>TKG will follow along with you through a few short emails over the coming weeks.</p></div>
       </div>
     </div>
   </div>
@@ -402,13 +388,57 @@
           </div>
         </div>
 
+        <div class="field radio-group">
+          <label>Which distance did you run? <span class="req">*</span></label>
+          <div class="radio-options">
+            <div class="radio-option">
+              <input type="radio" id="dist5" name="raceDistance" value="5km" required>
+              <label for="dist5">5km</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="dist10" name="raceDistance" value="10km" required>
+              <label for="dist10">10km</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="dist21" name="raceDistance" value="21km" required>
+              <label for="dist21">21km</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field radio-group">
+          <label>What made you stop by the TKG booth today? <span class="req">*</span></label>
+          <div class="radio-options">
+            <div class="radio-option">
+              <input type="radio" id="reasonDrink" name="boothReason" value="Đồ uống thử - trial drink" required>
+              <label for="reasonDrink">The drink sample</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="reasonSeed" name="boothReason" value="Seed Kit" required>
+              <label for="reasonSeed">The Seed Kit</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="reasonPackaging" name="boothReason" value="Bao bì - packaging" required>
+              <label for="reasonPackaging">The packaging</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="reasonFriend" name="boothReason" value="Bạn bè giới thiệu - word of mouth" required>
+              <label for="reasonFriend">A friend's recommendation</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="reasonOther" name="boothReason" value="Other" required>
+              <label for="reasonOther">Other</label>
+            </div>
+          </div>
+        </div>
+
         <div class="check-row">
           <input type="checkbox" id="consentUpdates" name="consentUpdates" required>
           <p><span class="req">*</span> I'd like to receive occasional growing updates and my discount code by email.</p>
         </div>
         <div class="check-row">
           <input type="checkbox" id="consentPhotos" name="consentPhotos">
-          <p>TKG may feature my photos or growing story on the TKG website or Instagram.</p>
+          <p>If I choose to share photos or my growing story with TKG, TKG may use them for communications purposes.</p>
         </div>
 
         <div class="submit-row">
@@ -422,17 +452,10 @@
 </section>
 
 <section class="section-alt">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-eyebrow">Don't stop here</div>
-      <h2>Follow the journey with TKG</h2>
-      <p class="section-lede">The fastest way to see new updates and other seed journeys from the TKG community.</p>
-    </div>
-    <div class="cta-row">
-      <a href="https://www.facebook.com/tkg.naula" class="btn btn-ghost" target="_blank" rel="noopener">Facebook page</a>
-      <a href="https://www.instagram.com/tkg.naula" class="btn btn-ghost" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tkg-naula.com" class="btn btn-ghost" target="_blank" rel="noopener">TKG website</a>
-    </div>
+  <div class="wrap" style="text-align:center; max-width:640px;">
+    <div class="section-eyebrow" style="justify-content:center;">When the first leaves appear</div>
+    <h2>Take a photo.</h2>
+    <p class="section-lede" style="margin:0 auto;">TKG would love to see the journey of the seed you took home today.</p>
   </div>
 </section>
 
@@ -440,6 +463,11 @@
   <div class="wrap footer-row">
     <div class="wordmark">TKG <span>· Naula</span></div>
     <div class="footer-tag">Rooted in Vietnam. Prepared with Care.</div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/tkg.naula" target="_blank" rel="noopener">Facebook</a>
+      <span>·</span>
+      <a href="https://www.instagram.com/tkg.naula" target="_blank" rel="noopener">Instagram</a>
+    </div>
   </div>
 </footer>
 
@@ -471,6 +499,8 @@
     phone: "entry.1636732933",
     bib: "entry.1044453477",
     receiveType: "entry.110873033",
+    raceDistance: "entry.876644950",
+    boothReason: "entry.1334507065",
     consentUpdates: "entry.154352735",
     consentPhotos: "entry.1394350096"
   };
@@ -491,6 +521,10 @@
     data.append(FIELD_MAP.bib, form.bib.value);
     const receiveTypeEl = form.querySelector('input[name="receiveType"]:checked');
     data.append(FIELD_MAP.receiveType, receiveTypeEl ? receiveTypeEl.value : "");
+    const raceDistanceEl = form.querySelector('input[name="raceDistance"]:checked');
+    data.append(FIELD_MAP.raceDistance, raceDistanceEl ? raceDistanceEl.value : "");
+    const boothReasonEl = form.querySelector('input[name="boothReason"]:checked');
+    data.append(FIELD_MAP.boothReason, boothReasonEl ? boothReasonEl.value : "");
     data.append(FIELD_MAP.consentUpdates, form.consentUpdates.checked ? "Yes" : "No");
     data.append(FIELD_MAP.consentPhotos, form.consentPhotos.checked ? "Yes" : "No");
 
