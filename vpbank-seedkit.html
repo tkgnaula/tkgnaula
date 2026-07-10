@@ -51,6 +51,7 @@
     display:flex; align-items:center; justify-content:space-between;
   }
   .wordmark{font-weight:700; letter-spacing:0.14em; font-size:14px; text-transform:uppercase;}
+  .wordmark-logo{height:28px; width:auto; display:block;}
   .wordmark span{color:var(--tia-to-soft);}
   .lang-switch{display:flex; align-items:center; gap:10px;}
   .lang-switch a{text-decoration:none; font-size:20px; line-height:1; opacity:0.4; filter:grayscale(0.5); transition:opacity 0.15s ease, filter 0.15s ease;}
@@ -156,6 +157,18 @@
   .section-eyebrow{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--tia-to-soft); font-weight:600; margin-bottom:12px;}
   h2{font-size:clamp(26px,3.4vw,36px); font-weight:700; margin:0 0 14px; letter-spacing:-0.01em;}
   .section-lede{color:var(--paper-dim); font-size:16px; max-width:56ch;}
+  .philosophy-section{padding:0;}
+  .philosophy-grid{display:grid; grid-template-columns:1fr 1fr; align-items:stretch; min-height:480px;}
+  .philosophy-photo{position:relative; overflow:hidden;}
+  .philosophy-photo .photo-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
+  .philosophy-photo .photo-fallback{
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(45deg, rgba(251,251,242,0.04) 0 12px, rgba(251,251,242,0.08) 12px 24px);
+  }
+  .philosophy-copy{
+    display:flex; flex-direction:column; justify-content:center;
+    padding:60px max(28px, calc(50vw - 560px)) 60px 48px;
+  }
   .philosophy-text{font-size:18px; line-height:1.9; color:var(--paper-dim); font-weight:300;}
   .philosophy-text strong{color:var(--tia-to-soft); font-weight:600;}
 
@@ -233,6 +246,9 @@
     .form-card{padding:28px 22px;}
     .kit-grid{grid-template-columns:1fr;}
     .step{grid-template-columns:44px 1fr;}
+    .philosophy-grid{grid-template-columns:1fr; min-height:auto;}
+    .philosophy-photo{height:240px;}
+    .philosophy-copy{padding:32px 22px 40px;}
     .race-recap{display:block; min-height:auto;}
     .race-recap-bg{position:static; height:240px; width:100%;}
     .race-recap-overlay{display:none;}
@@ -245,7 +261,7 @@
 
 <div class="topbar">
   <div class="topbar-inner wrap" style="padding-left:0; padding-right:0;">
-    <div class="wordmark">TKG <span>· Naula</span></div>
+    <div class="wordmark"><img src="TKG-logo.png" alt="TKG · Naula" class="wordmark-logo"></div>
     <div class="lang-switch">
       <a href="vpbank-seedkit.html" class="active" aria-label="English" title="English">🇺🇸</a>
       <a href="vpbank-seedkit_vi.html" aria-label="Tiếng Việt" title="Tiếng Việt">🇻🇳</a>
@@ -323,10 +339,17 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap" style="max-width:680px;">
-    <div class="section-eyebrow">Why a seed</div>
-    <p class="philosophy-text">We could have given you a single-use gift, but we chose to hand you a seed. Because things of true value rarely appear overnight. A seed needs time to sprout, a habit needs time to form, and a healthy body needs time to be nurtured. We call this approach <strong>Naula</strong> — not seeking shortcuts, but embracing steady preparation, day by day.</p>
+<section class="philosophy-section">
+  <div class="philosophy-grid">
+    <div class="philosophy-photo">
+      <img src="Perilla_1.webp" alt="TKG perilla seed" class="photo-img"
+           onerror="this.style.display='none';">
+      <div class="photo-fallback"></div>
+    </div>
+    <div class="philosophy-copy">
+      <div class="section-eyebrow">Why a seed</div>
+      <p class="philosophy-text">We could have given you a single-use gift, but we chose to hand you a seed. Because things of true value rarely appear overnight. A seed needs time to sprout, a habit needs time to form, and a healthy body needs time to be nurtured. We call this approach <strong>Naula</strong> — not seeking shortcuts, but embracing steady preparation, day by day.</p>
+    </div>
   </div>
 </section>
 
@@ -502,7 +525,7 @@
 
 <footer>
   <div class="wrap footer-row">
-    <div class="wordmark">TKG <span>· Naula</span></div>
+    <div class="wordmark"><img src="TKG-logo.png" alt="TKG · Naula" class="wordmark-logo"></div>
     <div class="footer-tag">Rooted in Vietnam. Prepared with Care.</div>
     <div class="footer-social">
       <a href="https://www.facebook.com/tkg.naula" target="_blank" rel="noopener" aria-label="Facebook">
