@@ -139,7 +139,7 @@
           Mua sản phẩm mang về
         </label>
         <label class="option-btn">
-          <input type="radio" name="usageType" value="Dùng dịch vụ tại Nanaya" required>
+          <input type="radio" name="usageType" value="Dùng dịch vụ tại Nanaya (uống tại chỗ)" required>
           Dùng dịch vụ tại Nanaya (uống tại chỗ)
         </label>
         <label class="option-btn">
@@ -165,7 +165,7 @@
           Cả 2 dòng
         </label>
         <label class="option-btn">
-          <input type="radio" name="productLine" value="Không áp dụng">
+          <input type="radio" name="productLine" value="Không áp dụng (chỉ dùng dịch vụ)">
           Không áp dụng (chỉ dùng dịch vụ)
         </label>
       </div>
@@ -263,7 +263,7 @@
     const data = new URLSearchParams();
     data.append(FIELD_MAP.code, fullCode);
     data.append(FIELD_MAP.usageType, usageEl ? usageEl.value : "");
-    data.append(FIELD_MAP.productLine, productEl ? productEl.value : "Không áp dụng");
+    data.append(FIELD_MAP.productLine, productEl ? productEl.value : "Không áp dụng (chỉ dùng dịch vụ)");
     data.append(FIELD_MAP.note, form.note.value);
 
     try {
