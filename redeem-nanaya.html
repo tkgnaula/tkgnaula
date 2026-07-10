@@ -266,6 +266,9 @@
     data.append(FIELD_MAP.productLine, productEl ? productEl.value : "Không áp dụng (chỉ dùng dịch vụ)");
     data.append(FIELD_MAP.note, form.note.value);
 
+    // TEMPORARY DEBUG — remove once redemption logging is confirmed working.
+    console.log("DEBUG payload being sent:", data.toString());
+
     try {
       await fetch(GOOGLE_FORM_ACTION_URL, {
         method: "POST",
