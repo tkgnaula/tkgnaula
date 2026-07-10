@@ -1,592 +1,611 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VG2 Program · TKG × SAVVi Code</title>
-<meta name="description" content="The VG2 (Very Good Viet Goods) program — a strategic alliance between Thien Kien and SAVVi Code to establish a new benchmark for Vietnamese products on the global stage.">
-<link rel="icon" type="image/png" href="TKG-logo.png">
+<title>Hành trình hạt giống của bạn — TKG × VPBank HCMC Music Half Marathon</title>
+<meta name="description" content="Một hạt giống tía tô, một hành trình cùng TKG — từ ngày gieo hạt đến chiếc lá đầu tiên.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Be Vietnam Pro',system-ui,sans-serif;
-  background:#12110B;color:#EDE8DC;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-a{text-decoration:none;color:inherit}
+  :root{
+    --brand-dark:#12110B;
+    --ink:#1A1A1A;
+    --paper:#FBFBF2;
+    --gold:#F9DA85;
+    --wood:#8B5E3C;
+    --moss:#527121;
+    --tia-to:#74255E;
+    --tia-to-soft:#a8567f;
+    --hoa:#D45E29;
+    --paper-dim:rgba(251,251,242,0.62);
+    --paper-faint:rgba(251,251,242,0.16);
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--brand-dark);
+    color:var(--paper);
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  ::selection{background:var(--tia-to); color:var(--paper);}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
 
-:root{
-  --bg:#12110B;--bg1:#181610;--bg2:#1E1B13;
-  --fire:#D45E29;--fire2:rgba(212,94,41,.14);
-  --perilla:#74255E;
-  --gold:#F9DA85;--herb:#CEE2B8;
-  --cream:#EDE8DC;--cream2:#C4BFB1;--cream3:#8A8679;--cream4:#4A4840;
-  --line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Be Vietnam Pro',system-ui,sans-serif;
-}
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    background:rgba(18,17,11,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--paper-faint);
+  }
+  .topbar-inner{
+    max-width:var(--max); margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .wordmark{font-weight:700; letter-spacing:0.14em; font-size:14px; text-transform:uppercase;}
+  .wordmark-logo{height:28px; width:auto; display:block;}
+  .wordmark span{color:var(--tia-to-soft);}
+  .lang-switch{display:flex; align-items:center; gap:10px;}
+  .lang-switch a{text-decoration:none; font-size:20px; line-height:1; opacity:0.4; filter:grayscale(0.5); transition:opacity 0.15s ease, filter 0.15s ease;}
+  .lang-switch a.active{opacity:1; filter:none;}
+  .lang-switch a:hover{opacity:0.75;}
 
-/* ── NAV ── */
-nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-filter:blur(14px);border-bottom:.5px solid var(--line)}
-.nav-w{max-width:1280px;margin:0 auto;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo img{height:80px;width:auto;display:block}
-.nav-logo-text{font-family:var(--serif);font-size:18px;letter-spacing:.08em;color:var(--cream);display:none}
-.nav-desktop{display:flex;align-items:center;gap:32px}
-.nav-desktop a{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream3);transition:color .2s}
-.nav-desktop a:hover{color:var(--cream)}
-.nav-desktop a.active{color:var(--gold)}
-.nav-mobile-btn{display:none;cursor:pointer;background:transparent;border:none;padding:8px}
-.nav-mobile-btn span{display:block;width:20px;height:2px;background:var(--cream);margin:4px 0;transition:all .3s}
-.nav-mobile{position:fixed;top:56px;left:0;right:0;background:rgba(18,17,11,.98);backdrop-filter:blur(14px);flex-direction:column;gap:0;padding:20px 0;transform:translateY(-100%);transition:transform .3s;border-bottom:1px solid var(--line);display:none}
-.nav-mobile.active{transform:translateY(0);display:flex}
-.nav-mobile a{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream3);padding:16px 24px;border-bottom:.5px solid var(--line);transition:color .2s}
-.nav-mobile a.active{color:var(--gold)}
-.nav-mobile a:hover{color:var(--cream)}
-.nav-btn{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--fire);color:#fff;padding:8px 20px;border-radius:2px;transition:opacity .2s}
-.nav-btn:hover{opacity:.85}
+  .hero{
+    padding:96px 0 72px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--gold); font-weight:600;
+    padding-bottom:18px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--gold);}
+  h1{
+    font-size:clamp(32px, 4.6vw, 50px);
+    font-weight:900;
+    line-height:1.14;
+    letter-spacing:-0.005em;
+    margin:0 0 22px;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--tia-to-soft);
+  }
+  .hero-sub{
+    font-size:17px; color:var(--paper-dim); max-width:56ch; margin:0 0 34px; font-weight:300; line-height:1.7;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px; border-radius:999px;
+    font-weight:600; font-size:15px; letter-spacing:0.01em;
+    text-decoration:none; cursor:pointer; border:1px solid transparent;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--gold); color:var(--ink);}
+  .btn-primary:hover{background:#ffe6a0;}
+  .btn-ghost{background:transparent; color:var(--paper); border-color:var(--paper-faint);}
+  .btn-ghost:hover{border-color:var(--paper-dim);}
 
-/* ── HERO ── */
-.hero{
-  display:grid;grid-template-columns:1fr 1fr;
-  min-height:calc(100vh - 56px);
-  border-bottom:.5px solid var(--line);
-}
-.hero-left{
-  background:var(--bg);
-  display:flex;flex-direction:column;justify-content:center;
-  padding:80px 64px 80px 80px;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:10px;
-  border:.5px solid rgba(249,218,133,.3);border-radius:100px;
-  padding:7px 18px;font-size:10px;font-weight:500;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:40px;width:fit-content;
-}
-.hero-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--gold)}
-.hero-partners{display:flex;align-items:center;gap:16px;margin-bottom:36px}
-.hero-partner-chip{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--cream2);border:.5px solid var(--line2);border-radius:3px;padding:8px 18px}
-.hero-cross{font-family:var(--serif);font-size:24px;font-weight:300;color:var(--gold)}
-.hero-h1{font-family:var(--serif);font-size:clamp(48px,4.8vw,80px);font-weight:300;line-height:.95;letter-spacing:-.02em;color:var(--cream);margin-bottom:24px}
-.hero-h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream4);margin-bottom:32px}
-.hero-desc{font-size:15px;line-height:1.85;font-weight:300;color:var(--cream3);max-width:440px}
-.hero-desc strong{color:var(--cream);font-weight:400}
+  .hero-visual{display:flex; flex-direction:column; gap:16px;}
+  .growth-wrap{position:relative; height:300px; border-radius:20px; overflow:hidden;}
+  .photo-frame{position:absolute; inset:0; border-radius:20px; overflow:hidden; border:1px solid var(--paper-faint);}
+  .photo-img{width:100%; height:100%; object-fit:cover; display:block;}
+  .photo-fallback{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:repeating-linear-gradient(45deg, rgba(251,251,242,0.04) 0 12px, rgba(251,251,242,0.08) 12px 24px);
+    text-align:center; padding:20px;
+  }
+  .photo-fallback span{font-size:12px; color:var(--paper-dim); line-height:1.7; letter-spacing:0.02em;}
+  .growth-line{padding:2px 4px 0;}
+  .growth-line-svg{width:100%; height:24px; display:block;}
+  .growth-track{stroke:rgba(251,251,242,0.22); stroke-width:2;}
+  .growth-fill{
+    stroke:var(--moss); stroke-width:2.5; stroke-linecap:round;
+    stroke-dasharray:1; stroke-dashoffset:1;
+    transition:stroke-dashoffset 0.1s linear;
+  }
+  .growth-node{fill:var(--brand-dark); stroke:rgba(251,251,242,0.4); stroke-width:1.5;}
+  .growth-node.lit{stroke:var(--tia-to-soft); fill:var(--tia-to);}
+  .growth-labels{display:flex; justify-content:space-between; margin-top:6px;}
+  .growth-labels span{font-size:11px; color:var(--paper-dim); letter-spacing:0.03em;}
+  .growth-labels span:last-child{text-align:right;}
 
-/* Hero photo — right half */
-.hero-right{position:relative;overflow:hidden}
-.hero-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
-.hero-right-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to right, rgba(18,17,11,.55) 0%, transparent 40%),
-             linear-gradient(to top, rgba(18,17,11,.4) 0%, transparent 50%);
-}
+  section{padding:64px 0;}
 
-/* ── SHARED ── */
-.section{padding:96px 24px;border-bottom:.5px solid var(--line)}
-.section--alt{background:var(--bg1)}
-.section--darker{background:var(--bg2)}
-.w{max-width:1080px;margin:0 auto}
-.w--narrow{max-width:760px;margin:0 auto}
-.section-label{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--cream3);margin-bottom:28px;display:flex;align-items:center;gap:14px}
-.section-label::before{content:'';display:block;width:24px;height:.5px;background:var(--gold)}
-.section-h{font-family:var(--serif);font-size:clamp(36px,4.5vw,58px);font-weight:300;line-height:1.05;color:var(--cream);margin-bottom:20px}
-.section-h em{font-style:italic;color:var(--gold)}
-.body-text{font-size:15px;line-height:1.85;font-weight:300;color:var(--cream3)}
-.body-vi{margin-top:10px;font-size:13px;line-height:1.8;color:var(--cream3);font-style:italic}
+  .race-recap{position:relative; min-height:560px; display:flex; align-items:flex-end; overflow:hidden; padding:0;}
+  .race-recap-bg{
+    position:absolute; inset:0;
+    background-image:url('VPB_cover.webp');
+    background-size:cover; background-position:center;
+  }
+  .race-recap-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(to top,
+      rgba(18,17,11,0.97) 0%,
+      rgba(18,17,11,0.82) 32%,
+      rgba(18,17,11,0.35) 65%,
+      rgba(18,17,11,0.05) 100%);
+  }
+  .race-recap-content{position:relative; z-index:2; padding:80px 28px 56px;}
+  .race-recap-text{
+    font-size:18px; line-height:1.85; color:var(--paper); max-width:56ch; margin:0 0 28px; font-weight:300;
+  }
+  .race-recap-quote{
+    font-size:17px; font-style:italic; color:var(--tia-to-soft); max-width:52ch;
+    border-left:2px solid var(--tia-to); padding-left:16px; line-height:1.7; margin:0;
+  }
+  .section-alt{background:rgba(251,251,242,0.03); border-top:1px solid var(--paper-faint); border-bottom:1px solid var(--paper-faint);}
+  .section-head{max-width:60ch; margin-bottom:44px;}
+  .section-eyebrow{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--tia-to-soft); font-weight:600; margin-bottom:12px;}
+  h2{font-size:clamp(24px,3.2vw,34px); font-weight:700; margin:0 0 14px; letter-spacing:-0.005em;}
+  .section-lede{color:var(--paper-dim); font-size:16px; max-width:56ch;}
+  .philosophy-section{padding:0;}
+  .philosophy-grid{display:grid; grid-template-columns:1fr 1fr; align-items:stretch; min-height:480px;}
+  .philosophy-photo{position:relative; overflow:hidden;}
+  .philosophy-photo .photo-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
+  .philosophy-photo .photo-fallback{
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(45deg, rgba(251,251,242,0.04) 0 12px, rgba(251,251,242,0.08) 12px 24px);
+  }
+  .philosophy-copy{
+    display:flex; flex-direction:column; justify-content:center;
+    padding:60px max(28px, calc(50vw - 560px)) 60px 48px;
+  }
+  .philosophy-text{font-size:18px; line-height:1.9; color:var(--paper-dim); font-weight:300;}
+  .philosophy-text strong{color:var(--tia-to-soft); font-weight:600;}
 
-/* ── MISSION ── */
-.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:520px}
-.mission-text{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
-.mission-photos{display:grid;grid-template-rows:1fr 1fr;grid-template-columns:1fr 1fr;gap:2px}
-.mission-photo{overflow:hidden;position:relative}
-.mission-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.mission-photo:hover img{transform:scale(1.04)}
-.mission-photo--tall{grid-row:1/3;grid-column:1/2}
+  .kit-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--paper-faint); border:1px solid var(--paper-faint); border-radius:18px; overflow:hidden;}
+  .kit-item{background:var(--brand-dark); padding:32px 26px;}
+  .kit-num{font-size:12px; color:var(--paper-dim); letter-spacing:0.1em; margin-bottom:18px;}
+  .kit-item h3{font-size:18px; font-weight:600; margin:0 0 10px;}
+  .kit-item p{font-size:14.5px; color:var(--paper-dim); margin:0;}
 
-/* ── PILLARS ── */
-.pillars-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:.5px solid var(--line)}
-.pillars-text{padding:80px 64px;background:var(--bg)}
-.pillars-photo{position:relative;overflow:hidden;min-height:440px}
-.pillars-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pillars-photo-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(18,17,11,.3) 0%,transparent 60%)}
-.pillars-grid{margin-top:40px;display:flex;flex-direction:column;gap:0;border:.5px solid var(--line2);border-radius:4px;overflow:hidden}
-.pillar{padding:24px 28px;border-bottom:.5px solid var(--line);display:flex;gap:20px;align-items:flex-start;transition:background .25s}
-.pillar:last-child{border-bottom:none}
-.pillar:hover{background:var(--bg2)}
-.pillar-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--gold);min-width:20px;margin-top:2px}
-.pillar-body{}
-.pillar-title{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--cream);margin-bottom:2px}
-.pillar-vi{font-size:10px;letter-spacing:.1em;color:var(--gold);margin-bottom:8px}
-.pillar-desc{font-size:12.5px;line-height:1.7;color:var(--cream3);font-weight:300}
-.pillar-desc-vi{font-size:11.5px;line-height:1.65;color:var(--cream3);font-weight:300;font-style:italic;margin-top:6px}
+  .steps{counter-reset:step; display:flex; flex-direction:column;}
+  .step{
+    display:grid; grid-template-columns:64px 1fr; gap:22px;
+    padding:26px 0; border-bottom:1px solid var(--paper-faint);
+  }
+  .step:last-child{border-bottom:none;}
+  .step-num{
+    counter-increment:step;
+    font-family:'Be Vietnam Pro', sans-serif; font-weight:900; font-size:26px; color:var(--tia-to-soft);
+  }
+  .step-num::before{content: counter(step, decimal-leading-zero);}
+  .step h3{font-size:17px; font-weight:600; margin:0 0 6px;}
+  .step p{font-size:14.5px; color:var(--paper-dim); margin:0; max-width:52ch;}
 
-/* ── ALLIANCE ── */
-.alliance-hero{position:relative;height:480px;overflow:hidden;border-bottom:.5px solid var(--line)}
-.alliance-hero img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.alliance-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,17,11,.9) 0%,rgba(18,17,11,.4) 50%,transparent 80%)}
-.alliance-hero-caption{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);text-align:center;width:100%;padding:0 24px}
-.alliance-hero-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-.alliance-hero-title{font-family:var(--serif);font-size:clamp(24px,5vw,64px);font-weight:300;color:var(--cream);line-height:1.1;white-space:nowrap}
-.alliance-hero-title em{font-style:italic;color:var(--gold)}
+  .form-card{
+    background:var(--ink);
+    border:1px solid var(--paper-faint);
+    border-radius:22px;
+    padding:44px;
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .field{margin-bottom:22px;}
+  .field.full{grid-column:1/-1;}
+  label{display:block; font-size:13px; color:var(--paper-dim); margin-bottom:8px; letter-spacing:0.01em;}
+  label .req{color:var(--tia-to-soft);}
+  input[type="text"], input[type="email"], input[type="tel"]{
+    width:100%; padding:13px 16px; border-radius:10px;
+    background:rgba(251,251,242,0.05); border:1px solid var(--paper-faint);
+    color:var(--paper); font-family:inherit; font-size:15px;
+  }
+  input::placeholder{color:rgba(251,251,242,0.32);}
+  input:focus{border-color:var(--gold); outline:none;}
+  .check-row{display:flex; gap:12px; align-items:flex-start; margin-bottom:18px;}
+  .check-row input{margin-top:4px; width:16px; height:16px; accent-color:var(--gold);}
+  .check-row p{font-size:13.5px; color:var(--paper-dim); margin:0; line-height:1.5;}
+  .check-row .req{color:var(--tia-to-soft);}
+  .radio-group{margin-bottom:26px;}
+  .radio-options{display:flex; gap:20px; flex-wrap:wrap; margin-top:10px;}
+  .radio-option{display:flex; align-items:center; gap:8px;}
+  .radio-option input{width:16px; height:16px; accent-color:var(--gold);}
+  .radio-option label{margin:0; font-size:14.5px; color:var(--paper);}
+  .submit-row{margin-top:8px;}
+  .form-note{font-size:12.5px; color:var(--paper-dim); margin-top:14px;}
+  .status-msg{margin-top:18px; font-size:14px; padding:14px 16px; border-radius:10px; display:none;}
+  .status-msg.show{display:block;}
+  .status-ok{background:rgba(82,113,33,0.18); border:1px solid var(--moss); color:var(--paper);}
+  .status-err{background:rgba(212,94,41,0.15); border:1px solid var(--hoa); color:var(--paper);}
 
-.alliance-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.alliance-col{padding:64px 56px;display:flex;flex-direction:column;gap:32px}
-.alliance-col--left{background:var(--bg1);border-right:.5px solid var(--line)}
-.alliance-col--right{background:var(--bg2)}
-.alliance-col-photo{border-radius:4px;overflow:hidden;height:240px;margin-top:8px}
-.alliance-col-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.alliance-col-photo:hover img{transform:scale(1.04)}
-.alliance-card-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.alliance-card h3{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream);margin:8px 0 12px}
-.alliance-card p{font-size:13.5px;line-height:1.8;color:var(--cream3);font-weight:300}
-.alliance-card p em{display:block;margin-top:12px;font-size:12px;color:var(--cream3);font-style:italic}
+  footer{padding:48px 0 60px; border-top:1px solid var(--paper-faint);}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .footer-tag{font-size:13px; color:var(--paper-dim);}
+  .footer-social{display:flex; align-items:center; gap:14px;}
+  .footer-social a{color:var(--paper-dim); display:flex;}
+  .footer-social a:hover{color:var(--paper);}
+  .footer-social svg{width:18px; height:18px;}
 
-.alliance-quote{padding:64px 24px;text-align:center;background:var(--bg);border-top:.5px solid var(--line)}
-.alliance-quote blockquote{font-family:var(--serif);font-size:clamp(22px,3vw,38px);font-style:italic;font-weight:300;color:var(--cream);line-height:1.4;max-width:800px;margin:0 auto 14px}
-.alliance-quote blockquote em{color:var(--gold)}
-.alliance-quote cite{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream4);font-style:normal}
-
-/* ── NAULA ── */
-.naula-hero{position:relative;height:420px;overflow:hidden;border-bottom:.5px solid var(--line)}
-.naula-hero img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
-.naula-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,17,11,1) 0%,rgba(18,17,11,.6) 40%,rgba(18,17,11,.1) 100%)}
-.naula-hero-text{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);text-align:center;width:100%;padding:0 24px}
-.naula-hero-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.naula-hero-h{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:300;color:var(--cream);letter-spacing:-.01em}
-.naula-hero-h em{font-style:italic;color:var(--fire)}
-
-.naula-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.naula-text{padding:64px 56px;background:var(--bg1)}
-.naula-features{display:flex;flex-direction:column;gap:32px;margin-top:36px}
-.naula-feature{display:flex;gap:18px}
-.naula-feature-icon{width:38px;height:38px;border-radius:4px;background:var(--bg2);border:.5px solid var(--line2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.naula-feature-icon svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.naula-feature h4{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--cream);margin-bottom:3px}
-.naula-feature-vi{font-size:10px;color:var(--gold);letter-spacing:.08em;margin-bottom:7px}
-.naula-feature p{font-size:13px;line-height:1.75;color:var(--cream3);font-weight:300}
-.naula-feature-desc-vi{font-size:12px;line-height:1.7;color:var(--cream3);font-weight:300;font-style:italic;margin-top:5px}
-
-.naula-products{background:var(--bg2);padding:64px 40px;display:flex;flex-direction:column;justify-content:center;gap:24px}
-.naula-products-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.product-card{border-radius:4px;overflow:hidden;position:relative;border:.5px solid var(--line2)}
-.product-card img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .6s}
-.product-card:hover img{transform:scale(1.04)}
-.product-card-label{position:absolute;bottom:0;left:0;right:0;padding:20px 16px 16px;background:linear-gradient(to top,rgba(18,17,11,.9),transparent)}
-.product-card-name{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--cream);line-height:1.1}
-.product-card-sub{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream4);margin-top:4px}
-.naula-tagline{font-family:var(--serif);font-size:24px;font-style:italic;font-weight:300;color:var(--cream3);text-align:center}
-.naula-caption{font-size:13px;text-align:center;color:var(--cream4)}
-
-/* ── PROMISE ── */
-.promise{padding:120px 24px;text-align:center;border-bottom:.5px solid var(--line)}
-.promise-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream3);margin-bottom:36px}
-.promise-h{font-family:var(--serif);font-size:clamp(40px,6.5vw,80px);font-weight:300;line-height:1.0;letter-spacing:-.02em;color:var(--cream);max-width:900px;margin:0 auto 14px}
-.promise-h em{font-style:italic;color:var(--gold)}
-.promise-sub{font-family:var(--serif);font-size:clamp(18px,2.5vw,26px);font-style:italic;font-weight:300;color:var(--cream2);max-width:680px;margin:0 auto 48px;line-height:1.5}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--fire);color:#fff;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:14px 32px;border-radius:2px;transition:opacity .2s,transform .2s}
-.btn-primary:hover{opacity:.85;transform:translateY(-2px)}
-.btn-primary svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-/* ── FOOTER ── */
-footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.footer-brand{font-family:var(--serif);font-size:14px;font-weight:300;color:var(--cream4);letter-spacing:.06em}
-.footer-links{display:flex;gap:24px}
-.footer-links a{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream4);transition:color .2s}
-.footer-links a:hover{color:var(--cream2)}
-
-/* ── PARTNER LOGOS (WebP transparent) ── */
-.vg2-logo-hero-wrap{
-  display:flex;flex-direction:column;align-items:center;
-  margin-bottom:28px;
-}
-.vg2-logo-hero{margin-bottom:16px;}
-.vg2-logo-hero img{
-  height:200px;width:auto;display:block;
-}
-
-.partner-logo-wrap{
-  display:flex;align-items:center;gap:10px;margin-bottom:20px;
-}
-.partner-logo-wrap img{
-  width:auto;display:block;
-  opacity:.9;transition:opacity .2s;
-}
-.partner-logo-wrap img:hover{opacity:1}
-
-/* ── FADE-UP ── */
-.fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
-.fu.vis{opacity:1;transform:translateY(0)}
-.fu-d1{transition-delay:.12s}.fu-d2{transition-delay:.24s}.fu-d3{transition-delay:.36s}
-
-/* ── RESPONSIVE ── */
-@media(max-width:960px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{height:380px;position:relative}
-  .hero-right img{position:absolute;inset:0}
-  .hero-left{padding:60px 40px}
-  .mission-grid,.naula-body,.alliance-body,.pillars-wrap{grid-template-columns:1fr}
-  .alliance-col--left{border-right:none;border-bottom:.5px solid var(--line)}
-  .mission-photos{height:300px}
-  .mission-text{padding:56px 40px}
-  .pillars-text{padding:56px 40px}
-  .pillars-photo{display:none}
-  .alliance-col{padding:48px 32px}
-  .naula-text{padding:48px 32px}
-  .naula-products{padding:48px 32px}
-  /* alliance hero — show full image, caption below */
-  .alliance-hero{height:auto;overflow:visible;display:flex;flex-direction:column}
-  .alliance-hero img{height:auto;object-fit:unset;display:block;width:100%}
-  .alliance-hero-overlay{display:none}
-  .alliance-hero-caption{position:static;transform:none;
-    background:var(--bg);padding:36px 24px 40px;text-align:center;
-    border-bottom:.5px solid var(--line)}
-}
-@media(max-width:680px){
-  .nav-w{padding:0 20px}
-  .nav-desktop{display:none}
-  .nav-mobile-btn{display:block}
-  .nav-mobile{display:none}
-  .section{padding:64px 20px}
-  footer{flex-direction:column;align-items:flex-start;padding:24px 20px;gap:12px}
-  .promise{padding:80px 20px}
-  .hero-left{padding:48px 24px}
-  .mission-grid{grid-template-columns:1fr}
-  .hero-desc{font-size:19.5px;line-height:1.85;max-width:100%}
-  .body-text{font-size:19.5px;line-height:1.85}
-  .body-vi{font-size:16.9px;line-height:1.8}
-  .pillar-desc{font-size:16.25px;line-height:1.7}
-  .pillar-desc-vi{font-size:14.95px;line-height:1.65}
-  .naula-feature p{font-size:16.9px;line-height:1.75}
-  .naula-feature-desc-vi{font-size:15.6px;line-height:1.7}
-  .promise-sub{font-size:23.4px}
-  .naula-caption{font-size:16.9px}
-}
+  @media (max-width:640px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1;}
+    .growth-wrap{height:220px;}
+    .form-row{grid-template-columns:1fr;}
+    .form-card{padding:28px 22px;}
+    .kit-grid{grid-template-columns:1fr;}
+    .step{grid-template-columns:44px 1fr;}
+    .philosophy-grid{grid-template-columns:1fr; min-height:auto;}
+    .philosophy-photo{height:240px;}
+    .philosophy-copy{padding:32px 22px 40px;}
+    .race-recap{display:block; min-height:auto;}
+    .race-recap-bg{position:static; height:240px; width:100%;}
+    .race-recap-overlay{display:none;}
+    .race-recap-content{position:static; background:var(--brand-dark); padding:32px 22px 40px;}
+    .race-recap-text{font-size:16px;}
+  }
 </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
-<nav>
-  <div class="nav-w">
-    <a href="https://tkg-naula.com" class="nav-logo">
-      <img src="TKG-logo.png" alt="TKG · Naula"
-           onerror="this.style.display='none';this.nextSibling.style.display='block'">
-      <span class="nav-logo-text">TKG · Naula</span>
-    </a>
-    <div class="nav-desktop">
-      <a href="index.html#products">Products</a>
-      <a href="index.html#ritual">Ritual</a>
-      <a href="world-of-naula.html">World of Naula</a>
-      <a href="founders.html">Founders</a>
-      <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
-      <a href="#" class="active">VG2 Program</a>
-      <a href="faq.html">FAQ</a>
-      <a href="index.html" class="nav-btn">Order</a>
+<div class="topbar">
+  <div class="topbar-inner wrap" style="padding-left:0; padding-right:0;">
+    <div class="wordmark"><img src="TKG-logo.png" alt="TKG · Naula" class="wordmark-logo"></div>
+    <div class="lang-switch">
+      <a href="vpbank-seedkit.html" aria-label="English" title="English">🇺🇸</a>
+      <a href="vpbank-seedkit_vi.html" class="active" aria-label="Tiếng Việt" title="Tiếng Việt">🇻🇳</a>
     </div>
-    <button class="nav-mobile-btn" onclick="toggleMobileNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-  <div class="nav-mobile" id="mobileNav">
-    <a href="index.html#products">Products</a>
-    <a href="index.html#ritual">Ritual</a>
-    <a href="world-of-naula.html">World of Naula</a>
-    <a href="founders.html">Founders</a>
-    <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
-    <a href="#" class="active">VG2 Program</a>
-    <a href="faq.html">FAQ</a>
-    <a href="index.html" class="nav-btn" style="margin:12px 24px 0;text-align:center;border-radius:2px">Order</a>
-  </div>
-</nav>
+</div>
 
-<!-- ══ HERO ══ -->
-<section class="hero" style="position:relative">
-  <div class="hero-left">
-    <!-- VG2 logo + badge — centered together -->
-    <div class="vg2-logo-hero-wrap">
-      <div class="vg2-logo-hero fu">
-        <img src="VG2_final_logo.webp" alt="VG2 — Very Good Viet Goods">
-      </div>
-      <div class="hero-badge fu">
-        <span class="hero-badge-dot"></span>
-        Strategic Partnership · Hợp tác chiến lược
-        <span class="hero-badge-dot"></span>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Dành cho những runner đã mang hạt giống của TKG về nhà</div>
+      <h1>Bạn vừa về đích.<br>Hạt giống này mới chỉ <em>bắt đầu.</em></h1>
+      <p class="hero-sub">Hôm nay bạn đã hoàn thành một cuộc đua. Có những hành trình kéo dài vài giờ, nhưng cũng có những hành trình kéo dài nhiều tuần hoặc nhiều tháng. Hạt giống trong tay bạn là lời nhắc rằng những điều tốt đẹp thường cần thời gian để lớn lên. Hãy tham gia Hành Trình Hạt Giống để nhận hướng dẫn gieo trồng, những câu chuyện về cây tía tô và lời mời tham gia các hoạt động tiếp theo của cộng đồng TKG trong những tuần tới.</p>
+      <div class="cta-row">
+        <a href="#register" class="btn btn-primary">Tham gia Hành trình Hạt Giống</a>
+        <a href="#kit" class="btn btn-ghost">Xem trong túi có gì</a>
       </div>
     </div>
-    <div class="hero-partners fu fu-d1">
-      <div class="hero-partner-chip">TKG · Naula</div>
-      <div class="hero-cross">×</div>
-      <div class="hero-partner-chip">SAVVi Code</div>
+    <div class="hero-visual">
+      <div class="growth-wrap">
+        <div class="photo-frame">
+          <img src="REPLACE_WITH_PHOTO_URL.jpg" alt="Runner cùng hạt giống TKG" class="photo-img"
+               onerror="this.style.display='none';">
+          <div class="photo-fallback"></div>
+        </div>
+      </div>
+      <div class="growth-line">
+        <svg class="growth-line-svg" viewBox="0 0 300 26" id="growthSvg" aria-hidden="true" preserveAspectRatio="none">
+          <line class="growth-track" x1="14" y1="13" x2="286" y2="13" />
+          <line class="growth-fill" id="growthFill" x1="14" y1="13" x2="286" y2="13" />
+          <circle class="growth-node lit" cx="14" cy="13" r="5"/>
+          <circle class="growth-node" cx="150" cy="13" r="5" id="nodeMid"/>
+          <circle class="growth-node" cx="286" cy="13" r="5" id="nodeTop"/>
+        </svg>
+        <div class="growth-labels">
+          <span>hạt giống</span>
+          <span>nảy mầm</span>
+          <span>ra lá</span>
+        </div>
+      </div>
     </div>
-    <h1 class="hero-h1 fu fu-d1">Very Good<br><em>Viet Goods.</em></h1>
-    <p class="hero-sub fu fu-d2">VG2 Program · 2026</p>
-    <p class="hero-desc fu fu-d2">
-      <strong>Chúng tôi không chỉ bán sản phẩm — chúng tôi cung cấp sự tin tưởng.</strong><br>
-      We don't just sell products. We provide Credibility.
-    </p>
   </div>
-  <div class="hero-right">
-    <img src="VG2_1.webp" alt="TKG × SAVVi Code team">
-    <div class="hero-right-overlay"></div>
+</header>
+
+<section class="race-recap">
+  <div class="race-recap-bg"></div>
+  <div class="race-recap-overlay"></div>
+  <div class="wrap race-recap-content">
+    <p class="race-recap-text">Hơn 11.000 runner đã cùng xuất phát sáng nay. Mỗi người mang về một kết quả khác nhau. Nếu bạn đang đọc những dòng này, có lẽ bạn cũng mang về một hạt giống từ TKG.</p>
+    <p class="race-recap-quote">"Chúng tôi hy vọng hạt giống này sẽ tiếp tục nhắc bạn về ngày hôm nay, rất lâu sau khi cuộc đua đã kết thúc."</p>
   </div>
 </section>
 
-<!-- ══ MISSION ══ -->
-<section class="section section--alt" style="padding:0;border-bottom:.5px solid var(--line)" id="about">
-  <div class="mission-grid">
-    <div class="mission-text fu">
-      <div class="section-label">Mission · Sứ mệnh</div>
-      <h2 class="section-h">A new benchmark<br>for <em>Vietnamese quality.</em></h2>
-      <p class="body-text">The VG2 (Very Good Viet Goods) project was born with a grand ambition: to establish a new benchmark for Vietnamese products on the global stage. We don't just sell products — we provide <strong style="color:var(--cream);font-weight:500">Credibility.</strong></p>
-      <p class="body-vi">Dự án VG2 ra đời để thiết lập chuẩn mực mới cho hàng Việt trên sân chơi toàn cầu. Với tư duy đổi mới và chính trực trong kinh doanh, hàng Việt hoàn toàn có thể chinh phục thị trường quốc tế khắt khe nhất.</p>
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Hôm nay</div>
+      <h2>Hôm nay bạn mang gì về nhà?</h2>
+      <p class="section-lede">Bạn mang về ba điều.</p>
     </div>
-    <div class="mission-photos fu fu-d1">
-      <div class="mission-photo mission-photo--tall">
-        <img src="VG2_2.webp" alt="Vietnamese market foods">
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>Một hạt giống</h3><p>Một khởi đầu nhỏ để gieo tại nhà.</p></div>
       </div>
-      <div class="mission-photo">
-        <img src="VG2_3.webp" alt="TEC coconuts">
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>Một lời nhắc</h3><p>Những điều tốt đẹp thường cần thời gian để lớn lên.</p></div>
       </div>
-      <div class="mission-photo">
-        <img src="VG2_4.webp" alt="Herbal gift packages">
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>Một kết nối</h3><p>TKG sẽ tiếp tục đồng hành cùng bạn sau ngày race.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ PILLARS ══ -->
-<section class="section" style="padding:0;border-bottom:.5px solid var(--line)" id="pillars">
-  <div class="pillars-wrap">
-    <div class="pillars-text">
-      <div class="section-label fu">5 Key Pillars · 5 Trụ cột</div>
-      <h2 class="section-h fu">The foundation<br>of <em>VG2.</em></h2>
-      <div class="pillars-grid fu fu-d1">
-        <div class="pillar">
-          <div class="pillar-num">I.</div>
-          <div class="pillar-body">
-            <div class="pillar-title">Entrepreneurship</div>
-            <div class="pillar-vi">Tinh thần khởi nghiệp</div>
-            <p class="pillar-desc">SAVVi Code cultivated a supportive bond among entrepreneurs. This is more than business — it is about embarking on a long journey together.</p>
-            <p class="pillar-desc-vi">SAVVi Code đã vun đắp một sợi dây gắn kết và nâng đỡ giữa những người làm kinh doanh. Điều này không chỉ dừng lại ở chuyện giao thương — mà là cùng nhau dấn bước vào một hành trình dài.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">II.</div>
-          <div class="pillar-body">
-            <div class="pillar-title">Viet Founders</div>
-            <div class="pillar-vi">Người sáng lập Việt</div>
-            <p class="pillar-desc">A network dedicated to Vietnamese entrepreneurs worldwide in the Tech and Creative industries.</p>
-            <p class="pillar-desc-vi">Mạng lưới dành riêng cho các nhà khởi nghiệp Việt trên toàn cầu trong lĩnh vực Công nghệ và Sáng tạo.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">III.</div>
-          <div class="pillar-body">
-            <div class="pillar-title">Health</div>
-            <div class="pillar-vi">Sức khỏe</div>
-            <p class="pillar-desc">Mental balance and physical resilience are foundational in every entrepreneurship endeavor.</p>
-            <p class="pillar-desc-vi">Sự cân bằng trong tâm trí và sức bền của thể chất là nền tảng cốt tủy cho mọi hành trình khởi nghiệp.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">IV.</div>
-          <div class="pillar-body">
-            <div class="pillar-title">High Quality</div>
-            <div class="pillar-vi">Chất lượng cao</div>
-            <p class="pillar-desc">Members commit to quality of the highest standards for international export and premium consumption.</p>
-            <p class="pillar-desc-vi">Các thành viên cam kết đạt chuẩn mực chất lượng cao nhất, đáp ứng phân khúc tiêu dùng cao cấp và xuất khẩu quốc tế.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">V.</div>
-          <div class="pillar-body">
-            <div class="pillar-title">Innovation</div>
-            <div class="pillar-vi">Đổi mới sáng tạo</div>
-            <p class="pillar-desc">Products selected for their innovative approach to meaningful well-being, relying on technology throughout.</p>
-            <p class="pillar-desc-vi">Các sản phẩm được tuyển chọn dựa trên phương thức tiếp cận đổi mới sáng tạo vì sức khỏe thực chất, với sự nâng đỡ của công nghệ xuyên suốt quy trình.</p>
-          </div>
-        </div>
-      </div>
+<section class="philosophy-section">
+  <div class="philosophy-grid">
+    <div class="philosophy-photo">
+      <img src="Perilla_1.webp" alt="Hạt giống tía tô TKG" class="photo-img"
+           onerror="this.style.display='none';">
+      <div class="photo-fallback"></div>
     </div>
-    <div class="pillars-photo fu fu-d2">
-      <img src="VG2_5.webp" alt="SAVVi entrepreneur community">
-      <div class="pillars-photo-overlay"></div>
+    <div class="philosophy-copy">
+      <div class="section-eyebrow">Vì sao là hạt giống</div>
+      <p class="philosophy-text">Chúng tôi có thể tặng bạn một món quà dùng một lần, nhưng chúng tôi chọn trao cho bạn một hạt giống. Vì những điều có giá trị thường không xuất hiện ngay lập tức. Một hạt giống cần thời gian để nảy mầm, một thói quen cần thời gian để hình thành, và một cơ thể khỏe mạnh cần thời gian để được nuôi dưỡng. Chúng tôi gọi cách tiếp cận đó là <strong>Naula</strong> — không phải tìm kiếm những lối tắt, mà là sự chuẩn bị đều đặn, từng ngày một.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ ALLIANCE ══ -->
-<section style="border-bottom:.5px solid var(--line)" id="alliance">
-  <div class="alliance-hero fu">
-    <img src="VG2_6.webp" alt="Thien Kien × SAVVi partnership">
-    <div class="alliance-hero-overlay"></div>
-    <div class="alliance-hero-caption">
-      <div class="alliance-hero-label">Strategic Alliance · Liên minh chiến lược</div>
-      <div class="alliance-hero-title">Thien Kien × <em>SAVVi Code</em></div>
+<section id="kit">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Trong túi có gì</div>
+      <h2>Hạt giống của bạn, ba phần.</h2>
+      <p class="section-lede">Mọi thứ bạn cần để gieo trồng cây tía tô đầu tiên và bắt đầu hành trình cùng TKG.</p>
     </div>
-  </div>
-
-  <div class="alliance-body">
-    <div class="alliance-col alliance-col--left fu">
-      <div class="alliance-card">
-        <!-- Thiện Kiện logo — transparent WebP -->
-        <div class="partner-logo-wrap">
-          <img src="Thien-Kien-logo.webp" alt="Thiện Kiện logo" style="height:80px">
-        </div>
-        <div class="alliance-card-tag">Thien Kien · TKG</div>
-        <h3>The Pioneer</h3>
-        <p>Thien Kien is proud to be the pioneer unit, working alongside SAVVi to lay the foundation for the VG2 program. As the strategic execution partner, Thien Kien serves as the "trailblazer," manifesting VG2's rigorous standards through its core product line, TKG.<em>Thiện Kiến tự hào là đơn vị tiên phong đồng hành cùng SAVVi trong việc xây dựng nền tảng cho chương trình VG2. Với vai trò đối tác triển khai chiến lược, Thiện Kiến đóng vai trò người mở lối, chuyển hóa các tiêu chuẩn nghiêm ngặt của VG2 thành những sản phẩm cụ thể thông qua TKG — dòng sản phẩm đầu tiên thể hiện tinh thần và cam kết của chương trình.</em></p>
+    <div class="kit-grid">
+      <div class="kit-item">
+        <div class="kit-num">01</div>
+        <h3>Hạt giống Tía Tô</h3>
+        <p>Một loại cây quen thuộc trong căn bếp Việt Nam. Nếu được chăm sóc đủ lâu, những chiếc lá đầu tiên sẽ xuất hiện sau vài tuần.</p>
       </div>
-      <div class="alliance-col-photo">
-        <img src="VG2_7.webp" alt="Thien Kien Vietnamese botanicals">
+      <div class="kit-item">
+        <div class="kit-num">02</div>
+        <h3>Hành trình chăm cây</h3>
+        <p>Một hướng dẫn ngắn, in sẵn, để bắt đầu gieo trồng — và vài cập nhật từ TKG trong những tuần tới.</p>
       </div>
-    </div>
-    <div class="alliance-col alliance-col--right fu fu-d1">
-      <div class="alliance-card">
-        <!-- SAVVi Code logo — transparent WebP -->
-        <div class="partner-logo-wrap">
-          <img src="SAVVI.webp" alt="SAVVi Code logo" style="height:56px">
-        </div>
-        <div class="alliance-card-tag">SAVVi Code</div>
-        <h3>The Framework</h3>
-        <p>SAVVi Code provides the technological framework, systematic mindset, and entrepreneurial network that elevates Vietnamese products to meet global standards. This partnership establishes the benchmark for all future VG2 members.<em>SAVVi Code đóng góp nền tảng công nghệ, tư duy hệ thống và cộng đồng doanh nhân toàn cầu, giúp nâng tầm các sản phẩm Việt Nam theo những tiêu chuẩn quốc tế. Sự hợp tác giữa SAVVi và Thiện Kiến đặt nền móng cho một bộ tiêu chuẩn chung, trở thành chuẩn mực cho mọi thành viên tham gia hệ sinh thái VG2 trong tương lai.</em></p>
-        <a href="https://savvicode.com" target="_blank" rel="noopener" class="btn-primary" style="margin-top:24px">
-          Visit SAVVi Code
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-        </a>
+      <div class="kit-item">
+        <div class="kit-num">03</div>
+        <h3>Mã ưu đãi TKG</h3>
+        <p>Giảm 5% cho nước tươi, 10% cho định dạng bột, áp dụng cho đơn hàng đầu tiên. Ưu đãi riêng tại Nanaya Izakaya đang được cập nhật.</p>
       </div>
-      <div class="alliance-col-photo">
-        <img src="VG2_8.webp" alt="Vietnamese artisan market">
-      </div>
-    </div>
-  </div>
-
-  <div class="alliance-quote fu">
-    <blockquote>"VG2 is a promise from Thien Kien and SAVVi for a future where <em>'Viet Made'</em> is synonymous with <em>'Very Good.'</em>"</blockquote>
-    <cite>VG2 Program Declaration · 2026</cite>
-  </div>
-</section>
-
-<!-- ══ NAULA ══ -->
-<section style="border-bottom:.5px solid var(--line)" id="naula">
-  <div class="naula-hero fu">
-    <img src="Naula-3.webp" alt="Naula botanical preparation">
-    <div class="naula-hero-overlay"></div>
-    <div class="naula-hero-text">
-      <div class="naula-hero-label">TKG Philosophy · Triết lý TKG</div>
-      <div class="naula-hero-h">Preservation, <em>not extraction.</em></div>
-    </div>
-  </div>
-
-  <div class="naula-body">
-    <div class="naula-text fu">
-      <div class="section-label">The Naula Process · Quy trình Naula</div>
-      <h2 class="section-h" style="font-size:clamp(30px,3.5vw,46px)">The first expression<br>of the <em>TKG philosophy.</em></h2>
-      <p class="body-text">TKG's innovation is not the invention of new ingredients, but a new way of preserving traditional botanical preparations — making them globally accessible without losing their soul.</p>
-      <p class="body-vi">Đổi mới của TKG không phải là phát minh thành phần mới, mà là bảo tồn phương thức pha chế thảo mộc truyền thống.</p>
-
-      <div class="naula-features">
-        <div class="naula-feature">
-          <div class="naula-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div>
-          <div>
-            <h4>Whole Botanicals</h4>
-            <div class="naula-feature-vi">Thảo mộc nguyên vẹn</div>
-            <p>Complete roots, leaves, peels, flowers, and seeds — not isolated compounds.</p>
-            <p class="naula-feature-desc-vi">Trọn vẹn từ rễ củ, lá cây, vỏ quả, hoa mầm cho đến hạt mầm — không phải các hợp chất bị cô lập.</p>
-          </div>
-        </div>
-        <div class="naula-feature">
-          <div class="naula-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></div>
-          <div>
-            <h4>The Naula Process</h4>
-            <div class="naula-feature-vi">Quy trình Naula</div>
-            <p>Botanicals slowly prepared through a controlled process, then freeze-dried into a stable powder.</p>
-            <p class="naula-feature-desc-vi">Thảo mộc được nấu ủ chậm rãi qua một quy trình kiểm soát nghiêm ngặt, sau đó sấy thăng hoa thành dạng bột bền vững.</p>
-          </div>
-        </div>
-        <div class="naula-feature">
-          <div class="naula-feature-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg></div>
-          <div>
-            <h4>Botanical Integrity</h4>
-            <div class="naula-feature-vi">Toàn vẹn thảo mộc</div>
-            <p>Aroma, flavor, color, and character of each botanical remain present in every cup.</p>
-            <p class="naula-feature-desc-vi">Hương thơm, vị giác, sắc màu và đặc tính riêng của từng loại thảo mộc vẫn vẹn nguyên trong mỗi tách trà.</p>
-          </div>
-        </div>
-        <div class="naula-feature">
-          <div class="naula-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 000 20"/></svg></div>
-          <div>
-            <h4>Global Format, Local Identity</h4>
-            <div class="naula-feature-vi">Hình thức toàn cầu, bản sắc địa phương</div>
-            <p>Designed for international markets, rooted in Vietnamese ingredients and tradition.</p>
-            <p class="naula-feature-desc-vi">Thiết kế cho thị trường quốc tế, bén rễ từ nguồn nguyên liệu và truyền thống Việt.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="naula-products fu fu-d1">
-      <p class="naula-tagline">The First Expression</p>
-      <div class="naula-products-grid">
-        <div class="product-card">
-          <img src="Morning Ember-texture.webp" alt="TKG Morning Ember">
-          <div class="product-card-label">
-            <div class="product-card-name">Morning Ember</div>
-            <div class="product-card-sub">Ginger · Lemongrass · Lime</div>
-          </div>
-        </div>
-        <div class="product-card">
-          <img src="Still-Ember-texture.webp" alt="TKG Still Ember">
-          <div class="product-card-label">
-            <div class="product-card-name">Still Ember</div>
-            <div class="product-card-sub">Perilla · Clove · Kumquat</div>
-          </div>
-        </div>
-      </div>
-      <p class="naula-caption">Naula Prepared · ISO Certified · 30 sachets × 3g</p>
     </div>
   </div>
 </section>
 
-<!-- ══ PROMISE ══ -->
-<section class="promise">
-  <div class="w--narrow">
-    <p class="promise-label fu">"Viet Made" = "Very Good"</p>
-    <h2 class="promise-h fu fu-d1"><em>"Viet Made"</em> is<br>synonymous with<br><em>"Very Good."</em></h2>
-    <p class="promise-sub fu fu-d2">"Hàng Việt" đồng nghĩa với "Rất Tốt."</p>
-    <a href="https://tkg-naula.com" class="btn-primary fu fu-d3">
-      Khám phá TKG · Discover TKG
-      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Cách thức hoạt động</div>
+      <h2>Ba bước, rồi TKG sẽ đồng hành cùng bạn.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>Nhận Seed Kit</h3><p>Bạn đã nhận một hạt giống tía tô từ TKG hôm nay, tại sự kiện.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>Đăng ký hành trình</h3><p>Để lại thông tin bên dưới — chỉ mất chưa đến một phút.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>Gieo hạt và cập nhật</h3><p>TKG sẽ đồng hành cùng bạn qua vài email ngắn trong những tuần tới.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<section id="register">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Đăng ký</div>
+      <h2>Đăng ký hạt giống của bạn</h2>
+      <p class="section-lede">Số BIB dùng để tạo mã ưu đãi riêng cho bạn, nên vui lòng điền đúng số in trên áo thi đấu.</p>
+    </div>
+
+    <div class="form-card">
+      <form id="seedForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="fullName">Họ và tên <span class="req">*</span></label>
+            <input type="text" id="fullName" name="fullName" placeholder="Nguyễn Văn A" required>
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="ban@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="phone">Số điện thoại / Zalo</label>
+            <input type="tel" id="phone" name="phone" placeholder="09xx xxx xxx">
+          </div>
+          <div class="field">
+            <label for="bib">Số BIB <span class="req">*</span></label>
+            <input type="text" id="bib" name="bib" placeholder="VD: 1023" required>
+          </div>
+        </div>
+
+        <div class="field radio-group">
+          <label>Bạn nhận Seed Kit theo hình thức nào? <span class="req">*</span></label>
+          <div class="radio-options">
+            <div class="radio-option">
+              <input type="radio" id="typeElite" name="receiveType" value="Elite Runner" required>
+              <label for="typeElite">Elite Runner</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="typeChallenge" name="receiveType" value="Booth Challenge" required>
+              <label for="typeChallenge">Thử thách tại booth</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="typeOther" name="receiveType" value="Other" required>
+              <label for="typeOther">Khác</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field radio-group">
+          <label>Cự ly bạn đã tham gia <span class="req">*</span></label>
+          <div class="radio-options">
+            <div class="radio-option">
+              <input type="radio" id="dist5" name="raceDistance" value="5km" required>
+              <label for="dist5">5km</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="dist10" name="raceDistance" value="10km" required>
+              <label for="dist10">10km</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="dist21" name="raceDistance" value="21km" required>
+              <label for="dist21">21km</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field radio-group">
+          <label>Bạn quan tâm điều gì nhất sau khi chạy? <span class="req">*</span></label>
+          <div class="radio-options">
+            <div class="radio-option">
+              <input type="radio" id="focusRecovery" name="postRunFocus" value="Recovery" required>
+              <label for="focusRecovery">Recovery</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="focusNutrition" name="postRunFocus" value="Nutrition" required>
+              <label for="focusNutrition">Nutrition</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="focusSleep" name="postRunFocus" value="Sleep" required>
+              <label for="focusSleep">Sleep</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="focusStress" name="postRunFocus" value="Stress management" required>
+              <label for="focusStress">Stress management</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="focusCommunity" name="postRunFocus" value="Community" required>
+              <label for="focusCommunity">Community</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="check-row">
+          <input type="checkbox" id="consentUpdates" name="consentUpdates" required>
+          <p><span class="req">*</span> Tôi muốn nhận cập nhật gieo trồng định kỳ và mã ưu đãi qua email.</p>
+        </div>
+        <div class="check-row">
+          <input type="checkbox" id="consentPhotos" name="consentPhotos">
+          <p>Nếu tôi chủ động chia sẻ hình ảnh hoặc câu chuyện gieo trồng với TKG, TKG có thể sử dụng cho mục đích truyền thông.</p>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Đăng ký hạt giống</button>
+        </div>
+        <p class="form-note">TKG chỉ sử dụng thông tin này để gửi mã ưu đãi và cập nhật gieo trồng. Không spam, không chia sẻ dữ liệu.</p>
+        <div class="status-msg" id="statusMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap" style="text-align:center; max-width:640px;">
+    <div class="section-eyebrow" style="justify-content:center;">Khi những chiếc lá đầu tiên xuất hiện</div>
+    <h2>Hãy chụp lại một tấm hình.</h2>
+    <p class="section-lede" style="margin:0 auto;">TKG rất mong được nhìn thấy hành trình của hạt giống bạn mang về hôm nay.</p>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-brand">TKG · Naula × SAVVi Code · VG2 Program 2026</div>
-  <div class="footer-links">
-    <a href="https://tkg-naula.com">tkg-naula.com</a>
-    <a href="https://tkg-naula.com#products">Products</a>
-    <a href="https://tkg-naula.com#naula">Naula Method</a>
+  <div class="wrap footer-row">
+    <div class="wordmark"><img src="TKG-logo.png" alt="TKG · Naula" class="wordmark-logo"></div>
+    <div class="footer-tag">Rooted in Vietnam. Prepared with Care.</div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/tkg.naula" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/tkg.naula" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+      </a>
+    </div>
   </div>
 </footer>
 
 <script>
-function toggleMobileNav(){
-  document.getElementById('mobileNav').classList.toggle('active');
-}
-document.querySelectorAll('.nav-mobile a').forEach(function(a){
-  a.addEventListener('click',function(){ document.getElementById('mobileNav').classList.remove('active'); });
-});
-var obs = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
-},{threshold:0.1});
-document.querySelectorAll('.fu').forEach(function(el){ obs.observe(el); });
+  const fill = document.getElementById('growthFill');
+  const len = fill.getTotalLength();
+  fill.style.strokeDasharray = len;
+  fill.style.strokeDashoffset = len;
+  const nodeMid = document.getElementById('nodeMid');
+  const nodeTop = document.getElementById('nodeTop');
+  function onScroll(){
+    const p = Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * 0.9)));
+    fill.style.strokeDashoffset = len - (len * p);
+    nodeMid.classList.toggle('lit', p > 0.45);
+    nodeTop.classList.toggle('lit', p > 0.85);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ---- GỬI FORM ----
+  // Form này gửi dữ liệu tới Google Form (không load lại trang).
+  // Thay GOOGLE_FORM_ACTION_URL và các entry.XXXX bên dưới sau khi
+  // tạo Google Form — xem hướng dẫn thiết lập đi kèm.
+  const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSepY3bkukbjb_I8nF5OtnsCm_msbLKVUCJS1UJhgJAqFOzXBA/formResponse";
+  const FIELD_MAP = {
+    fullName: "entry.397760040",
+    email: "entry.284471329",
+    phone: "entry.1636732933",
+    bib: "entry.1044453477",
+    receiveType: "entry.110873033",
+    raceDistance: "entry.876644950",
+    postRunFocus: "entry.1334507065",
+    consentUpdates: "entry.154352735",
+    consentPhotos: "entry.1394350096"
+  };
+
+  const form = document.getElementById('seedForm');
+  const statusMsg = document.getElementById('statusMsg');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Đang gửi…";
+
+    const data = new URLSearchParams();
+    data.append(FIELD_MAP.fullName, form.fullName.value);
+    data.append(FIELD_MAP.email, form.email.value);
+    data.append(FIELD_MAP.phone, form.phone.value);
+    data.append(FIELD_MAP.bib, form.bib.value);
+    const receiveTypeEl = form.querySelector('input[name="receiveType"]:checked');
+    data.append(FIELD_MAP.receiveType, receiveTypeEl ? receiveTypeEl.value : "");
+    const raceDistanceEl = form.querySelector('input[name="raceDistance"]:checked');
+    data.append(FIELD_MAP.raceDistance, raceDistanceEl ? raceDistanceEl.value : "");
+    const postRunFocusEl = form.querySelector('input[name="postRunFocus"]:checked');
+    data.append(FIELD_MAP.postRunFocus, postRunFocusEl ? postRunFocusEl.value : "");
+    data.append(FIELD_MAP.consentUpdates, form.consentUpdates.checked ? "Yes" : "No");
+    data.append(FIELD_MAP.consentPhotos, form.consentPhotos.checked ? "Yes" : "No");
+
+    try {
+      await fetch(GOOGLE_FORM_ACTION_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: data.toString()
+      });
+      statusMsg.textContent = "Đăng ký thành công — mã ưu đãi sẽ được gửi tới email của bạn trong ít phút. Theo dõi fanpage TKG để không bỏ lỡ hành trình của những hạt giống khác.";
+      statusMsg.className = "status-msg show status-ok";
+      form.reset();
+      onScroll();
+    } catch (err) {
+      statusMsg.textContent = "Có lỗi xảy ra. Vui lòng thử lại, hoặc nhắn trực tiếp cho TKG.";
+      statusMsg.className = "status-msg show status-err";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Đăng ký hạt giống";
+    }
+  });
 </script>
+
 </body>
 </html>
