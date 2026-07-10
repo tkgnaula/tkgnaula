@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xác nhận đổi ưu đãi — TKG × Nanaya Izakaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<style>
+  :root{
+    --brand-dark:#12110B;
+    --ink:#1A1A1A;
+    --paper:#FBFBF2;
+    --gold:#F9DA85;
+    --moss:#527121;
+    --tia-to:#74255E;
+    --tia-to-soft:#a8567f;
+    --hoa:#D45E29;
+    --paper-dim:rgba(251,251,242,0.62);
+    --paper-faint:rgba(251,251,242,0.16);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--brand-dark); color:var(--paper);
+    font-family:'Be Vietnam Pro', sans-serif; font-weight:300; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:520px; margin:0 auto; padding:28px 20px 60px;}
+  header{text-align:center; margin-bottom:28px;}
+  .eyebrow{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:8px;}
+  h1{font-size:22px; font-weight:700; margin:0;}
+  .subtitle{font-size:13px; color:var(--paper-dim); margin-top:8px;}
+
+  .card{
+    background:var(--ink); border:1px solid var(--paper-faint); border-radius:18px;
+    padding:24px; margin-bottom:20px;
+  }
+  .card h2{font-size:15px; font-weight:600; margin:0 0 14px; color:var(--paper);}
+
+  label{display:block; font-size:13px; color:var(--paper-dim); margin-bottom:8px;}
+  input[type="text"]{
+    width:100%; padding:14px 16px; border-radius:10px;
+    background:rgba(251,251,242,0.05); border:1px solid var(--paper-faint);
+    color:var(--paper); font-family:inherit; font-size:16px; text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  input[type="text"]:focus{border-color:var(--gold); outline:none;}
+  input::placeholder{color:rgba(251,251,242,0.3); text-transform:none;}
+
+  .code-input-row{
+    display:flex; align-items:stretch; gap:0;
+    background:rgba(251,251,242,0.05); border:1px solid var(--paper-faint);
+    border-radius:10px; overflow:hidden;
+  }
+  .code-input-row:focus-within{border-color:var(--gold);}
+  .code-fixed{
+    display:flex; align-items:center; padding:0 10px;
+    background:rgba(251,251,242,0.08); color:var(--paper-dim);
+    font-size:15px; font-weight:600; white-space:nowrap; letter-spacing:0.01em;
+  }
+  .code-input-row input[type="text"]{
+    flex:1; min-width:0; border:none; border-radius:0; background:transparent;
+    text-align:center; font-weight:700;
+  }
+  .code-input-row input[type="text"]:focus{border:none; outline:none;}
+
+  .scan-btn{
+    width:100%; margin-top:12px; padding:14px; border-radius:10px;
+    background:rgba(251,251,242,0.08); border:1px solid var(--paper-faint);
+    color:var(--paper); font-family:inherit; font-size:14px; font-weight:600;
+    cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .scan-btn:active{background:rgba(251,251,242,0.14);}
+  #qrReader{width:100%; margin-top:14px; border-radius:12px; overflow:hidden; display:none;}
+  #qrReader.active{display:block;}
+
+  .option-grid{display:flex; flex-direction:column; gap:10px;}
+  .option-btn{
+    display:flex; align-items:center; gap:12px;
+    padding:14px 16px; border-radius:12px;
+    background:rgba(251,251,242,0.04); border:1px solid var(--paper-faint);
+    cursor:pointer; font-size:14.5px; color:var(--paper);
+  }
+  .option-btn input{width:18px; height:18px; accent-color:var(--gold); flex-shrink:0;}
+  .option-btn.selected{border-color:var(--tia-to); background:rgba(116,37,94,0.18);}
+
+  textarea{
+    width:100%; padding:12px 14px; border-radius:10px; min-height:70px;
+    background:rgba(251,251,242,0.05); border:1px solid var(--paper-faint);
+    color:var(--paper); font-family:inherit; font-size:14px; resize:vertical;
+  }
+
+  .submit-btn{
+    width:100%; padding:16px; border-radius:999px; border:none;
+    background:var(--gold); color:var(--ink); font-family:inherit;
+    font-size:16px; font-weight:700; cursor:pointer; margin-top:6px;
+  }
+  .submit-btn:active{background:#ffe6a0;}
+  .submit-btn:disabled{opacity:0.5;}
+
+  .status-msg{margin-top:16px; font-size:14px; padding:14px 16px; border-radius:10px; display:none;}
+  .status-msg.show{display:block;}
+  .status-ok{background:rgba(82,113,33,0.18); border:1px solid var(--moss);}
+  .status-err{background:rgba(212,94,41,0.15); border:1px solid var(--hoa);}
+
+  .field-gap{margin-bottom:22px;}
+  .field-gap:last-child{margin-bottom:0;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Nội bộ — Nanaya Izakaya</div>
+    <h1>Xác nhận đổi ưu đãi TKG</h1>
+    <p class="subtitle">Quét QR runner đưa, hoặc gõ tay mã ưu đãi bên dưới.</p>
+  </header>
+
+  <form id="redeemForm">
+    <div class="card field-gap">
+      <h2>1. Mã ưu đãi</h2>
+      <label>Mã ưu đãi</label>
+      <div class="code-input-row">
+        <span class="code-fixed">TKGSEED-</span>
+        <input type="text" id="bibCode" name="bibCode" placeholder="1023" inputmode="numeric" required autocomplete="off">
+        <span class="code-fixed">-VPB0826</span>
+      </div>
+      <button type="button" class="scan-btn" id="scanToggle">📷 Quét QR bằng camera</button>
+      <div id="qrReader"></div>
+    </div>
+
+    <div class="card field-gap">
+      <h2>2. Loại hình sử dụng <span style="color:var(--tia-to-soft);">*</span></h2>
+      <div class="option-grid" id="usageGroup">
+        <label class="option-btn">
+          <input type="radio" name="usageType" value="Mua sản phẩm mang về" required>
+          Mua sản phẩm mang về
+        </label>
+        <label class="option-btn">
+          <input type="radio" name="usageType" value="Dùng dịch vụ tại Nanaya" required>
+          Dùng dịch vụ tại Nanaya (uống tại chỗ)
+        </label>
+        <label class="option-btn">
+          <input type="radio" name="usageType" value="Cả hai" required>
+          Cả hai
+        </label>
+      </div>
+    </div>
+
+    <div class="card field-gap">
+      <h2>3. Dòng sản phẩm <span style="font-weight:400; color:var(--paper-dim);">(nếu có mua sản phẩm)</span></h2>
+      <div class="option-grid" id="productGroup">
+        <label class="option-btn">
+          <input type="radio" name="productLine" value="Morning Ember">
+          Morning Ember
+        </label>
+        <label class="option-btn">
+          <input type="radio" name="productLine" value="Still Ember">
+          Still Ember
+        </label>
+        <label class="option-btn">
+          <input type="radio" name="productLine" value="Cả 2 dòng">
+          Cả 2 dòng
+        </label>
+        <label class="option-btn">
+          <input type="radio" name="productLine" value="Không áp dụng">
+          Không áp dụng (chỉ dùng dịch vụ)
+        </label>
+      </div>
+    </div>
+
+    <div class="card field-gap">
+      <h2>Ghi chú <span style="font-weight:400; color:var(--paper-dim);">(không bắt buộc)</span></h2>
+      <textarea id="note" name="note" placeholder="Ghi chú thêm nếu cần..."></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">Xác nhận đổi ưu đãi</button>
+    <div class="status-msg" id="statusMsg"></div>
+  </form>
+</div>
+
+<script>
+  // Highlight selected option button
+  document.querySelectorAll('.option-btn input').forEach((input) => {
+    input.addEventListener('change', () => {
+      const groupName = input.name;
+      document.querySelectorAll(`input[name="${groupName}"]`).forEach((el) => {
+        el.closest('.option-btn').classList.toggle('selected', el.checked);
+      });
+    });
+  });
+
+  // ---- QR SCANNER ----
+  let html5QrCode = null;
+  let scannerActive = false;
+  const scanToggle = document.getElementById('scanToggle');
+  const qrReaderDiv = document.getElementById('qrReader');
+  const codeInput = document.getElementById('bibCode');
+
+  scanToggle.addEventListener('click', async () => {
+    if (scannerActive) {
+      stopScanner();
+      return;
+    }
+    qrReaderDiv.classList.add('active');
+    scanToggle.textContent = '⏹ Dừng quét';
+    scannerActive = true;
+    html5QrCode = new Html5Qrcode("qrReader");
+    try {
+      await html5QrCode.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 220 },
+        (decodedText) => {
+          const raw = decodedText.trim().toUpperCase();
+          const match = raw.match(/^TKGSEED-(.+)-VPB0826$/);
+          codeInput.value = match ? match[1] : raw;
+          stopScanner();
+        },
+        () => {}
+      );
+    } catch (err) {
+      alert("Không mở được camera. Vui lòng cấp quyền camera cho trình duyệt, hoặc nhập mã tay.");
+      stopScanner();
+    }
+  });
+
+  function stopScanner() {
+    if (html5QrCode && scannerActive) {
+      html5QrCode.stop().then(() => html5QrCode.clear()).catch(() => {});
+    }
+    scannerActive = false;
+    qrReaderDiv.classList.remove('active');
+    scanToggle.textContent = '📷 Quét QR bằng camera';
+  }
+
+  // ---- FORM SUBMISSION ----
+  // Replace with real values once the redemption Google Form is created.
+  const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc930afFJ5WDTVDcabPaO-ojr4ZFFwjT358evv6r24cm2VwVg/formResponse";
+  const FIELD_MAP = {
+    code: "entry.1273782054",
+    usageType: "entry.1198201611",
+    productLine: "entry.2133017572",
+    note: "entry.165814665"
+  };
+
+  const form = document.getElementById('redeemForm');
+  const statusMsg = document.getElementById('statusMsg');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if (scannerActive) stopScanner();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Đang gửi…";
+
+    const usageEl = form.querySelector('input[name="usageType"]:checked');
+    const productEl = form.querySelector('input[name="productLine"]:checked');
+    const fullCode = `TKGSEED-${form.bibCode.value.trim().toUpperCase()}-VPB0826`;
+
+    const data = new URLSearchParams();
+    data.append(FIELD_MAP.code, fullCode);
+    data.append(FIELD_MAP.usageType, usageEl ? usageEl.value : "");
+    data.append(FIELD_MAP.productLine, productEl ? productEl.value : "Không áp dụng");
+    data.append(FIELD_MAP.note, form.note.value);
+
+    try {
+      await fetch(GOOGLE_FORM_ACTION_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: data.toString()
+      });
+      statusMsg.textContent = "Đã ghi nhận đổi ưu đãi thành công.";
+      statusMsg.className = "status-msg show status-ok";
+      form.reset();
+      document.querySelectorAll('.option-btn').forEach(el => el.classList.remove('selected'));
+    } catch (err) {
+      statusMsg.textContent = "Có lỗi xảy ra. Vui lòng thử lại.";
+      statusMsg.className = "status-msg show status-err";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Xác nhận đổi ưu đãi";
+    }
+  });
+</script>
+
+</body>
+</html>
