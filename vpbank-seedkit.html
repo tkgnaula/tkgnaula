@@ -84,13 +84,8 @@
     font-style:normal;
     color:var(--tia-to-soft);
   }
-  .hero-thesis{
-    font-size:17px; font-style:italic; color:var(--tia-to-soft); max-width:42ch;
-    margin:0 0 24px; padding-left:16px; border-left:2px solid var(--tia-to);
-    line-height:1.6; font-weight:400;
-  }
   .hero-sub{
-    font-size:18px; color:var(--paper-dim); max-width:44ch; margin:0 0 34px; font-weight:300;
+    font-size:17px; color:var(--paper-dim); max-width:56ch; margin:0 0 34px; font-weight:300; line-height:1.7;
   }
   .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
   .btn{
@@ -133,11 +128,36 @@
 
   /* ---------- section shell ---------- */
   section{padding:64px 0;}
+
+  .race-recap{position:relative; min-height:560px; display:flex; align-items:flex-end; overflow:hidden; padding:0;}
+  .race-recap-bg{
+    position:absolute; inset:0;
+    background-image:url('VPB_cover.webp');
+    background-size:cover; background-position:center;
+  }
+  .race-recap-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(to top,
+      rgba(18,17,11,0.97) 0%,
+      rgba(18,17,11,0.82) 32%,
+      rgba(18,17,11,0.35) 65%,
+      rgba(18,17,11,0.05) 100%);
+  }
+  .race-recap-content{position:relative; z-index:2; padding:80px 28px 56px;}
+  .race-recap-text{
+    font-size:18px; line-height:1.85; color:var(--paper); max-width:56ch; margin:0 0 28px; font-weight:300;
+  }
+  .race-recap-quote{
+    font-size:17px; font-style:italic; color:var(--tia-to-soft); max-width:52ch;
+    border-left:2px solid var(--tia-to); padding-left:16px; line-height:1.7; margin:0;
+  }
   .section-alt{background:rgba(251,251,242,0.03); border-top:1px solid var(--paper-faint); border-bottom:1px solid var(--paper-faint);}
   .section-head{max-width:60ch; margin-bottom:44px;}
   .section-eyebrow{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--tia-to-soft); font-weight:600; margin-bottom:12px;}
   h2{font-size:clamp(26px,3.4vw,36px); font-weight:700; margin:0 0 14px; letter-spacing:-0.01em;}
   .section-lede{color:var(--paper-dim); font-size:16px; max-width:56ch;}
+  .philosophy-text{font-size:18px; line-height:1.9; color:var(--paper-dim); font-weight:300;}
+  .philosophy-text strong{color:var(--tia-to-soft); font-weight:600;}
 
   /* ---------- kit contents ---------- */
   .kit-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--paper-faint); border:1px solid var(--paper-faint); border-radius:18px; overflow:hidden;}
@@ -213,6 +233,11 @@
     .form-card{padding:28px 22px;}
     .kit-grid{grid-template-columns:1fr;}
     .step{grid-template-columns:44px 1fr;}
+    .race-recap{display:block; min-height:auto;}
+    .race-recap-bg{position:static; height:240px; width:100%;}
+    .race-recap-overlay{display:none;}
+    .race-recap-content{position:static; background:var(--brand-dark); padding:32px 22px 40px;}
+    .race-recap-text{font-size:16px;}
   }
 </style>
 </head>
@@ -233,10 +258,9 @@
     <div>
       <div class="eyebrow">For runners who brought a TKG seed home</div>
       <h1>You crossed the finish line.<br>This seed is just <em>getting started.</em></h1>
-      <p class="hero-thesis">This seed isn't a reward.<br>It's a reminder that good things take time to grow.</p>
-      <p class="hero-sub">In your hand is a perilla seed.<br>Some journeys last a few hours.<br>Some last a few weeks.<br>TKG will follow this journey with you — from the day you plant it to its first leaf.</p>
+      <p class="hero-sub">Today, you completed a race. Some journeys last a few hours, while others take weeks or even months. The seed in your hand is a reminder that good things take time to grow. Join The Seed Journey to unlock planting guides, stories of the Perilla plant, and exclusive invitations to upcoming TKG community activities in the weeks ahead.</p>
       <div class="cta-row">
-        <a href="#register" class="btn btn-primary">Register your kit</a>
+        <a href="#register" class="btn btn-primary">Join The Seed Journey</a>
         <a href="#kit" class="btn btn-ghost">What's inside</a>
       </div>
     </div>
@@ -266,26 +290,48 @@
   </div>
 </header>
 
+<section class="race-recap">
+  <div class="race-recap-bg"></div>
+  <div class="race-recap-overlay"></div>
+  <div class="wrap race-recap-content">
+    <p class="race-recap-text">More than 11,000 runners set off together this morning.<br>
+    Everyone returned with a story of their own.<br>
+    A personal record achieved.<br>
+    A first-ever distance conquered.<br>
+    Or simply, a finish line crossed by refusing to give up.<br>
+    If you are reading this, perhaps you, too, are holding a seed from TKG.</p>
+    <p class="race-recap-quote">"We hope this seed keeps reminding you of today, long after the race is over."</p>
+  </div>
+</section>
+
 <section class="section-alt">
   <div class="wrap">
     <div class="section-head">
       <div class="section-eyebrow">Today</div>
       <h2>What are you taking home today?</h2>
+      <p class="section-lede">You are bringing home three things.</p>
     </div>
     <div class="steps">
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>A perilla seed</h3></div>
+        <div><h3>A seed</h3><p>A small beginning to plant at home.</p></div>
       </div>
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>A discount code</h3></div>
+        <div><h3>A reminder</h3><p>Good things take time to grow.</p></div>
       </div>
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>A promise from TKG</h3></div>
+        <div><h3>A connection</h3><p>TKG will stay by your side long after race day.</p></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:680px;">
+    <div class="section-eyebrow">Why a seed</div>
+    <p class="philosophy-text">We could have given you a single-use gift, but we chose to hand you a seed. Because things of true value rarely appear overnight. A seed needs time to sprout, a habit needs time to form, and a healthy body needs time to be nurtured. We call this approach <strong>Naula</strong> — not seeking shortcuts, but embracing steady preparation, day by day.</p>
   </div>
 </section>
 
@@ -407,27 +453,27 @@
         </div>
 
         <div class="field radio-group">
-          <label>What made you stop by the TKG booth today? <span class="req">*</span></label>
+          <label>What matters most to you after running? <span class="req">*</span></label>
           <div class="radio-options">
             <div class="radio-option">
-              <input type="radio" id="reasonDrink" name="boothReason" value="Đồ uống thử - trial drink" required>
-              <label for="reasonDrink">The drink sample</label>
+              <input type="radio" id="focusRecovery" name="postRunFocus" value="Recovery" required>
+              <label for="focusRecovery">Recovery</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="reasonSeed" name="boothReason" value="Seed Kit" required>
-              <label for="reasonSeed">The Seed Kit</label>
+              <input type="radio" id="focusNutrition" name="postRunFocus" value="Nutrition" required>
+              <label for="focusNutrition">Nutrition</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="reasonPackaging" name="boothReason" value="Bao bì - packaging" required>
-              <label for="reasonPackaging">The packaging</label>
+              <input type="radio" id="focusSleep" name="postRunFocus" value="Sleep" required>
+              <label for="focusSleep">Sleep</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="reasonFriend" name="boothReason" value="Bạn bè giới thiệu - word of mouth" required>
-              <label for="reasonFriend">A friend's recommendation</label>
+              <input type="radio" id="focusStress" name="postRunFocus" value="Stress management" required>
+              <label for="focusStress">Stress management</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="reasonOther" name="boothReason" value="Other" required>
-              <label for="reasonOther">Other</label>
+              <input type="radio" id="focusCommunity" name="postRunFocus" value="Community" required>
+              <label for="focusCommunity">Community</label>
             </div>
           </div>
         </div>
@@ -500,7 +546,7 @@
     bib: "entry.1044453477",
     receiveType: "entry.110873033",
     raceDistance: "entry.876644950",
-    boothReason: "entry.1334507065",
+    postRunFocus: "entry.1334507065",
     consentUpdates: "entry.154352735",
     consentPhotos: "entry.1394350096"
   };
@@ -523,8 +569,8 @@
     data.append(FIELD_MAP.receiveType, receiveTypeEl ? receiveTypeEl.value : "");
     const raceDistanceEl = form.querySelector('input[name="raceDistance"]:checked');
     data.append(FIELD_MAP.raceDistance, raceDistanceEl ? raceDistanceEl.value : "");
-    const boothReasonEl = form.querySelector('input[name="boothReason"]:checked');
-    data.append(FIELD_MAP.boothReason, boothReasonEl ? boothReasonEl.value : "");
+    const postRunFocusEl = form.querySelector('input[name="postRunFocus"]:checked');
+    data.append(FIELD_MAP.postRunFocus, postRunFocusEl ? postRunFocusEl.value : "");
     data.append(FIELD_MAP.consentUpdates, form.consentUpdates.checked ? "Yes" : "No");
     data.append(FIELD_MAP.consentPhotos, form.consentPhotos.checked ? "Yes" : "No");
 
