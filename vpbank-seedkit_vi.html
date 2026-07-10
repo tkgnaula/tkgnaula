@@ -82,13 +82,8 @@
     font-style:normal;
     color:var(--tia-to-soft);
   }
-  .hero-thesis{
-    font-size:17px; font-style:italic; color:var(--tia-to-soft); max-width:42ch;
-    margin:0 0 24px; padding-left:16px; border-left:2px solid var(--tia-to);
-    line-height:1.6; font-weight:400;
-  }
   .hero-sub{
-    font-size:18px; color:var(--paper-dim); max-width:46ch; margin:0 0 34px; font-weight:300;
+    font-size:17px; color:var(--paper-dim); max-width:56ch; margin:0 0 34px; font-weight:300; line-height:1.7;
   }
   .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
   .btn{
@@ -129,11 +124,36 @@
   .growth-labels span:last-child{text-align:right;}
 
   section{padding:64px 0;}
+
+  .race-recap{position:relative; min-height:560px; display:flex; align-items:flex-end; overflow:hidden; padding:0;}
+  .race-recap-bg{
+    position:absolute; inset:0;
+    background-image:url('VPB_cover.webp');
+    background-size:cover; background-position:center;
+  }
+  .race-recap-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(to top,
+      rgba(18,17,11,0.97) 0%,
+      rgba(18,17,11,0.82) 32%,
+      rgba(18,17,11,0.35) 65%,
+      rgba(18,17,11,0.05) 100%);
+  }
+  .race-recap-content{position:relative; z-index:2; padding:80px 28px 56px;}
+  .race-recap-text{
+    font-size:18px; line-height:1.85; color:var(--paper); max-width:56ch; margin:0 0 28px; font-weight:300;
+  }
+  .race-recap-quote{
+    font-size:17px; font-style:italic; color:var(--tia-to-soft); max-width:52ch;
+    border-left:2px solid var(--tia-to); padding-left:16px; line-height:1.7; margin:0;
+  }
   .section-alt{background:rgba(251,251,242,0.03); border-top:1px solid var(--paper-faint); border-bottom:1px solid var(--paper-faint);}
   .section-head{max-width:60ch; margin-bottom:44px;}
   .section-eyebrow{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--tia-to-soft); font-weight:600; margin-bottom:12px;}
   h2{font-size:clamp(24px,3.2vw,34px); font-weight:700; margin:0 0 14px; letter-spacing:-0.005em;}
   .section-lede{color:var(--paper-dim); font-size:16px; max-width:56ch;}
+  .philosophy-text{font-size:18px; line-height:1.9; color:var(--paper-dim); font-weight:300;}
+  .philosophy-text strong{color:var(--tia-to-soft); font-weight:600;}
 
   .kit-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--paper-faint); border:1px solid var(--paper-faint); border-radius:18px; overflow:hidden;}
   .kit-item{background:var(--brand-dark); padding:32px 26px;}
@@ -205,6 +225,11 @@
     .form-card{padding:28px 22px;}
     .kit-grid{grid-template-columns:1fr;}
     .step{grid-template-columns:44px 1fr;}
+    .race-recap{display:block; min-height:auto;}
+    .race-recap-bg{position:static; height:240px; width:100%;}
+    .race-recap-overlay{display:none;}
+    .race-recap-content{position:static; background:var(--brand-dark); padding:32px 22px 40px;}
+    .race-recap-text{font-size:16px;}
   }
 </style>
 </head>
@@ -225,10 +250,9 @@
     <div>
       <div class="eyebrow">Dành cho những runner đã mang hạt giống của TKG về nhà</div>
       <h1>Bạn vừa về đích.<br>Hạt giống này mới chỉ <em>bắt đầu.</em></h1>
-      <p class="hero-thesis">Hạt giống này không phải phần thưởng.<br>Nó là lời nhắc rằng những điều tốt đẹp thường cần thời gian để lớn lên.</p>
-      <p class="hero-sub">Trong tay bạn là một hạt giống tía tô.<br>Có những hành trình kéo dài vài giờ.<br>Có những hành trình kéo dài vài tuần.<br>TKG sẽ đồng hành cùng bạn từ ngày gieo hạt đầu tiên đến khi những chiếc lá đầu tiên xuất hiện.</p>
+      <p class="hero-sub">Hôm nay bạn đã hoàn thành một cuộc đua. Có những hành trình kéo dài vài giờ, nhưng cũng có những hành trình kéo dài nhiều tuần hoặc nhiều tháng. Hạt giống trong tay bạn là lời nhắc rằng những điều tốt đẹp thường cần thời gian để lớn lên. Hãy tham gia Hành Trình Hạt Giống để nhận hướng dẫn gieo trồng, những câu chuyện về cây tía tô và lời mời tham gia các hoạt động tiếp theo của cộng đồng TKG trong những tuần tới.</p>
       <div class="cta-row">
-        <a href="#register" class="btn btn-primary">Đăng ký hạt giống</a>
+        <a href="#register" class="btn btn-primary">Tham gia Hành trình Hạt Giống</a>
         <a href="#kit" class="btn btn-ghost">Xem trong túi có gì</a>
       </div>
     </div>
@@ -258,26 +282,48 @@
   </div>
 </header>
 
+<section class="race-recap">
+  <div class="race-recap-bg"></div>
+  <div class="race-recap-overlay"></div>
+  <div class="wrap race-recap-content">
+    <p class="race-recap-text">Hơn 11.000 runner đã cùng xuất phát sáng nay.<br>
+    Mỗi người mang về một kết quả khác nhau.<br>
+    Một người lập PR.<br>
+    Một người hoàn thành cự ly đầu tiên.<br>
+    Một người chỉ đơn giản là không bỏ cuộc.<br>
+    Nếu bạn đang đọc những dòng này, có lẽ bạn cũng mang về một hạt giống từ TKG.</p>
+    <p class="race-recap-quote">"Chúng tôi hy vọng hạt giống này sẽ tiếp tục nhắc bạn về ngày hôm nay, rất lâu sau khi cuộc đua đã kết thúc."</p>
+  </div>
+</section>
+
 <section class="section-alt">
   <div class="wrap">
     <div class="section-head">
       <div class="section-eyebrow">Hôm nay</div>
       <h2>Hôm nay bạn mang gì về nhà?</h2>
+      <p class="section-lede">Bạn mang về ba điều.</p>
     </div>
     <div class="steps">
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Một hạt giống tía tô</h3></div>
+        <div><h3>Một hạt giống</h3><p>Một khởi đầu nhỏ để gieo tại nhà.</p></div>
       </div>
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Một mã ưu đãi</h3></div>
+        <div><h3>Một lời nhắc</h3><p>Những điều tốt đẹp thường cần thời gian để lớn lên.</p></div>
       </div>
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Một lời hẹn từ TKG</h3></div>
+        <div><h3>Một kết nối</h3><p>TKG sẽ tiếp tục đồng hành cùng bạn sau ngày race.</p></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:680px;">
+    <div class="section-eyebrow">Vì sao là hạt giống</div>
+    <p class="philosophy-text">Chúng tôi có thể tặng bạn một món quà dùng một lần, nhưng chúng tôi chọn trao cho bạn một hạt giống. Vì những điều có giá trị thường không xuất hiện ngay lập tức. Một hạt giống cần thời gian để nảy mầm, một thói quen cần thời gian để hình thành, và một cơ thể khỏe mạnh cần thời gian để được nuôi dưỡng. Chúng tôi gọi cách tiếp cận đó là <strong>Naula</strong> — không phải tìm kiếm những lối tắt, mà là sự chuẩn bị đều đặn, từng ngày một.</p>
   </div>
 </section>
 
@@ -399,27 +445,27 @@
         </div>
 
         <div class="field radio-group">
-          <label>Điều gì khiến bạn dừng lại ở booth TKG hôm nay? <span class="req">*</span></label>
+          <label>Bạn quan tâm điều gì nhất sau khi chạy? <span class="req">*</span></label>
           <div class="radio-options">
             <div class="radio-option">
-              <input type="radio" id="reasonDrink" name="boothReason" value="Đồ uống thử - trial drink" required>
-              <label for="reasonDrink">Đồ uống thử - trial drink</label>
+              <input type="radio" id="focusRecovery" name="postRunFocus" value="Recovery" required>
+              <label for="focusRecovery">Recovery</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="reasonSeed" name="boothReason" value="Seed Kit" required>
-              <label for="reasonSeed">Seed Kit</label>
+              <input type="radio" id="focusNutrition" name="postRunFocus" value="Nutrition" required>
+              <label for="focusNutrition">Nutrition</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="reasonPackaging" name="boothReason" value="Bao bì - packaging" required>
-              <label for="reasonPackaging">Bao bì - packaging</label>
+              <input type="radio" id="focusSleep" name="postRunFocus" value="Sleep" required>
+              <label for="focusSleep">Sleep</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="reasonFriend" name="boothReason" value="Bạn bè giới thiệu - word of mouth" required>
-              <label for="reasonFriend">Bạn bè giới thiệu - word of mouth</label>
+              <input type="radio" id="focusStress" name="postRunFocus" value="Stress management" required>
+              <label for="focusStress">Stress management</label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="reasonOther" name="boothReason" value="Other" required>
-              <label for="reasonOther">Other</label>
+              <input type="radio" id="focusCommunity" name="postRunFocus" value="Community" required>
+              <label for="focusCommunity">Community</label>
             </div>
           </div>
         </div>
@@ -491,7 +537,7 @@
     bib: "entry.1044453477",
     receiveType: "entry.110873033",
     raceDistance: "entry.876644950",
-    boothReason: "entry.1334507065",
+    postRunFocus: "entry.1334507065",
     consentUpdates: "entry.154352735",
     consentPhotos: "entry.1394350096"
   };
@@ -514,8 +560,8 @@
     data.append(FIELD_MAP.receiveType, receiveTypeEl ? receiveTypeEl.value : "");
     const raceDistanceEl = form.querySelector('input[name="raceDistance"]:checked');
     data.append(FIELD_MAP.raceDistance, raceDistanceEl ? raceDistanceEl.value : "");
-    const boothReasonEl = form.querySelector('input[name="boothReason"]:checked');
-    data.append(FIELD_MAP.boothReason, boothReasonEl ? boothReasonEl.value : "");
+    const postRunFocusEl = form.querySelector('input[name="postRunFocus"]:checked');
+    data.append(FIELD_MAP.postRunFocus, postRunFocusEl ? postRunFocusEl.value : "");
     data.append(FIELD_MAP.consentUpdates, form.consentUpdates.checked ? "Yes" : "No");
     data.append(FIELD_MAP.consentPhotos, form.consentPhotos.checked ? "Yes" : "No");
 
