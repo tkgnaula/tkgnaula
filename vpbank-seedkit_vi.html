@@ -82,6 +82,11 @@
     font-style:normal;
     color:var(--tia-to-soft);
   }
+  .hero-thesis{
+    font-size:17px; font-style:italic; color:var(--tia-to-soft); max-width:42ch;
+    margin:0 0 24px; padding-left:16px; border-left:2px solid var(--tia-to);
+    line-height:1.6; font-weight:400;
+  }
   .hero-sub{
     font-size:18px; color:var(--paper-dim); max-width:46ch; margin:0 0 34px; font-weight:300;
   }
@@ -136,20 +141,6 @@
   .kit-item h3{font-size:18px; font-weight:600; margin:0 0 10px;}
   .kit-item p{font-size:14.5px; color:var(--paper-dim); margin:0;}
 
-  .kit-item-highlight{
-    background:linear-gradient(150deg, var(--tia-to) 0%, #5a3a63 55%, var(--brand-dark) 130%);
-  }
-  .kit-item-highlight .kit-num{color:rgba(251,251,242,0.7);}
-  .kit-item-highlight h3{color:var(--paper);}
-  .discount-pills{display:flex; gap:14px; margin:16px 0;}
-  .discount-pill{
-    background:rgba(251,251,242,0.12); border:1px solid rgba(251,251,242,0.22);
-    border-radius:12px; padding:12px 16px; text-align:center; flex:1;
-  }
-  .discount-pill strong{display:block; font-size:26px; font-weight:900; color:var(--gold); line-height:1.1;}
-  .discount-pill span{display:block; font-size:12px; color:var(--paper); margin-top:4px;}
-  .kit-item-highlight .discount-note{font-size:13px; color:rgba(251,251,242,0.75); margin:0;}
-
   .steps{counter-reset:step; display:flex; flex-direction:column;}
   .step{
     display:grid; grid-template-columns:64px 1fr; gap:22px;
@@ -201,6 +192,10 @@
   footer{padding:48px 0 60px; border-top:1px solid var(--paper-faint);}
   .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
   .footer-tag{font-size:13px; color:var(--paper-dim);}
+  .footer-social{font-size:13px;}
+  .footer-social a{color:var(--paper-dim); text-decoration:none;}
+  .footer-social a:hover{color:var(--paper);}
+  .footer-social span{opacity:0.4; margin:0 6px;}
 
   @media (max-width:640px){
     .hero-grid{grid-template-columns:1fr;}
@@ -230,7 +225,8 @@
     <div>
       <div class="eyebrow">Dành cho những runner đã mang hạt giống của TKG về nhà</div>
       <h1>Bạn vừa về đích.<br>Hạt giống này mới chỉ <em>bắt đầu.</em></h1>
-      <p class="hero-sub">Trong tay bạn là một hạt giống tía tô. TKG sẽ đồng hành cùng bạn từ ngày gieo hạt đầu tiên đến khi những chiếc lá đầu tiên xuất hiện.</p>
+      <p class="hero-thesis">Hạt giống này không phải phần thưởng.<br>Nó là lời nhắc rằng những điều tốt đẹp thường cần thời gian để lớn lên.</p>
+      <p class="hero-sub">Trong tay bạn là một hạt giống tía tô.<br>Có những hành trình kéo dài vài giờ.<br>Có những hành trình kéo dài vài tuần.<br>TKG sẽ đồng hành cùng bạn từ ngày gieo hạt đầu tiên đến khi những chiếc lá đầu tiên xuất hiện.</p>
       <div class="cta-row">
         <a href="#register" class="btn btn-primary">Đăng ký hạt giống</a>
         <a href="#kit" class="btn btn-ghost">Xem trong túi có gì</a>
@@ -265,21 +261,21 @@
 <section class="section-alt">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-eyebrow">Mang hạt giống về nhà</div>
-      <h2>Nhận Seed Kit từ TKG khi bạn:</h2>
+      <div class="section-eyebrow">Hôm nay</div>
+      <h2>Hôm nay bạn mang gì về nhà?</h2>
     </div>
-    <div class="kit-grid">
-      <div class="kit-item">
-        <h3>Về đích và ghé booth TKG</h3>
-        <p>Đội TKG có mặt tại booth suốt 3 ngày sự kiện.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>Một hạt giống tía tô</h3></div>
       </div>
-      <div class="kit-item">
-        <h3>Chụp ảnh tại booth</h3>
-        <p>Một khoảnh khắc tại booth TKG, theo cách của riêng bạn.</p>
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>Một mã ưu đãi</h3></div>
       </div>
-      <div class="kit-item">
-        <h3>Đăng bài hoặc story</h3>
-        <p>Gắn hashtag <strong>#tkgnaula</strong> và <strong>#naula</strong>, theo dõi fanpage TKG.</p>
+      <div class="step">
+        <div class="step-num"></div>
+        <div><h3>Một lời hẹn từ TKG</h3></div>
       </div>
     </div>
   </div>
@@ -296,27 +292,17 @@
       <div class="kit-item">
         <div class="kit-num">01</div>
         <h3>Hạt giống Tía Tô</h3>
-        <p>Cùng loại tía tô có trong Phú Đăng Hoả (Still Ember), qua phương pháp Naula.</p>
+        <p>Một loại cây quen thuộc trong căn bếp Việt Nam. Nếu được chăm sóc đủ lâu, những chiếc lá đầu tiên sẽ xuất hiện sau vài tuần.</p>
       </div>
       <div class="kit-item">
         <div class="kit-num">02</div>
-        <h3>Hướng dẫn gieo trồng</h3>
-        <p>Một hướng dẫn ngắn, in sẵn, về cách gieo và chăm sóc cây tía tô.</p>
+        <h3>Hành trình chăm cây</h3>
+        <p>Một hướng dẫn ngắn, in sẵn, để bắt đầu gieo trồng — và vài cập nhật từ TKG trong những tuần tới.</p>
       </div>
-      <div class="kit-item kit-item-highlight">
+      <div class="kit-item">
         <div class="kit-num">03</div>
         <h3>Mã ưu đãi TKG</h3>
-        <div class="discount-pills">
-          <div class="discount-pill">
-            <strong>5%</strong>
-            <span>Nước tươi</span>
-          </div>
-          <div class="discount-pill">
-            <strong>10%</strong>
-            <span>Định dạng bột</span>
-          </div>
-        </div>
-        <p class="discount-note">Áp dụng cho đơn hàng TKG đầu tiên. Ưu đãi riêng tại Nanaya Izakaya đang được cập nhật — TKG sẽ thông báo sớm.</p>
+        <p>Giảm 5% cho nước tươi, 10% cho định dạng bột, áp dụng cho đơn hàng đầu tiên. Ưu đãi riêng tại Nanaya Izakaya đang được cập nhật.</p>
       </div>
     </div>
   </div>
@@ -331,15 +317,15 @@
     <div class="steps">
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Đăng ký bên dưới</h3><p>Chưa đến một phút — họ tên, email, và số điện thoại nếu bạn muốn nhận cập nhật qua Zalo.</p></div>
+        <div><h3>Nhận Seed Kit</h3><p>Bạn đã nhận một hạt giống tía tô từ TKG hôm nay, tại sự kiện.</p></div>
       </div>
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Nhận mã ưu đãi</h3><p>Giảm 5% cho nước tươi, 10% cho định dạng bột — mã được gửi qua email ngay sau khi bạn đăng ký.</p></div>
+        <div><h3>Đăng ký hành trình</h3><p>Để lại thông tin bên dưới — chỉ mất chưa đến một phút.</p></div>
       </div>
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Gieo trồng và giữ liên lạc</h3><p>TKG sẽ gửi những cập nhật ngắn về cách chăm cây trong các tuần tiếp theo — và nếu bạn đồng ý, hình ảnh của bạn có thể xuất hiện trên website hoặc Instagram của TKG.</p></div>
+        <div><h3>Gieo hạt và cập nhật</h3><p>TKG sẽ đồng hành cùng bạn qua vài email ngắn trong những tuần tới.</p></div>
       </div>
     </div>
   </div>
@@ -394,13 +380,57 @@
           </div>
         </div>
 
+        <div class="field radio-group">
+          <label>Cự ly bạn đã tham gia <span class="req">*</span></label>
+          <div class="radio-options">
+            <div class="radio-option">
+              <input type="radio" id="dist5" name="raceDistance" value="5km" required>
+              <label for="dist5">5km</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="dist10" name="raceDistance" value="10km" required>
+              <label for="dist10">10km</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="dist21" name="raceDistance" value="21km" required>
+              <label for="dist21">21km</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field radio-group">
+          <label>Điều gì khiến bạn dừng lại ở booth TKG hôm nay? <span class="req">*</span></label>
+          <div class="radio-options">
+            <div class="radio-option">
+              <input type="radio" id="reasonDrink" name="boothReason" value="Đồ uống thử - trial drink" required>
+              <label for="reasonDrink">Đồ uống thử - trial drink</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="reasonSeed" name="boothReason" value="Seed Kit" required>
+              <label for="reasonSeed">Seed Kit</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="reasonPackaging" name="boothReason" value="Bao bì - packaging" required>
+              <label for="reasonPackaging">Bao bì - packaging</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="reasonFriend" name="boothReason" value="Bạn bè giới thiệu - word of mouth" required>
+              <label for="reasonFriend">Bạn bè giới thiệu - word of mouth</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="reasonOther" name="boothReason" value="Other" required>
+              <label for="reasonOther">Other</label>
+            </div>
+          </div>
+        </div>
+
         <div class="check-row">
           <input type="checkbox" id="consentUpdates" name="consentUpdates" required>
           <p><span class="req">*</span> Tôi muốn nhận cập nhật gieo trồng định kỳ và mã ưu đãi qua email.</p>
         </div>
         <div class="check-row">
           <input type="checkbox" id="consentPhotos" name="consentPhotos">
-          <p>TKG có thể sử dụng hình ảnh hoặc câu chuyện gieo trồng của tôi trên website hoặc Instagram của TKG.</p>
+          <p>Nếu tôi chủ động chia sẻ hình ảnh hoặc câu chuyện gieo trồng với TKG, TKG có thể sử dụng cho mục đích truyền thông.</p>
         </div>
 
         <div class="submit-row">
@@ -414,17 +444,10 @@
 </section>
 
 <section class="section-alt">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-eyebrow">Đừng dừng lại ở đây</div>
-      <h2>Theo dõi hành trình cùng TKG</h2>
-      <p class="section-lede">Cách nhanh nhất để thấy cập nhật mới và các hành trình hạt giống khác từ cộng đồng TKG.</p>
-    </div>
-    <div class="cta-row">
-      <a href="https://www.facebook.com/tkg.naula" class="btn btn-ghost" target="_blank" rel="noopener">Fanpage Facebook</a>
-      <a href="https://www.instagram.com/tkg.naula" class="btn btn-ghost" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tkg-naula.com" class="btn btn-ghost" target="_blank" rel="noopener">Website TKG</a>
-    </div>
+  <div class="wrap" style="text-align:center; max-width:640px;">
+    <div class="section-eyebrow" style="justify-content:center;">Khi những chiếc lá đầu tiên xuất hiện</div>
+    <h2>Hãy chụp lại một tấm hình.</h2>
+    <p class="section-lede" style="margin:0 auto;">TKG rất mong được nhìn thấy hành trình của hạt giống bạn mang về hôm nay.</p>
   </div>
 </section>
 
@@ -432,6 +455,11 @@
   <div class="wrap footer-row">
     <div class="wordmark">TKG <span>· Naula</span></div>
     <div class="footer-tag">Rooted in Vietnam. Prepared with Care.</div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/tkg.naula" target="_blank" rel="noopener">Facebook</a>
+      <span>·</span>
+      <a href="https://www.instagram.com/tkg.naula" target="_blank" rel="noopener">Instagram</a>
+    </div>
   </div>
 </footer>
 
@@ -462,6 +490,8 @@
     phone: "entry.1636732933",
     bib: "entry.1044453477",
     receiveType: "entry.110873033",
+    raceDistance: "entry.876644950",
+    boothReason: "entry.1334507065",
     consentUpdates: "entry.154352735",
     consentPhotos: "entry.1394350096"
   };
@@ -482,6 +512,10 @@
     data.append(FIELD_MAP.bib, form.bib.value);
     const receiveTypeEl = form.querySelector('input[name="receiveType"]:checked');
     data.append(FIELD_MAP.receiveType, receiveTypeEl ? receiveTypeEl.value : "");
+    const raceDistanceEl = form.querySelector('input[name="raceDistance"]:checked');
+    data.append(FIELD_MAP.raceDistance, raceDistanceEl ? raceDistanceEl.value : "");
+    const boothReasonEl = form.querySelector('input[name="boothReason"]:checked');
+    data.append(FIELD_MAP.boothReason, boothReasonEl ? boothReasonEl.value : "");
     data.append(FIELD_MAP.consentUpdates, form.consentUpdates.checked ? "Yes" : "No");
     data.append(FIELD_MAP.consentPhotos, form.consentPhotos.checked ? "Yes" : "No");
 
