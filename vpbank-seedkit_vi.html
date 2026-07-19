@@ -170,6 +170,12 @@
   .philosophy-text strong{color:var(--tia-to-soft); font-weight:600;}
 
   .kit-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--paper-faint); border:1px solid var(--paper-faint); border-radius:18px; overflow:hidden;}
+  .kit-photo{position:relative; width:100%; height:280px; margin-top:24px; border-radius:18px; overflow:hidden; border:1px solid var(--paper-faint);}
+  .kit-photo .photo-img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
+  .kit-photo .photo-fallback{
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(45deg, rgba(251,251,242,0.04) 0 12px, rgba(251,251,242,0.08) 12px 24px);
+  }
   .kit-item{background:var(--brand-dark); padding:32px 26px;}
   .kit-num{font-size:12px; color:var(--paper-dim); letter-spacing:0.1em; margin-bottom:18px;}
   .kit-item h3{font-size:18px; font-weight:600; margin:0 0 10px;}
@@ -238,6 +244,7 @@
     .form-row{grid-template-columns:1fr;}
     .form-card{padding:28px 22px;}
     .kit-grid{grid-template-columns:1fr;}
+    .kit-photo{height:200px;}
     .step{grid-template-columns:44px 1fr;}
     .philosophy-grid{grid-template-columns:1fr; min-height:auto;}
     .philosophy-photo{height:240px;}
@@ -367,8 +374,13 @@
       <div class="kit-item">
         <div class="kit-num">03</div>
         <h3>Mã ưu đãi TKG</h3>
-        <p>Giảm 5% cho nước tươi, 10% cho định dạng bột, áp dụng cho đơn hàng đầu tiên. Ưu đãi riêng tại Nanaya Izakaya đang được cập nhật.</p>
+        <p>Giảm 5% cho nước tươi, 10% cho định dạng bột, áp dụng cho đơn hàng đầu tiên. Riêng tại Nanaya Izakaya (35A Tống Hữu Định, P. An Khánh, TP.HCM): giảm 15% tổng bill khi mang mã đăng ký tại booth TKG đến, tối đa 10 khách/bill, áp dụng trong tháng 8/2026.</p>
       </div>
+    </div>
+    <div class="kit-photo">
+      <img src="nanaya.webp" alt="Nanaya Izakaya" class="photo-img"
+           onerror="this.style.display='none';">
+      <div class="photo-fallback"></div>
     </div>
   </div>
 </section>
@@ -399,8 +411,8 @@
 <section id="register">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-eyebrow">Tham gia</div>
-      <h2>Tham gia Hành Trình Hạt Giống</h2>
+      <div class="section-eyebrow">Đăng ký</div>
+      <h2>Đăng ký hạt giống của bạn</h2>
       <p class="section-lede">Số BIB dùng để tạo mã ưu đãi riêng cho bạn, nên vui lòng điền đúng số in trên áo thi đấu.</p>
     </div>
 
@@ -499,7 +511,7 @@
         </div>
 
         <div class="submit-row">
-          <button type="submit" class="btn btn-primary" id="submitBtn">Tham gia</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Đăng ký hạt giống</button>
         </div>
         <p class="form-note">TKG chỉ sử dụng thông tin này để gửi mã ưu đãi và cập nhật gieo trồng. Không spam, không chia sẻ dữ liệu.</p>
         <div class="status-msg" id="statusMsg"></div>
