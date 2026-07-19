@@ -175,6 +175,12 @@
 
   /* ---------- kit contents ---------- */
   .kit-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--paper-faint); border:1px solid var(--paper-faint); border-radius:18px; overflow:hidden;}
+  .kit-photo{position:relative; width:100%; height:280px; margin-top:24px; border-radius:18px; overflow:hidden; border:1px solid var(--paper-faint);}
+  .kit-photo .photo-img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
+  .kit-photo .photo-fallback{
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(45deg, rgba(251,251,242,0.04) 0 12px, rgba(251,251,242,0.08) 12px 24px);
+  }
   .kit-item{background:var(--brand-dark); padding:32px 26px;}
   .kit-num{font-size:12px; color:var(--paper-dim); letter-spacing:0.1em; margin-bottom:18px;}
   .kit-item h3{font-size:18px; font-weight:600; margin:0 0 10px;}
@@ -246,6 +252,7 @@
     .form-row{grid-template-columns:1fr;}
     .form-card{padding:28px 22px;}
     .kit-grid{grid-template-columns:1fr;}
+    .kit-photo{height:200px;}
     .step{grid-template-columns:44px 1fr;}
     .philosophy-grid{grid-template-columns:1fr; min-height:auto;}
     .philosophy-photo{height:240px;}
@@ -375,8 +382,13 @@
       <div class="kit-item">
         <div class="kit-num">03</div>
         <h3>TKG discount code</h3>
-        <p>5% off fresh drinks, 10% off powder, valid on your first order. A separate offer at Nanaya Izakaya is being finalized.</p>
+        <p>5% off fresh drinks, 10% off powder, valid on your first order. At Nanaya Izakaya (35A Tống Hữu Định, An Khánh Ward, Ho Chi Minh City): 15% off your total bill when you bring your TKG booth registration code, up to 10 guests per bill, valid throughout August 2026.</p>
       </div>
+    </div>
+    <div class="kit-photo">
+      <img src="nanaya.webp" alt="Nanaya Izakaya" class="photo-img"
+           onerror="this.style.display='none';">
+      <div class="photo-fallback"></div>
     </div>
   </div>
 </section>
@@ -394,7 +406,7 @@
       </div>
       <div class="step">
         <div class="step-num"></div>
-        <div><h3>Join The Seed Journey</h3><p>Leave your details below — it takes less than a minute.</p></div>
+        <div><h3>Register the journey</h3><p>Leave your details below — it takes less than a minute.</p></div>
       </div>
       <div class="step">
         <div class="step-num"></div>
@@ -407,8 +419,8 @@
 <section id="register">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-eyebrow">Join</div>
-      <h2>Join The Seed Journey</h2>
+      <div class="section-eyebrow">Register</div>
+      <h2>Register your kit</h2>
       <p class="section-lede">Your bib number is used to generate your discount code, so please enter it exactly as printed on your race bib.</p>
     </div>
 
@@ -507,7 +519,7 @@
         </div>
 
         <div class="submit-row">
-          <button type="submit" class="btn btn-primary" id="submitBtn">Join</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Register my kit</button>
         </div>
         <p class="form-note">We'll only use this information to send your discount code and growing updates. No spam, no data sharing.</p>
         <div class="status-msg" id="statusMsg"></div>
