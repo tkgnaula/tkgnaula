@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>TKG Staff · VPBank 2026</title>
+<style>
+  :root {
+    --fire: #D45E29;
+    --perilla: #74255E;
+    --gold: #F9DA85;
+    --ink: #1A1A1A;
+    --paper: #FFFFFF;
+    --paper-dim: #F7F5F0;
+    --line: #E4E0D6;
+    --good: #2E7D32;
+    --warn: #B45309;
+    --bad: #C62828;
+    font-size: 18px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Be Vietnam Pro', -apple-system, Roboto, Arial, sans-serif;
+    background: var(--paper-dim);
+    color: var(--ink);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .screen { display: none; min-height: 100vh; padding: 20px 16px 100px; }
+  .screen.active { display: block; }
+
+  h1, h2, h3 { margin: 0 0 12px; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.15rem; color: var(--perilla); }
+  p { line-height: 1.5; }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px; background: var(--ink); color: white;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .topbar .staffname { font-weight: 600; }
+  .topbar button.link {
+    background: none; border: none; color: var(--gold); font-size: 0.95rem;
+    padding: 6px; cursor: pointer;
+  }
+
+  .bignum { font-size: 3rem; text-align: center; letter-spacing: 4px; }
+
+  input[type=text], input[type=email], input[type=tel], input[type=number] {
+    width: 100%; font-size: 1.1rem; padding: 14px; border: 2px solid var(--line);
+    border-radius: 10px; margin-bottom: 12px; background: var(--paper);
+  }
+  input:focus { outline: none; border-color: var(--perilla); }
+  label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.95rem; }
+
+  button.btn {
+    display: block; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: 700;
+    border: none; border-radius: 12px; cursor: pointer; margin-bottom: 12px;
+    background: var(--fire); color: white; transition: transform .05s;
+  }
+  button.btn:active { transform: scale(0.97); }
+  button.btn.secondary { background: var(--perilla); }
+  button.btn.ghost { background: var(--paper); color: var(--ink); border: 2px solid var(--line); }
+  button.btn.big { padding: 26px; font-size: 1.25rem; }
+  button.btn:disabled { background: #ccc; color: #888; }
+
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .card {
+    background: var(--paper); border-radius: 14px; padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 14px;
+  }
+
+  .sku-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 0; border-bottom: 1px solid var(--line);
+  }
+  .sku-row:last-child { border-bottom: none; }
+  .sku-name { font-weight: 600; }
+  .sku-price { color: #666; font-size: 0.9rem; }
+  .qty-control { display: flex; align-items: center; gap: 10px; }
+  .qty-btn {
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--perilla);
+    background: white; color: var(--perilla); font-size: 1.3rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+  }
+  .qty-val { min-width: 28px; text-align: center; font-weight: 700; font-size: 1.1rem; }
+  .stock-tag {
+    font-size: 0.75rem; padding: 2px 8px; border-radius: 20px; font-weight: 600;
+  }
+  .stock-ok { background: #E8F5E9; color: var(--good); }
+  .stock-low { background: #FFF3E0; color: var(--warn); }
+  .stock-out { background: #FFEBEE; color: var(--bad); }
+
+  .total-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; background: var(--ink); color: white;
+    padding: 16px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .total-bar .amount { font-size: 1.3rem; font-weight: 700; color: var(--gold); }
+  .total-bar button { width: auto; padding: 12px 24px; margin: 0; }
+
+  .banner {
+    padding: 12px 14px; border-radius: 10px; margin-bottom: 14px; font-size: 0.95rem;
+  }
+  .banner.ok { background: #E8F5E9; color: var(--good); }
+  .banner.warn { background: #FFF3E0; color: var(--warn); }
+  .banner.bad { background: #FFEBEE; color: var(--bad); }
+
+  .qr-wrap { text-align: center; margin: 16px 0; }
+  .qr-wrap img { max-width: 280px; width: 100%; border-radius: 12px; border: 1px solid var(--line); }
+
+  .toggle-group { display: flex; gap: 8px; margin-bottom: 12px; }
+  .toggle-opt {
+    flex: 1; text-align: center; padding: 12px; border-radius: 10px; border: 2px solid var(--line);
+    background: white; cursor: pointer; font-weight: 600;
+  }
+  .toggle-opt.selected { border-color: var(--fire); background: #FDF1EA; color: var(--fire); }
+
+  .spinner {
+    border: 3px solid var(--line); border-top: 3px solid var(--fire); border-radius: 50%;
+    width: 28px; height: 28px; animation: spin 0.8s linear infinite; margin: 20px auto;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hint { color: #777; font-size: 0.85rem; margin-top: -6px; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<!-- ===================== SCREEN: PIN LOGIN ===================== -->
+<div id="screen-pin" class="screen active">
+  <div style="padding-top:15vh; max-width:340px; margin:0 auto;">
+    <h1 style="text-align:center;">TKG · VPBank Staff</h1>
+    <p style="text-align:center; color:#666;">Nhập PIN để vào ứng dụng</p>
+    <input type="tel" id="pin-input" placeholder="••••" inputmode="numeric" style="text-align:center; letter-spacing:6px; font-size:1.5rem;">
+    <button class="btn" onclick="doLogin()">Đăng nhập</button>
+    <p id="pin-error" class="banner bad" style="display:none;">Sai PIN, thử lại.</p>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: STAFF SELECT ===================== -->
+<div id="screen-staff" class="screen">
+  <div style="padding-top:10vh; max-width:340px; margin:0 auto;">
+    <h1 style="text-align:center;">Bạn là ai?</h1>
+    <div id="staff-list"></div>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: MAIN MENU ===================== -->
+<div id="screen-menu" class="screen">
+  <div class="topbar">
+    <span class="staffname" id="topbar-name">—</span>
+    <button class="link" onclick="showScreen('screen-staff')">Đổi người</button>
+  </div>
+  <div style="padding-top:16px;">
+    <h2>Tồn kho hôm nay</h2>
+    <div class="card" id="inventory-summary">Đang tải...</div>
+
+    <h2>Chọn nghiệp vụ</h2>
+    <button class="btn big" onclick="startSale()">🛒 Bán trực tiếp</button>
+    <button class="btn big secondary" onclick="startRedeem()">🌱 Redeem Seed Kit</button>
+    <button class="btn big ghost" onclick="startFallback()">✉️ Email Fallback</button>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: SALE — PRODUCTS ===================== -->
+<div id="screen-sale-products" class="screen">
+  <div class="topbar">
+    <span>Bán trực tiếp</span>
+    <button class="link" onclick="showScreen('screen-menu')">Huỷ</button>
+  </div>
+  <div style="padding-top:16px;">
+    <h2>Chọn sản phẩm</h2>
+    <div class="card" id="sku-selector"></div>
+    <button class="btn" onclick="goToCustomerInfo()">Tiếp tục</button>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: SALE — CUSTOMER INFO ===================== -->
+<div id="screen-sale-customer" class="screen">
+  <div class="topbar">
+    <span>Thông tin khách</span>
+    <button class="link" onclick="showScreen('screen-sale-products')">Quay lại</button>
+  </div>
+  <div style="padding-top:16px;">
+    <label>Họ tên *</label>
+    <input type="text" id="sale-name" placeholder="Nguyễn Văn A">
+    <label>Email *</label>
+    <input type="email" id="sale-email" placeholder="email@vidu.com">
+    <label>Số BIB *</label>
+    <input type="text" id="sale-bib" inputmode="numeric" placeholder="1234" onblur="checkBibForSale()">
+    <div id="sale-bib-info"></div>
+
+    <label>Phương thức thanh toán</label>
+    <div class="toggle-group">
+      <div class="toggle-opt selected" id="opt-transfer" onclick="selectPayMethod('transfer')">Chuyển khoản</div>
+      <div class="toggle-opt" id="opt-cash" onclick="selectPayMethod('cash')">Tiền mặt</div>
+    </div>
+
+    <button class="btn" onclick="submitSale()">Tạo đơn hàng</button>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: SALE — QR / CONFIRM ===================== -->
+<div id="screen-sale-confirm" class="screen">
+  <div class="topbar">
+    <span>Xác nhận thanh toán</span>
+    <button class="link" onclick="showScreen('screen-menu')">Đóng</button>
+  </div>
+  <div style="padding-top:16px;">
+    <div class="card" style="text-align:center;">
+      <p>Mã hoá đơn</p>
+      <div class="bignum" id="confirm-invoice-id" style="font-size:1.6rem;">—</div>
+      <p style="font-size:1.6rem; font-weight:700; color:var(--fire);" id="confirm-total">0đ</p>
+    </div>
+
+    <div id="qr-section" class="qr-wrap"></div>
+
+    <button class="btn" id="btn-confirm-payment" onclick="confirmSalePayment()">Xác nhận đã nhận tiền</button>
+    <p class="hint" style="text-align:center;">Kiểm tra thông báo ngân hàng khớp đúng nội dung/số tiền trước khi bấm xác nhận.</p>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: REDEEM SEED KIT ===================== -->
+<div id="screen-redeem" class="screen">
+  <div class="topbar">
+    <span>Redeem Seed Kit</span>
+    <button class="link" onclick="showScreen('screen-menu')">Đóng</button>
+  </div>
+  <div style="padding-top:16px;">
+    <label>Số BIB *</label>
+    <input type="text" id="redeem-bib" inputmode="numeric" placeholder="1234">
+    <button class="btn ghost" onclick="lookupRedeem()">Tra cứu</button>
+    <div id="redeem-result"></div>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: FALLBACK ===================== -->
+<div id="screen-fallback" class="screen">
+  <div class="topbar">
+    <span>Email Fallback</span>
+    <button class="link" onclick="showScreen('screen-menu')">Đóng</button>
+  </div>
+  <div style="padding-top:16px;">
+    <label>Loại</label>
+    <div class="toggle-group">
+      <div class="toggle-opt selected" id="fb-opt-voucher" onclick="selectFallbackType('Voucher Only')">Voucher</div>
+      <div class="toggle-opt" id="fb-opt-backorder" onclick="selectFallbackType('Backorder')">Đặt trước</div>
+      <div class="toggle-opt" id="fb-opt-manual" onclick="selectFallbackType('Manual Follow-up')">Khác</div>
+    </div>
+
+    <label>Họ tên *</label>
+    <input type="text" id="fb-name">
+    <label>Email *</label>
+    <input type="email" id="fb-email">
+    <label>Số BIB</label>
+    <input type="text" id="fb-bib" inputmode="numeric">
+    <label>Ghi chú (sản phẩm muốn đặt, v.v.)</label>
+    <input type="text" id="fb-notes">
+
+    <button class="btn" onclick="submitFallback()">Gửi</button>
+    <div id="fallback-result"></div>
+  </div>
+</div>
+
+<div id="total-bar-placeholder"></div>
+
+<script>
+// ====================================================================
+// CONFIG — this is the only line you need to change if you redeploy
+// the Apps Script under a new URL.
+// ====================================================================
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxn8L4vbQ6M70AbgeGOCCKyEXG6IcfW7tBcGF5HTJJxN9cP3G05DfqYQFN4qaAF0BF7/exec";
+
+// ---- state ----
+let CONFIG = null;        // { staff, prices, seedKitQuota }
+let INVENTORY = null;     // { SKU: { name, stock } }
+let currentStaff = JSON.parse(localStorage.getItem("tkg_staff") || "null");
+let saleCart = {};         // { SKU: qty }
+let salePayMethod = "transfer";
+let fallbackType = "Voucher Only";
+let currentInvoiceId = null;
+
+// ---- networking helpers ----
+// IMPORTANT: Content-Type must stay text/plain so the browser does NOT
+// send a CORS preflight (OPTIONS) request — Apps Script Web Apps can't
+// answer those. The server (doPost) still JSON.parses the body itself.
+async function apiPost(action, payload) {
+  const res = await fetch(WEB_APP_URL, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify({ action, ...payload }),
+  });
+  return res.json();
+}
+async function apiGet(action, params) {
+  const qs = new URLSearchParams({ action, ...params }).toString();
+  const res = await fetch(`${WEB_APP_URL}?${qs}`);
+  return res.json();
+}
+
+function money(n) { return Number(n || 0).toLocaleString("vi-VN") + "đ"; }
+
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  if (id === "screen-menu") refreshInventory();
+}
+
+// ---- LOGIN ----
+async function doLogin() {
+  const pin = document.getElementById("pin-input").value.trim();
+  const result = await apiPost("login", { pin });
+  if (result.ok) {
+    CONFIG = await apiGet("config", {});
+    renderStaffList();
+    if (currentStaff) {
+      document.getElementById("topbar-name").textContent = currentStaff.name;
+      showScreen("screen-menu");
+    } else {
+      showScreen("screen-staff");
+    }
+  } else {
+    document.getElementById("pin-error").style.display = "block";
+  }
+}
+
+function renderStaffList() {
+  const wrap = document.getElementById("staff-list");
+  wrap.innerHTML = "";
+  CONFIG.staff.forEach(s => {
+    const btn = document.createElement("button");
+    btn.className = "btn big ghost";
+    btn.textContent = s.name;
+    btn.onclick = () => selectStaff(s);
+    wrap.appendChild(btn);
+  });
+}
+function selectStaff(s) {
+  currentStaff = s;
+  localStorage.setItem("tkg_staff", JSON.stringify(s));
+  document.getElementById("topbar-name").textContent = s.name;
+  showScreen("screen-menu");
+}
+
+// ---- INVENTORY ----
+async function refreshInventory() {
+  INVENTORY = await apiGet("inventory", {});
+  const wrap = document.getElementById("inventory-summary");
+  wrap.innerHTML = Object.entries(INVENTORY).map(([sku, info]) => {
+    const cls = info.stock <= 0 ? "stock-out" : (info.stock <= 10 ? "stock-low" : "stock-ok");
+    return `<div class="sku-row"><span class="sku-name">${info.name}</span><span class="stock-tag ${cls}">${info.stock} còn lại</span></div>`;
+  }).join("");
+}
+// Auto-refresh every 12s while on the menu screen.
+setInterval(() => {
+  if (document.getElementById("screen-menu").classList.contains("active")) refreshInventory();
+}, 12000);
+
+// ---- SALE FLOW ----
+function startSale() {
+  saleCart = {};
+  renderSkuSelector();
+  showScreen("screen-sale-products");
+}
+function renderSkuSelector() {
+  const wrap = document.getElementById("sku-selector");
+  wrap.innerHTML = "";
+  Object.entries(INVENTORY).forEach(([sku, info]) => {
+    const qty = saleCart[sku] || 0;
+    const row = document.createElement("div");
+    row.className = "sku-row";
+    row.innerHTML = `
+      <div>
+        <div class="sku-name">${info.name}</div>
+        <div class="sku-price">${money(CONFIG.prices[sku])} · ${info.stock} còn</div>
+      </div>
+      <div class="qty-control">
+        <div class="qty-btn" onclick="changeQty('${sku}', -1)">–</div>
+        <div class="qty-val" id="qty-${sku}">${qty}</div>
+        <div class="qty-btn" onclick="changeQty('${sku}', 1)">+</div>
+      </div>`;
+    wrap.appendChild(row);
+  });
+}
+function changeQty(sku, delta) {
+  const current = saleCart[sku] || 0;
+  const stock = INVENTORY[sku].stock;
+  const next = Math.max(0, current + delta);
+  if (next > stock) return; // don't allow overselling
+  saleCart[sku] = next;
+  document.getElementById(`qty-${sku}`).textContent = next;
+}
+function cartTotal() {
+  return Object.entries(saleCart).reduce((sum, [sku, qty]) => sum + qty * CONFIG.prices[sku], 0);
+}
+function goToCustomerInfo() {
+  const hasItems = Object.values(saleCart).some(q => q > 0);
+  if (!hasItems) { alert("Chọn ít nhất 1 sản phẩm."); return; }
+  showScreen("screen-sale-customer");
+}
+
+async function checkBibForSale() {
+  const bib = document.getElementById("sale-bib").value.trim();
+  const infoBox = document.getElementById("sale-bib-info");
+  if (!bib) { infoBox.innerHTML = ""; return; }
+  const result = await apiGet("lookupBib", { bib });
+  if (result.found) {
+    document.getElementById("sale-name").value = result.name || "";
+    document.getElementById("sale-email").value = result.email || "";
+    infoBox.innerHTML = `<div class="banner ok">Đã tìm thấy: ${result.name}${result.alreadyRedeemedSeedKit ? " · Đã nhận Seed Kit" : ""}</div>`;
+  } else {
+    infoBox.innerHTML = `<div class="banner warn">Chưa có trong danh sách đăng ký — nhập tay thông tin bên dưới.</div>`;
+  }
+}
+
+function selectPayMethod(method) {
+  salePayMethod = method;
+  document.getElementById("opt-transfer").classList.toggle("selected", method === "transfer");
+  document.getElementById("opt-cash").classList.toggle("selected", method === "cash");
+}
+
+async function submitSale() {
+  const fullName = document.getElementById("sale-name").value.trim();
+  const email = document.getElementById("sale-email").value.trim();
+  const bib = document.getElementById("sale-bib").value.trim();
+  if (!fullName || !email || !bib) { alert("Điền đủ Họ tên, Email, Số BIB."); return; }
+
+  const items = Object.entries(saleCart).filter(([, q]) => q > 0).map(([sku, qty]) => ({
+    sku, qty, unitPrice: CONFIG.prices[sku],
+  }));
+
+  const payload = { staffId: currentStaff.id, staffName: currentStaff.name, fullName, email, bib, items };
+
+  if (salePayMethod === "cash") {
+    const result = await apiPost("cashSale", payload);
+    currentInvoiceId = result.invoiceId;
+    document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
+    document.getElementById("confirm-total").textContent = money(cartTotal());
+    document.getElementById("qr-section").innerHTML = `<div class="banner ok">Đã thanh toán tiền mặt — email hoá đơn đã gửi.</div>`;
+    document.getElementById("btn-confirm-payment").style.display = "none";
+    showScreen("screen-sale-confirm");
+  } else {
+    const result = await apiPost("createPayment", payload);
+    currentInvoiceId = result.invoiceId;
+    document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
+    document.getElementById("confirm-total").textContent = money(result.total);
+    document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
+    document.getElementById("btn-confirm-payment").style.display = "block";
+    showScreen("screen-sale-confirm");
+  }
+}
+
+async function confirmSalePayment() {
+  const btn = document.getElementById("btn-confirm-payment");
+  btn.disabled = true; btn.textContent = "Đang xử lý...";
+  const result = await apiPost("confirmPayment", { invoiceId: currentInvoiceId });
+  if (result.ok) {
+    document.getElementById("qr-section").innerHTML = `<div class="banner ok">Đã xác nhận — email hoá đơn đã gửi.</div>`;
+    btn.style.display = "none";
+  } else {
+    btn.disabled = false; btn.textContent = "Xác nhận đã nhận tiền";
+    alert("Lỗi: " + (result.error || "không xác nhận được, thử lại."));
+  }
+}
+
+// ---- REDEEM SEED KIT ----
+function startRedeem() {
+  document.getElementById("redeem-bib").value = "";
+  document.getElementById("redeem-result").innerHTML = "";
+  showScreen("screen-redeem");
+}
+async function lookupRedeem() {
+  const bib = document.getElementById("redeem-bib").value.trim();
+  const resultBox = document.getElementById("redeem-result");
+  if (!bib) return;
+  resultBox.innerHTML = `<div class="spinner"></div>`;
+
+  const lookup = await apiGet("lookupBib", { bib });
+  if (!lookup.found) {
+    resultBox.innerHTML = `<div class="banner warn">BIB chưa đăng ký trên landing page. Mời khách quét QR đăng ký trước, hoặc dùng Email Fallback.</div>`;
+    return;
+  }
+  if (lookup.alreadyRedeemedSeedKit) {
+    resultBox.innerHTML = `<div class="banner bad">BIB ${bib} đã redeem Seed Kit rồi.</div>`;
+    return;
+  }
+
+  resultBox.innerHTML = `
+    <div class="card">
+      <p><strong>${lookup.name}</strong><br>${lookup.email}</p>
+      <button class="btn secondary" onclick="doRedeem('${bib}')">Đã phát Seed Kit</button>
+    </div>`;
+}
+async function doRedeem(bib) {
+  const result = await apiPost("redeemSeedKit", { bib, staffId: currentStaff.id, staffName: currentStaff.name });
+  const resultBox = document.getElementById("redeem-result");
+  if (result.ok) {
+    resultBox.innerHTML = `<div class="banner ok">Đã ghi nhận. Còn lại ${result.remaining}/${CONFIG.seedKitQuota} seed kit.</div>`;
+  } else if (result.reason === "OUT_OF_STOCK") {
+    resultBox.innerHTML = `<div class="banner bad">Đã hết Seed Kit (đủ ${CONFIG.seedKitQuota}). Dùng Email Fallback cho khách này.</div>`;
+  } else if (result.reason === "ALREADY_REDEEMED") {
+    resultBox.innerHTML = `<div class="banner bad">BIB này đã redeem rồi.</div>`;
+  }
+}
+
+// ---- FALLBACK ----
+function startFallback() {
+  ["fb-name", "fb-email", "fb-bib", "fb-notes"].forEach(id => document.getElementById(id).value = "");
+  document.getElementById("fallback-result").innerHTML = "";
+  selectFallbackType("Voucher Only");
+  showScreen("screen-fallback");
+}
+function selectFallbackType(type) {
+  fallbackType = type;
+  document.getElementById("fb-opt-voucher").classList.toggle("selected", type === "Voucher Only");
+  document.getElementById("fb-opt-backorder").classList.toggle("selected", type === "Backorder");
+  document.getElementById("fb-opt-manual").classList.toggle("selected", type === "Manual Follow-up");
+}
+async function submitFallback() {
+  const fullName = document.getElementById("fb-name").value.trim();
+  const email = document.getElementById("fb-email").value.trim();
+  const bib = document.getElementById("fb-bib").value.trim();
+  const notes = document.getElementById("fb-notes").value.trim();
+  if (!fullName || !email) { alert("Điền đủ Họ tên và Email."); return; }
+
+  const result = await apiPost("fallbackEntry", {
+    fullName, email, bib, notes, type: fallbackType, staffId: currentStaff.id,
+  });
+  document.getElementById("fallback-result").innerHTML =
+    `<div class="banner ok">Đã gửi${result.voucherCode ? " — mã: " + result.voucherCode : ""}.</div>`;
+}
+
+// ---- init ----
+window.onload = () => {
+  if (currentStaff) {
+    document.getElementById("topbar-name").textContent = currentStaff.name;
+  }
+};
+</script>
+</body>
+</html>
