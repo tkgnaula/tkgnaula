@@ -5,23 +5,41 @@
 <title>TKG</title>
 <style>
   body{background:#12110B;color:#F9DA85;font-family:'Be Vietnam Pro',sans-serif;
-       display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+       display:flex;flex-direction:column;align-items:center;justify-content:center;
+       height:100vh;margin:0;text-align:center;padding:0 20px;box-sizing:border-box}
+  #status{font-size:14px;color:#999;margin-top:16px;max-width:320px}
+  #cont{margin-top:20px;color:#F9DA85;text-decoration:underline;font-size:14px}
 </style>
 </head>
 <body>
-<div>TKG</div>
+<div style="font-size:28px">TKG</div>
+<div id="status">Đang ghi nhận...</div>
+<a id="cont" href="https://www.tkg-naula.com/" style="display:none">Tiếp tục vào trang chủ →</a>
 <script>
-  var redirected = false;
-  function goHome() {
-    if (redirected) return;
-    redirected = true;
-    window.location.replace('https://www.tkg-naula.com/');
+  var done = false;
+  var statusEl = document.getElementById('status');
+  var contEl = document.getElementById('cont');
+
+  function goHome(reason) {
+    if (done) return;
+    done = true;
+    statusEl.textContent = 'Trạng thái: ' + reason;
+    contEl.style.display = 'inline-block';
+    setTimeout(function(){
+      window.location.replace('https://www.tkg-naula.com/');
+    }, 3000);
   }
+
+  var trackURL = 'https://script.google.com/macros/s/AKfycbzom2-WCBtBWH2x0k0PSw1p076_-2B8SS812HG4GdgX_VhDCO-Bt-FwljhStEfFu7pB/exec?src=booth&t=' + Date.now();
+
   var tracker = new Image();
-  tracker.onload = goHome;
-  tracker.onerror = goHome;
-  tracker.src = 'https://script.google.com/macros/s/AKfycbzom2-WCBtBWH2x0k0PSw1p076_-2B8SS812HG4GdgX_VhDCO-Bt-FwljhStEfFu7pB/exec?src=booth&t=' + Date.now();
-  setTimeout(goHome, 1500); // fallback, phòng khi onload/onerror không kích hoạt
+  tracker.onload = function(){ goHome('OK (image loaded)'); };
+  tracker.onerror = function(){ goHome('image onerror (bình thường nếu response không phải ảnh)'); };
+  tracker.src = trackURL;
+
+  setTimeout(function(){
+    goHome('timeout - không có phản hồi (có thể bị chặn)');
+  }, 4000);
 </script>
 </body>
 </html>
