@@ -11,8 +11,17 @@
 <body>
 <div>TKG</div>
 <script>
-  navigator.sendBeacon('https://script.google.com/macros/s/AKfycbzom2-WCBtBWH2x0k0PSw1p076_-2B8SS812HG4GdgX_VhDCO-Bt-FwljhStEfFu7pB/exec?src=booth');
-  window.location.replace('https://www.tkg-naula.com/');
+  var redirected = false;
+  function goHome() {
+    if (redirected) return;
+    redirected = true;
+    window.location.replace('https://www.tkg-naula.com/');
+  }
+  var tracker = new Image();
+  tracker.onload = goHome;
+  tracker.onerror = goHome;
+  tracker.src = 'https://script.google.com/macros/s/AKfycbzom2-WCBtBWH2x0k0PSw1p076_-2B8SS812HG4GdgX_VhDCO-Bt-FwljhStEfFu7pB/exec?src=booth&t=' + Date.now();
+  setTimeout(goHome, 1500); // fallback, phòng khi onload/onerror không kích hoạt
 </script>
 </body>
 </html>
