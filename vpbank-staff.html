@@ -158,8 +158,8 @@
 
     <h2>Chọn nghiệp vụ</h2>
     <button class="btn big" onclick="startSale()">🛒 Bán trực tiếp</button>
-    <button class="btn big secondary" onclick="startRedeem()">🌱 Redeem Seed Kit</button>
-    <button class="btn big ghost" onclick="startFallback()">✉️ Email Fallback</button>
+    <button class="btn big secondary" onclick="startRedeem()">🌱 Phát Seed Kit</button>
+    <button class="btn big ghost" onclick="startFallback()">✉️ Gửi mã ưu đãi</button>
   </div>
 </div>
 
@@ -224,7 +224,7 @@
 <!-- ===================== SCREEN: REDEEM SEED KIT ===================== -->
 <div id="screen-redeem" class="screen">
   <div class="topbar">
-    <span>Redeem Seed Kit</span>
+    <span>Phát Seed Kit</span>
     <button class="link" onclick="showScreen('screen-menu')">Đóng</button>
   </div>
   <div style="padding-top:16px;">
@@ -238,13 +238,13 @@
 <!-- ===================== SCREEN: FALLBACK ===================== -->
 <div id="screen-fallback" class="screen">
   <div class="topbar">
-    <span>Email Fallback</span>
+    <span>Gửi mã ưu đãi</span>
     <button class="link" onclick="showScreen('screen-menu')">Đóng</button>
   </div>
   <div style="padding-top:16px;">
     <label>Loại</label>
     <div class="toggle-group">
-      <div class="toggle-opt selected" id="fb-opt-voucher" onclick="selectFallbackType('Voucher Only')">Voucher</div>
+      <div class="toggle-opt selected" id="fb-opt-voucher" onclick="selectFallbackType('Voucher Only')">Chỉ mã ưu đãi</div>
       <div class="toggle-opt" id="fb-opt-backorder" onclick="selectFallbackType('Backorder')">Đặt trước</div>
       <div class="toggle-opt" id="fb-opt-manual" onclick="selectFallbackType('Manual Follow-up')">Khác</div>
     </div>
