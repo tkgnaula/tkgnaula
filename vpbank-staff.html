@@ -309,10 +309,18 @@ function showScreen(id) {
 
 // ---- LOGIN ----
 async function doLogin() {
+  const btn = event.target;
+  btn.disabled = true; btn.textContent = "Đang kiểm tra...";
+  document.getElementById("pin-error").style.display = "none";
+
   const pin = document.getElementById("pin-input").value.trim();
   const result = await apiPost("login", { pin });
+
+  btn.disabled = false; btn.textContent = "Đăng nhập";
+
   if (result.ok) {
-    CONFIG = await apiGet("config", {});
+    // Login now returns staff/prices/quota directly — no second call needed.
+    CONFIG = { staff: result.staff, prices: result.prices, seedKitQuota: result.seedKitQuota };
     renderStaffList();
     if (currentStaff) {
       document.getElementById("topbar-name").textContent = currentStaff.name;
@@ -536,6 +544,10 @@ window.onload = () => {
   if (currentStaff) {
     document.getElementById("topbar-name").textContent = currentStaff.name;
   }
+  // Fire a throwaway request immediately so Apps Script "wakes up" while
+  // the staff member is still typing their PIN, instead of the cold
+  // start delay landing on the actual login tap.
+  apiGet("inventory", {}).catch(() => {});
 };
 </script>
 </body>
