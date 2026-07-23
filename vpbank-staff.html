@@ -273,9 +273,6 @@
       <p>Khách đã follow Facebook hoặc Instagram của TKG.</p>
     </div>
 
-    <label>Seed Kit ID (nếu có quét mã trên hộp)</label>
-    <input type="text" id="redeem-seedid" placeholder="TKG-001">
-
     <button class="btn secondary" onclick="doRedeem()">Đã phát Seed Kit</button>
     <div id="redeem-result"></div>
   </div>
@@ -616,7 +613,7 @@ async function confirmSalePayment() {
 
 // ---- 🌱 STANDALONE SEED KIT ----
 function startRedeem() {
-  ["redeem-name", "redeem-email", "redeem-zalo", "redeem-seedid"].forEach(id => document.getElementById(id).value = "");
+  ["redeem-name", "redeem-email", "redeem-zalo"].forEach(id => document.getElementById(id).value = "");
   document.getElementById("redeem-followed").checked = false;
   document.getElementById("redeem-result").innerHTML = "";
   document.getElementById("redeem-zalo-info").innerHTML = "";
@@ -642,7 +639,6 @@ async function doRedeem() {
   const email = document.getElementById("redeem-email").value.trim();
   const zalo = document.getElementById("redeem-zalo").value.trim();
   const followed = document.getElementById("redeem-followed").checked;
-  const seedId = document.getElementById("redeem-seedid").value.trim();
   const resultBox = document.getElementById("redeem-result");
 
   if (!fullName || !email || !zalo) { alert("Điền đủ Họ tên, Email, SĐT/Zalo."); return; }
@@ -650,7 +646,7 @@ async function doRedeem() {
 
   resultBox.innerHTML = `<div class="spinner"></div>`;
   const result = await apiPost("redeemSeedKit", {
-    zalo, fullName, email, followed, seedId,
+    zalo, fullName, email, followed,
     staffId: currentStaff.id, staffName: currentStaff.name,
   });
 
