@@ -467,9 +467,20 @@ async function submitSale() {
     document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
     document.getElementById("confirm-total").textContent = money(result.total);
     document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
-    document.getElementById("btn-confirm-payment").style.display = "block";
+    resetConfirmButton();
     showScreen("screen-sale-confirm");
   }
+}
+
+// Resets the "Xác nhận đã nhận tiền" button to a clean, clickable state.
+// This button is reused across every transaction (never recreated), so
+// without this reset it stays stuck disabled/"Đang xử lý..." from the
+// previous sale — the exact bug where back-to-back sales locked up.
+function resetConfirmButton() {
+  const btn = document.getElementById("btn-confirm-payment");
+  btn.disabled = false;
+  btn.textContent = "Xác nhận đã nhận tiền";
+  btn.style.display = "block";
 }
 
 async function confirmSalePayment() {
@@ -619,7 +630,7 @@ async function submitBackorder() {
   document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
   document.getElementById("confirm-total").textContent = money(result.total);
   document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
-  document.getElementById("btn-confirm-payment").style.display = "block";
+  resetConfirmButton();
   showScreen("screen-sale-confirm");
 }
 
