@@ -280,7 +280,7 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">For runners who brought a TKG seed home</div>
+      <div class="eyebrow" id="heroEyebrow">For runners who brought a TKG seed home</div>
       <h1>You crossed the finish line.<br>This seed is just <em>getting started.</em></h1>
       <p class="hero-sub">Today, you completed a race. Some journeys last a few hours, while others take weeks or even months. The seed in your hand is a reminder that good things take time to grow. Join The Seed Journey to unlock planting guides, stories of the Perilla plant, and exclusive invitations to upcoming TKG community activities in the weeks ahead.</p>
       <div class="cta-row">
@@ -424,7 +424,7 @@
     <div class="section-head">
       <div class="section-eyebrow">Register</div>
       <h2>Register your kit</h2>
-      <p class="section-lede">Your bib number is used to generate your discount code, so please enter it exactly as printed on your race bib.</p>
+      <p class="section-lede">Your Zalo number is used to generate your discount code, so please enter the number you actively use.</p>
     </div>
 
     <div class="form-card">
@@ -441,12 +441,12 @@
         </div>
         <div class="form-row">
           <div class="field">
-            <label for="phone">Phone / Zalo</label>
-            <input type="tel" id="phone" name="phone" placeholder="09xx xxx xxx">
+            <label for="phone">Zalo number <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="09xx xxx xxx" required>
           </div>
-          <div class="field">
-            <label for="bib">Bib number <span class="req">*</span></label>
-            <input type="text" id="bib" name="bib" placeholder="e.g. 1023" required>
+          <div class="field" id="seedIdField" style="display:none;">
+            <label for="seedId">Seed Kit ID</label>
+            <input type="text" id="seedId" name="seedId" readonly>
           </div>
         </div>
 
@@ -580,7 +580,7 @@
     fullName: "entry.397760040",
     email: "entry.284471329",
     phone: "entry.1636732933",
-    bib: "entry.1044453477",
+    seedId: "entry.REPLACE_WITH_SEEDID_ENTRY_ID", // TODO: add a "Seed Kit ID" field to the Google Form, then replace this entry ID
     receiveType: "entry.110873033",
     raceDistance: "entry.876644950",
     postRunFocus: "entry.1334507065",
@@ -592,6 +592,18 @@
   const statusMsg = document.getElementById('statusMsg');
   const submitBtn = document.getElementById('submitBtn');
 
+  // ---- READ SEED ID FROM URL (?id=TKG001) ----
+  const urlParams = new URLSearchParams(window.location.search);
+  const seedIdFromUrl = urlParams.get('id');
+  if (seedIdFromUrl) {
+    const seedIdField = document.getElementById('seedIdField');
+    const seedIdInput = document.getElementById('seedId');
+    seedIdField.style.display = '';
+    seedIdInput.value = seedIdFromUrl;
+    const heroEyebrow = document.getElementById('heroEyebrow');
+    heroEyebrow.textContent = `Seed Kit #${seedIdFromUrl.replace(/^TKG-?/i, '')} · Welcome`;
+  }
+
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     submitBtn.disabled = true;
@@ -601,7 +613,7 @@
     data.append(FIELD_MAP.fullName, form.fullName.value);
     data.append(FIELD_MAP.email, form.email.value);
     data.append(FIELD_MAP.phone, form.phone.value);
-    data.append(FIELD_MAP.bib, form.bib.value);
+    data.append(FIELD_MAP.seedId, form.seedId.value || "");
     const receiveTypeEl = form.querySelector('input[name="receiveType"]:checked');
     data.append(FIELD_MAP.receiveType, receiveTypeEl ? receiveTypeEl.value : "");
     const raceDistanceEl = form.querySelector('input[name="raceDistance"]:checked');
