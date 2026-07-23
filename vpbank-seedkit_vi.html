@@ -272,7 +272,7 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">Dành cho những runner đã mang hạt giống của TKG về nhà</div>
+      <div class="eyebrow" id="heroEyebrow">Dành cho những runner đã mang hạt giống của TKG về nhà</div>
       <h1>Bạn vừa về đích.<br>Hạt giống này mới chỉ <em>bắt đầu.</em></h1>
       <p class="hero-sub">Hôm nay bạn đã hoàn thành một cuộc đua. Có những hành trình kéo dài vài giờ, nhưng cũng có những hành trình kéo dài nhiều tuần hoặc nhiều tháng. Hạt giống trong tay bạn là lời nhắc rằng những điều tốt đẹp thường cần thời gian để lớn lên. Hãy tham gia Hành Trình Hạt Giống để nhận hướng dẫn gieo trồng, những câu chuyện về cây tía tô và lời mời tham gia các hoạt động tiếp theo của cộng đồng TKG trong những tuần tới.</p>
       <div class="cta-row">
@@ -416,7 +416,7 @@
     <div class="section-head">
       <div class="section-eyebrow">Đăng ký</div>
       <h2>Đăng ký hạt giống của bạn</h2>
-      <p class="section-lede">Số BIB dùng để tạo mã ưu đãi riêng cho bạn, nên vui lòng điền đúng số in trên áo thi đấu.</p>
+      <p class="section-lede">Số Zalo dùng để tạo mã ưu đãi riêng cho bạn, nên vui lòng điền đúng số bạn đang sử dụng.</p>
     </div>
 
     <div class="form-card">
@@ -433,12 +433,12 @@
         </div>
         <div class="form-row">
           <div class="field">
-            <label for="phone">Số điện thoại / Zalo</label>
-            <input type="tel" id="phone" name="phone" placeholder="09xx xxx xxx">
+            <label for="phone">Số Zalo <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="09xx xxx xxx" required>
           </div>
-          <div class="field">
-            <label for="bib">Số BIB <span class="req">*</span></label>
-            <input type="text" id="bib" name="bib" placeholder="VD: 1023" required>
+          <div class="field" id="seedIdField" style="display:none;">
+            <label for="seedId">Mã Seed Kit</label>
+            <input type="text" id="seedId" name="seedId" readonly>
           </div>
         </div>
 
@@ -571,7 +571,7 @@
     fullName: "entry.397760040",
     email: "entry.284471329",
     phone: "entry.1636732933",
-    bib: "entry.1044453477",
+    seedId: "entry.REPLACE_WITH_SEEDID_ENTRY_ID", // TODO: thêm field "Seed Kit ID" vào Google Form rồi thay entry ID này
     receiveType: "entry.110873033",
     raceDistance: "entry.876644950",
     postRunFocus: "entry.1334507065",
@@ -583,6 +583,18 @@
   const statusMsg = document.getElementById('statusMsg');
   const submitBtn = document.getElementById('submitBtn');
 
+  // ---- ĐỌC SEED ID TỪ URL (?id=TKG001) ----
+  const urlParams = new URLSearchParams(window.location.search);
+  const seedIdFromUrl = urlParams.get('id');
+  if (seedIdFromUrl) {
+    const seedIdField = document.getElementById('seedIdField');
+    const seedIdInput = document.getElementById('seedId');
+    seedIdField.style.display = '';
+    seedIdInput.value = seedIdFromUrl;
+    const heroEyebrow = document.getElementById('heroEyebrow');
+    heroEyebrow.textContent = `Seed Kit #${seedIdFromUrl.replace(/^TKG-?/i, '')} · Chào mừng bạn`;
+  }
+
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     submitBtn.disabled = true;
@@ -592,7 +604,7 @@
     data.append(FIELD_MAP.fullName, form.fullName.value);
     data.append(FIELD_MAP.email, form.email.value);
     data.append(FIELD_MAP.phone, form.phone.value);
-    data.append(FIELD_MAP.bib, form.bib.value);
+    data.append(FIELD_MAP.seedId, form.seedId.value || "");
     const receiveTypeEl = form.querySelector('input[name="receiveType"]:checked');
     data.append(FIELD_MAP.receiveType, receiveTypeEl ? receiveTypeEl.value : "");
     const raceDistanceEl = form.querySelector('input[name="raceDistance"]:checked');
