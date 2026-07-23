@@ -255,10 +255,22 @@
     <input type="email" id="fb-email">
     <label>Số BIB</label>
     <input type="text" id="fb-bib" inputmode="numeric">
-    <label>Ghi chú (sản phẩm muốn đặt, v.v.)</label>
-    <input type="text" id="fb-notes">
 
-    <button class="btn" onclick="submitFallback()">Gửi</button>
+    <div id="fb-notes-wrap">
+      <label>Ghi chú</label>
+      <input type="text" id="fb-notes">
+    </div>
+
+    <div id="fb-backorder-wrap" style="display:none;">
+      <label>Chọn sản phẩm đặt trước</label>
+      <div class="card" id="backorder-sku-selector"></div>
+      <label>Số điện thoại nhận hàng *</label>
+      <input type="tel" id="fb-delivery-phone" inputmode="tel" placeholder="09xxxxxxxx">
+      <label>Địa chỉ nhận hàng *</label>
+      <input type="text" id="fb-delivery-address" placeholder="Số nhà, đường, phường, thành phố">
+    </div>
+
+    <button class="btn" id="fb-submit-btn" onclick="submitFallback()">Gửi</button>
     <div id="fallback-result"></div>
   </div>
 </div>
@@ -278,6 +290,7 @@ let INVENTORY = null;     // { SKU: { name, stock } }
 let currentStaff = JSON.parse(localStorage.getItem("tkg_staff") || "null");
 let saleCart = {};         // { SKU: qty }
 let salePayMethod = "transfer";
+let backorderCart = {};    // { SKU: qty } — separate from saleCart, no stock cap
 let fallbackType = "Voucher Only";
 let currentInvoiceId = null;
 
@@ -514,8 +527,9 @@ async function doRedeem(bib) {
 
 // ---- FALLBACK ----
 function startFallback() {
-  ["fb-name", "fb-email", "fb-bib", "fb-notes"].forEach(id => document.getElementById(id).value = "");
+  ["fb-name", "fb-email", "fb-bib", "fb-notes", "fb-delivery-phone", "fb-delivery-address"].forEach(id => document.getElementById(id).value = "");
   document.getElementById("fallback-result").innerHTML = "";
+  backorderCart = {};
   selectFallbackType("Voucher Only");
   showScreen("screen-fallback");
 }
@@ -524,8 +538,47 @@ function selectFallbackType(type) {
   document.getElementById("fb-opt-voucher").classList.toggle("selected", type === "Voucher Only");
   document.getElementById("fb-opt-backorder").classList.toggle("selected", type === "Backorder");
   document.getElementById("fb-opt-manual").classList.toggle("selected", type === "Manual Follow-up");
+
+  const isBackorder = type === "Backorder";
+  document.getElementById("fb-notes-wrap").style.display = isBackorder ? "none" : "block";
+  document.getElementById("fb-backorder-wrap").style.display = isBackorder ? "block" : "none";
+  document.getElementById("fb-submit-btn").textContent = isBackorder ? "Tạo thanh toán trước" : "Gửi";
+
+  if (isBackorder) renderBackorderSkuSelector();
 }
+
+// Same layout as the direct-sale SKU picker, but WITHOUT the stock cap —
+// this is a pre-order for something not currently on hand at the booth,
+// so there's no stock number to cap against.
+function renderBackorderSkuSelector() {
+  const wrap = document.getElementById("backorder-sku-selector");
+  wrap.innerHTML = "";
+  Object.entries(INVENTORY).forEach(([sku, info]) => {
+    const qty = backorderCart[sku] || 0;
+    const row = document.createElement("div");
+    row.className = "sku-row";
+    row.innerHTML = `
+      <div>
+        <div class="sku-name">${info.name}</div>
+        <div class="sku-price">${money(CONFIG.prices[sku])}</div>
+      </div>
+      <div class="qty-control">
+        <div class="qty-btn" onclick="changeBackorderQty('${sku}', -1)">–</div>
+        <div class="qty-val" id="bo-qty-${sku}">${qty}</div>
+        <div class="qty-btn" onclick="changeBackorderQty('${sku}', 1)">+</div>
+      </div>`;
+    wrap.appendChild(row);
+  });
+}
+function changeBackorderQty(sku, delta) {
+  const next = Math.max(0, (backorderCart[sku] || 0) + delta);
+  backorderCart[sku] = next;
+  document.getElementById(`bo-qty-${sku}`).textContent = next;
+}
+
 async function submitFallback() {
+  if (fallbackType === "Backorder") { await submitBackorder(); return; }
+
   const fullName = document.getElementById("fb-name").value.trim();
   const email = document.getElementById("fb-email").value.trim();
   const bib = document.getElementById("fb-bib").value.trim();
@@ -537,6 +590,37 @@ async function submitFallback() {
   });
   document.getElementById("fallback-result").innerHTML =
     `<div class="banner ok">Đã gửi${result.voucherCode ? " — mã: " + result.voucherCode : ""}.</div>`;
+}
+
+// Đặt trước = paid upfront via VietQR, same engine as a direct sale but
+// tagged orderType: "Backorder" so the backend skips inventory and sends
+// the pre-order confirmation email (with the 5-day fulfillment note)
+// instead of the regular invoice email.
+async function submitBackorder() {
+  const fullName = document.getElementById("fb-name").value.trim();
+  const email = document.getElementById("fb-email").value.trim();
+  const bib = document.getElementById("fb-bib").value.trim();
+  const deliveryPhone = document.getElementById("fb-delivery-phone").value.trim();
+  const deliveryAddress = document.getElementById("fb-delivery-address").value.trim();
+  if (!fullName || !email || !bib) { alert("Điền đủ Họ tên, Email, Số BIB."); return; }
+  if (!deliveryPhone || !deliveryAddress) { alert("Điền đủ Số điện thoại và Địa chỉ nhận hàng."); return; }
+
+  const items = Object.entries(backorderCart).filter(([, q]) => q > 0).map(([sku, qty]) => ({
+    sku, qty, unitPrice: CONFIG.prices[sku],
+  }));
+  if (items.length === 0) { alert("Chọn ít nhất 1 sản phẩm."); return; }
+
+  const payload = {
+    staffId: currentStaff.id, staffName: currentStaff.name, fullName, email, bib, items,
+    orderType: "Backorder", deliveryPhone, deliveryAddress,
+  };
+  const result = await apiPost("createPayment", payload);
+  currentInvoiceId = result.invoiceId;
+  document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
+  document.getElementById("confirm-total").textContent = money(result.total);
+  document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
+  document.getElementById("btn-confirm-payment").style.display = "block";
+  showScreen("screen-sale-confirm");
 }
 
 // ---- init ----
