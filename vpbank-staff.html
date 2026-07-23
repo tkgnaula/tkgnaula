@@ -62,7 +62,7 @@
   button.btn:active { transform: scale(0.97); }
   button.btn.secondary { background: var(--perilla); }
   button.btn.ghost { background: var(--paper); color: var(--ink); border: 2px solid var(--line); }
-  button.btn.big { padding: 26px; font-size: 1.25rem; }
+  button.btn.big { padding: 22px; font-size: 1.15rem; text-align: left; }
   button.btn:disabled { background: #ccc; color: #888; }
 
   .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
@@ -116,6 +116,12 @@
   }
   .toggle-opt.selected { border-color: var(--fire); background: #FDF1EA; color: var(--fire); }
 
+  .check-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 14px; }
+  .check-row input { margin-top: 4px; width: 20px; height: 20px; accent-color: var(--fire); }
+  .check-row p { margin: 0; font-size: 0.95rem; }
+
+  .menu-desc { font-size: 0.85rem; color: #666; margin-top: 4px; font-weight: 400; }
+
   .spinner {
     border: 3px solid var(--line); border-top: 3px solid var(--fire); border-radius: 50%;
     width: 28px; height: 28px; animation: spin 0.8s linear infinite; margin: 20px auto;
@@ -155,18 +161,28 @@
   <div style="padding-top:16px;">
     <h2>Tồn kho hôm nay</h2>
     <div class="card" id="inventory-summary">Đang tải...</div>
+    <div class="card" id="seedkit-summary" style="text-align:center; font-weight:600;">Đang tải Seed Kit...</div>
 
-    <h2>Chọn nghiệp vụ</h2>
-    <button class="btn big" onclick="startSale()">🛒 Bán trực tiếp</button>
-    <button class="btn big secondary" onclick="startRedeem()">🌱 Phát Seed Kit</button>
-    <button class="btn big ghost" onclick="startFallback()">✉️ Gửi mã ưu đãi</button>
+    <h2>Khách này muốn gì?</h2>
+    <button class="btn big" onclick="startSale()">
+      🏃 Khách muốn mua<div class="menu-desc" style="color:#ffe0cf;">Chọn sản phẩm, thanh toán ngay</div>
+    </button>
+    <button class="btn big secondary" onclick="startRedeem()">
+      🌱 Nhận Seed Kit<div class="menu-desc" style="color:#e9c9dd;">Follow + Zalo + Email — vé tham gia hành trình Naula</div>
+    </button>
+    <button class="btn big" style="background:var(--ink);" onclick="startBackorder()">
+      📦 Đặt trước<div class="menu-desc" style="color:#ccc;">Muốn mua nhưng hết hàng — thanh toán trước, giao sau</div>
+    </button>
+    <button class="btn big ghost" onclick="startFallback()">
+      ⭐ Khách quan tâm<div class="menu-desc">Chưa sẵn sàng cam kết — chỉ gửi mã ưu đãi</div>
+    </button>
   </div>
 </div>
 
 <!-- ===================== SCREEN: SALE — PRODUCTS ===================== -->
 <div id="screen-sale-products" class="screen">
   <div class="topbar">
-    <span>Bán trực tiếp</span>
+    <span>🏃 Khách muốn mua</span>
     <button class="link" onclick="showScreen('screen-menu')">Huỷ</button>
   </div>
   <div style="padding-top:16px;">
@@ -187,14 +203,28 @@
     <input type="text" id="sale-name" placeholder="Nguyễn Văn A">
     <label>Email *</label>
     <input type="email" id="sale-email" placeholder="email@vidu.com">
-    <label>Số BIB *</label>
-    <input type="text" id="sale-bib" inputmode="numeric" placeholder="1234" onblur="checkBibForSale()">
-    <div id="sale-bib-info"></div>
+    <label>SĐT/Zalo *</label>
+    <input type="tel" id="sale-zalo" inputmode="numeric" placeholder="09xxxxxxxx" onblur="checkZaloForSale()">
+    <div id="sale-zalo-info"></div>
 
     <label>Phương thức thanh toán</label>
     <div class="toggle-group">
       <div class="toggle-opt selected" id="opt-transfer" onclick="selectPayMethod('transfer')">Chuyển khoản</div>
       <div class="toggle-opt" id="opt-cash" onclick="selectPayMethod('cash')">Tiền mặt</div>
+    </div>
+
+    <div id="sale-seedkit-offer" style="display:none;">
+      <label>Khách có muốn nhận thêm Seed Kit không?</label>
+      <div class="toggle-group">
+        <div class="toggle-opt" id="opt-seedkit-yes" onclick="selectSaleSeedKit(true)">Có</div>
+        <div class="toggle-opt selected" id="opt-seedkit-no" onclick="selectSaleSeedKit(false)">Không</div>
+      </div>
+      <div id="sale-seedkit-follow-wrap" style="display:none;">
+        <div class="check-row">
+          <input type="checkbox" id="sale-seedkit-followed">
+          <p>Khách đã follow Facebook hoặc Instagram của TKG (điều kiện nhận Seed Kit).</p>
+        </div>
+      </div>
     </div>
 
     <button class="btn" onclick="submitSale()">Tạo đơn hàng</button>
@@ -221,56 +251,80 @@
   </div>
 </div>
 
-<!-- ===================== SCREEN: REDEEM SEED KIT ===================== -->
+<!-- ===================== SCREEN: REDEEM SEED KIT (standalone) ===================== -->
 <div id="screen-redeem" class="screen">
   <div class="topbar">
-    <span>Phát Seed Kit</span>
+    <span>🌱 Nhận Seed Kit</span>
     <button class="link" onclick="showScreen('screen-menu')">Đóng</button>
   </div>
   <div style="padding-top:16px;">
-    <label>Số BIB *</label>
-    <input type="text" id="redeem-bib" inputmode="numeric" placeholder="1234">
-    <button class="btn ghost" onclick="lookupRedeem()">Tra cứu</button>
+    <div class="banner warn">Seed Kit là vé tham gia hành trình Naula — không phải quà tặng miễn phí. Điều kiện: đã follow social + để lại Zalo/Email.</div>
+
+    <label>Họ tên *</label>
+    <input type="text" id="redeem-name" placeholder="Nguyễn Văn A">
+    <label>Email *</label>
+    <input type="email" id="redeem-email" placeholder="email@vidu.com">
+    <label>SĐT/Zalo *</label>
+    <input type="tel" id="redeem-zalo" inputmode="numeric" placeholder="09xxxxxxxx" onblur="checkZaloForRedeem()">
+    <div id="redeem-zalo-info"></div>
+
+    <div class="check-row">
+      <input type="checkbox" id="redeem-followed">
+      <p>Khách đã follow Facebook hoặc Instagram của TKG.</p>
+    </div>
+
+    <label>Seed Kit ID (nếu có quét mã trên hộp)</label>
+    <input type="text" id="redeem-seedid" placeholder="TKG-001">
+
+    <button class="btn secondary" onclick="doRedeem()">Đã phát Seed Kit</button>
     <div id="redeem-result"></div>
   </div>
 </div>
 
-<!-- ===================== SCREEN: FALLBACK ===================== -->
-<div id="screen-fallback" class="screen">
+<!-- ===================== SCREEN: ĐẶT TRƯỚC (backorder) ===================== -->
+<div id="screen-backorder" class="screen">
   <div class="topbar">
-    <span>Gửi mã ưu đãi</span>
+    <span>📦 Đặt trước</span>
     <button class="link" onclick="showScreen('screen-menu')">Đóng</button>
   </div>
   <div style="padding-top:16px;">
-    <label>Loại</label>
-    <div class="toggle-group">
-      <div class="toggle-opt selected" id="fb-opt-voucher" onclick="selectFallbackType('Voucher Only')">Chỉ mã ưu đãi</div>
-      <div class="toggle-opt" id="fb-opt-backorder" onclick="selectFallbackType('Backorder')">Đặt trước</div>
-      <div class="toggle-opt" id="fb-opt-manual" onclick="selectFallbackType('Manual Follow-up')">Khác</div>
-    </div>
+    <label>Chọn sản phẩm đặt trước</label>
+    <div class="card" id="backorder-sku-selector"></div>
+
+    <label>Họ tên *</label>
+    <input type="text" id="bo-name">
+    <label>Email *</label>
+    <input type="email" id="bo-email">
+    <label>SĐT/Zalo *</label>
+    <input type="tel" id="bo-zalo" inputmode="numeric">
+    <label>Số điện thoại nhận hàng *</label>
+    <input type="tel" id="bo-delivery-phone" inputmode="tel" placeholder="09xxxxxxxx">
+    <label>Địa chỉ nhận hàng *</label>
+    <input type="text" id="bo-delivery-address" placeholder="Số nhà, đường, phường, thành phố">
+
+    <button class="btn" onclick="submitBackorder()">Tạo thanh toán trước</button>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: KHÁCH QUAN TÂM (fallback) ===================== -->
+<div id="screen-fallback" class="screen">
+  <div class="topbar">
+    <span>⭐ Khách quan tâm</span>
+    <button class="link" onclick="showScreen('screen-menu')">Đóng</button>
+  </div>
+  <div style="padding-top:16px;">
+    <p class="hint">Khách chưa sẵn sàng mua hoặc nhận Seed Kit — chỉ gửi mã ưu đãi để giữ liên lạc.</p>
 
     <label>Họ tên *</label>
     <input type="text" id="fb-name">
     <label>Email *</label>
     <input type="email" id="fb-email">
-    <label>Số BIB</label>
-    <input type="text" id="fb-bib" inputmode="numeric">
+    <label>SĐT/Zalo</label>
+    <input type="tel" id="fb-zalo" inputmode="numeric">
+    <label>Ghi chú</label>
+    <input type="text" id="fb-notes">
 
-    <div id="fb-notes-wrap">
-      <label>Ghi chú</label>
-      <input type="text" id="fb-notes">
-    </div>
-
-    <div id="fb-backorder-wrap" style="display:none;">
-      <label>Chọn sản phẩm đặt trước</label>
-      <div class="card" id="backorder-sku-selector"></div>
-      <label>Số điện thoại nhận hàng *</label>
-      <input type="tel" id="fb-delivery-phone" inputmode="tel" placeholder="09xxxxxxxx">
-      <label>Địa chỉ nhận hàng *</label>
-      <input type="text" id="fb-delivery-address" placeholder="Số nhà, đường, phường, thành phố">
-    </div>
-
-    <button class="btn" id="fb-submit-btn" onclick="submitFallback()">Gửi</button>
+    <button class="btn" onclick="submitFallback()">Gửi mã ưu đãi</button>
     <div id="fallback-result"></div>
   </div>
 </div>
@@ -285,14 +339,15 @@
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxn8L4vbQ6M70AbgeGOCCKyEXG6IcfW7tBcGF5HTJJxN9cP3G05DfqYQFN4qaAF0BF7/exec";
 
 // ---- state ----
-let CONFIG = null;        // { staff, prices, seedKitQuota }
+let CONFIG = null;        // { staff, prices, seedKitQuota, seedKitRemaining }
 let INVENTORY = null;     // { SKU: { name, stock } }
 let currentStaff = JSON.parse(localStorage.getItem("tkg_staff") || "null");
 let saleCart = {};         // { SKU: qty }
 let salePayMethod = "transfer";
+let saleWantsSeedKit = false;
 let backorderCart = {};    // { SKU: qty } — separate from saleCart, no stock cap
-let fallbackType = "Voucher Only";
 let currentInvoiceId = null;
+let pendingSaleZaloInfo = null; // last lookupZalo() result during sale flow, used at submit time
 
 // ---- networking helpers ----
 // IMPORTANT: Content-Type must stay text/plain so the browser does NOT
@@ -331,7 +386,7 @@ function money(n) { return Number(n || 0).toLocaleString("vi-VN") + "đ"; }
 function showScreen(id) {
   document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
-  if (id === "screen-menu") refreshInventory();
+  if (id === "screen-menu") { refreshInventory(); refreshSeedKitSummary(); }
 }
 
 // ---- LOGIN ----
@@ -346,8 +401,8 @@ async function doLogin() {
   btn.disabled = false; btn.textContent = "Đăng nhập";
 
   if (result.ok) {
-    // Login now returns staff/prices/quota directly — no second call needed.
-    CONFIG = { staff: result.staff, prices: result.prices, seedKitQuota: result.seedKitQuota };
+    // Login now returns staff/prices/quota/remaining directly — no second call needed.
+    CONFIG = { staff: result.staff, prices: result.prices, seedKitQuota: result.seedKitQuota, seedKitRemaining: result.seedKitRemaining };
     renderStaffList();
     if (currentStaff) {
       document.getElementById("topbar-name").textContent = currentStaff.name;
@@ -378,7 +433,7 @@ function selectStaff(s) {
   showScreen("screen-menu");
 }
 
-// ---- INVENTORY ----
+// ---- INVENTORY / SEED KIT SUMMARY ----
 async function refreshInventory() {
   INVENTORY = await apiGet("inventory", {});
   const wrap = document.getElementById("inventory-summary");
@@ -387,14 +442,27 @@ async function refreshInventory() {
     return `<div class="sku-row"><span class="sku-name">${info.name}</span><span class="stock-tag ${cls}">${info.stock} còn lại</span></div>`;
   }).join("");
 }
+async function refreshSeedKitSummary() {
+  const cfg = await apiGet("config", {});
+  if (cfg && typeof cfg.seedKitRemaining === "number") {
+    CONFIG.seedKitRemaining = cfg.seedKitRemaining;
+    CONFIG.seedKitQuota = cfg.seedKitQuota;
+  }
+  const wrap = document.getElementById("seedkit-summary");
+  const remaining = CONFIG.seedKitRemaining;
+  const cls = remaining <= 0 ? "color:var(--bad);" : (remaining <= 30 ? "color:var(--warn);" : "color:var(--good);");
+  wrap.innerHTML = `<span style="${cls}">🌱 Seed Kit còn lại: ${remaining}/${CONFIG.seedKitQuota}</span>`;
+}
 // Auto-refresh every 12s while on the menu screen.
 setInterval(() => {
-  if (document.getElementById("screen-menu").classList.contains("active")) refreshInventory();
+  if (document.getElementById("screen-menu").classList.contains("active")) { refreshInventory(); refreshSeedKitSummary(); }
 }, 12000);
 
-// ---- SALE FLOW ----
+// ---- 🏃 SALE FLOW ----
 function startSale() {
   saleCart = {};
+  saleWantsSeedKit = false;
+  pendingSaleZaloInfo = null;
   renderSkuSelector();
   showScreen("screen-sale-products");
 }
@@ -432,20 +500,29 @@ function cartTotal() {
 function goToCustomerInfo() {
   const hasItems = Object.values(saleCart).some(q => q > 0);
   if (!hasItems) { alert("Chọn ít nhất 1 sản phẩm."); return; }
+  // Reset the post-payment Seed Kit offer UI for this new sale.
+  saleWantsSeedKit = false;
+  document.getElementById("opt-seedkit-yes").classList.remove("selected");
+  document.getElementById("opt-seedkit-no").classList.add("selected");
+  document.getElementById("sale-seedkit-follow-wrap").style.display = "none";
+  document.getElementById("sale-seedkit-followed").checked = false;
+  // Only show the Seed Kit offer at all if there's stock left.
+  document.getElementById("sale-seedkit-offer").style.display = CONFIG.seedKitRemaining > 0 ? "block" : "none";
   showScreen("screen-sale-customer");
 }
 
-async function checkBibForSale() {
-  const bib = document.getElementById("sale-bib").value.trim();
-  const infoBox = document.getElementById("sale-bib-info");
-  if (!bib) { infoBox.innerHTML = ""; return; }
-  const result = await apiGet("lookupBib", { bib });
+async function checkZaloForSale() {
+  const zalo = document.getElementById("sale-zalo").value.trim();
+  const infoBox = document.getElementById("sale-zalo-info");
+  if (!zalo) { infoBox.innerHTML = ""; pendingSaleZaloInfo = null; return; }
+  const result = await apiGet("lookupZalo", { zalo });
+  pendingSaleZaloInfo = result;
   if (result.found) {
-    document.getElementById("sale-name").value = result.name || "";
-    document.getElementById("sale-email").value = result.email || "";
-    infoBox.innerHTML = `<div class="banner ok">Đã tìm thấy: ${result.name}${result.alreadyRedeemedSeedKit ? " · Đã nhận Seed Kit" : ""}</div>`;
+    if (!document.getElementById("sale-name").value) document.getElementById("sale-name").value = result.name || "";
+    if (!document.getElementById("sale-email").value) document.getElementById("sale-email").value = result.email || "";
+    infoBox.innerHTML = `<div class="banner ok">Đã từng đăng ký: ${result.name}${result.alreadyRedeemedSeedKit ? " · Đã nhận Seed Kit trước đó" : ""}</div>`;
   } else {
-    infoBox.innerHTML = `<div class="banner warn">Chưa có trong danh sách đăng ký — nhập tay thông tin bên dưới.</div>`;
+    infoBox.innerHTML = "";
   }
 }
 
@@ -455,17 +532,39 @@ function selectPayMethod(method) {
   document.getElementById("opt-cash").classList.toggle("selected", method === "cash");
 }
 
+function selectSaleSeedKit(wants) {
+  saleWantsSeedKit = wants;
+  document.getElementById("opt-seedkit-yes").classList.toggle("selected", wants);
+  document.getElementById("opt-seedkit-no").classList.toggle("selected", !wants);
+  document.getElementById("sale-seedkit-follow-wrap").style.display = wants ? "block" : "none";
+}
+
 async function submitSale() {
   const fullName = document.getElementById("sale-name").value.trim();
   const email = document.getElementById("sale-email").value.trim();
-  const bib = document.getElementById("sale-bib").value.trim();
-  if (!fullName || !email || !bib) { alert("Điền đủ Họ tên, Email, Số BIB."); return; }
+  const zalo = document.getElementById("sale-zalo").value.trim();
+  if (!fullName || !email || !zalo) { alert("Điền đủ Họ tên, Email, SĐT/Zalo."); return; }
+
+  if (saleWantsSeedKit) {
+    if (pendingSaleZaloInfo && pendingSaleZaloInfo.alreadyRedeemedSeedKit) {
+      alert("Số Zalo này đã nhận Seed Kit trước đó rồi — không thể phát thêm.");
+      return;
+    }
+    if (!document.getElementById("sale-seedkit-followed").checked) {
+      alert("Cần xác nhận khách đã follow Facebook/Instagram trước khi tặng kèm Seed Kit.");
+      return;
+    }
+  }
 
   const items = Object.entries(saleCart).filter(([, q]) => q > 0).map(([sku, qty]) => ({
     sku, qty, unitPrice: CONFIG.prices[sku],
   }));
 
-  const payload = { staffId: currentStaff.id, staffName: currentStaff.name, fullName, email, bib, items };
+  const payload = {
+    staffId: currentStaff.id, staffName: currentStaff.name, fullName, email, zalo, items,
+    wantsSeedKit: saleWantsSeedKit,
+    followed: saleWantsSeedKit ? document.getElementById("sale-seedkit-followed").checked : false,
+  };
 
   if (salePayMethod === "cash") {
     const result = await apiPost("cashSale", payload);
@@ -482,6 +581,9 @@ async function submitSale() {
     document.getElementById("confirm-total").textContent = money(result.total);
     document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
     resetConfirmButton();
+    // Stash the payload so confirmPayment can pass wantsSeedKit/followed
+    // through at the moment the sale is actually finalized.
+    window._pendingConfirmPayload = payload;
     showScreen("screen-sale-confirm");
   }
 }
@@ -500,78 +602,77 @@ function resetConfirmButton() {
 async function confirmSalePayment() {
   const btn = document.getElementById("btn-confirm-payment");
   btn.disabled = true; btn.textContent = "Đang xử lý...";
-  const result = await apiPost("confirmPayment", { invoiceId: currentInvoiceId });
+  const extra = window._pendingConfirmPayload || {};
+  const result = await apiPost("confirmPayment", { invoiceId: currentInvoiceId, ...extra });
   if (result.ok) {
     document.getElementById("qr-section").innerHTML = `<div class="banner ok">Đã xác nhận — email hoá đơn đã gửi.</div>`;
     btn.style.display = "none";
+    window._pendingConfirmPayload = null;
   } else {
     btn.disabled = false; btn.textContent = "Xác nhận đã nhận tiền";
     alert("Lỗi: " + (result.error || "không xác nhận được, thử lại."));
   }
 }
 
-// ---- REDEEM SEED KIT ----
+// ---- 🌱 STANDALONE SEED KIT ----
 function startRedeem() {
-  document.getElementById("redeem-bib").value = "";
+  ["redeem-name", "redeem-email", "redeem-zalo", "redeem-seedid"].forEach(id => document.getElementById(id).value = "");
+  document.getElementById("redeem-followed").checked = false;
   document.getElementById("redeem-result").innerHTML = "";
+  document.getElementById("redeem-zalo-info").innerHTML = "";
   showScreen("screen-redeem");
 }
-async function lookupRedeem() {
-  const bib = document.getElementById("redeem-bib").value.trim();
+async function checkZaloForRedeem() {
+  const zalo = document.getElementById("redeem-zalo").value.trim();
+  const infoBox = document.getElementById("redeem-zalo-info");
+  if (!zalo) { infoBox.innerHTML = ""; return; }
+  const result = await apiGet("lookupZalo", { zalo });
+  if (result.alreadyRedeemedSeedKit) {
+    infoBox.innerHTML = `<div class="banner bad">Số Zalo này đã nhận Seed Kit rồi.</div>`;
+  } else if (result.found) {
+    if (!document.getElementById("redeem-name").value) document.getElementById("redeem-name").value = result.name || "";
+    if (!document.getElementById("redeem-email").value) document.getElementById("redeem-email").value = result.email || "";
+    infoBox.innerHTML = `<div class="banner ok">Đã từng đăng ký: ${result.name}</div>`;
+  } else {
+    infoBox.innerHTML = "";
+  }
+}
+async function doRedeem() {
+  const fullName = document.getElementById("redeem-name").value.trim();
+  const email = document.getElementById("redeem-email").value.trim();
+  const zalo = document.getElementById("redeem-zalo").value.trim();
+  const followed = document.getElementById("redeem-followed").checked;
+  const seedId = document.getElementById("redeem-seedid").value.trim();
   const resultBox = document.getElementById("redeem-result");
-  if (!bib) return;
+
+  if (!fullName || !email || !zalo) { alert("Điền đủ Họ tên, Email, SĐT/Zalo."); return; }
+  if (!followed) { alert("Cần xác nhận khách đã follow Facebook/Instagram trước khi phát Seed Kit."); return; }
+
   resultBox.innerHTML = `<div class="spinner"></div>`;
+  const result = await apiPost("redeemSeedKit", {
+    zalo, fullName, email, followed, seedId,
+    staffId: currentStaff.id, staffName: currentStaff.name,
+  });
 
-  const lookup = await apiGet("lookupBib", { bib });
-  if (!lookup.found) {
-    resultBox.innerHTML = `<div class="banner warn">BIB chưa đăng ký trên landing page. Mời khách quét QR đăng ký trước, hoặc dùng Email Fallback.</div>`;
-    return;
-  }
-  if (lookup.alreadyRedeemedSeedKit) {
-    resultBox.innerHTML = `<div class="banner bad">BIB ${bib} đã redeem Seed Kit rồi.</div>`;
-    return;
-  }
-
-  resultBox.innerHTML = `
-    <div class="card">
-      <p><strong>${lookup.name}</strong><br>${lookup.email}</p>
-      <button class="btn secondary" onclick="doRedeem('${bib}')">Đã phát Seed Kit</button>
-    </div>`;
-}
-async function doRedeem(bib) {
-  const result = await apiPost("redeemSeedKit", { bib, staffId: currentStaff.id, staffName: currentStaff.name });
-  const resultBox = document.getElementById("redeem-result");
   if (result.ok) {
-    resultBox.innerHTML = `<div class="banner ok">Đã ghi nhận. Còn lại ${result.remaining}/${CONFIG.seedKitQuota} seed kit.</div>`;
+    resultBox.innerHTML = `<div class="banner ok">Đã ghi nhận. Còn lại ${result.remaining}/${CONFIG.seedKitQuota} seed kit. Nhắc khách quét QR trên hộp sau sự kiện để kích hoạt mã ưu đãi.</div>`;
+    refreshSeedKitSummary();
   } else if (result.reason === "OUT_OF_STOCK") {
-    resultBox.innerHTML = `<div class="banner bad">Đã hết Seed Kit (đủ ${CONFIG.seedKitQuota}). Dùng Email Fallback cho khách này.</div>`;
+    resultBox.innerHTML = `<div class="banner bad">Đã hết Seed Kit (đủ ${CONFIG.seedKitQuota}). Dùng ⭐ Khách quan tâm cho khách này.</div>`;
   } else if (result.reason === "ALREADY_REDEEMED") {
-    resultBox.innerHTML = `<div class="banner bad">BIB này đã redeem rồi.</div>`;
+    resultBox.innerHTML = `<div class="banner bad">Số Zalo này đã nhận Seed Kit rồi.</div>`;
+  } else if (result.reason === "MUST_FOLLOW") {
+    resultBox.innerHTML = `<div class="banner bad">Cần xác nhận đã follow trước khi phát.</div>`;
   }
 }
 
-// ---- FALLBACK ----
-function startFallback() {
-  ["fb-name", "fb-email", "fb-bib", "fb-notes", "fb-delivery-phone", "fb-delivery-address"].forEach(id => document.getElementById(id).value = "");
-  document.getElementById("fallback-result").innerHTML = "";
+// ---- 📦 ĐẶT TRƯỚC (backorder, now top-level) ----
+function startBackorder() {
   backorderCart = {};
-  selectFallbackType("Voucher Only");
-  showScreen("screen-fallback");
+  ["bo-name", "bo-email", "bo-zalo", "bo-delivery-phone", "bo-delivery-address"].forEach(id => document.getElementById(id).value = "");
+  renderBackorderSkuSelector();
+  showScreen("screen-backorder");
 }
-function selectFallbackType(type) {
-  fallbackType = type;
-  document.getElementById("fb-opt-voucher").classList.toggle("selected", type === "Voucher Only");
-  document.getElementById("fb-opt-backorder").classList.toggle("selected", type === "Backorder");
-  document.getElementById("fb-opt-manual").classList.toggle("selected", type === "Manual Follow-up");
-
-  const isBackorder = type === "Backorder";
-  document.getElementById("fb-notes-wrap").style.display = isBackorder ? "none" : "block";
-  document.getElementById("fb-backorder-wrap").style.display = isBackorder ? "block" : "none";
-  document.getElementById("fb-submit-btn").textContent = isBackorder ? "Tạo thanh toán trước" : "Gửi";
-
-  if (isBackorder) renderBackorderSkuSelector();
-}
-
 // Same layout as the direct-sale SKU picker, but WITHOUT the stock cap —
 // this is a pre-order for something not currently on hand at the booth,
 // so there's no stock number to cap against.
@@ -601,33 +702,17 @@ function changeBackorderQty(sku, delta) {
   document.getElementById(`bo-qty-${sku}`).textContent = next;
 }
 
-async function submitFallback() {
-  if (fallbackType === "Backorder") { await submitBackorder(); return; }
-
-  const fullName = document.getElementById("fb-name").value.trim();
-  const email = document.getElementById("fb-email").value.trim();
-  const bib = document.getElementById("fb-bib").value.trim();
-  const notes = document.getElementById("fb-notes").value.trim();
-  if (!fullName || !email) { alert("Điền đủ Họ tên và Email."); return; }
-
-  const result = await apiPost("fallbackEntry", {
-    fullName, email, bib, notes, type: fallbackType, staffId: currentStaff.id,
-  });
-  document.getElementById("fallback-result").innerHTML =
-    `<div class="banner ok">Đã gửi${result.voucherCode ? " — mã: " + result.voucherCode : ""}.</div>`;
-}
-
 // Đặt trước = paid upfront via VietQR, same engine as a direct sale but
 // tagged orderType: "Backorder" so the backend skips inventory and sends
 // the pre-order confirmation email (with the 5-day fulfillment note)
 // instead of the regular invoice email.
 async function submitBackorder() {
-  const fullName = document.getElementById("fb-name").value.trim();
-  const email = document.getElementById("fb-email").value.trim();
-  const bib = document.getElementById("fb-bib").value.trim();
-  const deliveryPhone = document.getElementById("fb-delivery-phone").value.trim();
-  const deliveryAddress = document.getElementById("fb-delivery-address").value.trim();
-  if (!fullName || !email || !bib) { alert("Điền đủ Họ tên, Email, Số BIB."); return; }
+  const fullName = document.getElementById("bo-name").value.trim();
+  const email = document.getElementById("bo-email").value.trim();
+  const zalo = document.getElementById("bo-zalo").value.trim();
+  const deliveryPhone = document.getElementById("bo-delivery-phone").value.trim();
+  const deliveryAddress = document.getElementById("bo-delivery-address").value.trim();
+  if (!fullName || !email || !zalo) { alert("Điền đủ Họ tên, Email, SĐT/Zalo."); return; }
   if (!deliveryPhone || !deliveryAddress) { alert("Điền đủ Số điện thoại và Địa chỉ nhận hàng."); return; }
 
   const items = Object.entries(backorderCart).filter(([, q]) => q > 0).map(([sku, qty]) => ({
@@ -636,7 +721,7 @@ async function submitBackorder() {
   if (items.length === 0) { alert("Chọn ít nhất 1 sản phẩm."); return; }
 
   const payload = {
-    staffId: currentStaff.id, staffName: currentStaff.name, fullName, email, bib, items,
+    staffId: currentStaff.id, staffName: currentStaff.name, fullName, email, zalo, items,
     orderType: "Backorder", deliveryPhone, deliveryAddress,
   };
   const result = await apiPost("createPayment", payload);
@@ -645,7 +730,28 @@ async function submitBackorder() {
   document.getElementById("confirm-total").textContent = money(result.total);
   document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
   resetConfirmButton();
+  window._pendingConfirmPayload = payload;
   showScreen("screen-sale-confirm");
+}
+
+// ---- ⭐ KHÁCH QUAN TÂM (fallback, voucher-only) ----
+function startFallback() {
+  ["fb-name", "fb-email", "fb-zalo", "fb-notes"].forEach(id => document.getElementById(id).value = "");
+  document.getElementById("fallback-result").innerHTML = "";
+  showScreen("screen-fallback");
+}
+async function submitFallback() {
+  const fullName = document.getElementById("fb-name").value.trim();
+  const email = document.getElementById("fb-email").value.trim();
+  const zalo = document.getElementById("fb-zalo").value.trim();
+  const notes = document.getElementById("fb-notes").value.trim();
+  if (!fullName || !email) { alert("Điền đủ Họ tên và Email."); return; }
+
+  const result = await apiPost("fallbackEntry", {
+    fullName, email, zalo, notes, staffId: currentStaff.id,
+  });
+  document.getElementById("fallback-result").innerHTML =
+    `<div class="banner ok">Đã gửi${result.voucherCode ? " — mã: " + result.voucherCode : ""}.</div>`;
 }
 
 // ---- init ----
