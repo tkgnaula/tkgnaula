@@ -299,17 +299,31 @@ let currentInvoiceId = null;
 // send a CORS preflight (OPTIONS) request — Apps Script Web Apps can't
 // answer those. The server (doPost) still JSON.parses the body itself.
 async function apiPost(action, payload) {
-  const res = await fetch(WEB_APP_URL, {
-    method: "POST",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify({ action, ...payload }),
-  });
-  return res.json();
+  try {
+    const res = await fetch(WEB_APP_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ action, ...payload }),
+    });
+    return await res.json();
+  } catch (err) {
+    // Network failure, timeout, or a non-JSON response (e.g. Apps Script
+    // returned an error page) — fail safely instead of throwing, so the
+    // caller's normal "if (result.ok) ... else ..." logic still runs and
+    // resets any disabled buttons instead of leaving the UI stuck.
+    console.error(`apiPost(${action}) failed:`, err);
+    return { ok: false, error: "Lỗi kết nối, vui lòng thử lại." };
+  }
 }
 async function apiGet(action, params) {
-  const qs = new URLSearchParams({ action, ...params }).toString();
-  const res = await fetch(`${WEB_APP_URL}?${qs}`);
-  return res.json();
+  try {
+    const qs = new URLSearchParams({ action, ...params }).toString();
+    const res = await fetch(`${WEB_APP_URL}?${qs}`);
+    return await res.json();
+  } catch (err) {
+    console.error(`apiGet(${action}) failed:`, err);
+    return { ok: false, error: "Lỗi kết nối, vui lòng thử lại." };
+  }
 }
 
 function money(n) { return Number(n || 0).toLocaleString("vi-VN") + "đ"; }
