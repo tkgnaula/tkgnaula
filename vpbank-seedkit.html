@@ -444,10 +444,6 @@
             <label for="phone">Zalo number <span class="req">*</span></label>
             <input type="tel" id="phone" name="phone" placeholder="09xx xxx xxx" required>
           </div>
-          <div class="field" id="seedIdField" style="display:none;">
-            <label for="seedId">Seed Kit ID</label>
-            <input type="text" id="seedId" name="seedId" readonly>
-          </div>
         </div>
 
         <div class="field radio-group">
@@ -580,7 +576,6 @@
     fullName: "entry.397760040",
     email: "entry.284471329",
     phone: "entry.1636732933",
-    seedId: "entry.REPLACE_WITH_SEEDID_ENTRY_ID", // TODO: add a "Seed Kit ID" field to the Google Form, then replace this entry ID
     receiveType: "entry.110873033",
     raceDistance: "entry.876644950",
     postRunFocus: "entry.1334507065",
@@ -592,18 +587,6 @@
   const statusMsg = document.getElementById('statusMsg');
   const submitBtn = document.getElementById('submitBtn');
 
-  // ---- READ SEED ID FROM URL (?id=TKG001) ----
-  const urlParams = new URLSearchParams(window.location.search);
-  const seedIdFromUrl = urlParams.get('id');
-  if (seedIdFromUrl) {
-    const seedIdField = document.getElementById('seedIdField');
-    const seedIdInput = document.getElementById('seedId');
-    seedIdField.style.display = '';
-    seedIdInput.value = seedIdFromUrl;
-    const heroEyebrow = document.getElementById('heroEyebrow');
-    heroEyebrow.textContent = `Seed Kit #${seedIdFromUrl.replace(/^TKG-?/i, '')} · Welcome`;
-  }
-
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     submitBtn.disabled = true;
@@ -613,7 +596,6 @@
     data.append(FIELD_MAP.fullName, form.fullName.value);
     data.append(FIELD_MAP.email, form.email.value);
     data.append(FIELD_MAP.phone, form.phone.value);
-    data.append(FIELD_MAP.seedId, form.seedId.value || "");
     const receiveTypeEl = form.querySelector('input[name="receiveType"]:checked');
     data.append(FIELD_MAP.receiveType, receiveTypeEl ? receiveTypeEl.value : "");
     const raceDistanceEl = form.querySelector('input[name="raceDistance"]:checked');
