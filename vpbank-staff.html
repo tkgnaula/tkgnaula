@@ -57,10 +57,16 @@
   button.btn {
     display: block; width: 100%; padding: 18px; font-size: 1.1rem; font-weight: 700;
     border: none; border-radius: 12px; cursor: pointer; margin-bottom: 12px;
-    background: var(--fire); color: white; transition: transform .05s;
+    background: var(--fire); color: white;
+    transition: transform .05s, background-color .12s ease;
   }
-  button.btn:active { transform: scale(0.97); }
+  /* Tap feedback: flashes to Perilla while pressed, eases back to Fire on release.
+     Pure CSS :active — fires on touchstart/mousedown, so it shows even on
+     buttons that get JS-disabled right after the tap (disabling happens on
+     the click event, which fires after :active already kicked in). */
+  button.btn:active { transform: scale(0.97); background-color: var(--perilla); }
   button.btn.secondary { background: var(--perilla); }
+  button.btn.secondary:active { background-color: var(--fire); }
   button.btn.ghost { background: var(--paper); color: var(--ink); border: 2px solid var(--line); }
   button.btn.big { padding: 22px; font-size: 1.15rem; text-align: left; }
   button.btn:disabled { background: #ccc; color: #888; }
@@ -227,7 +233,7 @@
       </div>
     </div>
 
-    <button class="btn" onclick="submitSale()">Tạo đơn hàng</button>
+    <button class="btn" id="btn-submit-sale" onclick="submitSale()">Tạo đơn hàng</button>
   </div>
 </div>
 
@@ -273,7 +279,7 @@
       <p>Khách đã follow Facebook hoặc Instagram của TKG.</p>
     </div>
 
-    <button class="btn secondary" onclick="doRedeem()">Đã phát Seed Kit</button>
+    <button class="btn secondary" id="btn-redeem" onclick="doRedeem()">Đã phát Seed Kit</button>
     <div id="redeem-result"></div>
   </div>
 </div>
@@ -299,7 +305,7 @@
     <label>Địa chỉ nhận hàng *</label>
     <input type="text" id="bo-delivery-address" placeholder="Số nhà, đường, phường, thành phố">
 
-    <button class="btn" onclick="submitBackorder()">Tạo thanh toán trước</button>
+    <button class="btn" id="btn-submit-backorder" onclick="submitBackorder()">Tạo thanh toán trước</button>
   </div>
 </div>
 
@@ -321,7 +327,7 @@
     <label>Ghi chú</label>
     <input type="text" id="fb-notes">
 
-    <button class="btn" onclick="submitFallback()">Gửi mã ưu đãi</button>
+    <button class="btn" id="btn-submit-fallback" onclick="submitFallback()">Gửi mã ưu đãi</button>
     <div id="fallback-result"></div>
   </div>
 </div>
@@ -505,6 +511,10 @@ function goToCustomerInfo() {
   document.getElementById("sale-seedkit-followed").checked = false;
   // Only show the Seed Kit offer at all if there's stock left.
   document.getElementById("sale-seedkit-offer").style.display = CONFIG.seedKitRemaining > 0 ? "block" : "none";
+  // Safety reset in case a previous attempt left the button stuck.
+  const submitBtn = document.getElementById("btn-submit-sale");
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Tạo đơn hàng";
   showScreen("screen-sale-customer");
 }
 
@@ -537,6 +547,9 @@ function selectSaleSeedKit(wants) {
 }
 
 async function submitSale() {
+  const btn = document.getElementById("btn-submit-sale");
+  if (btn.disabled) return; // guard: a request is already in flight from a previous tap
+
   const fullName = document.getElementById("sale-name").value.trim();
   const email = document.getElementById("sale-email").value.trim();
   const zalo = document.getElementById("sale-zalo").value.trim();
@@ -563,25 +576,38 @@ async function submitSale() {
     followed: saleWantsSeedKit ? document.getElementById("sale-seedkit-followed").checked : false,
   };
 
-  if (salePayMethod === "cash") {
-    const result = await apiPost("cashSale", payload);
-    currentInvoiceId = result.invoiceId;
-    document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
-    document.getElementById("confirm-total").textContent = money(cartTotal());
-    document.getElementById("qr-section").innerHTML = `<div class="banner ok">Đã thanh toán tiền mặt — email hoá đơn đã gửi.</div>`;
-    document.getElementById("btn-confirm-payment").style.display = "none";
-    showScreen("screen-sale-confirm");
-  } else {
-    const result = await apiPost("createPayment", payload);
-    currentInvoiceId = result.invoiceId;
-    document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
-    document.getElementById("confirm-total").textContent = money(result.total);
-    document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
-    resetConfirmButton();
-    // Stash the payload so confirmPayment can pass wantsSeedKit/followed
-    // through at the moment the sale is actually finalized.
-    window._pendingConfirmPayload = payload;
-    showScreen("screen-sale-confirm");
+  // Disable immediately — everything above is instant local validation,
+  // so the button only locks right before the actual network call,
+  // which is where the delay (and the double-tap risk) lives.
+  btn.disabled = true;
+  btn.textContent = "Đang xử lý...";
+
+  try {
+    if (salePayMethod === "cash") {
+      const result = await apiPost("cashSale", payload);
+      currentInvoiceId = result.invoiceId;
+      document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
+      document.getElementById("confirm-total").textContent = money(cartTotal());
+      document.getElementById("qr-section").innerHTML = `<div class="banner ok">Đã thanh toán tiền mặt — email hoá đơn đã gửi.</div>`;
+      document.getElementById("btn-confirm-payment").style.display = "none";
+      showScreen("screen-sale-confirm");
+    } else {
+      const result = await apiPost("createPayment", payload);
+      currentInvoiceId = result.invoiceId;
+      document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
+      document.getElementById("confirm-total").textContent = money(result.total);
+      document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
+      resetConfirmButton();
+      // Stash the payload so confirmPayment can pass wantsSeedKit/followed
+      // through at the moment the sale is actually finalized.
+      window._pendingConfirmPayload = payload;
+      showScreen("screen-sale-confirm");
+    }
+  } finally {
+    // Always restore the button — whether this sale succeeded (so it's
+    // ready clean for the NEXT sale) or failed (so staff can retry).
+    btn.disabled = false;
+    btn.textContent = "Tạo đơn hàng";
   }
 }
 
@@ -617,6 +643,9 @@ function startRedeem() {
   document.getElementById("redeem-followed").checked = false;
   document.getElementById("redeem-result").innerHTML = "";
   document.getElementById("redeem-zalo-info").innerHTML = "";
+  const btn = document.getElementById("btn-redeem");
+  btn.disabled = false;
+  btn.textContent = "Đã phát Seed Kit";
   showScreen("screen-redeem");
 }
 async function checkZaloForRedeem() {
@@ -635,6 +664,9 @@ async function checkZaloForRedeem() {
   }
 }
 async function doRedeem() {
+  const btn = document.getElementById("btn-redeem");
+  if (btn.disabled) return;
+
   const fullName = document.getElementById("redeem-name").value.trim();
   const email = document.getElementById("redeem-email").value.trim();
   const zalo = document.getElementById("redeem-zalo").value.trim();
@@ -644,21 +676,31 @@ async function doRedeem() {
   if (!fullName || !email || !zalo) { alert("Điền đủ Họ tên, Email, SĐT/Zalo."); return; }
   if (!followed) { alert("Cần xác nhận khách đã follow Facebook/Instagram trước khi phát Seed Kit."); return; }
 
+  btn.disabled = true;
+  btn.textContent = "Đang xử lý...";
   resultBox.innerHTML = `<div class="spinner"></div>`;
-  const result = await apiPost("redeemSeedKit", {
-    zalo, fullName, email, followed,
-    staffId: currentStaff.id, staffName: currentStaff.name,
-  });
 
-  if (result.ok) {
-    resultBox.innerHTML = `<div class="banner ok">Đã ghi nhận. Còn lại ${result.remaining}/${CONFIG.seedKitQuota} seed kit. Nhắc khách quét QR trên hộp sau sự kiện để kích hoạt mã ưu đãi.</div>`;
-    refreshSeedKitSummary();
-  } else if (result.reason === "OUT_OF_STOCK") {
-    resultBox.innerHTML = `<div class="banner bad">Đã hết Seed Kit (đủ ${CONFIG.seedKitQuota}). Dùng ⭐ Khách quan tâm cho khách này.</div>`;
-  } else if (result.reason === "ALREADY_REDEEMED") {
-    resultBox.innerHTML = `<div class="banner bad">Số Zalo này đã nhận Seed Kit rồi.</div>`;
-  } else if (result.reason === "MUST_FOLLOW") {
-    resultBox.innerHTML = `<div class="banner bad">Cần xác nhận đã follow trước khi phát.</div>`;
+  try {
+    const result = await apiPost("redeemSeedKit", {
+      zalo, fullName, email, followed,
+      staffId: currentStaff.id, staffName: currentStaff.name,
+    });
+
+    if (result.ok) {
+      resultBox.innerHTML = `<div class="banner ok">Đã ghi nhận. Còn lại ${result.remaining}/${CONFIG.seedKitQuota} seed kit. Nhắc khách quét QR trên hộp sau sự kiện để kích hoạt mã ưu đãi.</div>`;
+      refreshSeedKitSummary();
+    } else if (result.reason === "OUT_OF_STOCK") {
+      resultBox.innerHTML = `<div class="banner bad">Đã hết Seed Kit (đủ ${CONFIG.seedKitQuota}). Dùng ⭐ Khách quan tâm cho khách này.</div>`;
+    } else if (result.reason === "ALREADY_REDEEMED") {
+      resultBox.innerHTML = `<div class="banner bad">Số Zalo này đã nhận Seed Kit rồi.</div>`;
+    } else if (result.reason === "MUST_FOLLOW") {
+      resultBox.innerHTML = `<div class="banner bad">Cần xác nhận đã follow trước khi phát.</div>`;
+    } else {
+      resultBox.innerHTML = `<div class="banner bad">Lỗi: ${result.error || "không rõ, thử lại."}</div>`;
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Đã phát Seed Kit";
   }
 }
 
@@ -667,6 +709,9 @@ function startBackorder() {
   backorderCart = {};
   ["bo-name", "bo-email", "bo-zalo", "bo-delivery-phone", "bo-delivery-address"].forEach(id => document.getElementById(id).value = "");
   renderBackorderSkuSelector();
+  const btn = document.getElementById("btn-submit-backorder");
+  btn.disabled = false;
+  btn.textContent = "Tạo thanh toán trước";
   showScreen("screen-backorder");
 }
 // Same layout as the direct-sale SKU picker, but WITHOUT the stock cap —
@@ -703,6 +748,9 @@ function changeBackorderQty(sku, delta) {
 // the pre-order confirmation email (with the 5-day fulfillment note)
 // instead of the regular invoice email.
 async function submitBackorder() {
+  const btn = document.getElementById("btn-submit-backorder");
+  if (btn.disabled) return;
+
   const fullName = document.getElementById("bo-name").value.trim();
   const email = document.getElementById("bo-email").value.trim();
   const zalo = document.getElementById("bo-zalo").value.trim();
@@ -720,34 +768,55 @@ async function submitBackorder() {
     staffId: currentStaff.id, staffName: currentStaff.name, fullName, email, zalo, items,
     orderType: "Backorder", deliveryPhone, deliveryAddress,
   };
-  const result = await apiPost("createPayment", payload);
-  currentInvoiceId = result.invoiceId;
-  document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
-  document.getElementById("confirm-total").textContent = money(result.total);
-  document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
-  resetConfirmButton();
-  window._pendingConfirmPayload = payload;
-  showScreen("screen-sale-confirm");
+
+  btn.disabled = true;
+  btn.textContent = "Đang xử lý...";
+  try {
+    const result = await apiPost("createPayment", payload);
+    currentInvoiceId = result.invoiceId;
+    document.getElementById("confirm-invoice-id").textContent = result.invoiceId;
+    document.getElementById("confirm-total").textContent = money(result.total);
+    document.getElementById("qr-section").innerHTML = `<img src="${result.qrUrl}" alt="VietQR">`;
+    resetConfirmButton();
+    window._pendingConfirmPayload = payload;
+    showScreen("screen-sale-confirm");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Tạo thanh toán trước";
+  }
 }
 
 // ---- ⭐ KHÁCH QUAN TÂM (fallback, voucher-only) ----
 function startFallback() {
   ["fb-name", "fb-email", "fb-zalo", "fb-notes"].forEach(id => document.getElementById(id).value = "");
   document.getElementById("fallback-result").innerHTML = "";
+  const btn = document.getElementById("btn-submit-fallback");
+  btn.disabled = false;
+  btn.textContent = "Gửi mã ưu đãi";
   showScreen("screen-fallback");
 }
 async function submitFallback() {
+  const btn = document.getElementById("btn-submit-fallback");
+  if (btn.disabled) return;
+
   const fullName = document.getElementById("fb-name").value.trim();
   const email = document.getElementById("fb-email").value.trim();
   const zalo = document.getElementById("fb-zalo").value.trim();
   const notes = document.getElementById("fb-notes").value.trim();
   if (!fullName || !email) { alert("Điền đủ Họ tên và Email."); return; }
 
-  const result = await apiPost("fallbackEntry", {
-    fullName, email, zalo, notes, staffId: currentStaff.id,
-  });
-  document.getElementById("fallback-result").innerHTML =
-    `<div class="banner ok">Đã gửi${result.voucherCode ? " — mã: " + result.voucherCode : ""}.</div>`;
+  btn.disabled = true;
+  btn.textContent = "Đang gửi...";
+  try {
+    const result = await apiPost("fallbackEntry", {
+      fullName, email, zalo, notes, staffId: currentStaff.id,
+    });
+    document.getElementById("fallback-result").innerHTML =
+      `<div class="banner ok">Đã gửi${result.voucherCode ? " — mã: " + result.voucherCode : ""}.</div>`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Gửi mã ưu đãi";
+  }
 }
 
 // ---- init ----
