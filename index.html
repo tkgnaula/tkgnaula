@@ -1479,7 +1479,7 @@ table.lab-table tr:last-child td{border-bottom:none}
     </div>
 
     <div style="text-align:center;margin-top:44px;">
-      <a href="#" onclick="openOrderModal(); return false;" class="btn-explore-collection">
+      <a href="#" onclick="openCollectionModal(); return false;" class="btn-explore-collection">
         Explore the Fire Collection
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
       </a>
@@ -1867,6 +1867,89 @@ table.lab-table tr:last-child td{border-bottom:none}
   </div>
 </footer>
 
+<!-- ═══ COLLECTION POPUP MODAL (6-SKU GRID) ════════ -->
+<div id="collectionModal" class="collection-modal" style="display:none;">
+  <div class="collection-modal-overlay" onclick="closeCollectionModal()"></div>
+  <div class="collection-modal-content">
+    <button class="collection-modal-close" onclick="closeCollectionModal()">×</button>
+    <div class="collection-modal-header">
+      <div class="collection-modal-tag">Fire Collection</div>
+      <h3 class="collection-modal-title">The Collection</h3>
+    </div>
+    <div class="collection-grid">
+
+      <!-- Morning Ember -->
+      <div class="collection-card">
+        <div class="collection-card-img">
+          <img src="Morning Ember-texture.webp" alt="Morning Ember" loading="lazy">
+        </div>
+        <div class="collection-card-body">
+          <div class="collection-card-name">Morning Ember</div>
+          <div class="collection-card-ing">Ginger · Lemongrass · Lime</div>
+          <div class="collection-card-concept">Bold · Direct · Warm</div>
+        </div>
+      </div>
+
+      <!-- Still Ember -->
+      <div class="collection-card">
+        <div class="collection-card-img">
+          <img src="Still-Ember-texture.webp" alt="Still Ember" loading="lazy">
+        </div>
+        <div class="collection-card-body">
+          <div class="collection-card-name">Still Ember</div>
+          <div class="collection-card-ing">Perilla · Clove · Kumquat</div>
+          <div class="collection-card-concept">Quiet · Considered · Distinctive</div>
+        </div>
+      </div>
+
+      <!-- Coming soon -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-img">
+          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
+        </div>
+        <div class="collection-card-soon-body">
+          <div class="collection-card-soon-label">Coming soon</div>
+          <div class="collection-card-soon-concept">A new botanical experience</div>
+        </div>
+      </div>
+
+      <!-- Coming soon -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-img">
+          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
+        </div>
+        <div class="collection-card-soon-body">
+          <div class="collection-card-soon-label">Coming soon</div>
+          <div class="collection-card-soon-concept">A new botanical experience</div>
+        </div>
+      </div>
+
+      <!-- Coming soon -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-img">
+          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
+        </div>
+        <div class="collection-card-soon-body">
+          <div class="collection-card-soon-label">Coming soon</div>
+          <div class="collection-card-soon-concept">A new botanical experience</div>
+        </div>
+      </div>
+
+      <!-- Coming soon -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-img">
+          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
+        </div>
+        <div class="collection-card-soon-body">
+          <div class="collection-card-soon-label">Coming soon</div>
+          <div class="collection-card-soon-concept">A new botanical experience</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- ═══ ORDER POPUP MODAL ═════════════════════════ -->
 <div id="orderModal" class="order-modal" style="display:none;">
   <div class="modal-overlay" onclick="closeOrderModal()"></div>
@@ -1925,6 +2008,16 @@ function openOrderModal() {
 }
 function closeOrderModal() {
   document.getElementById('orderModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+/* ─── Collection Modal (Explore the Fire Collection popup) ─── */
+function openCollectionModal() {
+  document.getElementById('collectionModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCollectionModal() {
+  document.getElementById('collectionModal').style.display = 'none';
   document.body.style.overflow = 'auto';
 }
 
