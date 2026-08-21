@@ -419,6 +419,11 @@ nav{
   font-size:13.5px;font-weight:300;font-style:italic;
   color:var(--cream3);margin-bottom:14px;
 }
+.sku-format{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:16px;
+  padding-bottom:14px;border-bottom:.5px solid var(--line);width:100%;
+}
 .sku-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
 .sku-pill{
   font-size:9.5px;font-weight:500;letter-spacing:.07em;
@@ -779,7 +784,7 @@ footer{
   padding:0 80px 56px;
 }
 .method-steps{
-  display:grid;grid-template-columns:repeat(4,1fr);border-top:.5px solid var(--line);
+  display:grid;grid-template-columns:repeat(3,1fr);border-top:.5px solid var(--line);
 }
 .method-step{padding:44px 32px 48px;border-right:.5px solid var(--line);position:relative}
 .method-step:last-child{border-right:none}
@@ -888,6 +893,10 @@ footer{
   font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);font-weight:500;
   color:var(--cream);position:relative;
 }
+.special-sub{
+  font-size:13px;font-weight:300;font-style:italic;color:var(--cream3);
+  margin-top:6px;position:relative;
+}
 .special-actions{display:flex;align-items:center;gap:16px;position:relative;flex-wrap:wrap}
 
 /* ─── S7 · MAKE IT PART OF YOUR DAY ──────────────── */
@@ -963,6 +972,10 @@ table.lab-table tr:last-child td{border-bottom:none}
 .lab-foot{
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
   margin-top:16px;font-size:11.5px;color:var(--cream4);letter-spacing:.03em;
+}
+.lab-sugar-note{
+  margin-top:18px;font-size:12px;font-weight:300;font-style:italic;
+  line-height:1.7;color:var(--cream4);max-width:640px;
 }
 .lab-disclaimer{
   margin-top:56px;padding-top:32px;border-top:.5px solid var(--line);
@@ -1250,9 +1263,9 @@ table.lab-table tr:last-child td{border-bottom:none}
   .why-card{padding:36px 40px}
   .method-top{aspect-ratio:4/3}
   .method-top-content{padding:0 40px 40px}
-  .method-steps{grid-template-columns:1fr 1fr}
-  .method-step{border-bottom:.5px solid var(--line)}
-  .method-step:nth-child(2n){border-right:none}
+  .method-steps{grid-template-columns:1fr}
+  .method-step{border-bottom:.5px solid var(--line);border-right:none}
+  .method-step:last-child{border-bottom:none}
   .method-close{padding:44px 40px}
   .ways-grid{grid-template-columns:1fr}
   .way-card{padding:32px 40px}
@@ -1389,7 +1402,6 @@ table.lab-table tr:last-child td{border-bottom:none}
         Explore Products
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
       </a>
-      <a href="#what-is-tkg" class="btn-ghost">Hot · Warm · Over Ice</a>
     </div>
   </div>
 
@@ -1407,7 +1419,7 @@ table.lab-table tr:last-child td{border-bottom:none}
       Botanical wellness, <em>rooted in Vietnam.</em>
     </h2>
     <p class="statement-body">
-      TKG works with identifiable Vietnamese botanicals and brings them into contemporary food and beverage formats through careful preparation.
+      TKG works with identifiable Vietnamese botanicals and develops them into contemporary products and everyday experiences.
     </p>
     <p class="statement-body" style="margin-top:10px;">
       Our first chapter begins with Fire.
@@ -1435,6 +1447,7 @@ table.lab-table tr:last-child td{border-bottom:none}
           <div class="sku-fam sku-fam-fire">Fire · Bold · Direct · Warm</div>
           <div class="sku-name">Morning Ember</div>
           <div class="sku-tagline">A familiar, approachable botanical profile.</div>
+          <div class="sku-format">Fresh Drink · Freeze-Dried Powder</div>
           <div class="sku-pills">
             <span class="sku-pill">Ginger</span>
             <span class="sku-pill">Lemongrass</span>
@@ -1445,7 +1458,7 @@ table.lab-table tr:last-child td{border-bottom:none}
             <div class="sku-note-txt">Ginger gives a recognizable starting point for customers encountering TKG for the first time.</div>
           </div>
           <div class="sku-foot">
-            <div class="sku-meta">Fresh drink &amp; freeze-dried powder</div>
+            <div class="sku-meta">Naula prepared</div>
             <a href="#" onclick="openOrderModal(); return false;" class="btn-fire">Order</a>
           </div>
         </div>
@@ -1460,6 +1473,7 @@ table.lab-table tr:last-child td{border-bottom:none}
           <div class="sku-fam sku-fam-perilla">Fire · Quiet · Considered · Distinctive</div>
           <div class="sku-name">Still Ember</div>
           <div class="sku-tagline">A more distinctive botanical profile.</div>
+          <div class="sku-format">Fresh Drink · Freeze-Dried Powder</div>
           <div class="sku-pills">
             <span class="sku-pill">Perilla</span>
             <span class="sku-pill">Clove</span>
@@ -1470,7 +1484,7 @@ table.lab-table tr:last-child td{border-bottom:none}
             <div class="sku-note-txt">Built around the earthy, aromatic character of perilla — unexpected for customers from Western markets.</div>
           </div>
           <div class="sku-foot">
-            <div class="sku-meta">Fresh drink &amp; freeze-dried powder</div>
+            <div class="sku-meta">Naula prepared</div>
             <a href="#" onclick="openOrderModal(); return false;" class="btn-perilla">Order</a>
           </div>
         </div>
@@ -1534,7 +1548,7 @@ table.lab-table tr:last-child td{border-bottom:none}
       <div class="sec-tag">The Naula Method</div>
       <h2 class="sec-h2" style="margin-bottom:8px;">Water · Heat · Time</h2>
       <p class="sec-lead">
-        Naula is TKG's preparation method for working with fresh botanical ingredients through water, heat and time, followed by freeze-drying for the powder format.
+        Naula is TKG's preparation method — working with fresh botanical ingredients through water, heat and time. The prepared botanical liquid then becomes a fresh drink, or is freeze-dried into powder.
       </p>
     </div>
   </div>
@@ -1552,33 +1566,25 @@ table.lab-table tr:last-child td{border-bottom:none}
 
     <div class="method-step">
       <div class="method-step-num">02</div>
-      <div class="method-step-tag">Water · Heat · Time</div>
+      <div class="method-step-tag">Naula · Water · Heat · Time</div>
       <div class="method-step-head">A careful preparation.</div>
       <p class="method-step-body">
-        The botanicals are prepared using water, controlled heat and time. This allows the ingredients to release their characteristic colour, aroma and flavour into the prepared botanical liquid.
+        The botanicals are prepared using water, controlled heat and time. This allows the ingredients to release their characteristic colour, aroma and flavour into the prepared botanical liquid. This preparation is Naula.
       </p>
     </div>
 
     <div class="method-step">
       <div class="method-step-num">03</div>
-      <div class="method-step-tag">Freeze-Drying</div>
-      <div class="method-step-head">A convenient dry format.</div>
-      <p class="method-step-body">
-        For the powder format, the prepared botanical liquid is subsequently freeze-dried — creating a format that can be reconstituted when needed while retaining the character of the original preparation.
-      </p>
-    </div>
-
-    <div class="method-step">
-      <div class="method-step-num">04</div>
       <div class="method-step-tag">From Preparation to Everyday Use</div>
+      <div class="method-step-head">Two ways to arrive at your cup.</div>
       <div class="method-formats">
         <div class="method-format">
-          <div class="method-format-name">Fresh</div>
+          <div class="method-format-name">Fresh Drink</div>
           <div class="method-format-meta">250ml ready-to-drink · Immediate consumption</div>
         </div>
         <div class="method-format">
-          <div class="method-format-name">Powder</div>
-          <div class="method-format-meta">60g tin / 2g serving · Home preparation, take-home use</div>
+          <div class="method-format-name">Freeze-Dried Powder</div>
+          <div class="method-format-meta">The prepared liquid is freeze-dried · 60g tin / 2g serving · Home preparation, take-home use</div>
         </div>
       </div>
     </div>
@@ -1588,6 +1594,9 @@ table.lab-table tr:last-child td{border-bottom:none}
   <div class="method-close">
     <p class="method-close-txt">
       Prepare the botanical carefully. Keep its identity visible. Make the experience easier to access.
+    </p>
+    <p class="method-close-note">
+      Freeze-drying is how the powder format is made — it is one outcome of Naula, not the method itself.
     </p>
   </div>
 
@@ -1623,7 +1632,7 @@ table.lab-table tr:last-child td{border-bottom:none}
           <div class="prep-arrow">↓</div>
           <div class="prep-row"><div class="prep-icon" style="font-size:11px;">Stir</div><div class="prep-txt">Stir well</div></div>
           <div class="prep-arrow">↓</div>
-          <div class="prep-row"><div class="prep-icon" style="font-size:11px;">Ice</div><div class="prep-txt">Add ice</div></div>
+          <div class="prep-row"><div class="prep-icon" style="font-size:11px;">Ice</div><div class="prep-txt">Add ice if desired</div></div>
           <div class="prep-arrow">↓</div>
           <div class="prep-row"><div class="prep-icon" style="font-size:16px;">✓</div><div class="prep-txt">Enjoy</div></div>
         </div>
@@ -1649,6 +1658,7 @@ table.lab-table tr:last-child td{border-bottom:none}
       <div>
         <div class="special-tag">Special Experience</div>
         <div class="special-title">Hunter and the Red Hood</div>
+        <div class="special-sub">A botanical cocktail story.</div>
       </div>
       <div class="special-actions">
         <span class="badge-soon">Coming Soon</span>
@@ -1814,6 +1824,9 @@ table.lab-table tr:last-child td{border-bottom:none}
         <span>Tested by QUATEST 3 · ISO/IEC 17025:2017 · VILAS 004</span>
         <span>Test Report No. Q326C053953</span>
       </div>
+      <p class="lab-sugar-note">
+        Morning Ember Powder contains 14.3g total sugars / 100g, naturally occurring from the botanical ingredients — according to QUATEST 3 testing. No sugar or sweetener is added.
+      </p>
     </div>
 
     <p class="lab-disclaimer">
