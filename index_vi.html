@@ -12,8 +12,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TKG · Bột Hỗn hợp Thảo mộc · Naula Prepared, Việt Nam</title>
-<meta name="description" content="Ba thảo mộc. Một phương pháp. Định danh và truy xuất rõ nguồn gốc. TKG mang phong cách thảo mộc Việt Nam vào tách trà của bạn — toàn bộ thảo mộc, sấy thăng hoa theo phương pháp Naula.">
+<title>TKG · Chăm Sóc Sức Khỏe Bằng Thảo Mộc Việt Nam</title>
+<meta name="description" content="Thảo mộc Việt Nam, được chế biến theo phương pháp Naula và thiết kế cho cuộc sống thường nhật. Morning Ember và Still Ember — thức uống thảo mộc tươi và bột thảo mộc sấy thăng hoa.">
 <link rel="icon" type="image/png" href="TKG-logo.png">
 <link rel="canonical" href="https://www.tkg-naula.com/index_vi.html">
 <link rel="alternate" hreflang="en" href="https://www.tkg-naula.com/">
@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="TKG_16_9.webp" fetchpriority="high">
+<link rel="preload" as="image" href="TKG_16_9_1.webp" fetchpriority="high">
 
 <style>
 /* ─── RESET ─────────────────────────────────────── */
@@ -138,6 +138,11 @@ nav{
 }
 .hero-media{position:absolute;inset:0}
 .hero-media img,.hero-media .ph{width:100%;height:100%;object-fit:cover}
+.hero-slide{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.6s ease;
+}
+.hero-slide.active{opacity:1}
 .hero-veil{
   position:absolute;inset:0;
   background:linear-gradient(
@@ -209,7 +214,7 @@ nav{
   padding:60px 80px;width:100%;
 }
 .statement-eyebrow{
-  font-size:20px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  font-size:20px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;
   color:var(--fire);margin-bottom:14px;
 }
 .statement-h2{
@@ -418,6 +423,11 @@ nav{
 .sku-tagline{
   font-size:13.5px;font-weight:300;font-style:italic;
   color:var(--cream3);margin-bottom:14px;
+}
+.sku-format{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:16px;
+  padding-bottom:14px;border-bottom:.5px solid var(--line);width:100%;
 }
 .sku-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
 .sku-pill{
@@ -710,6 +720,274 @@ footer{
   width:100%;height:100%;object-fit:cover;object-position:center 75%;
 }
 
+/* ═══════════════════════════════════════════════════
+   NEW HOMEPAGE SECTIONS · 02–09
+   ═══════════════════════════════════════════════════ */
+
+/* ─── SHARED SECTION HEADER ──────────────────────── */
+.sec{border-top:.5px solid var(--line);background:var(--bg)}
+.sec-w{max-width:1280px;margin:0 auto;padding:80px 80px}
+.sec-tag{
+  font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:14px;
+}
+.sec-h2{
+  font-family:var(--serif);font-size:clamp(30px,3.2vw,48px);
+  font-weight:400;line-height:1.1;color:var(--cream);margin-bottom:18px;
+}
+.sec-lead{
+  font-size:15.5px;font-weight:300;line-height:1.8;color:var(--cream2);
+  max-width:640px;
+}
+
+/* ─── S2 · WHAT IS TKG (statement reused, see .statement) ── */
+
+/* ─── S3 · FIRE COLLECTION ───────────────────────── */
+.fire-coll-head{text-align:center;margin-bottom:48px}
+.fire-coll-head .sec-tag{justify-content:center}
+.fire-coll-head .sec-h2{max-width:720px;margin-left:auto;margin-right:auto}
+
+/* ─── S4 · WHY THESE BOTANICALS ──────────────────── */
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  background:var(--line);margin-top:48px;
+}
+.why-card{background:var(--bg);padding:44px 44px 48px}
+.why-fam{
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.why-fam-fire{color:var(--fire)}
+.why-fam-perilla{color:#997393}
+.why-name{
+  font-family:var(--serif);font-size:26px;font-weight:500;color:var(--cream);
+  margin-bottom:4px;
+}
+.why-ing{font-size:13px;font-weight:300;color:var(--cream3);margin-bottom:18px}
+.why-body{font-size:14.5px;font-weight:300;line-height:1.85;color:var(--cream3)}
+.why-body p{margin-bottom:14px}
+.why-body p:last-child{margin-bottom:0}
+.why-close{
+  font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cream4);margin-top:20px;padding-top:18px;border-top:.5px solid var(--line);
+}
+.why-idea{
+  text-align:center;margin-top:36px;padding-top:32px;border-top:.5px solid var(--line);
+  font-family:var(--serif);font-size:19px;font-style:italic;color:var(--cream2);
+}
+
+/* ─── S5 · NAULA METHOD ───────────────────────────── */
+.method-top{position:relative;overflow:hidden;aspect-ratio:21/9}
+.method-top-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.method-top-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(18,17,11,.9) 0%,rgba(18,17,11,.5) 55%,rgba(18,17,11,.15) 100%);
+}
+.method-top-content{
+  position:relative;z-index:2;max-width:1280px;margin:0 auto;
+  height:100%;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 80px 56px;
+}
+.method-steps{
+  display:grid;grid-template-columns:repeat(3,1fr);border-top:.5px solid var(--line);
+}
+.method-step{padding:44px 32px 48px;border-right:.5px solid var(--line);position:relative}
+.method-step:last-child{border-right:none}
+.method-step-num{
+  font-family:var(--serif);font-size:19px;color:var(--cream3);letter-spacing:.1em;
+  margin-bottom:18px;display:flex;align-items:center;gap:10px;
+}
+.method-step-num::after{content:'';flex:1;height:.5px;background:var(--line2)}
+.method-step-tag{
+  font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream3);margin-bottom:12px;
+}
+.method-step-head{
+  font-family:var(--serif);font-size:20px;font-weight:500;line-height:1.2;
+  color:var(--cream);margin-bottom:14px;
+}
+.method-step-body{font-size:13.5px;font-weight:300;line-height:1.75;color:var(--cream3)}
+.method-formats{display:flex;flex-direction:column;gap:16px;margin-top:16px}
+.method-format{
+  border:.5px solid var(--line2);border-radius:3px;padding:14px 16px;
+}
+.method-format-name{
+  font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--gold);margin-bottom:4px;
+}
+.method-format-meta{font-size:12px;color:var(--cream3);font-weight:300}
+.method-close{
+  border-top:.5px solid var(--line);padding:56px 80px;text-align:center;
+}
+.method-close-txt{
+  font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);font-style:italic;
+  font-weight:300;color:var(--cream2);max-width:720px;margin:0 auto 12px;line-height:1.5;
+}
+.method-close-note{
+  font-size:12.5px;font-weight:300;color:var(--cream4);max-width:620px;margin:0 auto;line-height:1.7;
+}
+
+/* ─── S6 · TWO WAYS TO EXPERIENCE ────────────────── */
+.ways-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);margin-top:48px;
+}
+.way-card{background:var(--bg);padding:40px}
+.way-tag{
+  font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream4);margin-bottom:10px;
+}
+.way-head{
+  font-family:var(--serif);font-size:26px;font-weight:500;color:var(--cream);margin-bottom:8px;
+}
+.way-sub{font-size:14px;font-weight:300;font-style:italic;color:var(--cream3);margin-bottom:22px}
+.badge-soon{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--fire);border:.5px solid rgba(212,94,41,.4);background:var(--fire2);
+  padding:8px 16px;border-radius:20px;
+}
+.way-note{font-size:13.5px;font-weight:300;line-height:1.75;color:var(--cream3);margin-top:18px}
+
+/* prep sequence */
+.prep-seq{display:flex;flex-direction:column;gap:0;margin-top:8px}
+.prep-row{
+  display:flex;align-items:center;gap:16px;padding:14px 0;
+  border-bottom:.5px solid var(--line);
+}
+.prep-row:last-child{border-bottom:none}
+.prep-icon{
+  width:34px;height:34px;border-radius:50%;border:.5px solid var(--fire);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:var(--serif);font-size:14px;color:var(--fire);
+}
+.prep-txt{font-size:13.5px;font-weight:400;color:var(--cream2)}
+.prep-arrow{
+  text-align:center;color:var(--cream4);font-size:13px;padding:2px 0;
+}
+.usage-block{margin-top:26px;padding-top:22px;border-top:.5px solid var(--line)}
+.usage-lbl{
+  font-size:11.5px;font-weight:500;font-style:italic;color:var(--cream3);margin-bottom:12px;
+}
+.usage-pills{display:flex;flex-wrap:wrap;gap:8px}
+.usage-pill{
+  font-size:11.5px;font-weight:500;letter-spacing:.03em;
+  padding:7px 15px;border-radius:20px;border:.5px solid var(--line2);
+  color:var(--cream3);background:rgba(255,255,255,.03);
+}
+.usage-close{
+  font-family:var(--serif);font-size:20px;font-style:italic;color:var(--cream);
+  margin-top:20px;
+}
+
+/* special experience banner */
+.special-banner{
+  margin-top:2px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#1D1208 0%,#160E08 100%);
+  border:.5px solid var(--line2);border-radius:4px;
+  padding:40px 44px;display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+}
+.special-banner::before{
+  content:'';position:absolute;top:0;right:0;width:320px;height:100%;pointer-events:none;
+  background:radial-gradient(ellipse at top right,rgba(212,94,41,.16) 0%,transparent 70%);
+}
+.special-tag{
+  font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:10px;position:relative;
+}
+.special-title{
+  font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);font-weight:500;
+  color:var(--cream);position:relative;
+}
+.special-sub{
+  font-size:13px;font-weight:300;font-style:italic;color:var(--cream3);
+  margin-top:6px;position:relative;
+}
+.special-actions{display:flex;align-items:center;gap:16px;position:relative;flex-wrap:wrap}
+
+/* ─── S7 · MAKE IT PART OF YOUR DAY ──────────────── */
+.day-strip{position:relative;overflow:hidden;border-top:.5px solid var(--line);background:var(--bg)}
+.day-strip-img{height:56vh;max-height:460px;overflow:hidden;position:relative}
+.day-strip-img img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
+.day-strip-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(18,17,11,.85) 0%,rgba(18,17,11,.15) 60%);
+}
+.day-moments{
+  display:grid;grid-template-columns:repeat(5,1fr);border-top:.5px solid var(--line);
+}
+.day-moment{padding:32px 24px 36px;border-right:.5px solid var(--line);text-align:center}
+.day-moment:last-child{border-right:none}
+.day-moment-tag{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:12px;
+}
+.day-moment-body{font-size:13px;font-weight:300;line-height:1.6;color:var(--cream3)}
+
+/* ─── S8 · REAL BOTANICALS ───────────────────────── */
+.real-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:.5px solid var(--line);margin-top:48px}
+.real-card{padding:0 40px 0 0;border-right:.5px solid var(--line)}
+.real-card:last-child{border-right:none;padding-right:0}
+.real-card-inner{padding:36px 0 0}
+.real-card:not(:first-child) .real-card-inner{padding-left:40px}
+.real-tag{
+  font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream4);margin-bottom:14px;
+}
+.real-body{font-size:14px;font-weight:300;line-height:1.8;color:var(--cream3)}
+.real-body p{margin-bottom:12px}
+.real-body p:last-child{margin-bottom:0}
+.real-instruction{
+  display:inline-block;margin-top:14px;font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--gold);
+}
+.real-close{
+  text-align:center;margin-top:44px;padding-top:32px;border-top:.5px solid var(--line);
+  font-family:var(--serif);font-size:18px;font-style:italic;color:var(--cream2);
+}
+
+/* ─── S9 · LAB EVIDENCE ───────────────────────────── */
+.lab-block{margin-top:44px}
+.lab-block + .lab-block{margin-top:64px;padding-top:56px;border-top:.5px solid var(--line)}
+.lab-block-head{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  flex-wrap:wrap;margin-bottom:24px;
+}
+.lab-block-title{
+  font-family:var(--serif);font-size:24px;font-weight:500;color:var(--cream);
+}
+.lab-sweeten{display:flex;gap:32px;flex-wrap:wrap;margin:18px 0 8px}
+.lab-sweeten-item{font-size:13px;color:var(--cream3);font-weight:300}
+.lab-sweeten-item strong{color:var(--cream);font-weight:500}
+.lab-statement{
+  font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--herb);
+  margin-bottom:24px;
+}
+.lab-table-wrap{overflow-x:auto;border:.5px solid var(--line2);border-radius:4px}
+table.lab-table{width:100%;border-collapse:collapse;min-width:480px}
+table.lab-table th,table.lab-table td{
+  padding:12px 20px;text-align:left;font-size:13px;font-weight:300;
+  border-bottom:.5px solid var(--line);color:var(--cream3);white-space:nowrap;
+}
+table.lab-table th{
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--cream4);background:rgba(255,255,255,.02);
+}
+table.lab-table td:first-child,table.lab-table th:first-child{color:var(--cream2);font-weight:500;white-space:normal}
+table.lab-table tr:last-child td{border-bottom:none}
+.lab-foot{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  margin-top:16px;font-size:11.5px;color:var(--cream4);letter-spacing:.03em;
+}
+.lab-sugar-note{
+  margin-top:18px;font-size:12px;font-weight:300;font-style:italic;
+  line-height:1.7;color:var(--cream4);max-width:640px;
+}
+.lab-disclaimer{
+  margin-top:56px;padding-top:32px;border-top:.5px solid var(--line);
+  font-size:12.5px;font-weight:300;font-style:italic;line-height:1.8;
+  color:var(--cream4);max-width:720px;
+}
+
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:1024px){
   .nav-desktop{display:none}
@@ -792,7 +1070,7 @@ footer{
   .hero-rule{flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:28px}
   .hero-rule-line{display:none}
   .hero-rule span{white-space:normal;text-align:center;letter-spacing:.12em;line-height:1.7;max-width:100%}
-  .hero-sub{font-size:18.85px;line-height:1.85;max-width:100%}
+  .hero-sub{font-size:18.2px;line-height:1.8;max-width:100%}
   .hero-actions{flex-direction:column;gap:12px}
   .btn-primary{width:100%;justify-content:center}
   .statement{
@@ -823,16 +1101,16 @@ footer{
     height:auto;background:var(--bg);
   }
   .naula-left-head{font-size:18px;line-height:1.15}
-  .naula-right-body{font-size:16.9px;line-height:1.8}
+  .naula-right-body{font-size:16.25px;line-height:1.75}
   .principles{grid-template-columns:1fr}
   .principle{padding:32px 20px 36px;border-right:none;border-bottom:.5px solid var(--line)}
   .principle:last-child{border-bottom:none}
   .p-head{font-size:20px;line-height:1.25}
-  .p-body{font-size:16.9px;line-height:1.75}
+  .p-body{font-size:16.25px;line-height:1.7}
   .products-w{padding:40px 20px}
   .products-header{margin-bottom:32px}
   .products-h2{font-size:26px;line-height:1.1}
-  .products-sub{font-size:17.55px;line-height:1.7;max-width:100%;margin-top:16px}
+  .products-sub{font-size:16.9px;line-height:1.7;max-width:100%;margin-top:16px}
   .products-grid{grid-template-columns:1fr;gap:24px}
   .sku-img{aspect-ratio:1/1}
   .sku-body{padding:20px 20px 18px}
@@ -840,7 +1118,7 @@ footer{
   .sku-price{font-size:15px;margin:8px 0 12px}
   .sku-note{padding:12px 14px;margin-bottom:18px}
   .sku-foot{flex-direction:column;align-items:center;gap:8px;}
-  .sku-meta{font-size:15.6px;line-height:1.5;text-align:center}
+  .sku-meta{font-size:15.6px;text-align:center}
   .btn-fire,.btn-perilla{width:100%;text-align:center;padding:10px 0}
   .ritual-left{
     position:relative;
@@ -852,8 +1130,8 @@ footer{
   .ritual-heading{font-size:52px;line-height:.95;margin-bottom:32px}
   .ritual-eyebrow{font-size:8px;margin-bottom:20px}
   .step{padding:12px 0}
-  .step-title{font-size:13px;line-height:1.4}
-  .step-hint{font-size:14.3px;line-height:1.5}
+  .step-title{font-size:12.5px}
+  .step-hint{font-size:13.65px}
   .closing{padding:48px 20px}
   .closing-serif{font-size:28.6px;line-height:1.4}
   .foot-top{padding:40px 20px 32px;gap:28px}
@@ -982,6 +1260,57 @@ footer{
   .collection-card-name{font-size:17px}
   .collection-card-soon-concept{font-size:15px}
 }
+
+/* ─── NEW SECTIONS · RESPONSIVE ──────────────────── */
+@media(max-width:1024px){
+  .sec-w{padding:56px 40px}
+  .why-grid{grid-template-columns:1fr}
+  .why-card{padding:36px 40px}
+  .method-top{aspect-ratio:4/3}
+  .method-top-content{padding:0 40px 40px}
+  .method-steps{grid-template-columns:1fr}
+  .method-step{border-bottom:.5px solid var(--line);border-right:none}
+  .method-step:last-child{border-bottom:none}
+  .method-close{padding:44px 40px}
+  .ways-grid{grid-template-columns:1fr}
+  .way-card{padding:32px 40px}
+  .special-banner{padding:32px}
+  .day-moments{grid-template-columns:repeat(3,1fr)}
+  .day-moment{border-bottom:.5px solid var(--line)}
+  .day-moment:nth-child(3n){border-right:none}
+  .real-grid{grid-template-columns:1fr;margin-top:32px}
+  .real-card{border-right:none;border-bottom:.5px solid var(--line);padding-bottom:32px;padding-right:0}
+  .real-card:last-child{border-bottom:none}
+  .real-card .real-card-inner,
+  .real-card:not(:first-child) .real-card-inner{padding-left:0;padding-top:28px}
+  .lab-block-head{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:640px){
+  .sec-w{padding:40px 20px}
+  .sec-h2{font-size:26px}
+  .sec-lead{font-size:16.9px;line-height:1.7}
+  .why-card{padding:28px 20px 32px}
+  .why-name{font-size:22px}
+  .why-body{font-size:16.25px;line-height:1.75}
+  .method-top{aspect-ratio:4/5}
+  .method-top-content{padding:0 20px 32px}
+  .method-steps{grid-template-columns:1fr}
+  .method-step{padding:32px 20px 36px;border-right:none}
+  .method-close{padding:36px 20px}
+  .method-close-txt{font-size:19px}
+  .way-card{padding:24px 20px 32px}
+  .way-head{font-size:22px}
+  .special-banner{padding:24px 20px;flex-direction:column;align-items:flex-start}
+  .day-strip-img{height:40vh}
+  .day-moments{grid-template-columns:1fr 1fr}
+  .day-moment{border-right:.5px solid var(--line);padding:24px 16px 28px}
+  .day-moment:nth-child(2n){border-right:none}
+  .real-grid{margin-top:24px}
+  .real-body{font-size:16.25px;line-height:1.7}
+  .lab-block-title{font-size:20px}
+  .lab-sweeten{flex-direction:column;gap:8px}
+  table.lab-table th,table.lab-table td{padding:10px 14px;font-size:12.5px}
+}
 </style>
 </head>
 <body>
@@ -995,18 +1324,18 @@ footer{
 
     <!-- Desktop Navigation -->
     <div class="nav-desktop">
-      <a href="#products">Sản phẩm</a>
-      <a href="#ritual">Pha chế</a>
+      <a href="#fire-collection">Sản phẩm</a>
+      <a href="#experience">Pha chế</a>
       <a href="world-of-naula.html">Thế giới Naula</a>
       <a href="founders.html">Người sáng lập</a>
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
       <a href="vg2-savvi-landing.html">Chương trình VG2</a>
       <a href="faq.html">Câu hỏi thường gặp</a>
       <div class="lang-toggle">
-        <a href="#" onclick="switchLang('en'); return false;" aria-label="English">
+        <a href="index.html" aria-label="English">
           <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
         </a>
-        <a href="#" onclick="switchLang('vi'); return false;" class="active" aria-label="Tiếng Việt">
+        <a href="index_vi.html" class="active" aria-label="Tiếng Việt">
           <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
         </a>
       </div>
@@ -1016,10 +1345,10 @@ footer{
     <!-- Mobile: language toggle + hamburger -->
     <div class="nav-right-mobile">
       <div class="lang-toggle">
-        <a href="#" onclick="switchLang('en'); return false;" aria-label="English">
+        <a href="index.html" aria-label="English">
           <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
         </a>
-        <a href="#" onclick="switchLang('vi'); return false;" class="active" aria-label="Tiếng Việt">
+        <a href="index_vi.html" class="active" aria-label="Tiếng Việt">
           <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
         </a>
       </div>
@@ -1034,8 +1363,8 @@ footer{
 
     <!-- Mobile Navigation Menu -->
     <div class="nav-mobile">
-      <a href="#products">Sản phẩm</a>
-      <a href="#ritual">Pha chế</a>
+      <a href="#fire-collection">Sản phẩm</a>
+      <a href="#experience">Pha chế</a>
       <a href="world-of-naula.html">Thế giới Naula</a>
       <a href="founders.html">Người sáng lập</a>
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
@@ -1047,159 +1376,69 @@ footer{
 </nav>
 
 <!-- ═══ S1 · HERO ══════════════════════════════════ -->
-<section class="hero">
+<section id="hero" class="hero">
 
-  <!-- background image 16:9 -->
+  <!-- background image 16:9 · auto slideshow -->
   <div class="hero-media">
-    <img src="TKG_16_9.webp" alt="TKG — Hỗn hợp Thảo mộc Dạng bột" fetchpriority="high" loading="eager">
+    <img class="hero-slide active" src="TKG_16_9_1.webp" alt="TKG — Chăm Sóc Sức Khỏe Bằng Thảo Mộc Việt Nam" fetchpriority="high" loading="eager">
+    <img class="hero-slide" src="TKG_16_9_2.webp" alt="TKG — Chăm Sóc Sức Khỏe Bằng Thảo Mộc Việt Nam" loading="lazy">
+    <img class="hero-slide" src="TKG_16_9_3.webp" alt="TKG — Chăm Sóc Sức Khỏe Bằng Thảo Mộc Việt Nam" loading="lazy">
+    <img class="hero-slide" src="TKG_16_9_4.webp" alt="TKG — Chăm Sóc Sức Khỏe Bằng Thảo Mộc Việt Nam" loading="lazy">
+    <img class="hero-slide" src="TKG_16_9_5.webp" alt="TKG — Chăm Sóc Sức Khỏe Bằng Thảo Mộc Việt Nam" loading="lazy">
   </div>
   <div class="hero-veil"></div>
 
   <!-- text overlay -->
   <div class="hero-left">
-    <div class="hero-label">Bén rễ từ Việt Nam, chế biến bằng sự tận tâm.</div>
-
-    <h1 class="hero-h1">
-      Hỗn hợp Thảo mộc <em><br>Dạng bột</em>
-    </h1>
+    <div class="hero-label">Chăm Sóc Sức Khỏe Bằng Thảo Mộc Việt Nam</div>
 
     <div class="hero-rule">
       <div class="hero-rule-line"></div>
-      <span>Sấy thăng hoa &nbsp;·&nbsp; Phương thức Naula &nbsp;·&nbsp; Uống nóng hoặc lạnh</span>
+      <span>Morning Ember &nbsp;·&nbsp; Still Ember</span>
       <div class="hero-rule-line"></div>
     </div>
 
     <p class="hero-sub">
-      Các sản phẩm thảo mộc được khơi nguồn cảm hứng từ kiến thức thảo mộc truyền thống và được cải tiến để phù hợp với lối sống hiện đại. Một sự kết hợp thảo mộc dạng bột sấy thăng hoa mang lại cảm giác ấm áp tự nhiên — được chế biến theo phương pháp Naula. Hòa tan tức thì với nước nóng hoặc nước lạnh.
+      Thảo mộc Việt Nam, được chế biến theo phương pháp Naula và thiết kế cho cuộc sống thường nhật.
     </p>
 
     <div class="hero-actions">
-      <a href="#fire-element" class="btn-primary">
-        Khám phá hệ Hoả
+      <a href="#fire-collection" class="btn-primary">
+        Tìm Hiểu Sản Phẩm
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
       </a>
-      <a href="#statement" class="btn-ghost">TKG là gì?</a>
     </div>
   </div>
 
 </section>
 
-<!-- ═══ S2 · BRAND STATEMENT (full-bleed image + overlay) ═══ -->
-<section id="statement" class="statement">
+<!-- ═══ S2 · WHAT IS TKG? ══════════════════════════ -->
+<section id="what-is-tkg" class="statement">
   <div class="statement-media">
-    <img src="Botanical House.webp" alt="TKG là một ngôi nhà thảo mộc." loading="lazy">
+    <img src="Botanical House.webp" alt="Thảo mộc Việt Nam được chế biến theo phương pháp Naula" loading="lazy">
   </div>
   <div class="statement-veil"></div>
   <div class="statement-text">
-    <div class="statement-eyebrow">TKG là gì?</div>
+    <div class="statement-eyebrow">TKG Là Gì?</div>
     <h2 class="statement-h2">
-      TKG là <em>một ngôi nhà thảo mộc.</em>
+      Chăm sóc sức khỏe bằng thảo mộc, <em>khởi nguồn từ Việt Nam.</em>
     </h2>
     <p class="statement-body">
-      Chúng tôi nghiên cứu, chế biến và phát triển các ứng dụng từ thảo mộc trong đời sống hàng ngày — từ thực phẩm, đồ uống cho đến các dòng thực phẩm bổ sung và sản phẩm chăm sóc sức khỏe. Hệ thống sản phẩm được cấu trúc dựa trên triết lý Ngũ hành, nơi mỗi hành sẽ mở ra một phương thức ứng dụng thảo mộc khác nhau.
+      TKG khai thác các thảo mộc Việt quen thuộc, phát triển thành các sản phẩm hiện đại cùng những trải nghiệm gắn liền với đời sống thường nhật.
+    </p>
+    <p class="statement-body" style="margin-top:10px;">
+      Chương đầu tiên của chúng tôi bắt đầu từ Hỏa.
     </p>
   </div>
 </section>
 
-<!-- ═══ S3 · NAULA PREPARED — PRINCIPLES ══════════ -->
-<section id="naula" class="naula-section">
-
-  <div class="naula-top">
-    <img class="naula-top-img" src="Naula-2.webp" alt="Phương pháp Naula" loading="lazy">
-    <div class="naula-top-veil"></div>
-    <div class="naula-top-content">
-      <div>
-      <div class="naula-left-tag">Naula X Sấy thăng hoa</div>
-      <h2 class="naula-left-head">
-        Một hệ thống chế biến thảo<br>mộc kiểm soát, được thiết kế<br>để giữ trọn vẹn đặc tính<br>của nguyên liệu thô.
-      </h2>
-    </div>
-    <p class="naula-right-body">
-      Ba nguyên tắc, nhất quán trong từng công thức. Không chạy theo xu hướng. Không xuất khẩu chỉ vì danh nghĩa xuất khẩu. Một kỷ luật đồng nhất từ gian bếp đến tách trà — trọn vẹn lá và rễ, định danh rõ nguồn gốc, chế biến theo phương pháp Naula.
-    </p>
-  </div>
-</div>
-  <div class="principles">
-
-    <div class="principle">
-      <div class="p-num"><strong>01 <span style="color:var(--cream3);font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;">Thu thập</strong></span></div>
-      <div class="p-tag">Thu thập</div>
-      <div class="p-head">Thảo mộc toàn phần.<br>Thảo mộc nguyên bản.</div>
-      <p class="p-body">
-        Thảo mộc nguyên bản — Gừng, Sả, Chanh, Tía tô, Đinh hương, Tắc — được thu hoạch nguyên vẹn và minh bạch ngay trên nhãn sản phẩm. Không hương liệu nhân tạo, không mập mờ bằng những "chiết xuất tự nhiên" vô danh. Mỗi thành phần đều được truy xuất rõ ràng: một chủng loại, một vùng trồng, một phương thức chế biến.
-      </p>
-    </div>
-
-    <div class="principle">
-      <div class="p-num"><strong>02 <span style="color:var(--cream3);font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;">Naula</strong></span></div>
-      <div class="p-tag">Chế biến</div>
-      <div class="p-head">Naula.<br>Sấy thăng hoa.</div>
-      <p class="p-body">
-       Thảo mộc tươi được chuyển hóa sang dạng lỏng bằng phương pháp Naula — nơi nhiệt độ, nước và thời gian được tinh chỉnh riêng biệt cho từng loại nguyên liệu. Chất lỏng này sau đó được cấp đông và sấy thăng hoa trong môi trường chân không, giúp giữ trọn vẹn màu sắc tự nhiên, hương thơm cùng đặc tính thảo mộc mà không bị tổn hại bởi nhiệt.
-      </p>
-    </div>
-
-    <div class="principle">
-      <div class="p-num"><strong>03 <span style="color:var(--cream3);font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;">Trình bày</strong></span></div>
-      <div class="p-tag">Trình bày</div>
-      <div class="p-head">Công thức rõ ràng.<br>Không thêm phụ gia.</div>
-      <p class="p-body">
-        Không chất bảo quản. Không màu nhân tạo. Không chất làm ngọt nhân tạo. Công thức sạch, đã được kiểm nghiệm nghiêm ngặt tại Quatest 3. Hãy để sản phẩm được mang hương vị nguyên bản của chính nó.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ═══ S4 · MOODY FULL-BLEED PHOTO ═══════════════ -->
-<div class="photo-break">
-  <img src="Freeze-dried-3.webp" alt="Chế biến theo phương pháp Naula" loading="lazy">
-</div>
-
-<!-- ═══ S4.5 · FIRE ELEMENT (standalone intro) ═══════ -->
-<section id="fire-element" class="fire-element">
-  <div class="fire-element-w">
-    <div class="fire-intro">
-      <div class="fire-intro-tag">Sản phẩm đang mở bán</div>
-      <h3 class="fire-intro-h3">Hệ Hoả</h3>
-      <p class="fire-intro-lead">Hệ thống sản phẩm thảo mộc đầu tiên của chúng tôi.</p>
-      <p class="fire-intro-body">
-        Một bộ sưu tập các dòng thảo mộc dạng bột sấy thăng hoa, được thiết kế xoay quanh các nguyên liệu theo truyền thống thường gắn liền với sự ấm áp, hương thơm và cảm giác thư thái mỗi ngày.
-      </p>
-      <div class="fire-intro-skus">
-        <div class="fire-intro-sku">
-          <span class="fire-intro-sku-name">Morning Ember</span>
-          <span class="fire-intro-sku-concept">Lư Trung Hoả</span>
-          <span class="fire-intro-sku-ing">Gừng · Sả · Chanh</span>
-        </div>
-        <div class="fire-intro-sku">
-          <span class="fire-intro-sku-name">Still Ember</span>
-          <span class="fire-intro-sku-concept">Phú Đăng Hoả</span>
-          <span class="fire-intro-sku-ing">Tía tô · Đinh hương · Tắc</span>
-        </div>
-      </div>
-      <p class="fire-intro-body" style="margin-top:8px;">
-        Được chế biến bằng phương pháp Naula và thiết kế để sử dụng tiện lợi, hòa tan tức thì với nước nóng hoặc nước lạnh.
-      </p>
-      <button type="button" class="btn-explore-collection" onclick="openCollectionModal()">
-        Khám phá Bộ sưu tập
-        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ S5 · PRODUCTS ══════════════════════════════ -->
-<section id="products" class="products">
+<!-- ═══ S3 · FIRE COLLECTION ═══════════════════════ -->
+<section id="fire-collection" class="products sec">
   <div class="products-w">
 
-    <div class="products-header">
-      <div>
-        <div class="products-tag">Sản phẩm</div>
-        <h2 class="products-h2">Cho điểm khởi đầu.<br>Cho suốt hành trình.</h2>
-      </div>
-      <p class="products-sub">Hai công thức riêng biệt. Cả hai đều minh bạch nguồn gốc, đều giữ trọn vẹn thành phần tự nhiên, và đều được bào chế bằng phương pháp Naula.</p>
+    <div class="fire-coll-head">
+      <div class="sec-tag">Bộ Tập Hỏa</div>
+      <h2 class="sec-h2">Hai trải nghiệm thảo mộc.<br>Một chương mở đầu.</h2>
     </div>
 
     <div class="products-grid">
@@ -1210,63 +1449,21 @@ footer{
           <img src="Morning Ember-texture.webp" alt="Morning Ember" loading="lazy">
         </div>
         <div class="sku-body">
-          <div class="sku-fam sku-fam-fire">Lư Trung Hoả · Fire</div>
+          <div class="sku-fam sku-fam-fire">Hỏa · Táo Bạo · Trực Tiếp · Ấm Áp</div>
           <div class="sku-name">Morning Ember</div>
-          <div class="sku-tagline">Một ngụm ấm nồng để bắt đầu ngày mới</div>
+          <div class="sku-tagline">Một hương vị thảo mộc quen thuộc, dễ tiếp cận.</div>
+          <div class="sku-format">Thức Uống Tươi · Bột Sấy Thăng Hoa</div>
           <div class="sku-pills">
             <span class="sku-pill">Gừng</span>
             <span class="sku-pill">Sả</span>
-            <span class="sku-pill">Chanh</span>
+            <span class="sku-pill">Tắc</span>
           </div>
           <div class="sku-note sku-note-fire">
-            <div class="sku-note-lbl">Trải nghiệm cảm quan</div>
-            <div class="sku-note-txt">Hiện tượng lắng đọng tự nhiên sau khi pha chính là phần tinh bột trọn vẹn từ sả và gừng tươi — dấu ấn của nguyên liệu thực bản, hoàn toàn không bị bóc tách chất. Đậm vị. Trực tiếp. Cảm nhận hơi ấm ngay từ ngụm đầu tiên.</div>
-          </div>
-          <!-- Nutrition Facts -->
-          <div class="sku-nf" id="nf-morning">
-            <div class="sku-nf-head" onclick="toggleNF('nf-morning')">
-              <span class="sku-nf-title">Thông tin dinh dưỡng</span>
-              <span class="sku-nf-serving">trên 2 g khẩu phần</span>
-              <svg class="sku-nf-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="sku-nf-body">
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Năng lượng</span>
-                <span class="sku-nf-val">4.44 kcal <span class="sku-nf-nrv">0.22% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Chất đạm</span>
-                <span class="sku-nf-val">0.13 g <span class="sku-nf-nrv">0.26% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Carbohydrate</span>
-                <span class="sku-nf-val">0.45 g <span class="sku-nf-nrv">0.14% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label" style="padding-left:10px">— trong đó đường</span>
-                <span class="sku-nf-val">0.29 g</span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Chất xơ</span>
-                <span class="sku-nf-val">1.02 g</span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Chất béo</span>
-                <span class="sku-nf-val">0.01 g <span class="sku-nf-nrv">0.02% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Sodium</span>
-                <span class="sku-nf-val">6.24 mg <span class="sku-nf-nrv">0.31% NRV</span></span>
-              </div>
-              <div class="sku-nf-row" style="border-top:.5px solid var(--line2);margin-top:4px;padding-top:8px">
-                <span class="sku-nf-label" style="color:var(--herb);font-weight:500">Không thêm đường</span>
-                <span class="sku-nf-val" style="color:var(--herb)">✓</span>
-              </div>
-              <div class="sku-nf-disclaimer">Kiểm nghiệm bởi Quatest 3 · Q326C053953 · 01/06/2026</div>
-            </div>
+            <div class="sku-note-lbl">Điểm khởi đầu quen thuộc</div>
+            <div class="sku-note-txt">Gừng tạo nên một điểm bắt đầu thân thuộc cho những ai lần đầu trải nghiệm TKG.</div>
           </div>
           <div class="sku-foot">
-            <div class="sku-meta">60g · 30 khẩu phần · 2 thìa cà phê / 100ml</div>
+            <div class="sku-meta">Chế biến theo phương pháp Naula</div>
             <a href="#" onclick="openOrderModal(); return false;" class="btn-fire">Đặt hàng</a>
           </div>
         </div>
@@ -1278,63 +1475,21 @@ footer{
           <img src="Still-Ember-texture.webp" alt="Still Ember" loading="lazy">
         </div>
         <div class="sku-body">
-          <div class="sku-fam sku-fam-perilla">Phú Đăng Hoả · Fire</div>
+          <div class="sku-fam sku-fam-perilla">Hỏa · Trầm Lặng · Chiêm Nghiệm · Sâu Sắc</div>
           <div class="sku-name">Still Ember</div>
-          <div class="sku-tagline">Một khoảnh khắc tĩnh lặng trước khi nghỉ ngơi</div>
+          <div class="sku-tagline">Một hương vị thảo mộc khác biệt, giàu bản sắc.</div>
+          <div class="sku-format">Thức Uống Tươi · Bột Sấy Thăng Hoa</div>
           <div class="sku-pills">
-            <span class="sku-pill">Tía tô</span>
-            <span class="sku-pill">Đinh hương</span>
+            <span class="sku-pill">Tía Tô</span>
+            <span class="sku-pill">Đinh Hương</span>
             <span class="sku-pill">Tắc</span>
           </div>
           <div class="sku-note sku-note-perilla">
-            <div class="sku-note-lbl">Trải nghiệm cảm quan</div>
-            <div class="sku-note-txt">Hiện tượng chuyển màu sau khi pha chính là phản ứng pH tự nhiên của lá tía tô — hoàn toàn không dùng phẩm màu nhân tạo hay chất ổn định hóa học. Nên uống ngay để cảm nhận sắc màu tuyệt vời nhất. Nhẹ nhàng. Sâu lắng.</div>
-          </div>
-          <!-- Nutrition Facts -->
-          <div class="sku-nf" id="nf-still">
-            <div class="sku-nf-head" onclick="toggleNF('nf-still')">
-              <span class="sku-nf-title">Thông tin dinh dưỡng</span>
-              <span class="sku-nf-serving">trên 2 g khẩu phần</span>
-              <svg class="sku-nf-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="sku-nf-body">
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Năng lượng</span>
-                <span class="sku-nf-val">3.08 kcal <span class="sku-nf-nrv">0.15% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Chất đạm</span>
-                <span class="sku-nf-val">0.09 g <span class="sku-nf-nrv">0.18% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Carbohydrate</span>
-                <span class="sku-nf-val">0.03 g <span class="sku-nf-nrv">0.01% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label" style="padding-left:10px">— trong đó đường</span>
-                <span class="sku-nf-val">0.02 g</span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Chất xơ</span>
-                <span class="sku-nf-val">1.27 g</span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Chất béo</span>
-                <span class="sku-nf-val">0.00 g <span class="sku-nf-nrv">0.00% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Sodium</span>
-                <span class="sku-nf-val">9.10 mg <span class="sku-nf-nrv">0.46% NRV</span></span>
-              </div>
-              <div class="sku-nf-row" style="border-top:.5px solid var(--line2);margin-top:4px;padding-top:8px">
-                <span class="sku-nf-label" style="color:var(--herb);font-weight:500">Không thêm đường</span>
-                <span class="sku-nf-val" style="color:var(--herb)">✓</span>
-              </div>
-              <div class="sku-nf-disclaimer">Kiểm nghiệm bởi Quatest 3 · Q326C053953 · 01/06/2026</div>
-            </div>
+            <div class="sku-note-lbl">Một phát hiện độc đáo</div>
+            <div class="sku-note-txt">Xoay quanh hương vị thảo mộc mộc mạc, thơm nồng đặc trưng của tía tô — một trải nghiệm đầy bất ngờ dành cho du khách Phương Tây.</div>
           </div>
           <div class="sku-foot">
-            <div class="sku-meta">60g · 30 khẩu phần · 2 thìa cà phê / 100ml</div>
+            <div class="sku-meta">Chế biến theo phương pháp Naula</div>
             <a href="#" onclick="openOrderModal(); return false;" class="btn-perilla">Đặt hàng</a>
           </div>
         </div>
@@ -1342,69 +1497,346 @@ footer{
 
     </div>
 
+    <div style="text-align:center;margin-top:44px;">
+      <a href="#" onclick="openCollectionModal(); return false;" class="btn-explore-collection">
+        Khám Phá Bộ Tập Hỏa
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+      </a>
+    </div>
+
   </div>
 </section>
 
-<!-- ═══ S6 · BREWING RITUAL ════════════════════════ -->
-<section id="ritual" class="ritual">
+<!-- ═══ S4 · WHY THESE BOTANICALS? ═════════════════ -->
+<section id="why-botanicals" class="sec">
+  <div class="sec-w">
+    <div class="sec-tag">Từ Quen Thuộc Đến Khám Phá</div>
+    <h2 class="sec-h2">Vì Sao Lại Là Những Thảo Mộc Này?</h2>
+    <p class="sec-lead">
+      TKG làm việc với những thảo mộc quen thuộc mang đậm bản sắc văn hóa và ẩm thực. Có những hương vị thân thuộc ngay từ ngụm đầu tiên; lại có những thành phần mở ra một cách thưởng thức hoàn toàn mới.
+    </p>
 
-  <!-- left: huge type + steps -->
-  <div class="ritual-left">
-    <div class="ritual-eyebrow">Pha chế như thế nào</div>
-    <div class="ritual-heading">QUY TRÌNH<br>THƯỞNG THỨC</div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num"><span>1</span></div>
-        <div>
-          <div class="step-title">Cho 2 thìa cà phê vào ly</div>
-          <div class="step-hint">~2g cho mỗi khẩu phần. Tuỳ chỉnh theo khẩu vị.</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-fam why-fam-fire">Morning Ember</div>
+        <div class="why-name">Điểm bắt đầu thân quen.</div>
+        <div class="why-ing">Gừng · Sả · Tắc</div>
+        <div class="why-body">
+          <p>Gừng, sả và tắc là những nguyên liệu xuất hiện trong nhiều nền ẩm thực và được nhận biết rộng rãi trên khắp thế giới.</p>
+          <p>Sự quen thuộc ấy tạo nên một điểm khởi đầu tự nhiên để khám phá TKG — cách để trải nghiệm phương pháp chế biến thảo mộc riêng của chúng tôi thông qua phương pháp Naula.</p>
+          <p>Kết hợp cùng nhau, chúng tạo nên một hương vị thảo mộc táo bạo, trực tiếp và ấm áp.</p>
         </div>
+        <div class="why-close">Nguyên liệu thân quen → Phương pháp TKG → Một trải nghiệm hoàn toàn mới</div>
       </div>
-      <div class="step">
-        <div class="step-num"><span>2</span></div>
-        <div>
-          <div class="step-title">Rót 100ml nước</div>
-          <div class="step-hint">Nóng hoặc lạnh — cả hai đều dùng được.</div>
+      <div class="why-card">
+        <div class="why-fam why-fam-perilla">Still Ember</div>
+        <div class="why-name">Hương vị từ văn hóa thảo mộc Đông Á.</div>
+        <div class="why-ing">Tía Tô · Đinh Hương · Tắc</div>
+        <div class="why-body">
+          <p>Tía tô, đinh hương và tắc gắn liền hơn với truyền thống ẩm thực châu Á và ít quen thuộc hơn với nhiều người trên thế giới.</p>
+          <p>Bên cạnh hương thơm đặc trưng của tía tô và vị cay nồng ấm của đinh hương, những thảo mộc này đã được sử dụng lâu đời trong ẩm thực và các tập quán truyền thống. Tại Việt Nam, các nguyên liệu thảo mộc cũng thường được chế biến và thưởng thức dưới dạng thức uống.</p>
+          <p>Thông qua sự kết hợp nguyên liệu riêng của TKG cùng phương pháp Naula, chúng hòa quyện tạo nên một trải nghiệm thức uống thảo mộc độc đáo.</p>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num"><span>3</span></div>
-        <div>
-          <div class="step-title">Khuấy đều đến khi tan hoàn toàn</div>
-          <div class="step-hint">Lớp lắng tự nhiên từ thảo mộc nguyên bản.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num"><span>4</span></div>
-        <div>
-          <div class="step-title">Thưởng thức</div>
-          <div class="step-hint">Thưởng thức ngay để cảm nhận trọn vẹn sắc màu và hương vị tự nhiên.</div>
-        </div>
+        <div class="why-close">Trầm Lặng · Chiêm Nghiệm · Sâu Sắc</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- right: ritual photo -->
-  <div class="ritual-right">
-    <img src="Ritual-2.webp" alt="Quy trình pha chế" loading="lazy">
-    <div class="ritual-right-veil"></div>
+<!-- ═══ S5 · THE NAULA METHOD ═══════════════════════ -->
+<section id="naula-method" class="naula-section">
+
+  <div class="method-top">
+    <img class="method-top-img" src="Naula-2.webp" alt="Phương Pháp Naula" loading="lazy">
+    <div class="method-top-veil"></div>
+    <div class="method-top-content">
+      <div class="sec-tag">Phương Pháp Naula</div>
+      <h2 class="sec-h2" style="margin-bottom:8px;">Nước · Nhiệt · Thời Gian</h2>
+      <p class="sec-lead">
+        Naula là phương pháp chế biến riêng của TKG — chế biến các nguyên liệu thảo mộc tươi thông qua nước, nhiệt độ và thời gian. Cốt thảo mộc sau khi chế biến sẽ trở thành thức uống tươi, hoặc được sấy thăng hoa thành dạng bột.
+      </p>
+    </div>
+  </div>
+
+  <div class="method-steps">
+
+    <div class="method-step">
+      <div class="method-step-num">01</div>
+      <div class="method-step-tag">Bắt Đầu Từ Thảo Mộc</div>
+      <div class="method-step-head">Những nguyên liệu thảo mộc quen thuộc.</div>
+      <p class="method-step-body">
+        TKG khởi đầu với các thành phần thảo mộc gần gũi như gừng, sả, tắc, tía tô, đinh hương và quất. Nguyên liệu luôn là cốt lõi hàng đầu.
+      </p>
+    </div>
+
+    <div class="method-step">
+      <div class="method-step-num">02</div>
+      <div class="method-step-tag">Naula · Nước · Nhiệt · Thời Gian</div>
+      <div class="method-step-head">Sự chế biến tỉ mỉ.</div>
+      <p class="method-step-body">
+        Các thảo mộc được chế biến thông qua việc kiểm soát nước, nhiệt độ và thời gian. Quá trình này giúp nguyên liệu giải phóng trọn vẹn sắc, hương và vị đặc trưng vào cốt thảo mộc. Cách thức chế biến ấy chính là Naula.
+      </p>
+    </div>
+
+    <div class="method-step">
+      <div class="method-step-num">03</div>
+      <div class="method-step-tag">Từ Phương Pháp Đến Đời Sống Thường Nhật</div>
+      <div class="method-step-head">Hai hành trình đi đến tách nước của bạn.</div>
+      <div class="method-formats">
+        <div class="method-format">
+          <div class="method-format-name">Thức Uống Tươi</div>
+          <div class="method-format-meta">250ml đóng chai uống ngay · Thưởng thức tức thì</div>
+        </div>
+        <div class="method-format">
+          <div class="method-format-name">Bột Sấy Thăng Hoa</div>
+          <div class="method-format-meta">Cốt thảo mộc sau khi nấu được sấy thăng hoa · Hộp 60g / 2g mỗi lần dùng · Tự pha tại nhà, tiện lợi mang theo</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="method-close">
+    <p class="method-close-txt">
+      Chế biến thảo mộc một cách tỉ mỉ. Giữ nguyên bản sắc vẹn toàn. Mang lại trải nghiệm dễ dàng tiếp cận hơn.
+    </p>
+    <p class="method-close-note">
+      Sấy thăng hoa là phương cách tạo ra dạng bột — đây là một kết quả từ Naula, chứ không phải bản thân phương pháp Naula.
+    </p>
   </div>
 
 </section>
 
-<!-- ═══ S7 · LIFESTYLE FULL-BLEED ════════════════ -->
-<div class="lifestyle-bleed">
-  <img src="Ending-1.webp" alt="TKG — phong cách sống" class="lifestyle-bleed-img" loading="lazy">
-</div>
+<!-- ═══ S6 · TWO WAYS TO EXPERIENCE ════════════════ -->
+<section id="experience" class="sec">
+  <div class="sec-w">
+    <div class="sec-tag">Thức Uống Tươi Hay Bột Sấy Thăng Hoa</div>
+    <h2 class="sec-h2">Thưởng thức theo cách của bạn.</h2>
 
-<!-- ═══ S8 · CLOSING ══════════════════════════════ -->
-<section id="order" class="closing">
-  <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-      <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
-        Đặt hàng ngay
-        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
-      </a>
-      <a href="#naula" class="btn-ghost">Tìm hiểu phương pháp →</a>
+    <div class="ways-grid">
+
+      <!-- Fresh Botanical Drink -->
+      <div class="way-card">
+        <div class="way-tag">01 · Thức Uống Thảo Mộc Tươi</div>
+        <div class="way-head">Sẵn sàng thưởng thức.</div>
+        <div class="way-sub">Thức uống thảo mộc tươi được chế biến theo phương pháp Naula.</div>
+        <span class="badge-soon">Sắp Ra Mắt</span>
+        <p class="way-note">Sẽ có mặt tại các điểm bán chọn lọc. Danh sách điểm bán sẽ sớm được công bố.</p>
+      </div>
+
+      <!-- Freeze-Dried Botanical Powder -->
+      <div class="way-card">
+        <div class="way-tag">02 · Bột Thảo Mộc Sấy Thăng Hoa</div>
+        <div class="way-head">Pha chế theo cách của bạn.</div>
+        <div class="way-sub">Cách pha chuẩn</div>
+
+        <div class="prep-seq">
+          <div class="prep-row"><div class="prep-icon">2g</div><div class="prep-txt">2 muỗng cà phê (2g bột)</div></div>
+          <div class="prep-arrow">+</div>
+          <div class="prep-row"><div class="prep-icon">100</div><div class="prep-txt">100ml nước — nóng hoặc lạnh</div></div>
+          <div class="prep-arrow">↓</div>
+          <div class="prep-row"><div class="prep-icon" style="font-size:11px;">Khuấy</div><div class="prep-txt">Khuấy đều</div></div>
+          <div class="prep-arrow">↓</div>
+          <div class="prep-row"><div class="prep-icon" style="font-size:11px;">Đá</div><div class="prep-txt">Thêm đá tùy thích</div></div>
+          <div class="prep-arrow">↓</div>
+          <div class="prep-row"><div class="prep-icon" style="font-size:16px;">✓</div><div class="prep-txt">Thưởng thức</div></div>
+        </div>
+
+        <div class="usage-block">
+          <div class="usage-lbl">Không chỉ với nước.</div>
+          <div class="usage-pills">
+            <span class="usage-pill">Sparkling</span>
+            <span class="usage-pill">Soda</span>
+            <span class="usage-pill">Cocktail</span>
+            <span class="usage-pill">Mocktail</span>
+            <span class="usage-pill">Sinh tố</span>
+            <span class="usage-pill">Lắc (Shake)</span>
+          </div>
+          <div class="usage-close">Sáng tạo theo phong cách của bạn.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Special Experience -->
+    <div class="special-banner">
+      <div>
+        <div class="special-tag">Trải Nghiệm Đặc Biệt</div>
+        <div class="special-title">Hunter and the Red Hood</div>
+        <div class="special-sub">Chuyện kể qua ly cocktail thảo mộc.</div>
+      </div>
+      <div class="special-actions">
+        <span class="badge-soon">Sắp Ra Mắt</span>
+        <a href="hunter-and-the-red-hood.html" class="btn-ghost">Khám Phá Câu Chuyện →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ S7 · MAKE IT PART OF YOUR DAY ══════════════ -->
+<section id="everyday" class="day-strip">
+  <div class="day-strip-img">
+    <img src="Ending-1.webp" alt="Nghi thức thảo mộc cho những khoảnh khắc thường nhật" loading="lazy">
+    <div class="day-strip-veil"></div>
+  </div>
+  <div class="sec-w" style="padding-bottom:0;padding-top:56px;">
+    <div class="sec-tag" style="text-align:center;">Nghi Thức Mỗi Ngày</div>
+    <h2 class="sec-h2" style="text-align:center;margin:0 auto;max-width:640px;">Nghi thức thảo mộc cho những khoảnh khắc thường nhật.</h2>
+  </div>
+  <div class="day-moments">
+    <div class="day-moment">
+      <div class="day-moment-tag">Khởi Đầu</div>
+      <p class="day-moment-body">Khởi đầu ngày mới bằng một khoảnh khắc thảo mộc.</p>
+    </div>
+    <div class="day-moment">
+      <div class="day-moment-tag">Chuyển Động</div>
+      <p class="day-moment-body">Một nghi thức đơn giản đồng hành cùng nhịp sống năng động.</p>
+    </div>
+    <div class="day-moment">
+      <div class="day-moment-tag">Ngoại Cảnh</div>
+      <p class="day-moment-body">Dễ dàng pha chế dù nhịp ngày đưa bạn đến đâu.</p>
+    </div>
+    <div class="day-moment">
+      <div class="day-moment-tag">Thư Thái</div>
+      <p class="day-moment-body">Một khoảnh khắc thảo mộc lắng đọng và bình yên.</p>
+    </div>
+    <div class="day-moment">
+      <div class="day-moment-tag">Thường Nhật</div>
+      <p class="day-moment-body">Một cách đơn giản để cảm nhận thảo mộc Việt mỗi ngày.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S8 · REAL BOTANICALS ═══════════════════════ -->
+<section id="real-botanicals" class="sec">
+  <div class="sec-w">
+    <div class="sec-tag">Thảo Mộc Nguyên Bản</div>
+    <h2 class="sec-h2">Thảo mộc giữ trọn bản tính tự nhiên.</h2>
+    <p class="sec-lead">Mục này giải thích những đặc tính tự nhiên mà người dùng có thể quan sát thấy.</p>
+
+    <div class="real-grid">
+      <div class="real-card">
+        <div class="real-card-inner">
+          <div class="real-tag">Lắng Cặn Tự Nhiên</div>
+          <div class="real-body">
+            <p>Phần lắng cặn từ thảo mộc tự nhiên có thể đọng lại sau khi pha.</p>
+          </div>
+          <span class="real-instruction">Khuấy đều trước khi uống</span>
+        </div>
+      </div>
+      <div class="real-card">
+        <div class="real-card-inner">
+          <div class="real-tag">Sắc Màu</div>
+          <div class="real-body">
+            <p>Sự biến đổi màu sắc tự nhiên có thể xảy ra do đặc tính của các thành phần thảo mộc và sự khác biệt trong môi trường pha chế.</p>
+            <p>Riêng với Still Ember, tía tô chứa các sắc tố tự nhiên có thể phản ứng với sự thay đổi của môi trường pha chế, bao gồm cả chất lượng nước. Đây là đặc tính tự nhiên của nguyên liệu thảo mộc, hoàn toàn không phải do sử dụng phẩm màu nhân tạo.</p>
+          </div>
+        </div>
+      </div>
+      <div class="real-card">
+        <div class="real-card-inner">
+          <div class="real-tag">Biến Đổi Tự Nhiên</div>
+          <div class="real-body">
+            <p>Sự khác biệt tự nhiên về màu sắc, hương thơm và diện mạo có thể xuất hiện giữa các mẻ thảo mộc khác nhau.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="real-close">Đây là những đặc tính tự nhiên của nguyên liệu thảo mộc nguyên bản, không phải lỗi sản phẩm.</div>
+  </div>
+</section>
+
+<!-- ═══ S9 · PRODUCT & LABORATORY EVIDENCE ═════════ -->
+<section id="lab-evidence" class="sec">
+  <div class="sec-w">
+    <div class="sec-tag">Minh Bạch</div>
+    <h2 class="sec-h2">Thấu hiểu những gì trong tách nước của bạn.</h2>
+
+    <!-- Fresh Botanical Drinks -->
+    <div class="lab-block">
+      <div class="lab-block-head">
+        <div>
+          <div class="lab-block-title">Thức Uống Thảo Mộc Tươi</div>
+          <div class="lab-sweeten">
+            <div class="lab-sweeten-item"><strong>Morning Ember</strong> — Gừng · Sả · Tắc · Ngọt thanh từ Mật Ong + Đường Thốt Nốt</div>
+            <div class="lab-sweeten-item"><strong>Still Ember</strong> — Tía Tô · Đinh Hương · Tắc · Ngọt nhẹ từ Mật Ong + Đường Thô</div>
+          </div>
+        </div>
+      </div>
+      <div class="lab-statement">Không sử dụng đường tinh luyện.</div>
+
+      <div class="lab-table-wrap">
+        <table class="lab-table">
+          <thead>
+            <tr>
+              <th>Chỉ Số / 100ml</th>
+              <th>Morning Ember</th>
+              <th>Still Ember</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Năng lượng</td><td>54 kcal</td><td>70 kcal</td></tr>
+            <tr><td>Chất đạm (Protein)</td><td>0.26 g</td><td>0.26 g</td></tr>
+            <tr><td>Carbohydrate</td><td>13.1 g</td><td>17.3 g</td></tr>
+            <tr><td>Đường tổng số</td><td>12.5 g</td><td>16.2 g</td></tr>
+            <tr><td>Chất béo</td><td>0 g</td><td>0 g</td></tr>
+            <tr><td>Xơ dinh dưỡng</td><td>0.27 g</td><td>Không phát hiện*</td></tr>
+            <tr><td>Natri (Sodium)</td><td>21.1 mg</td><td>4.32 mg</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lab-foot">
+        <span>Kiểm nghiệm bởi Eurofins Sắc Ký Hải Đăng · ISO/IEC 17025:2017 · VILAS 238</span>
+        <span>Morning Ember: AR-25-VD-169691-02 · Still Ember: AR-25-VD-169692-02</span>
+      </div>
+    </div>
+
+    <!-- Freeze-Dried Botanical Powders -->
+    <div class="lab-block">
+      <div class="lab-block-head">
+        <div>
+          <div class="lab-block-title">Bột Thảo Mộc Sấy Thăng Hoa</div>
+          <div class="lab-sweeten">
+            <div class="lab-sweeten-item"><strong>Morning Ember</strong> — Gừng · Sả · Chanh</div>
+            <div class="lab-sweeten-item"><strong>Still Ember</strong> — Tía Tô · Đinh Hương · Tắc</div>
+          </div>
+        </div>
+      </div>
+      <div class="lab-statement">Hoàn toàn không thêm đường hay chất tạo ngọt vào dạng bột.</div>
+
+      <div class="lab-table-wrap">
+        <table class="lab-table">
+          <thead>
+            <tr>
+              <th>Chỉ Số / 100g</th>
+              <th>Morning Ember</th>
+              <th>Still Ember</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Năng lượng</td><td>222 kcal</td><td>154 kcal</td></tr>
+            <tr><td>Chất đạm (Protein)</td><td>6.70 g</td><td>4.66 g</td></tr>
+            <tr><td>Chất béo</td><td>0.43 g</td><td>0.17 g</td></tr>
+            <tr><td>Carbohydrate*</td><td>22.3 g</td><td>1.70 g</td></tr>
+            <tr><td>Xơ dinh dưỡng tổng số</td><td>51.0 g</td><td>63.5 g</td></tr>
+            <tr><td>Chất xơ hòa tan</td><td>50.4 g</td><td>62.9 g</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lab-foot">
+        <span>Kiểm nghiệm bởi QUATEST 3 · ISO/IEC 17025:2017 · VILAS 004</span>
+        <span>Báo cáo kiểm nghiệm số Q326C053953</span>
+      </div>
+      <p class="lab-sugar-note">
+        Bột Morning Ember chứa 14.3g đường tổng số / 100g, hoàn toàn tự nhiên từ nguyên liệu thảo mộc — theo kết quả kiểm nghiệm của QUATEST 3. Không thêm đường hay chất tạo ngọt.
+      </p>
+    </div>
+
+    <p class="lab-disclaimer">
+      Kết quả kiểm nghiệm phòng thí nghiệm là dữ liệu phân tích dựa trên các mẫu sản phẩm đã qua thử nghiệm. Dữ liệu này được cung cấp dưới dạng thông tin sản phẩm, không phải tuyên bố y khoa hay cam kết điều trị.
+    </p>
   </div>
 </section>
 
@@ -1413,23 +1845,23 @@ footer{
   <div class="foot-top">
     <div>
       <div class="foot-brand"><img src="TKG-logo.png" alt="TKG"></div>
-      <div class="foot-sub">Thien Kien</div>
+      <div class="foot-sub">Thiện Kiến</div>
       <div class="foot-sub2">Sản phẩm Việt Nam</div>
     </div>
     <div class="foot-nav">
       <div class="foot-col">
-        <div class="foot-col-title">Điều hướng</div>
-        <a href="#naula">Phương pháp Naula</a>
-        <a href="#products">Sản phẩm</a>
-        <a href="#ritual">Pha chế</a>
-        <a href="world-of-naula.html">Thế giới Naula</a>
-        <a href="founders.html">Người sáng lập</a>
-        <a href="vg2-savvi-landing.html">Chương trình VG2</a>
+        <div class="foot-col-title">Điều Hướng</div>
+        <a href="#naula-method">Phương Pháp Naula</a>
+        <a href="#fire-collection">Sản Phẩm</a>
+        <a href="#experience">Pha Chế</a>
+        <a href="world-of-naula.html">Thế Giới Naula</a>
+        <a href="founders.html">Người Sáng Lập</a>
+        <a href="vg2-savvi-landing.html">Chương Trình VG2</a>
       </div>
       <div class="foot-col">
-        <div class="foot-col-title">Hỗ trợ</div>
-        <a href="faq.html">Câu hỏi thường gặp</a>
-        <a href="shipping.html">Vận chuyển &amp; Đổi trả</a>
+        <div class="foot-col-title">Hỗ Trợ</div>
+        <a href="faq.html">Câu Hỏi Thường Gặp</a>
+        <a href="shipping.html">Vận Chuyển &amp; Đổi Trả</a>
         <a href="https://thienkien.com" target="_blank" rel="noopener">thienkien.com</a>
       </div>
     </div>
@@ -1453,64 +1885,14 @@ footer{
   </div>
 </footer>
 
-<!-- ═══ ORDER POPUP MODAL ═════════════════════════ -->
-<div id="orderModal" class="order-modal" style="display:none;">
-  <div class="modal-overlay" onclick="closeOrderModal()"></div>
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeOrderModal()">×</button>
-    <div class="modal-header">
-      <h3 class="modal-title">Đặt hàng sản phẩm TKG</h3>
-      <p class="modal-subtitle">Đặt hàng Morning Ember hoặc Still Ember</p>
-    </div>
-    <form class="order-form" onsubmit="submitOrderForm(event)">
-      <div class="form-group">
-        <label for="name">Họ và tên *</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Địa chỉ Email *</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="phone">Số điện thoại</label>
-        <input type="tel" id="phone" name="phone">
-      </div>
-      <div class="form-group">
-        <label for="product">Sản phẩm *</label>
-        <select id="product" name="product" required>
-          <option value="">Chọn sản phẩm</option>
-          <option value="morning-ember">Morning Ember - Lư Trung Hoả</option>
-          <option value="still-ember">Still Ember - Phú Đăng Hoả</option>
-          <option value="both">Cả hai sản phẩm</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="quantity">Số lượng *</label>
-        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
-      </div>
-      <div class="form-group">
-        <label for="message">Ghi chú thêm</label>
-        <textarea id="message" name="message" rows="3"></textarea>
-      </div>
-      <button type="submit" class="submit-btn">Gửi yêu cầu đặt hàng</button>
-    </form>
-    <div class="modal-footer">
-      <div class="hotline-info">
-        <strong>Hotline:</strong> (+84) 976-847-789
-      </div>
-      <div class="product-origin">Sản phẩm Việt Nam</div>
-    </div>
-  </div>
-</div>
-
 <!-- ═══ COLLECTION POPUP MODAL (6-SKU GRID) ════════ -->
 <div id="collectionModal" class="collection-modal" style="display:none;">
   <div class="collection-modal-overlay" onclick="closeCollectionModal()"></div>
   <div class="collection-modal-content">
     <button class="collection-modal-close" onclick="closeCollectionModal()">×</button>
     <div class="collection-modal-header">
-      <div class="collection-modal-tag">Hệ Hoả</div>
-      <h3 class="collection-modal-title">Bộ sưu tập</h3>
+      <div class="collection-modal-tag">Bộ Tập Hỏa</div>
+      <h3 class="collection-modal-title">Bộ Sưu Tập</h3>
     </div>
     <div class="collection-grid">
 
@@ -1521,8 +1903,8 @@ footer{
         </div>
         <div class="collection-card-body">
           <div class="collection-card-name">Morning Ember</div>
-          <div class="collection-card-ing">Gừng · Sả · Chanh</div>
-          <div class="collection-card-concept">Tên gọi: Lư Trung Hoả</div>
+          <div class="collection-card-ing">Gừng · Sả · Tắc</div>
+          <div class="collection-card-concept">Tên gọi: Lư Trung Hoả · Furnace Fire</div>
         </div>
       </div>
 
@@ -1533,19 +1915,8 @@ footer{
         </div>
         <div class="collection-card-body">
           <div class="collection-card-name">Still Ember</div>
-          <div class="collection-card-ing">Tía tô · Đinh hương · Tắc</div>
-          <div class="collection-card-concept">Tên gọi: Phú Đăng Hoả</div>
-        </div>
-      </div>
-
-      <!-- Coming soon · Sơn Hạ Hoả -->
-      <div class="collection-card collection-card-soon">
-        <div class="collection-card-soon-img">
-          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
-        </div>
-        <div class="collection-card-soon-body">
-          <div class="collection-card-soon-label">Sắp ra mắt</div>
-          <div class="collection-card-soon-concept">Sơn Hạ Hỏa - Mountain Base Fire</div>
+          <div class="collection-card-ing">Tía Tô · Đinh Hương · Tắc</div>
+          <div class="collection-card-concept">Tên gọi: Phú Đăng Hoả · Lamp Fire</div>
         </div>
       </div>
 
@@ -1556,7 +1927,18 @@ footer{
         </div>
         <div class="collection-card-soon-body">
           <div class="collection-card-soon-label">Sắp ra mắt</div>
-          <div class="collection-card-soon-concept">Sơn Đầu Hỏa - Mountain Top Fire</div>
+          <div class="collection-card-soon-concept">Tên gọi: Sơn Đầu Hoả · Mountain Top Fire</div>
+        </div>
+      </div>
+
+      <!-- Coming soon · Sơn Hạ Hoả -->
+      <div class="collection-card collection-card-soon">
+        <div class="collection-card-soon-img">
+          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
+        </div>
+        <div class="collection-card-soon-body">
+          <div class="collection-card-soon-label">Sắp ra mắt</div>
+          <div class="collection-card-soon-concept">Tên gọi: Sơn Hạ Hoả · Foothill Fire</div>
         </div>
       </div>
 
@@ -1567,7 +1949,7 @@ footer{
         </div>
         <div class="collection-card-soon-body">
           <div class="collection-card-soon-label">Sắp ra mắt</div>
-          <div class="collection-card-soon-concept">Tích Lịch Hỏa - Thunderstorm Fire</div>
+          <div class="collection-card-soon-concept">Tên gọi: Tích Lịch Hoả · Lightning Fire</div>
         </div>
       </div>
 
@@ -1578,10 +1960,60 @@ footer{
         </div>
         <div class="collection-card-soon-body">
           <div class="collection-card-soon-label">Sắp ra mắt</div>
-          <div class="collection-card-soon-concept">Thiên Thượng Hỏa - Celestial Fire</div>
+          <div class="collection-card-soon-concept">Tên gọi: Thiên Thượng Hoả · Heavenly Fire</div>
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ORDER POPUP MODAL ═════════════════════════ -->
+<div id="orderModal" class="order-modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeOrderModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeOrderModal()">×</button>
+    <div class="modal-header">
+      <h3 class="modal-title">Đặt Hàng Sản Phẩm TKG</h3>
+      <p class="modal-subtitle">Đặt hàng Morning Ember hoặc Still Ember</p>
+    </div>
+    <form class="order-form" onsubmit="submitOrderForm(event)">
+      <div class="form-group">
+        <label for="name">Họ và Tên *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Địa Chỉ Email *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Số Điện Thoại</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="product">Sản Phẩm *</label>
+        <select id="product" name="product" required>
+          <option value="">Chọn sản phẩm</option>
+          <option value="morning-ember">Morning Ember</option>
+          <option value="still-ember">Still Ember</option>
+          <option value="both">Cả Hai Sản Phẩm</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Số Lượng *</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Ghi Chú Thêm</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Gửi Yêu Cầu Đặt Hàng</button>
+    </form>
+    <div class="modal-footer">
+      <div class="hotline-info">
+        <strong>Hotline:</strong> (+84) 976-847-789
+      </div>
+      <div class="product-origin">Sản phẩm Việt Nam</div>
     </div>
   </div>
 </div>
@@ -1597,7 +2029,7 @@ function closeOrderModal() {
   document.body.style.overflow = 'auto';
 }
 
-/* ─── Collection Modal (Explore the Collection popup) ─── */
+/* ─── Collection Modal (Explore the Fire Collection popup) ─── */
 function openCollectionModal() {
   document.getElementById('collectionModal').style.display = 'flex';
   document.body.style.overflow = 'hidden';
@@ -1608,17 +2040,24 @@ function closeCollectionModal() {
 }
 
 /* ─── Language Toggle ─── */
-function switchLang(lang) {
-  if (lang === 'en') {
-    window.location.href = 'index.html' + window.location.hash;
-  }
-  // already on VI (index_vi.html); no-op when lang === 'vi'
-}
+/* Nav language icons use direct <a href> links (index.html / index_vi.html); no JS handler needed. */
 
 /* ─── Nutrition Facts toggle ─── */
 function toggleNF(id) {
   document.getElementById(id).classList.toggle('open');
 }
+
+/* ─── Hero Slideshow ─── */
+(function () {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length < 2) return;
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5000);
+})();
 
 /* ─── Mobile Nav ─── */
 function toggleMobileNav() {
@@ -1633,17 +2072,17 @@ function toggleMobileNav() {
 function submitOrderForm(event) {
   event.preventDefault();
   var formData = new FormData(event.target);
-  var subject = encodeURIComponent('Yêu cầu đặt hàng TKG - ' + formData.get('product'));
+  var subject = encodeURIComponent('TKG Order Request - ' + formData.get('product'));
   var body = encodeURIComponent(
-    'Họ và tên: ' + formData.get('name') +
+    'Name: ' + formData.get('name') +
     '\nEmail: ' + formData.get('email') +
-    '\nSố điện thoại: ' + formData.get('phone') +
-    '\nSản phẩm: ' + formData.get('product') +
-    '\nSố lượng: ' + formData.get('quantity') +
-    '\nGhi chú: ' + formData.get('message')
+    '\nPhone: ' + formData.get('phone') +
+    '\nProduct: ' + formData.get('product') +
+    '\nQuantity: ' + formData.get('quantity') +
+    '\nMessage: ' + formData.get('message')
   );
   window.location.href = 'mailto:orders@tkg-naula.com?subject=' + subject + '&body=' + body;
-  alert('Cảm ơn bạn đã gửi yêu cầu đặt hàng! Chúng tôi sẽ liên hệ sớm nhất.');
+  alert('Thank you for your order request! We will contact you soon.');
   closeOrderModal();
 }
 </script>
