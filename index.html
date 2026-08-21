@@ -12,8 +12,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TKG · Botanical Blend Powder · Naula Prepared, Vietnam</title>
-<meta name="description" content="Three botanicals. One method. Named and traceable. TKG brings Vietnamese botanical practice to your cup — whole plants, freeze-dried through the Naula method.">
+<title>TKG · Vietnamese Botanical Wellness</title>
+<meta name="description" content="Vietnamese botanicals, prepared through the Naula method and made for everyday life. Morning Ember and Still Ember — fresh botanical drinks and freeze-dried botanical powder.">
 <link rel="icon" type="image/png" href="TKG-logo.png">
 <link rel="canonical" href="https://www.tkg-naula.com/">
 <link rel="alternate" hreflang="en" href="https://www.tkg-naula.com/">
@@ -710,6 +710,266 @@ footer{
   width:100%;height:100%;object-fit:cover;object-position:center 75%;
 }
 
+/* ═══════════════════════════════════════════════════
+   NEW HOMEPAGE SECTIONS · 02–09
+   ═══════════════════════════════════════════════════ */
+
+/* ─── SHARED SECTION HEADER ──────────────────────── */
+.sec{border-top:.5px solid var(--line);background:var(--bg)}
+.sec-w{max-width:1280px;margin:0 auto;padding:80px 80px}
+.sec-tag{
+  font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:14px;
+}
+.sec-h2{
+  font-family:var(--serif);font-size:clamp(30px,3.2vw,48px);
+  font-weight:400;line-height:1.1;color:var(--cream);margin-bottom:18px;
+}
+.sec-lead{
+  font-size:15.5px;font-weight:300;line-height:1.8;color:var(--cream2);
+  max-width:640px;
+}
+
+/* ─── S2 · WHAT IS TKG (statement reused, see .statement) ── */
+
+/* ─── S3 · FIRE COLLECTION ───────────────────────── */
+.fire-coll-head{text-align:center;margin-bottom:48px}
+.fire-coll-head .sec-tag{justify-content:center}
+.fire-coll-head .sec-h2{max-width:720px;margin-left:auto;margin-right:auto}
+
+/* ─── S4 · WHY THESE BOTANICALS ──────────────────── */
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  background:var(--line);margin-top:48px;
+}
+.why-card{background:var(--bg);padding:44px 44px 48px}
+.why-fam{
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.why-fam-fire{color:var(--fire)}
+.why-fam-perilla{color:#997393}
+.why-name{
+  font-family:var(--serif);font-size:26px;font-weight:500;color:var(--cream);
+  margin-bottom:4px;
+}
+.why-ing{font-size:13px;font-weight:300;color:var(--cream3);margin-bottom:18px}
+.why-body{font-size:14.5px;font-weight:300;line-height:1.85;color:var(--cream3)}
+.why-body p{margin-bottom:14px}
+.why-body p:last-child{margin-bottom:0}
+.why-close{
+  font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cream4);margin-top:20px;padding-top:18px;border-top:.5px solid var(--line);
+}
+.why-idea{
+  text-align:center;margin-top:36px;padding-top:32px;border-top:.5px solid var(--line);
+  font-family:var(--serif);font-size:19px;font-style:italic;color:var(--cream2);
+}
+
+/* ─── S5 · NAULA METHOD ───────────────────────────── */
+.method-top{position:relative;overflow:hidden;aspect-ratio:21/9}
+.method-top-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.method-top-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(18,17,11,.9) 0%,rgba(18,17,11,.5) 55%,rgba(18,17,11,.15) 100%);
+}
+.method-top-content{
+  position:relative;z-index:2;max-width:1280px;margin:0 auto;
+  height:100%;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 80px 56px;
+}
+.method-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);border-top:.5px solid var(--line);
+}
+.method-step{padding:44px 32px 48px;border-right:.5px solid var(--line);position:relative}
+.method-step:last-child{border-right:none}
+.method-step-num{
+  font-family:var(--serif);font-size:19px;color:var(--cream3);letter-spacing:.1em;
+  margin-bottom:18px;display:flex;align-items:center;gap:10px;
+}
+.method-step-num::after{content:'';flex:1;height:.5px;background:var(--line2)}
+.method-step-tag{
+  font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream3);margin-bottom:12px;
+}
+.method-step-head{
+  font-family:var(--serif);font-size:20px;font-weight:500;line-height:1.2;
+  color:var(--cream);margin-bottom:14px;
+}
+.method-step-body{font-size:13.5px;font-weight:300;line-height:1.75;color:var(--cream3)}
+.method-formats{display:flex;flex-direction:column;gap:16px;margin-top:16px}
+.method-format{
+  border:.5px solid var(--line2);border-radius:3px;padding:14px 16px;
+}
+.method-format-name{
+  font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--gold);margin-bottom:4px;
+}
+.method-format-meta{font-size:12px;color:var(--cream3);font-weight:300}
+.method-close{
+  border-top:.5px solid var(--line);padding:56px 80px;text-align:center;
+}
+.method-close-txt{
+  font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);font-style:italic;
+  font-weight:300;color:var(--cream2);max-width:720px;margin:0 auto 12px;line-height:1.5;
+}
+.method-close-note{
+  font-size:12.5px;font-weight:300;color:var(--cream4);max-width:620px;margin:0 auto;line-height:1.7;
+}
+
+/* ─── S6 · TWO WAYS TO EXPERIENCE ────────────────── */
+.ways-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);margin-top:48px;
+}
+.way-card{background:var(--bg);padding:40px}
+.way-tag{
+  font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream4);margin-bottom:10px;
+}
+.way-head{
+  font-family:var(--serif);font-size:26px;font-weight:500;color:var(--cream);margin-bottom:8px;
+}
+.way-sub{font-size:14px;font-weight:300;font-style:italic;color:var(--cream3);margin-bottom:22px}
+.badge-soon{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--fire);border:.5px solid rgba(212,94,41,.4);background:var(--fire2);
+  padding:8px 16px;border-radius:20px;
+}
+.way-note{font-size:13.5px;font-weight:300;line-height:1.75;color:var(--cream3);margin-top:18px}
+
+/* prep sequence */
+.prep-seq{display:flex;flex-direction:column;gap:0;margin-top:8px}
+.prep-row{
+  display:flex;align-items:center;gap:16px;padding:14px 0;
+  border-bottom:.5px solid var(--line);
+}
+.prep-row:last-child{border-bottom:none}
+.prep-icon{
+  width:34px;height:34px;border-radius:50%;border:.5px solid var(--fire);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:var(--serif);font-size:14px;color:var(--fire);
+}
+.prep-txt{font-size:13.5px;font-weight:400;color:var(--cream2)}
+.prep-arrow{
+  text-align:center;color:var(--cream4);font-size:13px;padding:2px 0;
+}
+.usage-block{margin-top:26px;padding-top:22px;border-top:.5px solid var(--line)}
+.usage-lbl{
+  font-size:11.5px;font-weight:500;font-style:italic;color:var(--cream3);margin-bottom:12px;
+}
+.usage-pills{display:flex;flex-wrap:wrap;gap:8px}
+.usage-pill{
+  font-size:11.5px;font-weight:500;letter-spacing:.03em;
+  padding:7px 15px;border-radius:20px;border:.5px solid var(--line2);
+  color:var(--cream3);background:rgba(255,255,255,.03);
+}
+.usage-close{
+  font-family:var(--serif);font-size:20px;font-style:italic;color:var(--cream);
+  margin-top:20px;
+}
+
+/* special experience banner */
+.special-banner{
+  margin-top:2px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#1D1208 0%,#160E08 100%);
+  border:.5px solid var(--line2);border-radius:4px;
+  padding:40px 44px;display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+}
+.special-banner::before{
+  content:'';position:absolute;top:0;right:0;width:320px;height:100%;pointer-events:none;
+  background:radial-gradient(ellipse at top right,rgba(212,94,41,.16) 0%,transparent 70%);
+}
+.special-tag{
+  font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:10px;position:relative;
+}
+.special-title{
+  font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);font-weight:500;
+  color:var(--cream);position:relative;
+}
+.special-actions{display:flex;align-items:center;gap:16px;position:relative;flex-wrap:wrap}
+
+/* ─── S7 · MAKE IT PART OF YOUR DAY ──────────────── */
+.day-strip{position:relative;overflow:hidden;border-top:.5px solid var(--line);background:var(--bg)}
+.day-strip-img{height:56vh;max-height:460px;overflow:hidden;position:relative}
+.day-strip-img img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
+.day-strip-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(18,17,11,.85) 0%,rgba(18,17,11,.15) 60%);
+}
+.day-moments{
+  display:grid;grid-template-columns:repeat(5,1fr);border-top:.5px solid var(--line);
+}
+.day-moment{padding:32px 24px 36px;border-right:.5px solid var(--line);text-align:center}
+.day-moment:last-child{border-right:none}
+.day-moment-tag{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:12px;
+}
+.day-moment-body{font-size:13px;font-weight:300;line-height:1.6;color:var(--cream3)}
+
+/* ─── S8 · REAL BOTANICALS ───────────────────────── */
+.real-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:.5px solid var(--line);margin-top:48px}
+.real-card{padding:0 40px 0 0;border-right:.5px solid var(--line)}
+.real-card:last-child{border-right:none;padding-right:0}
+.real-card-inner{padding:36px 0 0}
+.real-card:not(:first-child) .real-card-inner{padding-left:40px}
+.real-tag{
+  font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream4);margin-bottom:14px;
+}
+.real-body{font-size:14px;font-weight:300;line-height:1.8;color:var(--cream3)}
+.real-body p{margin-bottom:12px}
+.real-body p:last-child{margin-bottom:0}
+.real-instruction{
+  display:inline-block;margin-top:14px;font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--gold);
+}
+.real-close{
+  text-align:center;margin-top:44px;padding-top:32px;border-top:.5px solid var(--line);
+  font-family:var(--serif);font-size:18px;font-style:italic;color:var(--cream2);
+}
+
+/* ─── S9 · LAB EVIDENCE ───────────────────────────── */
+.lab-block{margin-top:44px}
+.lab-block + .lab-block{margin-top:64px;padding-top:56px;border-top:.5px solid var(--line)}
+.lab-block-head{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  flex-wrap:wrap;margin-bottom:24px;
+}
+.lab-block-title{
+  font-family:var(--serif);font-size:24px;font-weight:500;color:var(--cream);
+}
+.lab-sweeten{display:flex;gap:32px;flex-wrap:wrap;margin:18px 0 8px}
+.lab-sweeten-item{font-size:13px;color:var(--cream3);font-weight:300}
+.lab-sweeten-item strong{color:var(--cream);font-weight:500}
+.lab-statement{
+  font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--herb);
+  margin-bottom:24px;
+}
+.lab-table-wrap{overflow-x:auto;border:.5px solid var(--line2);border-radius:4px}
+table.lab-table{width:100%;border-collapse:collapse;min-width:480px}
+table.lab-table th,table.lab-table td{
+  padding:12px 20px;text-align:left;font-size:13px;font-weight:300;
+  border-bottom:.5px solid var(--line);color:var(--cream3);white-space:nowrap;
+}
+table.lab-table th{
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--cream4);background:rgba(255,255,255,.02);
+}
+table.lab-table td:first-child,table.lab-table th:first-child{color:var(--cream2);font-weight:500;white-space:normal}
+table.lab-table tr:last-child td{border-bottom:none}
+.lab-foot{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  margin-top:16px;font-size:11.5px;color:var(--cream4);letter-spacing:.03em;
+}
+.lab-disclaimer{
+  margin-top:56px;padding-top:32px;border-top:.5px solid var(--line);
+  font-size:12.5px;font-weight:300;font-style:italic;line-height:1.8;
+  color:var(--cream4);max-width:720px;
+}
+
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:1024px){
   .nav-desktop{display:none}
@@ -982,6 +1242,57 @@ footer{
   .collection-card-name{font-size:17px}
   .collection-card-soon-concept{font-size:15px}
 }
+
+/* ─── NEW SECTIONS · RESPONSIVE ──────────────────── */
+@media(max-width:1024px){
+  .sec-w{padding:56px 40px}
+  .why-grid{grid-template-columns:1fr}
+  .why-card{padding:36px 40px}
+  .method-top{aspect-ratio:4/3}
+  .method-top-content{padding:0 40px 40px}
+  .method-steps{grid-template-columns:1fr 1fr}
+  .method-step{border-bottom:.5px solid var(--line)}
+  .method-step:nth-child(2n){border-right:none}
+  .method-close{padding:44px 40px}
+  .ways-grid{grid-template-columns:1fr}
+  .way-card{padding:32px 40px}
+  .special-banner{padding:32px}
+  .day-moments{grid-template-columns:repeat(3,1fr)}
+  .day-moment{border-bottom:.5px solid var(--line)}
+  .day-moment:nth-child(3n){border-right:none}
+  .real-grid{grid-template-columns:1fr;margin-top:32px}
+  .real-card{border-right:none;border-bottom:.5px solid var(--line);padding-bottom:32px;padding-right:0}
+  .real-card:last-child{border-bottom:none}
+  .real-card .real-card-inner,
+  .real-card:not(:first-child) .real-card-inner{padding-left:0;padding-top:28px}
+  .lab-block-head{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:640px){
+  .sec-w{padding:40px 20px}
+  .sec-h2{font-size:26px}
+  .sec-lead{font-size:16.9px;line-height:1.7}
+  .why-card{padding:28px 20px 32px}
+  .why-name{font-size:22px}
+  .why-body{font-size:16.25px;line-height:1.75}
+  .method-top{aspect-ratio:4/5}
+  .method-top-content{padding:0 20px 32px}
+  .method-steps{grid-template-columns:1fr}
+  .method-step{padding:32px 20px 36px;border-right:none}
+  .method-close{padding:36px 20px}
+  .method-close-txt{font-size:19px}
+  .way-card{padding:24px 20px 32px}
+  .way-head{font-size:22px}
+  .special-banner{padding:24px 20px;flex-direction:column;align-items:flex-start}
+  .day-strip-img{height:40vh}
+  .day-moments{grid-template-columns:1fr 1fr}
+  .day-moment{border-right:.5px solid var(--line);padding:24px 16px 28px}
+  .day-moment:nth-child(2n){border-right:none}
+  .real-grid{margin-top:24px}
+  .real-body{font-size:16.25px;line-height:1.7}
+  .lab-block-title{font-size:20px}
+  .lab-sweeten{flex-direction:column;gap:8px}
+  table.lab-table th,table.lab-table td{padding:10px 14px;font-size:12.5px}
+}
 </style>
 </head>
 <body>
@@ -995,8 +1306,8 @@ footer{
 
     <!-- Desktop Navigation -->
     <div class="nav-desktop">
-      <a href="#products">Products</a>
-      <a href="#ritual">Ritual</a>
+      <a href="#fire-collection">Products</a>
+      <a href="#experience">Ritual</a>
       <a href="world-of-naula.html">World of Naula</a>
       <a href="founders.html">Founders</a>
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
@@ -1034,8 +1345,8 @@ footer{
 
     <!-- Mobile Navigation Menu -->
     <div class="nav-mobile">
-      <a href="#products">Products</a>
-      <a href="#ritual">Ritual</a>
+      <a href="#fire-collection">Products</a>
+      <a href="#experience">Ritual</a>
       <a href="world-of-naula.html">World of Naula</a>
       <a href="founders.html">Founders</a>
       <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
@@ -1047,159 +1358,70 @@ footer{
 </nav>
 
 <!-- ═══ S1 · HERO ══════════════════════════════════ -->
-<section class="hero">
+<section id="hero" class="hero">
 
   <!-- background image 16:9 -->
   <div class="hero-media">
-    <img src="TKG_16_9.webp" alt="TKG — Botanical Blend Powder" fetchpriority="high" loading="eager">
+    <img src="TKG_16_9.webp" alt="TKG — Vietnamese Botanical Wellness" fetchpriority="high" loading="eager">
   </div>
   <div class="hero-veil"></div>
 
   <!-- text overlay -->
   <div class="hero-left">
-    <div class="hero-label">Rooted in Vietnam. Prepared with care.</div>
+    <div class="hero-label">Vietnamese Botanical Wellness</div>
 
     <h1 class="hero-h1">
-         Botanical Blend <em><br>Powder</em>
+      A natural sense of <em>warmth,</em><br>whether enjoyed hot or over ice.
     </h1>
 
     <div class="hero-rule">
       <div class="hero-rule-line"></div>
-      <span>Freeze-Dried &nbsp;·&nbsp; Naula Prepared &nbsp;·&nbsp; Hot or Cold</span>
+      <span>Morning Ember &nbsp;·&nbsp; Still Ember</span>
       <div class="hero-rule-line"></div>
     </div>
 
     <p class="hero-sub">
-      Botanical products inspired by traditional plant knowledge and adapted for modern lifestyles. A freeze-dried botanical blend powder with a naturally warming sensory profile — prepared into a liquid solution using the Naula method. Mix instantly with hot or cold water.
+      Vietnamese botanicals, prepared through the Naula method and made for everyday life.
     </p>
 
     <div class="hero-actions">
-      <a href="#fire-element" class="btn-primary">
-        Explore Fire Element
+      <a href="#fire-collection" class="btn-primary">
+        Explore Products
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
       </a>
-      <a href="#statement" class="btn-ghost">What is TKG?</a>
+      <a href="#what-is-tkg" class="btn-ghost">Hot · Warm · Over Ice</a>
     </div>
   </div>
 
 </section>
 
-<!-- ═══ S2 · BRAND STATEMENT (full-bleed image + overlay) ═══ -->
-<section id="statement" class="statement">
+<!-- ═══ S2 · WHAT IS TKG? ══════════════════════════ -->
+<section id="what-is-tkg" class="statement">
   <div class="statement-media">
-    <img src="Botanical House.webp" alt="TKG is a botanical house." loading="lazy">
+    <img src="Botanical House.webp" alt="Vietnamese botanicals prepared through the Naula method" loading="lazy">
   </div>
   <div class="statement-veil"></div>
   <div class="statement-text">
     <div class="statement-eyebrow">What Is TKG?</div>
     <h2 class="statement-h2">
-      TKG is <em>a botanical house.</em>
+      Botanical wellness, <em>rooted in Vietnam.</em>
     </h2>
     <p class="statement-body">
-      We research, prepare, and develop botanical applications across everyday life — from food and beverages to supplements and healthcare products. Each product system is structured through a five-element framework, where every element explores a different botanical application.
+      TKG works with identifiable Vietnamese botanicals and brings them into contemporary food and beverage formats through careful preparation.
+    </p>
+    <p class="statement-body" style="margin-top:10px;">
+      Our first chapter begins with Fire.
     </p>
   </div>
 </section>
 
-<!-- ═══ S3 · NAULA PREPARED — PRINCIPLES ══════════ -->
-<section id="naula" class="naula-section">
-
-  <div class="naula-top">
-    <img class="naula-top-img" src="Naula-2.webp" alt="Naula prepared" loading="lazy">
-    <div class="naula-top-veil"></div>
-    <div class="naula-top-content">
-      <div>
-      <div class="naula-left-tag">Naula X Freeze-dried</div>
-      <h2 class="naula-left-head">
-        A controlled botanical<br>preparation system designed<br>to preserve the integrity<br>of whole ingredients.
-      </h2>
-    </div>
-    <p class="naula-right-body">
-      Three principles, applied consistently across every formulation. Not trend-driven. Not export for export's sake. The same discipline in the kitchen and in the cup — whole leaves and roots, named at origin, prepared through the Naula method.
-    </p>
-  </div>
-</div>
-  <div class="principles">
-
-    <div class="principle">
-      <div class="p-num"><strong>01 <span style="color:var(--cream3);font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;">Source</strong></span></div>
-      <div class="p-tag">Sourced</div>
-      <div class="p-head">Whole botanicals.<br>Named at origin.</div>
-      <p class="p-body">
-        Real plants — Ginger, Lemongrass, Lime, Perilla, Clove, Kumquat — sourced whole and named on the label. No flavouring, no anonymous "natural extract." Every ingredient traces back to a species, a place, a method.
-      </p>
-    </div>
-
-    <div class="principle">
-      <div class="p-num"><strong>02 <span style="color:var(--cream3);font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;">Naula</strong></span></div>
-      <div class="p-tag">Prepare</div>
-      <div class="p-head">Naula.<br>Freeze-dried.</div>
-      <p class="p-body">
-       Fresh botanicals are prepared into liquid form through the Naula method — where heat, water, and time are adjusted for each ingredient individually. The liquid is then frozen and freeze-dried under vacuum, preserving the natural colour, aroma, and botanical character without heat damage.
-      </p>
-    </div>
-
-    <div class="principle">
-      <div class="p-num"><strong>03 <span style="color:var(--cream3);font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;">Present</strong></span></div>
-      <div class="p-tag">Present</div>
-      <div class="p-head">Honest formulation.<br>Nothing added.</div>
-      <p class="p-body">
-        No preservatives. No artificial colour. No artificial sweeteners. Clean formulation, laboratory tested by Quatest 3. The product is allowed to taste like itself.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ═══ S4 · MOODY FULL-BLEED PHOTO ═══════════════ -->
-<div class="photo-break">
-  <img src="Freeze-dried-3.webp" alt="Naula preparation" loading="lazy">
-</div>
-
-<!-- ═══ S4.5 · FIRE ELEMENT (standalone intro) ═══════ -->
-<section id="fire-element" class="fire-element">
-  <div class="fire-element-w">
-    <div class="fire-intro">
-      <div class="fire-intro-tag">Currently Available</div>
-      <h3 class="fire-intro-h3">Fire Element</h3>
-      <p class="fire-intro-lead">Our first botanical system.</p>
-      <p class="fire-intro-body">
-        A collection of freeze-dried botanical blend powders designed around ingredients traditionally associated with warmth, aroma, and everyday comfort.
-      </p>
-      <div class="fire-intro-skus">
-        <div class="fire-intro-sku">
-          <span class="fire-intro-sku-name">Morning Ember</span>
-          <span class="fire-intro-sku-concept">Lư Trung Hoả</span>
-          <span class="fire-intro-sku-ing">Ginger · Lemongrass · Lime</span>
-        </div>
-        <div class="fire-intro-sku">
-          <span class="fire-intro-sku-name">Still Ember</span>
-          <span class="fire-intro-sku-concept">Phú Đăng Hoả</span>
-          <span class="fire-intro-sku-ing">Perilla · Clove · Kumquat</span>
-        </div>
-      </div>
-      <p class="fire-intro-body" style="margin-top:8px;">
-        Prepared using the Naula method and designed for instant use with hot or cold water.
-      </p>
-      <button type="button" class="btn-explore-collection" onclick="openCollectionModal()">
-        Explore the Collection
-        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ S5 · PRODUCTS ══════════════════════════════ -->
-<section id="products" class="products">
+<!-- ═══ S3 · FIRE COLLECTION ═══════════════════════ -->
+<section id="fire-collection" class="products sec">
   <div class="products-w">
 
-    <div class="products-header">
-      <div>
-        <div class="products-tag">Products</div>
-        <h2 class="products-h2">For the start.<br>For the rest.</h2>
-      </div>
-      <p class="products-sub">Two formulations. Both named. Both whole-plant. Both Naula prepared.</p>
+    <div class="fire-coll-head">
+      <div class="sec-tag">Fire Collection</div>
+      <h2 class="sec-h2">Two botanical experiences.<br>One first chapter.</h2>
     </div>
 
     <div class="products-grid">
@@ -1210,63 +1432,20 @@ footer{
           <img src="Morning Ember-texture.webp" alt="Morning Ember" loading="lazy">
         </div>
         <div class="sku-body">
-          <div class="sku-fam sku-fam-fire">Lư Trung Hoả · Fire</div>
+          <div class="sku-fam sku-fam-fire">Fire · Bold · Direct · Warm</div>
           <div class="sku-name">Morning Ember</div>
-          <div class="sku-tagline">A warm shot to start the day</div>
+          <div class="sku-tagline">A familiar, approachable botanical profile.</div>
           <div class="sku-pills">
             <span class="sku-pill">Ginger</span>
             <span class="sku-pill">Lemongrass</span>
             <span class="sku-pill">Lime</span>
           </div>
           <div class="sku-note sku-note-fire">
-            <div class="sku-note-lbl">Sensory Note</div>
-            <div class="sku-note-txt">Natural sediment after mixing is whole starch from fresh ginger and lemongrass — a sign of real ingredients, unextracted. Bold. Direct. Warm from the first shot.</div>
-          </div>
-          <!-- Nutrition Facts -->
-          <div class="sku-nf" id="nf-morning">
-            <div class="sku-nf-head" onclick="toggleNF('nf-morning')">
-              <span class="sku-nf-title">Nutrition Facts</span>
-              <span class="sku-nf-serving">per 2 g serving</span>
-              <svg class="sku-nf-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="sku-nf-body">
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Energy</span>
-                <span class="sku-nf-val">4.44 kcal <span class="sku-nf-nrv">0.22% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Protein</span>
-                <span class="sku-nf-val">0.13 g <span class="sku-nf-nrv">0.26% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Carbohydrate</span>
-                <span class="sku-nf-val">0.45 g <span class="sku-nf-nrv">0.14% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label" style="padding-left:10px">— of which sugars</span>
-                <span class="sku-nf-val">0.29 g</span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Dietary Fiber</span>
-                <span class="sku-nf-val">1.02 g</span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Total Fat</span>
-                <span class="sku-nf-val">0.01 g <span class="sku-nf-nrv">0.02% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Sodium</span>
-                <span class="sku-nf-val">6.24 mg <span class="sku-nf-nrv">0.31% NRV</span></span>
-              </div>
-              <div class="sku-nf-row" style="border-top:.5px solid var(--line2);margin-top:4px;padding-top:8px">
-                <span class="sku-nf-label" style="color:var(--herb);font-weight:500">No Added Sugar</span>
-                <span class="sku-nf-val" style="color:var(--herb)">✓</span>
-              </div>
-              <div class="sku-nf-disclaimer">Tested by Quatest 3 · Q326C053953 · 01/06/2026</div>
-            </div>
+            <div class="sku-note-lbl">A familiar entry point</div>
+            <div class="sku-note-txt">Ginger gives a recognizable starting point for customers encountering TKG for the first time.</div>
           </div>
           <div class="sku-foot">
-            <div class="sku-meta">60g · 30 servings · 2 tsp / 100ml</div>
+            <div class="sku-meta">Fresh drink &amp; freeze-dried powder</div>
             <a href="#" onclick="openOrderModal(); return false;" class="btn-fire">Order</a>
           </div>
         </div>
@@ -1278,63 +1457,20 @@ footer{
           <img src="Still-Ember-texture.webp" alt="Still Ember" loading="lazy">
         </div>
         <div class="sku-body">
-          <div class="sku-fam sku-fam-perilla">Phú Đăng Hoả · Fire</div>
+          <div class="sku-fam sku-fam-perilla">Fire · Quiet · Considered · Distinctive</div>
           <div class="sku-name">Still Ember</div>
-          <div class="sku-tagline">A quiet moment before rest</div>
+          <div class="sku-tagline">A more distinctive botanical profile.</div>
           <div class="sku-pills">
             <span class="sku-pill">Perilla</span>
             <span class="sku-pill">Clove</span>
             <span class="sku-pill">Kumquat</span>
           </div>
           <div class="sku-note sku-note-perilla">
-            <div class="sku-note-lbl">Sensory Note</div>
-            <div class="sku-note-txt">Colour shifts after mixing are a natural pH response from perilla leaf — no artificial colour, no chemical stabiliser. Drink immediately for best colour. Quiet. Considered.</div>
-          </div>
-          <!-- Nutrition Facts -->
-          <div class="sku-nf" id="nf-still">
-            <div class="sku-nf-head" onclick="toggleNF('nf-still')">
-              <span class="sku-nf-title">Nutrition Facts</span>
-              <span class="sku-nf-serving">per 2 g serving</span>
-              <svg class="sku-nf-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="sku-nf-body">
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Energy</span>
-                <span class="sku-nf-val">3.08 kcal <span class="sku-nf-nrv">0.15% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Protein</span>
-                <span class="sku-nf-val">0.09 g <span class="sku-nf-nrv">0.18% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Carbohydrate</span>
-                <span class="sku-nf-val">0.03 g <span class="sku-nf-nrv">0.01% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label" style="padding-left:10px">— of which sugars</span>
-                <span class="sku-nf-val">0.02 g</span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Dietary Fiber</span>
-                <span class="sku-nf-val">1.27 g</span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Total Fat</span>
-                <span class="sku-nf-val">0.00 g <span class="sku-nf-nrv">0.00% NRV</span></span>
-              </div>
-              <div class="sku-nf-row">
-                <span class="sku-nf-label">Sodium</span>
-                <span class="sku-nf-val">9.10 mg <span class="sku-nf-nrv">0.46% NRV</span></span>
-              </div>
-              <div class="sku-nf-row" style="border-top:.5px solid var(--line2);margin-top:4px;padding-top:8px">
-                <span class="sku-nf-label" style="color:var(--herb);font-weight:500">No Added Sugar</span>
-                <span class="sku-nf-val" style="color:var(--herb)">✓</span>
-              </div>
-              <div class="sku-nf-disclaimer">Tested by Quatest 3 · Q326C053953 · 01/06/2026</div>
-            </div>
+            <div class="sku-note-lbl">A distinctive discovery</div>
+            <div class="sku-note-txt">Built around the earthy, aromatic character of perilla — unexpected for customers from Western markets.</div>
           </div>
           <div class="sku-foot">
-            <div class="sku-meta">60g · 30 servings · 2 tsp / 100ml</div>
+            <div class="sku-meta">Fresh drink &amp; freeze-dried powder</div>
             <a href="#" onclick="openOrderModal(); return false;" class="btn-perilla">Order</a>
           </div>
         </div>
@@ -1342,69 +1478,347 @@ footer{
 
     </div>
 
+    <div style="text-align:center;margin-top:44px;">
+      <a href="#" onclick="openOrderModal(); return false;" class="btn-explore-collection">
+        Explore the Fire Collection
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
+      </a>
+    </div>
+
   </div>
 </section>
 
-<!-- ═══ S6 · BREWING RITUAL ════════════════════════ -->
-<section id="ritual" class="ritual">
+<!-- ═══ S4 · WHY THESE BOTANICALS? ═════════════════ -->
+<section id="why-botanicals" class="sec">
+  <div class="sec-w">
+    <div class="sec-tag">From Familiar to Discovery</div>
+    <h2 class="sec-h2">Why These Botanicals?</h2>
+    <p class="sec-lead">
+      TKG works with identifiable botanicals that carry distinct culinary and cultural identities. Some are immediately familiar; others invite a new way of experiencing an ingredient.
+    </p>
 
-  <!-- left: huge type + steps -->
-  <div class="ritual-left">
-    <div class="ritual-eyebrow">How to prepare</div>
-    <div class="ritual-heading">BREWING<br>RITUAL</div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num"><span>1</span></div>
-        <div>
-          <div class="step-title">Add 2 teaspoons to a cup</div>
-          <div class="step-hint">~2g per serving. Adjust to taste.</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-fam why-fam-fire">Morning Ember</div>
+        <div class="why-name">A familiar starting point.</div>
+        <div class="why-ing">Ginger · Lemongrass · Lime</div>
+        <div class="why-body">
+          <p>Ginger, lemongrass and lime are ingredients found across many food cultures and are widely recognized around the world.</p>
+          <p>Their familiarity creates a natural entry point into TKG — a way to discover our own botanical preparation through the Naula method.</p>
+          <p>Together, they create a bold, direct and warm botanical profile.</p>
         </div>
+        <div class="why-close">Familiar ingredients → TKG's preparation → a new experience</div>
       </div>
-      <div class="step">
-        <div class="step-num"><span>2</span></div>
-        <div>
-          <div class="step-title">Pour 100ml water</div>
-          <div class="step-hint">Hot or cold — both work.</div>
+      <div class="why-card">
+        <div class="why-fam why-fam-perilla">Still Ember</div>
+        <div class="why-name">A taste of East Asian botanical culture.</div>
+        <div class="why-ing">Perilla · Clove · Kumquat</div>
+        <div class="why-body">
+          <p>Perilla, clove and kumquat are more closely associated with Asian food traditions and are less familiar to many people around the world.</p>
+          <p>Beyond the distinctive aroma of perilla and the warm spice of clove, these botanicals have long been used in food and traditional culinary practices. In Vietnam, botanical ingredients are also widely prepared and enjoyed as beverages.</p>
+          <p>Through TKG's own combination of ingredients and the Naula method, they come together to create a distinctive botanical drinking experience.</p>
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num"><span>3</span></div>
-        <div>
-          <div class="step-title">Stir until fully dissolved</div>
-          <div class="step-hint">Natural sediment is expected — whole botanicals.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num"><span>4</span></div>
-        <div>
-          <div class="step-title">Enjoy a cup</div>
-          <div class="step-hint">Drink immediately for best colour and aroma.</div>
-        </div>
+        <div class="why-close">Quiet · Considered · Distinctive</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- right: ritual photo -->
-  <div class="ritual-right">
-    <img src="Ritual-2.webp" alt="Brewing ritual" loading="lazy">
-    <div class="ritual-right-veil"></div>
+<!-- ═══ S5 · THE NAULA METHOD ═══════════════════════ -->
+<section id="naula-method" class="naula-section">
+
+  <div class="method-top">
+    <img class="method-top-img" src="Naula-2.webp" alt="The Naula Method" loading="lazy">
+    <div class="method-top-veil"></div>
+    <div class="method-top-content">
+      <div class="sec-tag">The Naula Method</div>
+      <h2 class="sec-h2" style="margin-bottom:8px;">Water · Heat · Time</h2>
+      <p class="sec-lead">
+        Naula is TKG's preparation method for working with fresh botanical ingredients through water, heat and time, followed by freeze-drying for the powder format.
+      </p>
+    </div>
+  </div>
+
+  <div class="method-steps">
+
+    <div class="method-step">
+      <div class="method-step-num">01</div>
+      <div class="method-step-tag">Start With Botanicals</div>
+      <div class="method-step-head">Identifiable botanicals.</div>
+      <p class="method-step-body">
+        TKG begins with recognizable botanical ingredients such as ginger, lemongrass, lime, perilla, clove and kumquat. The ingredient comes first.
+      </p>
+    </div>
+
+    <div class="method-step">
+      <div class="method-step-num">02</div>
+      <div class="method-step-tag">Water · Heat · Time</div>
+      <div class="method-step-head">A careful preparation.</div>
+      <p class="method-step-body">
+        The botanicals are prepared using water, controlled heat and time. This allows the ingredients to release their characteristic colour, aroma and flavour into the prepared botanical liquid.
+      </p>
+    </div>
+
+    <div class="method-step">
+      <div class="method-step-num">03</div>
+      <div class="method-step-tag">Freeze-Drying</div>
+      <div class="method-step-head">A convenient dry format.</div>
+      <p class="method-step-body">
+        For the powder format, the prepared botanical liquid is subsequently freeze-dried — creating a format that can be reconstituted when needed while retaining the character of the original preparation.
+      </p>
+    </div>
+
+    <div class="method-step">
+      <div class="method-step-num">04</div>
+      <div class="method-step-tag">From Preparation to Everyday Use</div>
+      <div class="method-formats">
+        <div class="method-format">
+          <div class="method-format-name">Fresh</div>
+          <div class="method-format-meta">250ml ready-to-drink · Immediate consumption</div>
+        </div>
+        <div class="method-format">
+          <div class="method-format-name">Powder</div>
+          <div class="method-format-meta">60g tin / 2g serving · Home preparation, take-home use</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="method-close">
+    <p class="method-close-txt">
+      Prepare the botanical carefully. Keep its identity visible. Make the experience easier to access.
+    </p>
   </div>
 
 </section>
 
-<!-- ═══ S7 · LIFESTYLE FULL-BLEED ════════════════ -->
-<div class="lifestyle-bleed">
-  <img src="Ending-1.webp" alt="TKG lifestyle" class="lifestyle-bleed-img" loading="lazy">
-</div>
+<!-- ═══ S6 · TWO WAYS TO EXPERIENCE ════════════════ -->
+<section id="experience" class="sec">
+  <div class="sec-w">
+    <div class="sec-tag">Fresh or Freeze-Dried</div>
+    <h2 class="sec-h2">Your way.</h2>
 
-<!-- ═══ S8 · CLOSING ══════════════════════════════ -->
-<section id="order" class="closing">
-  <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-      <a href="#" onclick="openOrderModal(); return false;" class="btn-primary">
-        Order Now
-        <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2,6 10,6"/><polyline points="6,2 10,6 6,10"/></svg>
-      </a>
-      <a href="#naula" class="btn-ghost">Learn the method →</a>
+    <div class="ways-grid">
+
+      <!-- Fresh Botanical Drink -->
+      <div class="way-card">
+        <div class="way-tag">01 · Fresh Botanical Drink</div>
+        <div class="way-head">Ready to enjoy.</div>
+        <div class="way-sub">Fresh botanical drinks prepared through the Naula method.</div>
+        <span class="badge-soon">Coming Soon</span>
+        <p class="way-note">Available at selected locations. Locations to be announced soon.</p>
+      </div>
+
+      <!-- Freeze-Dried Botanical Powder -->
+      <div class="way-card">
+        <div class="way-tag">02 · Freeze-Dried Botanical Powder</div>
+        <div class="way-head">Prepare it your way.</div>
+        <div class="way-sub">Standard preparation</div>
+
+        <div class="prep-seq">
+          <div class="prep-row"><div class="prep-icon">2g</div><div class="prep-txt">2 tsp (2g powder)</div></div>
+          <div class="prep-arrow">+</div>
+          <div class="prep-row"><div class="prep-icon">100</div><div class="prep-txt">100ml water — hot or cold</div></div>
+          <div class="prep-arrow">↓</div>
+          <div class="prep-row"><div class="prep-icon" style="font-size:11px;">Stir</div><div class="prep-txt">Stir well</div></div>
+          <div class="prep-arrow">↓</div>
+          <div class="prep-row"><div class="prep-icon" style="font-size:11px;">Ice</div><div class="prep-txt">Add ice</div></div>
+          <div class="prep-arrow">↓</div>
+          <div class="prep-row"><div class="prep-icon" style="font-size:16px;">✓</div><div class="prep-txt">Enjoy</div></div>
+        </div>
+
+        <div class="usage-block">
+          <div class="usage-lbl">Not only water.</div>
+          <div class="usage-pills">
+            <span class="usage-pill">Sparkling</span>
+            <span class="usage-pill">Soda</span>
+            <span class="usage-pill">Cocktail</span>
+            <span class="usage-pill">Mocktail</span>
+            <span class="usage-pill">Smoothie</span>
+            <span class="usage-pill">Shake</span>
+          </div>
+          <div class="usage-close">Your way.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Special Experience -->
+    <div class="special-banner">
+      <div>
+        <div class="special-tag">Special Experience</div>
+        <div class="special-title">Hunter and the Red Hood</div>
+      </div>
+      <div class="special-actions">
+        <span class="badge-soon">Coming Soon</span>
+        <a href="hunter-and-the-red-hood.html" class="btn-ghost">Explore the Story →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ S7 · MAKE IT PART OF YOUR DAY ══════════════ -->
+<section id="everyday" class="day-strip">
+  <div class="day-strip-img">
+    <img src="Ending-1.webp" alt="A botanical ritual for everyday moments" loading="lazy">
+    <div class="day-strip-veil"></div>
+  </div>
+  <div class="sec-w" style="padding-bottom:0;padding-top:56px;">
+    <div class="sec-tag" style="text-align:center;">Everyday Ritual</div>
+    <h2 class="sec-h2" style="text-align:center;margin:0 auto;max-width:640px;">A botanical ritual for everyday moments.</h2>
+  </div>
+  <div class="day-moments">
+    <div class="day-moment">
+      <div class="day-moment-tag">Start</div>
+      <p class="day-moment-body">Begin your day with a botanical moment.</p>
+    </div>
+    <div class="day-moment">
+      <div class="day-moment-tag">Move</div>
+      <p class="day-moment-body">A simple ritual around your active routine.</p>
+    </div>
+    <div class="day-moment">
+      <div class="day-moment-tag">Outdoors</div>
+      <p class="day-moment-body">Easy to prepare wherever the day takes you.</p>
+    </div>
+    <div class="day-moment">
+      <div class="day-moment-tag">Rest</div>
+      <p class="day-moment-body">A quieter botanical moment.</p>
+    </div>
+    <div class="day-moment">
+      <div class="day-moment-tag">Everyday</div>
+      <p class="day-moment-body">A simple way to experience Vietnamese botanicals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S8 · REAL BOTANICALS ═══════════════════════ -->
+<section id="real-botanicals" class="sec">
+  <div class="sec-w">
+    <div class="sec-tag">Real Botanicals</div>
+    <h2 class="sec-h2">Botanicals behave like botanicals.</h2>
+    <p class="sec-lead">This section explains natural characteristics that consumers may notice.</p>
+
+    <div class="real-grid">
+      <div class="real-card">
+        <div class="real-card-inner">
+          <div class="real-tag">Sediment</div>
+          <div class="real-body">
+            <p>Natural botanical sediment may settle after preparation.</p>
+          </div>
+          <span class="real-instruction">Stir before drinking</span>
+        </div>
+      </div>
+      <div class="real-card">
+        <div class="real-card-inner">
+          <div class="real-tag">Colour</div>
+          <div class="real-body">
+            <p>Natural colour variation may occur due to the characteristics of botanical ingredients and differences in the beverage environment.</p>
+            <p>For Still Ember specifically, perilla contains naturally occurring pigments that can respond to differences in the beverage environment, including water conditions. This is a natural characteristic of the botanical ingredients, not an indication of artificial colouring.</p>
+          </div>
+        </div>
+      </div>
+      <div class="real-card">
+        <div class="real-card-inner">
+          <div class="real-tag">Natural Variation</div>
+          <div class="real-body">
+            <p>Natural differences in colour, aroma and appearance can occur between botanical batches.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="real-close">These are characteristics of real botanical ingredients, not defects.</div>
+  </div>
+</section>
+
+<!-- ═══ S9 · PRODUCT & LABORATORY EVIDENCE ═════════ -->
+<section id="lab-evidence" class="sec">
+  <div class="sec-w">
+    <div class="sec-tag">Transparency</div>
+    <h2 class="sec-h2">Know what's in your cup.</h2>
+
+    <!-- Fresh Botanical Drinks -->
+    <div class="lab-block">
+      <div class="lab-block-head">
+        <div>
+          <div class="lab-block-title">Fresh Botanical Drinks</div>
+          <div class="lab-sweeten">
+            <div class="lab-sweeten-item"><strong>Morning Ember</strong> — Ginger · Lemongrass · Lime · Sweetened with Honey + Palm Sugar</div>
+            <div class="lab-sweeten-item"><strong>Still Ember</strong> — Perilla · Clove · Kumquat · Sweetened with Honey + Raw Sugar</div>
+          </div>
+        </div>
+      </div>
+      <div class="lab-statement">No refined sugar is used.</div>
+
+      <div class="lab-table-wrap">
+        <table class="lab-table">
+          <thead>
+            <tr>
+              <th>Parameter / 100ml</th>
+              <th>Morning Ember</th>
+              <th>Still Ember</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Energy</td><td>54 kcal</td><td>70 kcal</td></tr>
+            <tr><td>Protein</td><td>0.26 g</td><td>0.26 g</td></tr>
+            <tr><td>Carbohydrate</td><td>13.1 g</td><td>17.3 g</td></tr>
+            <tr><td>Total sugars</td><td>12.5 g</td><td>16.2 g</td></tr>
+            <tr><td>Fat</td><td>0 g</td><td>0 g</td></tr>
+            <tr><td>Dietary fiber</td><td>0.27 g</td><td>Not detected*</td></tr>
+            <tr><td>Sodium</td><td>21.1 mg</td><td>4.32 mg</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lab-foot">
+        <span>Tested by Eurofins Sac Ky Hai Dang · ISO/IEC 17025:2017 · VILAS 238</span>
+        <span>Morning Ember: AR-25-VD-169691-02 · Still Ember: AR-25-VD-169692-02</span>
+      </div>
+    </div>
+
+    <!-- Freeze-Dried Botanical Powders -->
+    <div class="lab-block">
+      <div class="lab-block-head">
+        <div>
+          <div class="lab-block-title">Freeze-Dried Botanical Powders</div>
+          <div class="lab-sweeten">
+            <div class="lab-sweeten-item"><strong>Morning Ember</strong> — Ginger · Lemongrass · Lime</div>
+            <div class="lab-sweeten-item"><strong>Still Ember</strong> — Perilla · Clove · Kumquat</div>
+          </div>
+        </div>
+      </div>
+      <div class="lab-statement">No sugar or sweetener is added to the powder.</div>
+
+      <div class="lab-table-wrap">
+        <table class="lab-table">
+          <thead>
+            <tr>
+              <th>Parameter / 100g</th>
+              <th>Morning Ember</th>
+              <th>Still Ember</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Energy</td><td>222 kcal</td><td>154 kcal</td></tr>
+            <tr><td>Protein</td><td>6.70 g</td><td>4.66 g</td></tr>
+            <tr><td>Fat</td><td>0.43 g</td><td>0.17 g</td></tr>
+            <tr><td>Carbohydrate*</td><td>22.3 g</td><td>1.70 g</td></tr>
+            <tr><td>Total dietary fiber</td><td>51.0 g</td><td>63.5 g</td></tr>
+            <tr><td>Soluble dietary fiber</td><td>50.4 g</td><td>62.9 g</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lab-foot">
+        <span>Tested by QUATEST 3 · ISO/IEC 17025:2017 · VILAS 004</span>
+        <span>Test Report No. Q326C053953</span>
+      </div>
+    </div>
+
+    <p class="lab-disclaimer">
+      Laboratory results are analytical data from tested product samples. They are provided as product information, not clinical or therapeutic claims.
+    </p>
   </div>
 </section>
 
@@ -1419,9 +1833,9 @@ footer{
     <div class="foot-nav">
       <div class="foot-col">
         <div class="foot-col-title">Navigate</div>
-        <a href="#naula">Naula Method</a>
-        <a href="#products">Products</a>
-        <a href="#ritual">Ritual</a>
+        <a href="#naula-method">Naula Method</a>
+        <a href="#fire-collection">Products</a>
+        <a href="#experience">Ritual</a>
         <a href="world-of-naula.html">World of Naula</a>
         <a href="founders.html">Founders</a>
         <a href="vg2-savvi-landing.html">VG2 Program</a>
@@ -1479,8 +1893,8 @@ footer{
         <label for="product">Product *</label>
         <select id="product" name="product" required>
           <option value="">Select a product</option>
-          <option value="morning-ember">Morning Ember - Lư Trung Hoả</option>
-          <option value="still-ember">Still Ember - Phú Đăng Hoả</option>
+          <option value="morning-ember">Morning Ember</option>
+          <option value="still-ember">Still Ember</option>
           <option value="both">Both Products</option>
         </select>
       </div>
@@ -1503,89 +1917,6 @@ footer{
   </div>
 </div>
 
-<!-- ═══ COLLECTION POPUP MODAL (6-SKU GRID) ════════ -->
-<div id="collectionModal" class="collection-modal" style="display:none;">
-  <div class="collection-modal-overlay" onclick="closeCollectionModal()"></div>
-  <div class="collection-modal-content">
-    <button class="collection-modal-close" onclick="closeCollectionModal()">×</button>
-    <div class="collection-modal-header">
-      <div class="collection-modal-tag">Fire Element</div>
-      <h3 class="collection-modal-title">The Collection</h3>
-    </div>
-    <div class="collection-grid">
-
-      <!-- Morning Ember -->
-      <div class="collection-card">
-        <div class="collection-card-img">
-          <img src="Morning Ember-texture.webp" alt="Morning Ember" loading="lazy">
-        </div>
-        <div class="collection-card-body">
-          <div class="collection-card-name">Morning Ember</div>
-          <div class="collection-card-ing">Ginger · Lemongrass · Lime</div>
-          <div class="collection-card-concept">Concept name: Lư Trung Hoả</div>
-        </div>
-      </div>
-
-      <!-- Still Ember -->
-      <div class="collection-card">
-        <div class="collection-card-img">
-          <img src="Still-Ember-texture.webp" alt="Still Ember" loading="lazy">
-        </div>
-        <div class="collection-card-body">
-          <div class="collection-card-name">Still Ember</div>
-          <div class="collection-card-ing">Perilla · Clove · Kumquat</div>
-          <div class="collection-card-concept">Concept name: Phú Đăng Hoả</div>
-        </div>
-      </div>
-
-      <!-- Coming soon · Sơn Hạ Hoả -->
-      <div class="collection-card collection-card-soon">
-        <div class="collection-card-soon-img">
-          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
-        </div>
-        <div class="collection-card-soon-body">
-          <div class="collection-card-soon-label">Coming soon</div>
-          <div class="collection-card-soon-concept">Sơn Hạ Hỏa - Mountain Base Fire</div>
-        </div>
-      </div>
-
-      <!-- Coming soon · Sơn Đầu Hoả -->
-      <div class="collection-card collection-card-soon">
-        <div class="collection-card-soon-img">
-          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
-        </div>
-        <div class="collection-card-soon-body">
-          <div class="collection-card-soon-label">Coming soon</div>
-          <div class="collection-card-soon-concept">Sơn Đầu Hỏa - Mountain Top Fire</div>
-        </div>
-      </div>
-
-      <!-- Coming soon · Tích Lịch Hoả -->
-      <div class="collection-card collection-card-soon">
-        <div class="collection-card-soon-img">
-          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
-        </div>
-        <div class="collection-card-soon-body">
-          <div class="collection-card-soon-label">Coming soon</div>
-          <div class="collection-card-soon-concept">Tích Lịch Hỏa - Thunderstorm Fire</div>
-        </div>
-      </div>
-
-      <!-- Coming soon · Thiên Thượng Hoả -->
-      <div class="collection-card collection-card-soon">
-        <div class="collection-card-soon-img">
-          <svg class="collection-card-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cream4)"><path d="M12 2c1.5 3 1.5 5 0 7-2 2.5-4 4-4 7a4 4 0 0 0 8 0c0-1.5-.7-2.5-1.5-3.5.8 2 .3 3.5-1 4.2"/></svg>
-        </div>
-        <div class="collection-card-soon-body">
-          <div class="collection-card-soon-label">Coming soon</div>
-          <div class="collection-card-soon-concept">Thiên Thượng Hỏa - Celestial Fire</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 <script>
 /* ─── Order Modal ─── */
 function openOrderModal() {
@@ -1594,16 +1925,6 @@ function openOrderModal() {
 }
 function closeOrderModal() {
   document.getElementById('orderModal').style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
-
-/* ─── Collection Modal (Explore the Collection popup) ─── */
-function openCollectionModal() {
-  document.getElementById('collectionModal').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-function closeCollectionModal() {
-  document.getElementById('collectionModal').style.display = 'none';
   document.body.style.overflow = 'auto';
 }
 
