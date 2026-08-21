@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="TKG_16_9.webp" fetchpriority="high">
+<link rel="preload" as="image" href="TKG_16_9_1.webp" fetchpriority="high">
 
 <style>
 /* ─── RESET ─────────────────────────────────────── */
@@ -138,6 +138,11 @@ nav{
 }
 .hero-media{position:absolute;inset:0}
 .hero-media img,.hero-media .ph{width:100%;height:100%;object-fit:cover}
+.hero-slide{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.6s ease;
+}
+.hero-slide.active{opacity:1}
 .hero-veil{
   position:absolute;inset:0;
   background:linear-gradient(
@@ -1373,9 +1378,13 @@ table.lab-table tr:last-child td{border-bottom:none}
 <!-- ═══ S1 · HERO ══════════════════════════════════ -->
 <section id="hero" class="hero">
 
-  <!-- background image 16:9 -->
+  <!-- background image 16:9 · auto slideshow -->
   <div class="hero-media">
-    <img src="TKG_16_9.webp" alt="TKG — Vietnamese Botanical Wellness" fetchpriority="high" loading="eager">
+    <img class="hero-slide active" src="TKG_16_9_1.webp" alt="TKG — Vietnamese Botanical Wellness" fetchpriority="high" loading="eager">
+    <img class="hero-slide" src="TKG_16_9_2.webp" alt="TKG — Vietnamese Botanical Wellness" loading="lazy">
+    <img class="hero-slide" src="TKG_16_9_3.webp" alt="TKG — Vietnamese Botanical Wellness" loading="lazy">
+    <img class="hero-slide" src="TKG_16_9_4.webp" alt="TKG — Vietnamese Botanical Wellness" loading="lazy">
+    <img class="hero-slide" src="TKG_16_9_5.webp" alt="TKG — Vietnamese Botanical Wellness" loading="lazy">
   </div>
   <div class="hero-veil"></div>
 
@@ -2042,6 +2051,18 @@ function switchLang(lang) {
 function toggleNF(id) {
   document.getElementById(id).classList.toggle('open');
 }
+
+/* ─── Hero Slideshow ─── */
+(function () {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length < 2) return;
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5000);
+})();
 
 /* ─── Mobile Nav ─── */
 function toggleMobileNav() {
