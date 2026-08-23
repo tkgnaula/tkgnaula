@@ -1701,7 +1701,7 @@ table.lab-table tr:last-child td{border-bottom:none}
   </div>
   <div style="text-align:center;margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
     <a href="#" onclick="openOrderModal(); return false;" class="btn-fire">Order Morning Ember</a>
-    <a href="founders.html" class="btn-ghost">B2B / Wholesale Inquiries →</a>
+    <a href="#" onclick="openB2BModal(); return false;" class="btn-ghost">B2B / Wholesale Inquiries →</a>
   </div>
 </section>
 
@@ -1797,6 +1797,38 @@ table.lab-table tr:last-child td{border-bottom:none}
   </div>
 </div>
 
+<div id="b2bModal" class="order-modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeB2BModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeB2BModal()">×</button>
+    <div class="modal-header">
+      <h3 class="modal-title">B2B / Wholesale Inquiries</h3>
+      <p class="modal-subtitle">Tell us about your business — we'll get back to you.</p>
+    </div>
+    <form class="order-form" onsubmit="submitB2BForm(event)">
+      <div class="form-group">
+        <label for="b2bEmail">Email Address *</label>
+        <input type="email" id="b2bEmail" name="b2bEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="b2bSubject">Subject *</label>
+        <input type="text" id="b2bSubject" name="b2bSubject" required>
+      </div>
+      <div class="form-group">
+        <label for="b2bMessage">Message *</label>
+        <textarea id="b2bMessage" name="b2bMessage" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Inquiry</button>
+    </form>
+    <div class="modal-footer">
+      <div class="hotline-info">
+        <strong>Hotline:</strong> (+84) 976-847-789
+      </div>
+      <div class="product-origin">Product of Vietnam</div>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ─── Order Modal ─── */
 function openOrderModal() {
@@ -1841,6 +1873,28 @@ function submitOrderForm(event) {
   window.location.href = 'mailto:orders@tkg-naula.com?subject=' + subject + '&body=' + body;
   alert('Thank you for your order request! We will contact you soon.');
   closeOrderModal();
+}
+
+/* ─── B2B / Wholesale Inquiry Modal ─── */
+function openB2BModal() {
+  document.getElementById('b2bModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeB2BModal() {
+  document.getElementById('b2bModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+function submitB2BForm(event) {
+  event.preventDefault();
+  var formData = new FormData(event.target);
+  var senderEmail = formData.get('b2bEmail');
+  var subject = encodeURIComponent(formData.get('b2bSubject'));
+  var body = encodeURIComponent(
+    'From: ' + senderEmail + '\n\n' + formData.get('b2bMessage')
+  );
+  window.location.href = 'mailto:tkg.naula@gmail.com?subject=' + subject + '&body=' + body;
+  alert('Thank you for your inquiry! Your email client will open to send the message.');
+  closeB2BModal();
 }
 </script>
 
