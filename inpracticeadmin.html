@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>In Practice — Content Admin (internal tool)</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;
+  background:#12110B;color:#EDE8DC;-webkit-font-smoothing:antialiased;
+  padding:32px;
+}
+:root{
+  --bg:#12110B;--bg1:#181610;--bg2:#1E1B13;--fire:#D45E29;--fire2:rgba(212,94,41,.14);
+  --perilla:#74255E;--gold:#F9DA85;--cream:#EDE8DC;--cream2:#C4BFB1;--cream3:#ACA797;--cream4:#969282;
+  --line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--good:#8FBE7A;--bad:#D4695E;
+}
+h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.sub{font-size:13px;color:var(--cream3);margin-bottom:24px;max-width:760px;line-height:1.6}
+.sub code{background:var(--bg1);padding:2px 6px;border-radius:3px;font-size:12px}
+.bar{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:14px 16px;background:var(--bg1);border:1px solid var(--line2);border-radius:6px;
+  margin-bottom:20px;
+}
+.bar .status{font-size:12.5px;color:var(--cream3);margin-right:auto}
+.bar .status.ok{color:var(--good)}
+button{
+  font-family:inherit;font-size:12.5px;font-weight:600;letter-spacing:.02em;
+  padding:9px 16px;border-radius:4px;border:1px solid var(--line2);
+  background:var(--bg2);color:var(--cream);cursor:pointer;transition:.15s;
+}
+button:hover{border-color:var(--fire);background:var(--fire2)}
+button.primary{background:var(--fire);border-color:var(--fire);color:#fff}
+button.primary:hover{opacity:.88;background:var(--fire)}
+button.danger:hover{border-color:var(--bad);background:rgba(212,105,94,.12)}
+button:disabled{opacity:.4;cursor:not-allowed}
+button:disabled:hover{border-color:var(--line2);background:var(--bg2)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{padding:7px 14px;font-size:11.5px}
+.filters button.active{background:var(--fire);border-color:var(--fire);color:#fff}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;
+}
+.card{
+  background:var(--bg1);border:1px solid var(--line2);border-radius:6px;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.card.unpublished{opacity:.55}
+.thumb{
+  width:100%;aspect-ratio:4/3;background:var(--bg2);position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .noimg{font-size:10.5px;color:var(--cream4);text-align:center;padding:10px}
+.thumb .cat{
+  position:absolute;top:8px;left:8px;font-size:9px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold);background:rgba(18,17,11,.75);
+  padding:4px 8px;border-radius:20px;
+}
+.thumb .pubdot{
+  position:absolute;top:8px;right:8px;width:9px;height:9px;border-radius:50%;
+  background:var(--good);box-shadow:0 0 0 2px rgba(18,17,11,.7);
+}
+.thumb .pubdot.off{background:var(--cream4)}
+.card-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-body .cap{font-size:13px;color:var(--cream);line-height:1.35}
+.card-body .meta{font-size:10.5px;color:var(--cream4)}
+.card-actions{display:flex;gap:6px;margin-top:auto;padding-top:8px}
+.card-actions button{flex:1;padding:6px 8px;font-size:10.5px}
+.order-btns{display:flex;flex-direction:column;gap:2px}
+.order-btns button{padding:2px 6px;font-size:10px;line-height:1}
+
+/* ── modal editor ── */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;
+  align-items:center;justify-content:center;padding:20px;z-index:100;
+}
+.overlay.open{display:flex}
+.modal{
+  background:var(--bg1);border:1px solid var(--line2);border-radius:8px;
+  max-width:520px;width:100%;max-height:90vh;overflow-y:auto;
+}
+.modal h2{font-size:17px;padding:20px 20px 4px}
+.modal .field{padding:10px 20px}
+.modal label{display:block;font-size:11.5px;color:var(--cream3);margin-bottom:5px}
+.modal input[type=text],.modal select,.modal textarea{
+  width:100%;padding:9px 11px;background:var(--bg);border:1px solid var(--line2);
+  border-radius:4px;color:var(--cream);font-size:13px;font-family:inherit;
+}
+.modal textarea{resize:vertical;min-height:50px}
+.modal .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal .checks{display:flex;gap:18px;padding:10px 20px}
+.modal .checks label{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--cream2)}
+.modal .checks input{width:auto}
+.modal-foot{display:flex;gap:8px;justify-content:flex-end;padding:16px 20px 20px}
+.hint{font-size:10.5px;color:var(--cream4);margin-top:4px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<h1>In Practice — Content Admin</h1>
+<p class="sub">
+  Công cụ nội bộ để thêm / sửa / xoá / sắp xếp ảnh trên trang <code>in-practice.html</code>,
+  không cần sửa code tay. Đây KHÔNG phải trang public — không có link nào trên site trỏ tới
+  file này, và nó không tự động đăng ảnh lên site thật.
+  Trang này chỉ đọc <code>in-practice-data.js</code> và cho phép anh xuất ra một bản mới —
+  sau khi xuất, anh vẫn cần đưa file (+ ảnh mới, nếu có) vào repo và
+  <code>git push</code> như bình thường (hoặc nhờ Claude làm bước đó).
+</p>
+
+<div class="bar">
+  <button id="btnConnect">📁 Kết nối thư mục repo (Chrome)</button>
+  <span class="status" id="connectStatus">Chưa kết nối — vẫn dùng được ở chế độ thủ công bên dưới.</span>
+  <button id="btnAdd" class="primary">+ Thêm ảnh</button>
+  <button id="btnExport">⬇ Xuất in-practice-data.js</button>
+</div>
+
+<div class="filters" id="filters"></div>
+<div class="grid" id="grid"></div>
+
+<!-- ── editor modal ── -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h2 id="modalTitle">Thêm ảnh</h2>
+    <div class="field">
+      <label>File ảnh (.webp, nằm trong cùng thư mục repo)</label>
+      <input type="text" id="fImage" placeholder="vd: My-photo.webp">
+      <div class="hint" id="fileHint"></div>
+      <input type="file" id="fFilePicker" accept="image/*" style="margin-top:8px">
+    </div>
+    <div class="field row2">
+      <div>
+        <label>Danh mục</label>
+        <select id="fCategory">
+          <option value="people">People</option>
+          <option value="botanicals">Botanicals</option>
+          <option value="naula">Naula</option>
+          <option value="product">Product</option>
+          <option value="experience">Experience</option>
+        </select>
+      </div>
+      <div>
+        <label>Thứ tự (order)</label>
+        <input type="text" id="fOrder" placeholder="vd: 360">
+      </div>
+    </div>
+    <div class="field">
+      <label>Caption (ngắn, hiện khi hover + trong lightbox)</label>
+      <input type="text" id="fCaption">
+    </div>
+    <div class="field row2">
+      <div>
+        <label>Địa điểm (chỉ hiện trong lightbox)</label>
+        <input type="text" id="fLocation">
+      </div>
+      <div>
+        <label>Năm</label>
+        <input type="text" id="fYear">
+      </div>
+    </div>
+    <div class="field">
+      <label>Đối tác / sự kiện (chỉ hiện trong lightbox — KHÔNG hiện trên wall)</label>
+      <input type="text" id="fPartner">
+    </div>
+    <div class="field">
+      <label>Story group id (để gộp nhiều ảnh thành 1 carousel trong lightbox — để trống nếu ảnh đơn lẻ)</label>
+      <input type="text" id="fStory">
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" id="fPublished" checked> Published (hiện trên wall)</label>
+      <label><input type="checkbox" id="fFeatured"> Featured</label>
+    </div>
+    <div class="modal-foot">
+      <button id="btnCancel">Huỷ</button>
+      <button id="btnSave" class="primary">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<script src="in-practice-data.js"></script>
+<script>
+(function(){
+  var items = (typeof IN_PRACTICE_ITEMS !== 'undefined' ? IN_PRACTICE_ITEMS.slice() : [])
+    .map(function(it){ return Object.assign({}, it); });
+  var currentFilter = 'all';
+  var editingId = null; // null = adding new
+  var dirHandle = null; // File System Access API directory handle, if connected
+
+  var grid = document.getElementById('grid');
+  var filtersEl = document.getElementById('filters');
+  var overlay = document.getElementById('overlay');
+  var connectStatus = document.getElementById('connectStatus');
+
+  var CATS = ['all','people','botanicals','naula','product','experience'];
+  var CAT_LABEL = {all:'All', people:'People', botanicals:'Botanicals', naula:'Naula', product:'Product', experience:'Experience'};
+
+  function renderFilters(){
+    filtersEl.innerHTML = '';
+    CATS.forEach(function(c){
+      var b = document.createElement('button');
+      b.textContent = CAT_LABEL[c] + ' (' + (c==='all'? items.length : items.filter(function(i){return i.category===c}).length) + ')';
+      if (c === currentFilter) b.classList.add('active');
+      b.onclick = function(){ currentFilter = c; renderFilters(); renderGrid(); };
+      filtersEl.appendChild(b);
+    });
+  }
+
+  function renderGrid(){
+    grid.innerHTML = '';
+    var list = items.slice().sort(function(a,b){ return (a.order||0)-(b.order||0); });
+    if (currentFilter !== 'all') list = list.filter(function(i){ return i.category === currentFilter; });
+
+    list.forEach(function(item, idx){
+      var card = document.createElement('div');
+      card.className = 'card' + (item.published ? '' : ' unpublished');
+
+      var thumb = document.createElement('div');
+      thumb.className = 'thumb';
+      if (item.image){
+        var img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.caption || item.category;
+        img.onerror = function(){ thumb.innerHTML = '<div class="noimg">Không tìm thấy file<br>' + item.image + '<br>(cần nằm cùng thư mục với trang admin này)</div>'; };
+        thumb.appendChild(img);
+      } else {
+        var noimg = document.createElement('div');
+        noimg.className = 'noimg';
+        noimg.textContent = 'Chưa có ảnh (staged)';
+        thumb.appendChild(noimg);
+      }
+      var catTag = document.createElement('div');
+      catTag.className = 'cat';
+      catTag.textContent = CAT_LABEL[item.category] || item.category;
+      thumb.appendChild(catTag);
+      var dot = document.createElement('div');
+      dot.className = 'pubdot' + (item.published ? '' : ' off');
+      dot.title = item.published ? 'Published' : 'Unpublished';
+      thumb.appendChild(dot);
+      card.appendChild(thumb);
+
+      var body = document.createElement('div');
+      body.className = 'card-body';
+      var cap = document.createElement('div');
+      cap.className = 'cap';
+      cap.textContent = item.caption || '(không có caption)';
+      body.appendChild(cap);
+      var meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = 'order ' + (item.order||0) + (item.location ? ' · ' + item.location : '') + (item.partner ? ' · ' + item.partner : '');
+      body.appendChild(meta);
+
+      var actions = document.createElement('div');
+      actions.className = 'card-actions';
+
+      var editBtn = document.createElement('button');
+      editBtn.textContent = 'Sửa';
+      editBtn.onclick = function(){ openEditor(item.id); };
+      actions.appendChild(editBtn);
+
+      var togglePub = document.createElement('button');
+      togglePub.textContent = item.published ? 'Ẩn' : 'Hiện';
+      togglePub.onclick = function(){ item.published = !item.published; renderGrid(); renderFilters(); };
+      actions.appendChild(togglePub);
+
+      var delBtn = document.createElement('button');
+      delBtn.textContent = 'Xoá';
+      delBtn.className = 'danger';
+      delBtn.onclick = function(){
+        if (confirm('Xoá ảnh này khỏi danh sách?')){
+          items = items.filter(function(i){ return i.id !== item.id; });
+          renderGrid(); renderFilters();
+        }
+      };
+      actions.appendChild(delBtn);
+
+      body.appendChild(actions);
+      card.appendChild(body);
+      grid.appendChild(card);
+    });
+  }
+
+  function openEditor(id){
+    editingId = id || null;
+    var it = id ? items.find(function(i){ return i.id === id; }) : null;
+    document.getElementById('modalTitle').textContent = it ? 'Sửa ảnh' : 'Thêm ảnh';
+    document.getElementById('fImage').value = it && it.image ? it.image : '';
+    document.getElementById('fCategory').value = it ? it.category : 'people';
+    document.getElementById('fOrder').value = it ? (it.order||'') : String(Math.max(0, ...items.map(function(i){return i.order||0})) + 10);
+    document.getElementById('fCaption').value = it && it.caption ? it.caption : '';
+    document.getElementById('fLocation').value = it && it.location ? it.location : '';
+    document.getElementById('fYear').value = it && it.year ? it.year : '';
+    document.getElementById('fPartner').value = it && it.partner ? it.partner : '';
+    document.getElementById('fStory').value = it && it.story ? it.story : '';
+    document.getElementById('fPublished').checked = it ? !!it.published : true;
+    document.getElementById('fFeatured').checked = it ? !!it.featured : false;
+    document.getElementById('fileHint').textContent = dirHandle
+      ? 'Đã kết nối thư mục — chọn file bên dưới để tự copy ảnh vào repo với đúng tên.'
+      : 'Chưa kết nối thư mục — anh tự copy file ảnh (.webp) vào thư mục repo với tên trùng ô trên.';
+    document.getElementById('fFilePicker').value = '';
+    overlay.classList.add('open');
+  }
+  function closeEditor(){ overlay.classList.remove('open'); }
+
+  document.getElementById('btnCancel').onclick = closeEditor;
+  document.getElementById('overlay').addEventListener('click', function(e){
+    if (e.target === overlay) closeEditor();
+  });
+
+  document.getElementById('btnSave').onclick = async function(){
+    var image = document.getElementById('fImage').value.trim();
+    var picked = document.getElementById('fFilePicker').files[0];
+
+    if (picked && dirHandle){
+      var name = image || picked.name;
+      if (!/\.webp$/i.test(name)){
+        alert('Chỉ dùng file .webp. Nếu ảnh gốc là jpg/png, hãy nhờ Claude convert trước, hoặc đổi tên/định dạng rồi thử lại.');
+        return;
+      }
+      try {
+        var fileHandle = await dirHandle.getFileHandle(name, { create: true });
+        var writable = await fileHandle.createWritable();
+        await writable.write(picked);
+        await writable.close();
+        image = name;
+      } catch (err){
+        alert('Không ghi được file vào thư mục: ' + err.message);
+        return;
+      }
+    } else if (picked && !dirHandle){
+      alert('Chưa kết nối thư mục repo nên không tự copy được file. Hãy tự copy "' + picked.name + '" vào thư mục repo (đổi tên nếu cần) rồi nhập đúng tên vào ô File ảnh.');
+    }
+
+    if (!image){
+      alert('Cần nhập tên file ảnh (hoặc chọn file khi đã kết nối thư mục).');
+      return;
+    }
+
+    var data = {
+      id: editingId || slugify(document.getElementById('fCaption').value || image),
+      image: image,
+      category: document.getElementById('fCategory').value,
+      caption: document.getElementById('fCaption').value.trim() || undefined,
+      location: document.getElementById('fLocation').value.trim() || undefined,
+      year: document.getElementById('fYear').value.trim() || undefined,
+      partner: document.getElementById('fPartner').value.trim() || undefined,
+      story: document.getElementById('fStory').value.trim() || undefined,
+      published: document.getElementById('fPublished').checked,
+      featured: document.getElementById('fFeatured').checked || undefined,
+      order: Number(document.getElementById('fOrder').value) || 0
+    };
+
+    if (editingId){
+      var idx = items.findIndex(function(i){ return i.id === editingId; });
+      items[idx] = data;
+    } else {
+      var base = data.id, n = 1;
+      while (items.some(function(i){ return i.id === data.id; })){ data.id = base + '-' + (++n); }
+      items.push(data);
+    }
+    closeEditor();
+    renderGrid(); renderFilters();
+  };
+
+  function slugify(s){
+    return (s||'item').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+      .replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'').slice(0,40) || 'item';
+  }
+
+  document.getElementById('btnAdd').onclick = function(){ openEditor(null); };
+
+  /* ── File System Access API (Chrome/Edge only) — optional, feature-detected ── */
+  var hasFSA = 'showDirectoryPicker' in window;
+  document.getElementById('btnConnect').disabled = !hasFSA;
+  if (!hasFSA) connectStatus.textContent = 'Trình duyệt này không hỗ trợ kết nối thư mục trực tiếp (dùng Chrome/Edge để bật tính năng này) — vẫn dùng được ở chế độ thủ công.';
+
+  document.getElementById('btnConnect').onclick = async function(){
+    try {
+      dirHandle = await window.showDirectoryPicker();
+      connectStatus.textContent = '✓ Đã kết nối thư mục repo. Giờ có thể chọn file ảnh trực tiếp khi thêm/sửa.';
+      connectStatus.classList.add('ok');
+    } catch(err){
+      /* user cancelled */
+    }
+  };
+
+  /* ── Export updated in-practice-data.js ── */
+  function buildFileContent(){
+    var header = [
+'/* ============================================================================',
+'   IN PRACTICE — content data',
+'   ----------------------------------------------------------------------------',
+'   This file is the single source of truth for the "In Practice" masonry wall',
+'   (in-practice.html). It is a plain JS array of plain objects — no build step,',
+'   no bundler, no CMS. To add a new photo to the wall: drop a .webp file in the',
+'   repo root and add one object below (or use in-practice-admin.html). No',
+'   HTML/CSS edits required.',
+'',
+'   Regenerated via in-practice-admin.html on ' + new Date().toISOString().slice(0,10) + '.',
+'',
+'   Schema:',
+'     id, image, category (people|botanicals|naula|product|experience),',
+'     caption, location, year, partner (lightbox-only), story (carousel group),',
+'     published, featured, order.',
+'   ========================================================================= */',
+'',
+'const IN_PRACTICE_ITEMS = ['
+    ].join('\n');
+
+    var sorted = items.slice().sort(function(a,b){ return (a.order||0)-(b.order||0); });
+    var body = sorted.map(function(it){
+      var lines = ['  {'];
+      var keys = ['id','image','category','caption','location','year','partner','story','published','featured','order'];
+      keys.forEach(function(k, i){
+        var v = it[k];
+        if (v === undefined || v === null || v === '') return;
+        var val = (typeof v === 'string') ? JSON.stringify(v) : v;
+        lines.push('    ' + k + ': ' + val + ',');
+      });
+      // strip trailing comma on last real line
+      var last = lines[lines.length-1];
+      lines[lines.length-1] = last.replace(/,\s*$/, '');
+      lines.push('  }');
+      return lines.join('\n');
+    }).join(',\n\n');
+
+    return header + '\n\n' + body + '\n\n];\n';
+  }
+
+  document.getElementById('btnExport').onclick = async function(){
+    var content = buildFileContent();
+    if (dirHandle){
+      try {
+        var fh = await dirHandle.getFileHandle('in-practice-data.js', { create: true });
+        var w = await fh.createWritable();
+        await w.write(content);
+        await w.close();
+        connectStatus.textContent = '✓ Đã ghi thẳng vào in-practice-data.js trong thư mục repo. Nhớ git add/commit/push.';
+        connectStatus.classList.add('ok');
+        return;
+      } catch(err){
+        alert('Không ghi trực tiếp được (' + err.message + ') — tải file xuống thay thế.');
+      }
+    }
+    var blob = new Blob([content], {type:'text/javascript'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'in-practice-data.js';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  };
+
+  renderFilters();
+  renderGrid();
+})();
+</script>
+
+</body>
+</html>
