@@ -115,6 +115,7 @@ button:disabled:hover{border-color:var(--line2);background:var(--bg2)}
   <button id="btnConnect">📁 Kết nối thư mục repo (Chrome)</button>
   <span class="status" id="connectStatus">Chưa kết nối — vẫn dùng được ở chế độ thủ công bên dưới.</span>
   <button id="btnAdd" class="primary">+ Thêm ảnh</button>
+  <button id="btnAddCarousel" class="primary">+ Thêm carousel (nhiều ảnh)</button>
   <button id="btnExport">⬇ Xuất in-practice-data.js</button>
 </div>
 
@@ -176,6 +177,69 @@ button:disabled:hover{border-color:var(--line2);background:var(--bg2)}
     <div class="modal-foot">
       <button id="btnCancel">Huỷ</button>
       <button id="btnSave" class="primary">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── carousel (multi-photo) modal ── -->
+<div class="overlay" id="overlayCarousel">
+  <div class="modal">
+    <h2>Thêm carousel (nhiều ảnh chung 1 câu chuyện)</h2>
+    <p class="hint" style="padding:0 20px;margin-top:-4px;">
+      Chọn nhiều ảnh cùng lúc — tất cả sẽ được gộp vào 1 story, khi click ảnh đầu trên wall
+      sẽ mở carousel lướt qua hết các ảnh này trong lightbox. Thông tin bên dưới áp dụng
+      chung cho cả nhóm (có thể sửa lại caption riêng từng ảnh sau bằng nút "Sửa" trên thẻ).
+    </p>
+    <div class="field">
+      <label>Chọn nhiều file ảnh (.webp)</label>
+      <input type="file" id="cFilePicker" accept="image/*" multiple>
+      <div class="hint" id="cFileHint"></div>
+      <div class="hint" id="cFileList" style="margin-top:8px"></div>
+    </div>
+    <div class="field row2">
+      <div>
+        <label>Danh mục (áp dụng cho cả nhóm)</label>
+        <select id="cCategory">
+          <option value="people">People</option>
+          <option value="botanicals">Botanicals</option>
+          <option value="naula">Naula</option>
+          <option value="product">Product</option>
+          <option value="experience" selected>Experience</option>
+        </select>
+      </div>
+      <div>
+        <label>Thứ tự bắt đầu (order)</label>
+        <input type="text" id="cOrder" placeholder="vd: 500">
+      </div>
+    </div>
+    <div class="field">
+      <label>Story group id (để trống sẽ tự tạo từ tên sự kiện)</label>
+      <input type="text" id="cStory" placeholder="vd: vpbank-marathon-2026">
+    </div>
+    <div class="field">
+      <label>Caption chung (mỗi ảnh sẽ là "Caption — ảnh 1", "— ảnh 2"...; có thể sửa riêng sau)</label>
+      <input type="text" id="cCaption" placeholder="vd: TKG tại VPBank Half Marathon HCMC">
+    </div>
+    <div class="field row2">
+      <div>
+        <label>Địa điểm (chỉ hiện trong lightbox)</label>
+        <input type="text" id="cLocation">
+      </div>
+      <div>
+        <label>Năm</label>
+        <input type="text" id="cYear">
+      </div>
+    </div>
+    <div class="field">
+      <label>Đối tác / sự kiện (chỉ hiện trong lightbox — KHÔNG hiện trên wall)</label>
+      <input type="text" id="cPartner">
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" id="cPublished" checked> Published (hiện trên wall)</label>
+    </div>
+    <div class="modal-foot">
+      <button id="btnCancelCarousel">Huỷ</button>
+      <button id="btnSaveCarousel" class="primary">Lưu cả nhóm</button>
     </div>
   </div>
 </div>
@@ -370,6 +434,100 @@ button:disabled:hover{border-color:var(--line2);background:var(--bg2)}
   }
 
   document.getElementById('btnAdd').onclick = function(){ openEditor(null); };
+
+  /* ── Carousel (multi-photo) add ── */
+  var overlayCarousel = document.getElementById('overlayCarousel');
+  var cFilePicker = document.getElementById('cFilePicker');
+  var cFileList = document.getElementById('cFileList');
+
+  function openCarouselModal(){
+    document.getElementById('cOrder').value = String(Math.max(0, ...items.map(function(i){return i.order||0})) + 10);
+    document.getElementById('cStory').value = '';
+    document.getElementById('cCaption').value = '';
+    document.getElementById('cLocation').value = '';
+    document.getElementById('cYear').value = '';
+    document.getElementById('cPartner').value = '';
+    document.getElementById('cPublished').checked = true;
+    cFilePicker.value = '';
+    cFileList.textContent = '';
+    document.getElementById('cFileHint').textContent = dirHandle
+      ? 'Đã kết nối thư mục — các ảnh chọn bên dưới sẽ tự copy vào repo với đúng tên gốc.'
+      : 'Chưa kết nối thư mục — anh tự copy các file ảnh này vào thư mục repo (giữ đúng tên gốc) sau khi Lưu.';
+    overlayCarousel.classList.add('open');
+  }
+  function closeCarouselModal(){ overlayCarousel.classList.remove('open'); }
+
+  document.getElementById('btnAddCarousel').onclick = openCarouselModal;
+  document.getElementById('btnCancelCarousel').onclick = closeCarouselModal;
+  overlayCarousel.addEventListener('click', function(e){
+    if (e.target === overlayCarousel) closeCarouselModal();
+  });
+
+  cFilePicker.addEventListener('change', function(){
+    var files = Array.from(cFilePicker.files);
+    cFileList.textContent = files.length
+      ? files.length + ' ảnh đã chọn: ' + files.map(function(f){return f.name;}).join(', ')
+      : '';
+  });
+
+  document.getElementById('btnSaveCarousel').onclick = async function(){
+    var files = Array.from(cFilePicker.files);
+    if (files.length < 2){
+      alert('Chọn ít nhất 2 ảnh để tạo carousel (nếu chỉ 1 ảnh, dùng "+ Thêm ảnh" thường là đủ).');
+      return;
+    }
+    var nonWebp = files.filter(function(f){ return !/\.webp$/i.test(f.name); });
+    if (nonWebp.length){
+      alert('Các file sau không phải .webp: ' + nonWebp.map(function(f){return f.name;}).join(', ') + '\nNhờ Claude convert sang .webp trước, hoặc đổi định dạng rồi thử lại.');
+      return;
+    }
+
+    var baseCaption = document.getElementById('cCaption').value.trim();
+    var storyId = document.getElementById('cStory').value.trim() || slugify(baseCaption || 'story');
+    var category = document.getElementById('cCategory').value;
+    var baseOrder = Number(document.getElementById('cOrder').value) || 0;
+    var location = document.getElementById('cLocation').value.trim() || undefined;
+    var year = document.getElementById('cYear').value.trim() || undefined;
+    var partner = document.getElementById('cPartner').value.trim() || undefined;
+    var published = document.getElementById('cPublished').checked;
+
+    if (dirHandle){
+      for (var i=0;i<files.length;i++){
+        try {
+          var fh = await dirHandle.getFileHandle(files[i].name, { create: true });
+          var w = await fh.createWritable();
+          await w.write(files[i]);
+          await w.close();
+        } catch (err){
+          alert('Không ghi được file "' + files[i].name + '": ' + err.message);
+          return;
+        }
+      }
+    } else {
+      alert('Chưa kết nối thư mục — nhớ tự copy ' + files.length + ' file ảnh vừa chọn vào thư mục repo (giữ nguyên tên gốc) sau khi đóng cửa sổ này.');
+    }
+
+    files.forEach(function(file, i){
+      var id = storyId + '-' + (i+1);
+      var n = 1;
+      while (items.some(function(it){ return it.id === id; })){ id = storyId + '-' + (i+1) + '-' + (++n); }
+      items.push({
+        id: id,
+        image: file.name,
+        category: category,
+        caption: baseCaption ? (baseCaption + ' — ảnh ' + (i+1)) : undefined,
+        location: location,
+        year: year,
+        partner: partner,
+        story: storyId,
+        published: published,
+        order: baseOrder + i
+      });
+    });
+
+    closeCarouselModal();
+    renderGrid(); renderFilters();
+  };
 
   /* ── File System Access API (Chrome/Edge only) — optional, feature-detected ── */
   var hasFSA = 'showDirectoryPicker' in window;
