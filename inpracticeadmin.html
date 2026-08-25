@@ -378,10 +378,18 @@ button:disabled:hover{border-color:var(--line2);background:var(--bg2)}
     var picked = document.getElementById('fFilePicker').files[0];
 
     if (picked && dirHandle){
-      var name = image || picked.name;
-      if (!/\.webp$/i.test(name)){
-        alert('Chỉ dùng file .webp. Nếu ảnh gốc là jpg/png, hãy nhờ Claude convert trước, hoặc đổi tên/định dạng rồi thử lại.');
+      // "File ảnh" chỉ dùng để ĐỔI TÊN file khi lưu — phải tự nó đã là .webp.
+      // Nếu ô đó bị gõ nhầm thành caption/mô tả (không có .webp), bỏ qua và
+      // dùng thẳng tên file đã chọn ở "Choose File" thay vì báo lỗi mập mờ.
+      var name = (/\.webp$/i.test(image)) ? image : picked.name;
+      if (!/\.webp$/i.test(picked.name)){
+        alert('File bạn chọn ("' + picked.name + '") không phải .webp. Nếu ảnh gốc là jpg/png, hãy nhờ Claude convert trước, hoặc đổi định dạng rồi thử lại.');
         return;
+      }
+      if (image && !/\.webp$/i.test(image)){
+        // Ô "File ảnh" có chữ nhưng không phải tên file .webp — rất có thể đã
+        // gõ nhầm caption vào đây. Dùng tên file gốc và nhắc để tránh nhầm lẫn.
+        alert('Ô "File ảnh" cần là tên file .webp (vd: photo.webp), không phải mô tả ảnh. Bạn đã gõ: "' + image + '" — mình sẽ dùng tên file gốc "' + picked.name + '" thay vào đó. Nếu muốn đổi tên file, hãy gõ tên mới kèm đuôi .webp vào ô này, và nhớ ghi mô tả vào ô "Caption" bên dưới.');
       }
       try {
         var fileHandle = await dirHandle.getFileHandle(name, { create: true });
