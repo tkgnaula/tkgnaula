@@ -856,6 +856,14 @@ function submitOrderForm(e) {
   closeOrderModal();
 }
 
+/* ─── Language Toggle ─── */
+function switchLang(lang) {
+  if (lang === 'vi') {
+    window.location.href = 'faq_vi.html' + window.location.hash;
+  }
+  // already on EN (faq.html); no-op when lang === 'en'
+}
+
 /* FAQ Accordion */
 document.querySelectorAll('.faq-question').forEach(function(q) {
   q.addEventListener('click', function() {
