@@ -197,15 +197,28 @@ nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);backdrop-fil
 .btn-primary svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* ── FOOTER ── */
-footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.footer-brand{font-family:var(--serif);font-size:14px;font-weight:300;color:var(--cream4);letter-spacing:.06em}
-.footer-links{display:flex;gap:24px}
-.footer-links a{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream4);transition:color .2s}
-.footer-links a:hover{color:var(--cream2)}
-.footer-social{display:flex;gap:14px;align-items:center}
-.footer-social a{color:var(--cream4);display:flex;transition:color .2s}
-.footer-social a:hover{color:var(--cream2)}
-.footer-social svg{width:16px;height:16px}
+footer{background:var(--bg1);border-top:.5px solid var(--line)}
+.foot-top{
+  max-width:1280px;margin:0 auto;padding:56px 48px 48px;
+  display:grid;grid-template-columns:auto 1fr auto;gap:64px;align-items:start;
+}
+.foot-brand img{height:48px;width:auto;display:block;opacity:.85}
+.foot-sub{font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cream4);margin-top:6px}
+.foot-sub2{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--fire);margin-top:4px}
+.foot-nav{display:flex;gap:48px}
+.foot-col-title{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cream4);margin-bottom:14px}
+.foot-col a{display:block;font-size:13.5px;font-weight:300;color:var(--cream3);margin-bottom:10px;transition:color .2s}
+.foot-col a:hover{color:var(--cream)}
+.foot-bottom{
+  max-width:1280px;margin:0 auto;padding:20px 48px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:.5px solid var(--line);
+}
+.foot-copy{font-size:9.5px;color:var(--cream4);letter-spacing:.06em}
+.foot-social{display:flex;gap:14px;align-items:center}
+.foot-social a{color:var(--cream4);display:flex;transition:color .2s}
+.foot-social a:hover{color:var(--cream)}
+.foot-social svg{width:16px;height:16px}
 
 /* ── PARTNER LOGOS (WebP transparent) ── */
 .vg2-logo-hero-wrap{
@@ -253,6 +266,8 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
   .alliance-hero-caption{position:static;transform:none;
     background:var(--bg);padding:36px 24px 40px;text-align:center;
     border-bottom:.5px solid var(--line)}
+  .foot-top{grid-template-columns:1fr;gap:36px;padding:48px 40px 40px}
+  .foot-bottom{padding:20px 40px 28px}
 }
 @media(max-width:680px){
   .nav-w{padding:0 20px}
@@ -261,7 +276,10 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
   .nav-right-mobile{display:flex}
   .nav-mobile{display:none}
   .section{padding:64px 20px}
-  footer{flex-direction:column;align-items:flex-start;padding:24px 20px;gap:12px}
+  .foot-top{padding:40px 20px 32px;gap:28px}
+  .foot-brand img{height:40px}
+  .foot-nav{flex-direction:column;gap:24px}
+  .foot-bottom{padding:16px 20px 20px;flex-direction:column;gap:8px;text-align:center}
   .promise{padding:80px 20px}
   .hero-left{padding:48px 24px}
   .mission-grid{grid-template-columns:1fr}
@@ -612,15 +630,46 @@ footer{background:var(--bg);border-top:.5px solid var(--line);padding:28px 48px;
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-brand">TKG · Naula × SAVVi Code · VG2 Program 2026</div>
-  <div class="footer-links">
-    <a href="https://tkg-naula.com">tkg-naula.com</a>
-    <a href="https://tkg-naula.com/products.html">Products</a>
-    <a href="https://tkg-naula.com/world-of-naula.html">Naula Method</a>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand"><img src="TKG-logo.png" alt="TKG"></div>
+      <div class="foot-sub">Thien Kien</div>
+      <div class="foot-sub2">Product of Vietnam</div>
+    </div>
+    <div class="foot-nav">
+      <div class="foot-col">
+        <div class="foot-col-title">Navigate</div>
+        <a href="world-of-naula.html">Naula Method</a>
+        <a href="products.html">Products</a>
+        <a href="product-evidence.html">Product Evidence</a>
+        <a href="in-practice.html">In Practice</a>
+        <a href="founders.html">Founders</a>
+        <a href="vg2-savvi-landing.html">VG2 Program</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title">Support</div>
+        <a href="faq.html">FAQ</a>
+        <a href="shipping.html">Shipping &amp; Returns</a>
+        <a href="https://thienkien.com" target="_blank" rel="noopener">thienkien.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-col-title">Manufactured by THIEN KIEN Services - Trading Limited Company</div>
+      <div class="foot-col">
+        <a href="#">Address: 279 level 2 Hau Giang street, Binh Tay Ward, Hochiminh city, Vietnam</a>
+        <a href="#">Tax Number: 0317374438</a>
+        <a href="#">Email: tkg.naula@gmail.com</a>
+        <a href="#">Hotline: (+84) 976-847-789</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-social">
-    <a href="https://www.facebook.com/tkg.naula" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06Z"/></svg></a>
-    <a href="https://www.instagram.com/tkg.naula/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg></a>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 Thiện Kiến · tkg-naula.com</div>
+    <div class="foot-social">
+      <a href="https://www.facebook.com/tkg.naula" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06Z"/></svg></a>
+      <a href="https://www.instagram.com/tkg.naula/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg></a>
+    </div>
+    <div class="foot-copy" style="font-style:italic;font-family:var(--serif);font-size:12px;letter-spacing:.06em;color:var(--cream4);">naula. naula. well. wellness.</div>
   </div>
 </footer>
 
