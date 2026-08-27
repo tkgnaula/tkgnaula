@@ -109,23 +109,6 @@ nav{
 }
 .nav-btn:hover{opacity:.85}
 
-/* Language Toggle */
-.lang-toggle{
-  display:flex;align-items:center;
-  border:.5px solid var(--line2);border-radius:20px;
-  overflow:hidden;flex-shrink:0;
-}
-.lang-toggle a{
-  display:flex;align-items:center;justify-content:center;
-  width:28px;height:22px;padding:0;
-  transition:opacity .2s,background .2s;
-  opacity:.45;
-}
-.lang-toggle a svg{display:block;width:18px;height:13px;border-radius:2px}
-.lang-toggle a.active{opacity:1;background:rgba(255,255,255,.06)}
-.lang-toggle a:not(.active):hover{opacity:.75}
-.nav-mobile .lang-toggle{display:none}
-
 /* Mobile language toggle — sits next to logo, always visible */
 .nav-right-mobile{display:none;align-items:center;gap:8px}
 
@@ -1582,28 +1565,11 @@ table.lab-table tr:last-child td{border-bottom:none}
           <a href="vg2-savvi-landing.html">VG2 Program</a>
         </div>
       </div>
-      <div class="lang-toggle">
-        <a href="#" onclick="switchLang('en'); return false;" class="active" aria-label="English">
-          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
-        </a>
-        <a href="#" onclick="switchLang('vi'); return false;" aria-label="Tiếng Việt">
-          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
-        </a>
-      </div>
       <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Order</a>
     </div>
 
-    <!-- Mobile: language toggle + hamburger -->
+    <!-- Mobile: hamburger -->
     <div class="nav-right-mobile">
-      <div class="lang-toggle">
-        <a href="#" onclick="switchLang('en'); return false;" class="active" aria-label="English">
-          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
-        </a>
-        <a href="#" onclick="switchLang('vi'); return false;" aria-label="Tiếng Việt">
-          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
-        </a>
-      </div>
-
       <!-- Mobile Navigation Button -->
       <button class="nav-mobile-btn" onclick="toggleMobileNav()">
         <span></span>
