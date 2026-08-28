@@ -1485,6 +1485,8 @@ table.lab-table tr:last-child td{border-bottom:none}
   .wall-sec{padding:8px 16px 56px}
   .wall-filters{gap:6px}
   .wall-filter{padding:8px 14px;font-size:10.5px}
+  .wall-grid{gap:8px}
+  .wall-col{gap:8px}
 }
 @media(prefers-reduced-motion:reduce){
   .wall-item-cap{transition:none}
@@ -1790,7 +1792,6 @@ function submitOrderForm(event) {
 
   function columnCountForWidth(){
     var w = window.innerWidth;
-    if (w <= 600) return 1;
     if (w <= 900) return 2;
     return 3;
   }
