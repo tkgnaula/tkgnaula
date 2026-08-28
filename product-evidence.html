@@ -1014,6 +1014,7 @@ footer{
   font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--herb);
   margin-bottom:24px;
 }
+.lab-scroll-hint{display:none}
 .lab-table-wrap{overflow-x:auto;border:.5px solid var(--line2);border-radius:4px}
 table.lab-table{width:100%;border-collapse:collapse;min-width:480px}
 table.lab-table th,table.lab-table td{
@@ -1367,6 +1368,16 @@ table.lab-table tr:last-child td{border-bottom:none}
   .lab-block-title{font-size:20px}
   .lab-sweeten{flex-direction:column;gap:8px}
   table.lab-table th,table.lab-table td{padding:10px 14px;font-size:12.5px}
+  .lab-scroll-hint{
+    display:flex;align-items:center;justify-content:flex-end;gap:6px;
+    margin-bottom:8px;
+    font-size:11px;font-weight:500;letter-spacing:.02em;color:var(--cream4);
+  }
+  .lab-scroll-hint svg{width:12px;height:12px;flex-shrink:0;animation:labScrollHint 1.3s ease-in-out infinite}
+}
+@keyframes labScrollHint{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(4px)}
 }
 
 /* ─── PAGE HEADER (product/evidence pages) ────────── */
@@ -1624,6 +1635,10 @@ table.lab-table tr:last-child td{border-bottom:none}
       </div>
       <div class="lab-statement">No refined sugar is used.</div>
 
+      <div class="lab-scroll-hint">
+        <span>Swipe to see Still Ember</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2l4 4-4 4"/></svg>
+      </div>
       <div class="lab-table-wrap">
         <table class="lab-table">
           <thead>
@@ -1663,6 +1678,10 @@ table.lab-table tr:last-child td{border-bottom:none}
       </div>
       <div class="lab-statement">No sugar or sweetener is added to the powder.</div>
 
+      <div class="lab-scroll-hint">
+        <span>Swipe to see Still Ember</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2l4 4-4 4"/></svg>
+      </div>
       <div class="lab-table-wrap">
         <table class="lab-table">
           <thead>
