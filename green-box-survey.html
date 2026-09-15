@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Naula Tasting — Green Box</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fire: #D45E29;
+    --fire-dim: #E8916A;
+    --perilla: #74255E;
+    --perilla-dim: #A567A0;
+    --wood: #8B5E3C;
+    --gold: #F9DA85;
+    --cream: #FBF3E4;
+    --card: #FFFFFF;
+    --ink: #2E1C10;
+    --ink-soft: #6B5644;
+    --line: #E4D6BE;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+
+  body {
+    font-family: 'Be Vietnam Pro', -apple-system, sans-serif;
+    color: var(--ink);
+    background: radial-gradient(circle at 50% 0%, var(--gold) 0%, var(--cream) 55%);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 28px 16px 40px;
+  }
+
+  main {
+    width: 100%;
+    max-width: 420px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.6s ease-out forwards;
+  }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    main { animation: none; opacity: 1; transform: none; }
+  }
+
+  .mark {
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: var(--wood);
+    margin-bottom: 6px;
+  }
+
+  .mark span { color: var(--fire); }
+
+  h1 {
+    text-align: center;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+
+  .intro {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 26px;
+    padding: 0 8px;
+  }
+
+  form {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 10px;
+    box-shadow: 0 14px 34px rgba(139, 94, 60, 0.16);
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 14px;
+    border-radius: 13px;
+    border: 1.5px solid transparent;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
+  }
+
+  .option:last-child { margin-bottom: 0; }
+
+  .option:active { transform: scale(0.99); }
+
+  .option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .radio {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    position: relative;
+    transition: border-color 0.15s ease;
+  }
+
+  .radio::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    transform: scale(0);
+    transition: transform 0.15s ease;
+  }
+
+  .label-text {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .option[data-tone="fire"] { color: var(--fire); }
+  .option[data-tone="perilla"] { color: var(--perilla); }
+  .option[data-tone="wood"] { color: var(--wood); }
+
+  .option[data-tone="fire"] { background: #FDF1EA; }
+  .option[data-tone="perilla"] { background: #F8EFF5; }
+  .option[data-tone="wood"], .option[data-tone="neutral"] { background: #FAF6EF; color: var(--ink-soft); }
+
+  .option:has(input:checked) {
+    border-color: currentColor;
+  }
+
+  .option:has(input:checked) .radio {
+    border-color: currentColor;
+  }
+
+  .option:has(input:checked) .radio::after {
+    transform: scale(1);
+  }
+
+  .option:has(input:checked) .label-text {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    margin-top: 18px;
+    padding: 16px;
+    border: none;
+    border-radius: 13px;
+    background: var(--fire);
+    color: #FFF7EF;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, opacity 0.15s ease, transform 0.1s ease;
+  }
+
+  button[type="submit"]:disabled {
+    background: var(--fire-dim);
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  button[type="submit"]:not(:disabled):active {
+    transform: scale(0.98);
+  }
+
+  :focus-visible {
+    outline: 2.5px solid var(--fire);
+    outline-offset: 2px;
+  }
+
+  .footnote {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    opacity: 0.75;
+    margin: 18px 0 0;
+  }
+
+  .state {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .state.active { display: block; }
+
+  form.hidden { display: none; }
+
+  .state h2 {
+    font-size: 20px;
+    margin: 0 0 8px;
+  }
+
+  .state p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="mark">NAULA <span>&middot;</span> TKG</p>
+  <h1>Which one did you prefer?</h1>
+  <p class="intro">You tasted two warm blends from the Naula line today at Green Box. Tell us which one you'd order again — it takes five seconds.</p>
+
+  <form id="surveyForm">
+    <label class="option" data-tone="fire">
+      <input type="radio" name="choice" value="Morning Ember" required>
+      <span class="radio"></span>
+      <span class="label-text">Morning Ember</span>
+    </label>
+    <label class="option" data-tone="perilla">
+      <input type="radio" name="choice" value="Still Ember">
+      <span class="radio"></span>
+      <span class="label-text">Still Ember</span>
+    </label>
+    <label class="option" data-tone="wood">
+      <input type="radio" name="choice" value="I liked both">
+      <span class="radio"></span>
+      <span class="label-text">I liked both</span>
+    </label>
+    <label class="option" data-tone="neutral">
+      <input type="radio" name="choice" value="Not for me">
+      <span class="radio"></span>
+      <span class="label-text">Not for me</span>
+    </label>
+
+    <button type="submit" id="submitBtn" disabled>Send my answer</button>
+  </form>
+
+  <div class="state" id="sendingState">
+    <h2>Sending your answer&hellip;</h2>
+    <p>One moment.</p>
+  </div>
+
+  <p class="footnote">Thiện Kiến Goods &middot; tkg-naula.com</p>
+</main>
+
+<script>
+  // ---- Configuration -------------------------------------------------
+  // Paste the Web App URL from your Apps Script deployment here.
+  // (Deploy → New deployment → Web app → Execute as: Me → Access: Anyone)
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZvHIwK5KBJhpa4-tzvAZvbHyTnrq2_xS_6CQJIxs9Rd1Dyr8xysC6Zh8kQRunB_uz/exec';
+
+  // Optional: identify which table talker this QR code lives on by
+  // giving each printed QR a link like:
+  //   green-box-survey.html?table=4
+  const params = new URLSearchParams(window.location.search);
+  const table = params.get('table') || '';
+
+  function sendBeacon(payload) {
+    const body = new URLSearchParams(payload);
+    if (navigator.sendBeacon) {
+      // sendBeacon needs a Blob with the right content type to be read
+      // as form data by Apps Script.
+      const blob = new Blob([body.toString()], { type: 'application/x-www-form-urlencoded' });
+      navigator.sendBeacon(APPS_SCRIPT_URL, blob);
+      return Promise.resolve();
+    }
+    return fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString()
+    }).catch(() => {});
+  }
+
+  // Log the scan itself, separate from whether they answer.
+  if (APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === -1) {
+    sendBeacon({ event: 'scan', table, ua: navigator.userAgent });
+  }
+
+  const form = document.getElementById('surveyForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const sendingState = document.getElementById('sendingState');
+
+  form.addEventListener('change', () => {
+    submitBtn.disabled = !form.querySelector('input[name="choice"]:checked');
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const choice = form.querySelector('input[name="choice"]:checked');
+    if (!choice) return;
+
+    submitBtn.disabled = true;
+    form.classList.add('hidden');
+    sendingState.classList.add('active');
+
+    const finish = () => { window.location.href = 'index.html'; };
+
+    if (APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === -1) {
+      sendBeacon({ event: 'vote', choice: choice.value, table, ua: navigator.userAgent })
+        .finally(finish);
+      // Safety net in case the request hangs.
+      setTimeout(finish, 1500);
+    } else {
+      finish();
+    }
+  });
+</script>
+</body>
+</html>
