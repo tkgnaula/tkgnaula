@@ -296,8 +296,16 @@
   }
 
   // Log the scan itself, separate from whether they answer.
-  if (APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === -1) {
+  // sessionStorage guard: only count one scan per browser tab/session, so a
+  // page reload or back-navigation doesn't inflate the count. (Note: this
+  // can't prevent the QR preview some phone camera apps generate before the
+  // real page opens — that shows up as a separate browsing session.)
+  let alreadyScanned = false;
+  try { alreadyScanned = sessionStorage.getItem('gb_scanned') === '1'; } catch (e) {}
+
+  if (APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === -1 && !alreadyScanned) {
     sendBeacon({ event: 'scan', table, ua: navigator.userAgent });
+    try { sessionStorage.setItem('gb_scanned', '1'); } catch (e) {}
   }
 
   const form = document.getElementById('surveyForm');
