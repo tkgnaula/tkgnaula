@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="https://www.tkg-naula.com/TKG_16_9_1.webp" fetchpriority="high">
+<link rel="preload" as="image" href="WINK.webp" fetchpriority="high">
 
 <style>
 /* ─── RESET ─────────────────────────────────────── */
@@ -273,19 +273,24 @@ nav{
 
 /* ─── CLOSING ────────────────────────────────────── */
 .closing{
-  border-top:.5px solid var(--line);padding:100px 80px;text-align:center;
-  position:relative;overflow:hidden;background:var(--bg);
+  border-top:.5px solid var(--line);position:relative;overflow:hidden;background:var(--bg);
+  aspect-ratio:2576/1027;min-height:340px;
 }
-.closing::before{
-  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:600px;height:320px;pointer-events:none;
-  background:radial-gradient(ellipse,rgba(212,94,41,.06) 0%,transparent 70%);
+.closing-media{position:absolute;inset:0}
+.closing-media img{object-position:center}
+.closing-veil{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to left,rgba(18,17,11,.78) 0%,rgba(18,17,11,.35) 32%,rgba(18,17,11,0) 60%);
+}
+.closing-text{
+  position:absolute;right:80px;bottom:64px;max-width:520px;text-align:right;
 }
 .closing-serif{
   font-family:var(--serif);font-size:clamp(26px,2.8vw,40px);
-  font-style:italic;font-weight:300;line-height:1.4;color:var(--cream2);letter-spacing:.04em;position:relative;
+  font-style:italic;font-weight:300;line-height:1.4;color:var(--cream);letter-spacing:.04em;
+  text-shadow:0 2px 18px rgba(0,0,0,.6);
 }
-.closing-vi{margin-top:12px;font-size:13px;font-weight:300;color:var(--cream4);letter-spacing:.06em;position:relative}
+.closing-vi{margin-top:12px;font-size:13px;font-weight:300;color:var(--cream2);letter-spacing:.06em;text-shadow:0 1px 10px rgba(0,0,0,.6)}
 
 /* ─── FOOTER ─────────────────────────────────────── */
 footer{background:var(--bg1);border-top:.5px solid var(--line)}
@@ -312,7 +317,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
   .menu-w{padding:64px 40px 72px}
   .rsvp-w{grid-template-columns:1fr;gap:48px;padding:72px 40px}
   .foot-top,.foot-bottom{padding-left:40px;padding-right:40px}
-  .closing{padding:80px 40px}
+  .closing-text{right:40px;bottom:40px}
 }
 @media(max-width:760px){
   .hero{aspect-ratio:auto;height:92svh;min-height:600px}
@@ -332,7 +337,9 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
   .foot-top{flex-direction:column;align-items:flex-start;padding:40px 24px}
   .foot-venue{text-align:left}
   .foot-bottom{padding:20px 24px 28px}
-  .closing{padding:64px 24px}
+  .closing{aspect-ratio:auto;height:420px}
+  .closing-media img{object-position:45% center}
+  .closing-text{right:24px;bottom:28px;left:24px;max-width:none}
 }
 </style>
 </head>
@@ -351,7 +358,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
 
 <!-- ═══ HERO ══════════════════════════════════════════ -->
 <header class="hero" id="top">
-  <div class="hero-media"><img src="https://www.tkg-naula.com/TKG_16_9_1.webp" alt="Morning Ember and Still Ember with fresh Vietnamese botanicals"></div>
+  <div class="hero-media"><img src="WINK.webp" alt="Wink Saigon Centre – Unscripted by Hyatt at dusk"></div>
   <div class="hero-veil"></div>
   <div class="hero-panel">
     <div class="hero-in">
@@ -513,8 +520,12 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
 
 <!-- ═══ CLOSING ═══════════════════════════════════════ -->
 <section class="closing">
-  <p class="closing-serif">Rooted in Vietnam.<br>Prepared with Care.</p>
-  <p class="closing-vi">Bén rễ từ Việt Nam. Chế biến bằng sự tận tâm.</p>
+  <div class="closing-media"><img src="TKG_Products.webp" alt="TKG Morning Ember and Still Ember products" loading="lazy"></div>
+  <div class="closing-veil"></div>
+  <div class="closing-text">
+    <p class="closing-serif">Rooted in Vietnam.<br>Prepared with Care.</p>
+    <p class="closing-vi">Bén rễ từ Việt Nam. Chế biến bằng sự tận tâm.</p>
+  </div>
 </section>
 
 <!-- ═══ FOOTER ════════════════════════════════════════ -->
@@ -537,7 +548,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
 <script>
 /* ─── RSVP → Google Sheet (via Google Apps Script Web App) ───
    Dán URL Web App (kết thúc bằng /exec) vào dòng dưới sau khi deploy Code.gs */
-const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyAwAogABRhbjJb-xCoWQ3nhI3hIKJIZ98iTrM6uJ8reHLTwHDZJO841UXGjdQZ1_n1TQ/exec';
+const RSVP_ENDPOINT = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
 
 (function () {
   const form   = document.getElementById('rsvpForm');
