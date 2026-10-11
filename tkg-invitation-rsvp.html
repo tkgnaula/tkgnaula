@@ -567,6 +567,11 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
             <div class="f-err">Please enter your title · Vui lòng nhập chức danh</div>
           </div>
         </div>
+        <div class="f-field">
+          <label for="f-referrer">Referred by<span class="vi-l">Người giới thiệu</span></label>
+          <input type="text" id="f-referrer" name="referrer" autocomplete="off" required maxlength="160" placeholder="Who invited you? · Ai đã mời bạn?">
+          <div class="f-err">Please enter who referred you · Vui lòng nhập người giới thiệu</div>
+        </div>
 
         <!-- honeypot: bots fill this, humans never see it -->
         <input class="hp" type="text" name="website" id="f-website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -660,7 +665,8 @@ const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyAwAogABRhbjJb-x
       email:   form.email.value.trim(),
       company: form.company.value.trim(),
       title:   form.title.value.trim(),
-      lang:    navigator.language || '',
+      referrer: form.referrer.value.trim(),
+      lang:   navigator.language || '',
       page:    location.href
     };
 
