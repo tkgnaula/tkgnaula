@@ -14,7 +14,7 @@
 
 <!-- ═══ AUTO-UTM THEO GIỜ (phải nằm TRƯỚC script analytics) ═══════════════
      Nếu link chưa có utm_campaign (QR chung), tự gắn theo giờ Việt Nam:
-       - Ngày 15/10/2026 từ 19:00 trở đi → b2b_1510
+       - Ngày 15/10/2026 từ 18:00 trở đi → b2b_1510 (sửa CUTOFF_HOUR bên dưới nếu đổi giờ)
        - Mọi thời điểm khác               → dtc_1510
      Link đã có utm_campaign (QR riêng, link test) thì giữ nguyên, không ghi đè. -->
 <script>
@@ -24,7 +24,8 @@
     if (p.get('utm_campaign')) return;
     var vn = new Date(Date.now() + 7 * 3600 * 1000);           // Việt Nam = UTC+7, không đổi giờ mùa hè
     var day = vn.getUTCFullYear() + '-' + String(vn.getUTCMonth() + 1).padStart(2, '0') + '-' + String(vn.getUTCDate()).padStart(2, '0');
-    var b2b = (day === '2026-10-15' && vn.getUTCHours() >= 19);
+    var CUTOFF_HOUR = 18;                                      // giờ Việt Nam bắt đầu chế độ "sau giờ"
+    var b2b = (day === '2026-10-15' && vn.getUTCHours() >= CUTOFF_HOUR);
     if (!p.get('utm_source')) p.set('utm_source', 'wink');
     if (!p.get('utm_medium')) p.set('utm_medium', 'qr');
     p.set('utm_campaign', b2b ? 'b2b_1510' : 'dtc_1510');
@@ -282,6 +283,37 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
   .closing-text{position:static;right:auto;bottom:auto;left:auto;max-width:none;text-align:left;padding:30px 24px 40px;background:var(--bg)}
   .closing-serif,.closing-vi{text-shadow:none}
 }
+/* ─── Nhóm chọn sản phẩm (B2B form) ─── */
+.f-group .lbl{display:block;font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cream3);margin-bottom:6px}
+.f-group .lbl .vi-l{font-weight:400;letter-spacing:.06em;text-transform:none;color:var(--cream4);margin-left:6px}
+.pg-title{margin:18px 0 10px;padding-top:12px;border-top:.5px solid var(--line);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fire)}
+.f-check.opt{margin-bottom:12px;font-size:14px;line-height:1.5}
+.f-check.opt b{font-weight:500;color:var(--cream)}
+.f-check.opt em{font-style:normal;color:var(--cream3);font-size:12.5px}
+.f-check.opt .vi-l2{color:var(--cream4);font-size:12.5px}
+.f-group.invalid .pg-err{display:block}
+/* ─── Survey: liên hệ sau giờ chuyển ─── */
+[hidden]{display:none!important}
+.more{background:var(--bg)}
+.contact{margin-top:30px}
+.opt-tag{margin-left:8px;font-weight:400;letter-spacing:.04em;text-transform:none;color:var(--cream4)}
+.seg{display:flex;border:.5px solid var(--line2);border-radius:3px;overflow:hidden;margin:4px 0 24px}
+.seg-btn{flex:1;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--cream3);background:transparent;border:none;padding:14px 10px;cursor:pointer;transition:background .2s,color .2s}
+.seg-btn+.seg-btn{border-left:.5px solid var(--line2)}
+.seg-btn.on{background:rgba(212,94,41,.14);color:var(--cream)}
+.card-btn{width:100%;display:flex;flex-direction:column;align-items:center;gap:6px;padding:30px 16px;background:rgba(255,255,255,.02);
+  border:.5px dashed var(--line2);border-radius:4px;color:var(--cream);font-family:var(--sans);font-size:14.5px;cursor:pointer;text-align:center;transition:border-color .2s,background .2s}
+.card-btn:hover{border-color:var(--fire);background:rgba(212,94,41,.06)}
+.card-btn svg{width:32px;height:32px;stroke:var(--fire);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;margin-bottom:4px}
+.card-btn b{font-weight:500}
+.card-btn small{font-size:12.5px;font-weight:300;color:var(--cream4)}
+.card-prev{display:flex;gap:16px;align-items:center;border:.5px solid var(--line2);border-radius:4px;padding:12px}
+.card-prev img{width:128px;height:84px;object-fit:cover;border-radius:2px;flex:none}
+.card-prev b{font-weight:500;color:var(--ok);font-size:14px}
+.card-x{margin-top:8px;background:none;border:none;padding:0;font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream3);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+#cardErr{display:none}
+#cardErr.show{display:block}
+.hint{font-size:12px;font-weight:300;color:var(--cream4);margin-top:12px;line-height:1.6}
 </style>
 </head>
 <body>
@@ -312,7 +344,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
             <li><a href="https://www.tkg-naula.com/vg2-savvi-landing.html">VG2 Program</a></li>
           </ul>
         </li>
-        <li class="only-b2b"><a class="nav-link" href="#connect">Connect</a></li>
+        <li><a class="nav-link" href="#survey">Survey</a></li>
       </ul>
       <a class="nav-order" href="https://www.tkg-naula.com/products.html">Order</a>
     </div>
@@ -340,8 +372,8 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
       <p class="hero-when-vi">Morning Ember &amp; Still Ember · Hai dòng Botanical Blend của TKG</p>
       <div class="hero-actions">
         <a class="btn-ghost" href="#blends">The two blends ↓</a>
-        <a class="btn-primary only-dtc" href="#more">Learn more</a>
-        <a class="btn-primary only-b2b" href="#connect">Stay connected</a>
+        <a class="btn-primary" href="#survey">Take the survey</a>
+        
       </div>
       </div>
     </div>
@@ -396,8 +428,126 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
   </div>
 </section>
 
-<!-- ═══ LEARN MORE · chế độ DTC (không thu thập thông tin cá nhân) ═══ -->
-<section class="more only-dtc" id="more">
+<!-- ═══ SURVEY · một QR cho cả ngày. Sau giờ chuyển (18:00) có thêm khối để lại liên hệ ═══ -->
+<section class="rsvp" id="survey">
+  <div class="rsvp-w">
+    <div class="rsvp-intro">
+      <div class="sec-tag">Tasting survey</div>
+      <h2 class="sec-h2">What would you<br><em>like to try?</em></h2>
+      <p class="vi">Cho TKG biết bạn hứng thú với món hoặc sản phẩm nào. Chỉ mất khoảng 30 giây.</p>
+      <div class="meta only-dtc">
+        <b>This survey is anonymous.</b> We don't ask for any personal information.<br>
+        Khảo sát ẩn danh, không yêu cầu thông tin cá nhân của bạn.
+      </div>
+      <div class="meta only-b2b">
+        <b>Leaving your contact is optional.</b> Fill in quickly, or take a photo of your namecard.<br>
+        Để lại liên hệ là tùy chọn: điền nhanh hoặc chụp namecard.
+      </div>
+    </div>
+
+    <div class="rsvp-form" id="formBox">
+      <form id="surveyForm" class="rsvp-fields" novalidate autocomplete="on">
+        <div class="f-field f-group" id="prodGroup">
+          <span class="lbl">I'm interested in<span class="vi-l">Tôi hứng thú với</span></span>
+          <div class="pg-title">Fresh drink · Nước tươi</div>
+            <label class="f-check opt"><input type="checkbox" name="product" value="morning_fresh">
+              <span><b>Yellow fresh drink</b> <em>TKG Morning Ember · Ginger – Lemongrass – Lime</em><br><span class="vi-l2">Nước tươi màu vàng</span></span></label>
+            <label class="f-check opt"><input type="checkbox" name="product" value="still_fresh">
+              <span><b>Pink fresh drink</b> <em>TKG Still Ember · Perilla – Clove – Kumquat</em><br><span class="vi-l2">Nước tươi màu hồng</span></span></label>
+          <div class="pg-title">Non-alcohol soda · Pha soda không cồn</div>
+            <label class="f-check opt"><input type="checkbox" name="product" value="morning_soda">
+              <span><b>Soda with Morning Ember</b> <em>Ginger – Lemongrass – Lime</em><br><span class="vi-l2">Món non-alcohol pha soda từ Morning Ember</span></span></label>
+            <label class="f-check opt"><input type="checkbox" name="product" value="still_soda">
+              <span><b>Soda with Still Ember</b> <em>Perilla – Clove – Kumquat</em><br><span class="vi-l2">Món non-alcohol pha soda từ Still Ember</span></span></label>
+          <div class="pg-title">Cocktail</div>
+            <label class="f-check opt"><input type="checkbox" name="product" value="the_hunter">
+              <span><b>The Hunter</b> <em>Morning Ember × Gin × Tonic</em><br><span class="vi-l2">Cocktail The Hunter</span></span></label>
+            <label class="f-check opt"><input type="checkbox" name="product" value="the_red_hood">
+              <span><b>The Red Hood</b> <em>Still Ember × Gin × Tonic</em><br><span class="vi-l2">Cocktail The Red Hood</span></span></label>
+          <div class="pg-title">Mocktail</div>
+            <label class="f-check opt"><input type="checkbox" name="product" value="tropical_island">
+              <span><b>Tropical Island</b> <em>Still Ember × Coconut water × Soda</em><br><span class="vi-l2">Mocktail Tropical Island</span></span></label>
+          <div class="f-err pg-err">Please choose at least one · Vui lòng chọn ít nhất một món</div>
+        </div>
+
+        <div class="contact only-b2b" id="contactBlock">
+          <div class="pg-title">Stay in touch · Để lại liên hệ <span class="opt-tag">optional · không bắt buộc</span></div>
+
+          <div class="seg" role="group" aria-label="Contact method">
+            <button type="button" class="seg-btn on" id="segQuick" aria-pressed="true">Quick fill · Điền nhanh</button>
+            <button type="button" class="seg-btn" id="segCard" aria-pressed="false">Scan namecard · Chụp namecard</button>
+          </div>
+
+          <div id="paneQuick">
+            <div class="f-row">
+              <div class="f-field">
+                <label class="lbl" for="f-name">Full name<span class="vi-l">Họ và tên</span></label>
+                <input type="text" id="f-name" name="name" autocomplete="name" maxlength="120" placeholder="Nguyen Van A">
+                <div class="f-err">Please enter your name · Vui lòng nhập họ tên</div>
+              </div>
+              <div class="f-field">
+                <label class="lbl" for="f-email">Email<span class="vi-l">Email</span></label>
+                <input type="email" id="f-email" name="email" autocomplete="email" maxlength="160" placeholder="name@company.com">
+                <div class="f-err">Please enter a valid email · Email chưa hợp lệ</div>
+              </div>
+            </div>
+            <div class="f-row">
+              <div class="f-field">
+                <label class="lbl" for="f-company">Company<span class="vi-l">Công ty</span></label>
+                <input type="text" id="f-company" name="company" autocomplete="organization" maxlength="160" placeholder="Company name">
+              </div>
+              <div class="f-field">
+                <label class="lbl" for="f-title">Title<span class="vi-l">Chức danh</span></label>
+                <input type="text" id="f-title" name="title" autocomplete="organization-title" maxlength="120" placeholder="Your role">
+              </div>
+            </div>
+          </div>
+
+          <div id="paneCard" hidden>
+            <input type="file" id="cardFile" accept="image/*" capture="environment" hidden>
+            <button type="button" class="card-btn" id="cardBtn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg>
+              <b>Take a photo of your namecard</b>
+              <small>Chụp ảnh namecard của bạn</small>
+            </button>
+            <div class="card-prev" id="cardPrev" hidden>
+              <img id="cardImg" alt="Namecard preview">
+              <div><b>Namecard ready ✓</b><br><button type="button" class="card-x" id="cardRetake">Retake · Chụp lại</button></div>
+            </div>
+            <div class="f-err" id="cardErr">Could not read the photo. Please try again · Không đọc được ảnh, vui lòng thử lại</div>
+            <p class="hint">Photograph the card only. · Chỉ chụp namecard.</p>
+          </div>
+
+          <label class="f-check" for="f-sample" style="margin-top:20px">
+            <input type="checkbox" id="f-sample" name="sample">
+            <span>I would like to receive a product sample.<br><span style="color:var(--cream4)">Tôi muốn nhận mẫu sản phẩm.</span></span>
+          </label>
+          <label class="f-check" for="f-consent" id="consentLbl">
+            <input type="checkbox" id="f-consent" name="consent">
+            <span>I agree that TKG may store my contact details (typed, or from my namecard photo) and contact me.<br><span style="color:var(--cream4)">Tôi đồng ý để TKG lưu thông tin liên hệ (nhập tay hoặc từ ảnh namecard) và liên hệ với tôi.</span></span>
+          </label>
+        </div>
+
+        <input class="hp" type="text" name="website" id="f-website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="f-actions">
+          <button type="submit" class="btn-primary" id="submitBtn">Send · Gửi</button>
+          <span class="f-status" id="formStatus" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <div class="rsvp-done" id="formDone">
+        <div class="tick">✓</div>
+        <h3>Thank you.</h3>
+        <p id="doneEn">Your answers have been recorded.</p>
+        <p class="vi" id="doneVi">TKG đã ghi nhận lựa chọn của bạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LEARN MORE (cả hai chế độ) ═══ -->
+<section class="more" id="more">
   <div class="more-w">
     <div class="more-intro">
       <div class="sec-tag">Discover TKG</div>
@@ -412,87 +562,6 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
         <a class="more-link" href="#" id="lnkIg" style="display:none">
           <div><b>Instagram</b><span>Follow TKG · Theo dõi TKG</span></div><i>→</i>
         </a>
-      </div>
-      <p class="privacy-note">We don't ask for any personal information on this page.<br>Trang này không yêu cầu thông tin cá nhân của bạn.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CONNECT · chế độ B2B (khách mời buổi tối, có đồng ý rõ ràng) ═══ -->
-<section class="rsvp only-b2b" id="connect">
-  <div class="rsvp-w">
-    <div class="rsvp-intro">
-      <div class="sec-tag">Stay connected</div>
-      <h2 class="sec-h2">Let's continue<br><em>the conversation.</em></h2>
-      <p class="vi">Để lại thông tin nếu bạn muốn TKG liên hệ lại về hợp tác, mẫu thử hoặc tài liệu sản phẩm.</p>
-      <div class="meta">
-        <b>TKG will reach out within 2 business days.</b><br>
-        TKG sẽ liên hệ lại trong vòng 2 ngày làm việc.
-      </div>
-    </div>
-
-    <div class="rsvp-form" id="formBox">
-      <form id="connectForm" class="rsvp-fields" novalidate autocomplete="on">
-        <div class="f-row">
-          <div class="f-field">
-            <label class="lbl" for="f-name">Full name<span class="vi-l">Họ và tên</span></label>
-            <input type="text" id="f-name" name="name" autocomplete="name" required maxlength="120" placeholder="Nguyen Van A">
-            <div class="f-err">Please enter your name · Vui lòng nhập họ tên</div>
-          </div>
-          <div class="f-field">
-            <label class="lbl" for="f-email">Email<span class="vi-l">Email</span></label>
-            <input type="email" id="f-email" name="email" autocomplete="email" required maxlength="160" placeholder="name@company.com">
-            <div class="f-err">Please enter a valid email · Email chưa hợp lệ</div>
-          </div>
-        </div>
-        <div class="f-row">
-          <div class="f-field">
-            <label class="lbl" for="f-company">Company<span class="vi-l">Công ty</span></label>
-            <input type="text" id="f-company" name="company" autocomplete="organization" required maxlength="160" placeholder="Company name">
-            <div class="f-err">Please enter your company · Vui lòng nhập công ty</div>
-          </div>
-          <div class="f-field">
-            <label class="lbl" for="f-title">Title<span class="vi-l">Chức danh</span></label>
-            <input type="text" id="f-title" name="title" autocomplete="organization-title" required maxlength="120" placeholder="Your role">
-            <div class="f-err">Please enter your title · Vui lòng nhập chức danh</div>
-          </div>
-        </div>
-        <div class="f-field">
-          <label class="lbl" for="f-interest">I'm interested in<span class="vi-l">Tôi quan tâm đến</span></label>
-          <select id="f-interest" name="interest" required>
-            <option value="">Select · Chọn</option>
-            <option value="distribution">Distribution · Phân phối</option>
-            <option value="oem_private_label">OEM / Private label</option>
-            <option value="hospitality_fnb">Hospitality &amp; F&amp;B · Khách sạn, F&amp;B</option>
-            <option value="corporate_gifting">Corporate gifting · Quà tặng doanh nghiệp</option>
-            <option value="co_marketing">Co-marketing · Đồng tiếp thị</option>
-            <option value="other">Other · Khác</option>
-          </select>
-          <div class="f-err">Please select one · Vui lòng chọn</div>
-        </div>
-
-        <label class="f-check" for="f-sample">
-          <input type="checkbox" id="f-sample" name="sample">
-          <span>I would like to receive a product sample.<br><span style="color:var(--cream4)">Tôi muốn nhận mẫu sản phẩm.</span></span>
-        </label>
-        <label class="f-check" for="f-consent" id="consentLbl">
-          <input type="checkbox" id="f-consent" name="consent" required>
-          <span>I agree that TKG may store my details and contact me about the topics above.<br><span style="color:var(--cream4)">Tôi đồng ý để TKG lưu thông tin và liên hệ với tôi về các nội dung trên.</span></span>
-        </label>
-
-        <input class="hp" type="text" name="website" id="f-website" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-        <div class="f-actions">
-          <button type="submit" class="btn-primary" id="submitBtn">Send · Gửi</button>
-          <span class="f-status" id="formStatus" role="status" aria-live="polite"></span>
-        </div>
-      </form>
-
-      <div class="rsvp-done" id="formDone">
-        <div class="tick">✓</div>
-        <h3>Thank you.</h3>
-        <p>We have your details and will be in touch shortly.</p>
-        <p class="vi">TKG đã nhận được thông tin của bạn và sẽ liên hệ sớm.</p>
       </div>
     </div>
   </div>
@@ -525,71 +594,143 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
 
 <script>
 /* ─── CẤU HÌNH ─────────────────────────────────────────── */
-const RSVP_ENDPOINT = 'PASTE_WEB_APP_URL_HERE';   // URL Web App (kết thúc bằng /exec) của Apps Script MỚI cho trang này
+const RSVP_ENDPOINT = 'PASTE_WEB_APP_URL_HERE';   // URL Web App (kết thúc bằng /exec) của Apps Script cho trang này
 const INSTAGRAM_URL = 'https://www.instagram.com/tkg.naula/';   // để trống thì nút Instagram sẽ ẩn
 
 (function () {
-  /* ─── Chọn chế độ theo UTM: utm_campaign bắt đầu bằng "b2b" → B2B, còn lại → DTC ─── */
+  const $ = function (id) { return document.getElementById(id); };
   const params   = new URLSearchParams(location.search);
   const campaign = (params.get('utm_campaign') || '').toLowerCase();
-  const isB2B    = campaign.indexOf('b2b') === 0;
+  const isB2B    = campaign.indexOf('b2b') === 0;          // "sau giờ chuyển": có thêm khối để lại liên hệ
   document.body.classList.toggle('mode-b2b', isB2B);
 
   if (INSTAGRAM_URL) {
-    const ig = document.getElementById('lnkIg');
+    const ig = $('lnkIg');
     ig.href = INSTAGRAM_URL + (INSTAGRAM_URL.includes('?') ? '&' : '?') + 'utm_source=wink&utm_medium=landing&utm_campaign=' + encodeURIComponent(campaign || 'dtc_1510');
     ig.style.display = '';
   }
 
-  if (!isB2B) return; // DTC: không có form, không thu dữ liệu cá nhân
-
-  /* ─── Form B2B ─── */
-  const form   = document.getElementById('connectForm');
-  const box    = document.getElementById('formBox');
-  const btn    = document.getElementById('submitBtn');
-  const status = document.getElementById('formStatus');
-  const consentLbl = document.getElementById('consentLbl');
+  const form = $('surveyForm'), box = $('formBox'), btn = $('submitBtn'), status = $('formStatus');
+  const prodGroup = $('prodGroup');
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  let method = 'quick';   // 'quick' | 'card'
+  let cardData = '';      // ảnh namecard đã thu nhỏ, dạng data URL JPEG
 
+  function setStatus(msg, isErr) { status.className = 'f-status' + (isErr ? ' err' : ''); status.textContent = msg || ''; }
   function check(el) {
     const v = el.value.trim();
     const ok = el.type === 'email' ? emailRe.test(v) : v.length > 0;
     el.classList.toggle('invalid', !ok);
     return ok;
   }
-  const fields = [...form.querySelectorAll('input[type=text][required], input[type=email][required], select[required]')];
-  fields.forEach(i => {
-    i.addEventListener('input',  () => { if (i.classList.contains('invalid')) check(i); });
-    i.addEventListener('change', () => { if (i.classList.contains('invalid')) check(i); });
-    i.addEventListener('blur',   () => { if (i.value) check(i); });
+  function hasQuick() { return ['f-name', 'f-email', 'f-company', 'f-title'].some(function (id) { return $(id).value.trim(); }); }
+  function contactMethod() {
+    if (!isB2B) return 'none';
+    if (method === 'card') return cardData ? 'card' : 'none';
+    return hasQuick() ? 'quick' : 'none';
+  }
+
+  form.querySelectorAll('input[name=product]').forEach(function (i) {
+    i.addEventListener('change', function () { prodGroup.classList.remove('invalid'); });
   });
+
+  if (isB2B) {
+    ['f-name', 'f-email'].forEach(function (id) {
+      const el = $(id);
+      el.addEventListener('input', function () { if (el.classList.contains('invalid')) check(el); });
+    });
+    $('f-consent').addEventListener('change', function () { $('consentLbl').classList.remove('invalid-box'); });
+
+    // Chuyển giữa "Điền nhanh" và "Chụp namecard"
+    function setMethod(m) {
+      method = m;
+      $('segQuick').classList.toggle('on', m === 'quick'); $('segQuick').setAttribute('aria-pressed', m === 'quick');
+      $('segCard').classList.toggle('on', m === 'card');   $('segCard').setAttribute('aria-pressed', m === 'card');
+      $('paneQuick').hidden = (m !== 'quick');
+      $('paneCard').hidden  = (m !== 'card');
+    }
+    $('segQuick').addEventListener('click', function () { setMethod('quick'); });
+    $('segCard').addEventListener('click', function () { setMethod('card'); });
+
+    // Chụp / chọn ảnh namecard → thu nhỏ về tối đa 1600px, JPEG
+    function toJpeg(file) {
+      return new Promise(function (resolve, reject) {
+        const url = URL.createObjectURL(file), img = new Image();
+        img.onload = function () {
+          const k = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+          const w = Math.round(img.naturalWidth * k), h = Math.round(img.naturalHeight * k);
+          const c = document.createElement('canvas'); c.width = w; c.height = h;
+          c.getContext('2d').drawImage(img, 0, 0, w, h);
+          URL.revokeObjectURL(url);
+          resolve(c.toDataURL('image/jpeg', 0.82));
+        };
+        img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('image')); };
+        img.src = url;
+      });
+    }
+    $('cardBtn').addEventListener('click', function () { $('cardFile').click(); });
+    $('cardRetake').addEventListener('click', function () { $('cardFile').value = ''; $('cardFile').click(); });
+    $('cardFile').addEventListener('change', async function () {
+      const f = this.files && this.files[0];
+      if (!f) return;
+      $('cardErr').classList.remove('show');
+      try {
+        cardData = await toJpeg(f);
+        $('cardImg').src = cardData;
+        $('cardPrev').hidden = false; $('cardBtn').hidden = true;
+      } catch (err) {
+        cardData = '';
+        $('cardPrev').hidden = true; $('cardBtn').hidden = false;
+        $('cardErr').classList.add('show');
+      }
+    });
+  }
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    status.className = 'f-status'; status.textContent = '';
+    setStatus('');
 
-    const allOk = fields.map(check).every(Boolean);
-    const consentOk = form.consent.checked;
-    consentLbl.classList.toggle('invalid-box', !consentOk);
-    if (!allOk) { fields.find(i => i.classList.contains('invalid')).focus(); return; }
-    if (!consentOk) { status.className = 'f-status err'; status.textContent = 'Please tick the consent box · Vui lòng đánh dấu đồng ý'; return; }
+    const picked = [...form.querySelectorAll('input[name=product]:checked')].map(function (i) { return i.value; });
+    const cm = contactMethod();
 
-    if (document.getElementById('f-website').value) { box.classList.add('sent'); return; } // honeypot
+    // 1) Điền nhanh: cần tên + email hợp lệ
+    if (cm === 'quick') {
+      const okName = check($('f-name')), okMail = check($('f-email'));
+      if (!okName || !okMail) { (okName ? $('f-email') : $('f-name')).focus(); return; }
+    }
+    // 2) Cần ít nhất một món, hoặc có để lại liên hệ
+    const prodOk = picked.length > 0 || cm !== 'none';
+    prodGroup.classList.toggle('invalid', !prodOk);
+    if (!prodOk) { prodGroup.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    // 3) Có liên hệ thì cần đồng ý
+    if (cm !== 'none' && !$('f-consent').checked) {
+      $('consentLbl').classList.add('invalid-box');
+      setStatus('Please tick the consent box · Vui lòng đánh dấu đồng ý', true);
+      return;
+    }
+    // 4) Muốn nhận mẫu thì cần có liên hệ
+    if (isB2B && cm === 'none' && $('f-sample').checked) {
+      setStatus('To receive a sample, please leave your contact · Để nhận mẫu, vui lòng để lại liên hệ', true);
+      return;
+    }
+
+    if ($('f-website').value) { box.classList.add('sent'); return; }   // honeypot
 
     if (!RSVP_ENDPOINT || RSVP_ENDPOINT.indexOf('PASTE_') === 0) {
-      status.className = 'f-status err';
-      status.textContent = 'Form endpoint is not configured yet.';
+      setStatus('Form endpoint is not configured yet.', true);
       return;
     }
 
     const payload = {
-      name:     form.name.value.trim(),
-      email:    form.email.value.trim(),
-      company:  form.company.value.trim(),
-      title:    form.title.value.trim(),
-      interest: form.interest.value,
-      sample:   form.sample.checked ? 'yes' : 'no',
-      consent:  'yes',
+      products:       picked,
+      contact_method: cm,
+      name:     cm === 'quick' ? $('f-name').value.trim()    : '',
+      email:    cm === 'quick' ? $('f-email').value.trim()   : '',
+      company:  cm === 'quick' ? $('f-company').value.trim() : '',
+      title:    cm === 'quick' ? $('f-title').value.trim()   : '',
+      namecard: cm === 'card'  ? cardData : '',
+      sample:   (isB2B && cm !== 'none' && $('f-sample').checked) ? 'yes' : 'no',
+      consent:  cm !== 'none' ? 'yes' : '',
       source:   params.get('utm_source')   || '',
       medium:   params.get('utm_medium')   || '',
       campaign: params.get('utm_campaign') || '',
@@ -598,19 +739,22 @@ const INSTAGRAM_URL = 'https://www.instagram.com/tkg.naula/';   // để trống
     };
 
     btn.disabled = true;
-    status.textContent = 'Sending… · Đang gửi…';
+    setStatus('Sending… · Đang gửi…');
     try {
       await fetch(RSVP_ENDPOINT, {
         method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       });
+      if (cm !== 'none') {
+        $('doneEn').textContent = 'We have your details and will be in touch shortly.';
+        $('doneVi').textContent = 'TKG đã nhận được thông tin của bạn và sẽ liên hệ sớm.';
+      }
       box.classList.add('sent');
       box.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (err) {
       btn.disabled = false;
-      status.className = 'f-status err';
-      status.textContent = 'Something went wrong. Please try again · Có lỗi, vui lòng thử lại.';
+      setStatus('Something went wrong. Please try again · Có lỗi, vui lòng thử lại.', true);
     }
   });
 })();
