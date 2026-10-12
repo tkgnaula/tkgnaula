@@ -34,9 +34,14 @@
 })();
 </script>
 
-<!-- ═══ ANALYTICS ═══════════════════════════════════════════
-     Dán đoạn script GA4 hoặc Cloudflare Web Analytics vào đây (trong <head>), SAU đoạn auto-UTM ở trên.
-     Không có tracker thì UTM sẽ không cho ra số liệu. -->
+<!-- ═══ ANALYTICS · GA4 (cùng property với tkg-naula.com) — phải nằm SAU đoạn auto-UTM ═══ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7GG42WSH6B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7GG42WSH6B');
+</script>
 
 <style>
 /* ─── RESET ─────────────────────────────────────── */
@@ -68,14 +73,29 @@ body.mode-b2b .only-dtc{display:none!important}
 /* ─── NAV ────────────────────────────────────────── */
 nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:.5px solid var(--line)}
-.nav-w{max-width:1280px;margin:0 auto;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:block;height:56px}
+html{scroll-padding-top:64px}
+.nav-w{max-width:1280px;margin:0 auto;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{display:block;height:56px;flex:none}
 .nav-logo img{height:80px;width:auto;margin-top:-12px}
-.nav-right{display:flex;align-items:center;gap:28px}
-.nav-meta{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream3)}
-.nav-cta{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--fire);
-  border:.5px solid var(--fire);border-radius:2px;padding:7px 16px;transition:all .2s}
-.nav-cta:hover{background:var(--fire);color:#fff}
+.nav-menu{display:flex;align-items:center;gap:32px}
+.nav-list{list-style:none;display:flex;align-items:center;gap:28px}
+.nav-list>li{position:relative}
+.nav-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream3);padding:18px 0;transition:color .2s}
+.nav-link:hover,.has-sub:hover>.nav-link,.has-sub.open>.nav-link{color:var(--cream)}
+.caret{font-style:normal;font-size:8px;opacity:.7}
+.sub{display:none;list-style:none;position:absolute;top:100%;left:-16px;min-width:240px;background:rgba(18,17,11,.98);
+  border:.5px solid var(--line2);border-radius:3px;padding:8px 0;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.has-sub:hover>.sub,.has-sub:focus-within>.sub,.has-sub.open>.sub{display:block}
+.sub a{display:block;padding:10px 20px;font-size:12.5px;font-weight:300;color:var(--cream2);letter-spacing:.02em;transition:background .15s,color .15s}
+.sub a:hover{background:rgba(255,255,255,.04);color:var(--cream)}
+.nav-order{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--fire);
+  border:.5px solid var(--fire);border-radius:2px;padding:8px 18px;transition:all .2s;white-space:nowrap}
+.nav-order:hover{background:var(--fire);color:#fff}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:0 9px;background:none;border:none;cursor:pointer}
+.nav-burger span{display:block;height:1px;background:var(--cream);transition:transform .2s,opacity .2s}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
 /* ─── HERO ───────────────────────────────────────── */
 .hero{position:relative;width:100%;aspect-ratio:16/9;min-height:560px;max-height:92vh;border-bottom:.5px solid var(--line);overflow:hidden}
@@ -201,7 +221,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
 
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media(max-width:1024px){
-  .nav-w{padding:0 24px}.nav-meta{display:none}
+  .nav-w{padding:0 24px}
   .hero-panel{padding:0 40px 48px}
   .letter-w,.more-w,.rsvp-w{grid-template-columns:1fr;gap:48px;padding:72px 40px}
   .menu-w{padding:64px 40px 72px}
@@ -225,18 +245,52 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
   .closing-media img{object-position:45% center}
   .closing-text{right:24px;bottom:28px;left:24px;max-width:none}
 }
+@media(max-width:900px){
+  .nav-burger{display:flex}
+  .nav-menu{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(18,17,11,.98);border-bottom:.5px solid var(--line2);padding:4px 24px 24px;max-height:calc(100svh - 56px);overflow-y:auto}
+  .nav-menu.open{display:flex}
+  .nav-list{flex-direction:column;align-items:stretch;gap:0}
+  .nav-list>li{border-bottom:.5px solid var(--line)}
+  .nav-link{display:flex;justify-content:space-between;padding:16px 0;font-size:12px}
+  .nav-list .sub{position:static;min-width:0;border:none;box-shadow:none;background:transparent;padding:0 0 10px 12px;display:none}
+  .nav-list .has-sub:hover>.sub,.nav-list .has-sub:focus-within>.sub{display:none}
+  .nav-list .has-sub.open>.sub{display:block}
+  .nav-order{margin-top:20px;text-align:center;padding:12px 18px}
+}
 </style>
 </head>
 <body>
 
 <!-- ═══ NAV ═══════════════════════════════════════════ -->
-<nav>
+<nav id="siteNav" aria-label="Main">
   <div class="nav-w">
-    <a class="nav-logo" href="#top" aria-label="TKG"><img src="https://www.tkg-naula.com/TKG-logo.png" alt="TKG"></a>
-    <div class="nav-right">
-      <span class="nav-meta">× WINK · Oct 15</span>
-      <a class="nav-cta only-dtc" href="#more">Learn more</a>
-      <a class="nav-cta only-b2b" href="#connect">Connect</a>
+    <a class="nav-logo" href="https://www.tkg-naula.com/index.html" aria-label="TKG"><img src="https://www.tkg-naula.com/TKG-logo.png" alt="TKG"></a>
+    <button class="nav-burger" id="navBurger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-list">
+        <li class="has-sub">
+          <a class="nav-link" href="https://www.tkg-naula.com/products.html">Products <i class="caret">&#9662;</i></a>
+          <ul class="sub">
+            <li><a href="https://www.tkg-naula.com/products.html">Fire Collection</a></li>
+            <li><a href="https://www.tkg-naula.com/morning-ember.html">Morning Ember</a></li>
+            <li><a href="https://www.tkg-naula.com/still-ember.html">Still Ember</a></li>
+            <li><a href="https://www.tkg-naula.com/comboember.html">Combo Ember &mdash; The Story</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link" href="https://www.tkg-naula.com/world-of-naula.html">Naula</a></li>
+        <li><a class="nav-link" href="https://www.tkg-naula.com/in-practice.html">In Practice</a></li>
+        <li class="has-sub">
+          <a class="nav-link" href="https://www.tkg-naula.com/founders.html">About <i class="caret">&#9662;</i></a>
+          <ul class="sub">
+            <li><a href="https://www.tkg-naula.com/founders.html">Founders</a></li>
+            <li><a href="https://thienkien.com" target="_blank" rel="noopener">Thi&#7879;n Ki&#7871;n</a></li>
+            <li><a href="https://www.tkg-naula.com/vg2-savvi-landing.html">VG2 Program</a></li>
+          </ul>
+        </li>
+        <li class="only-b2b"><a class="nav-link" href="#connect">Connect</a></li>
+      </ul>
+      <a class="nav-order" href="https://www.tkg-naula.com/products.html">Order</a>
     </div>
   </div>
 </nav>
@@ -324,7 +378,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
     </div>
     <div>
       <div class="more-links">
-        <a class="more-link" href="https://www.tkg-naula.com/index.html?utm_source=wink&amp;utm_medium=landing&amp;utm_campaign=dtc_1510" id="lnkSite">
+        <a class="more-link" href="https://www.tkg-naula.com/index.html" id="lnkSite">
           <div><b>TKG × Naula</b><span>Botanical blends, ingredients, method · Sản phẩm và phương pháp</span></div><i>→</i>
         </a>
         <a class="more-link" href="#" id="lnkIg" style="display:none">
@@ -443,8 +497,8 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
 
 <script>
 /* ─── CẤU HÌNH ─────────────────────────────────────────── */
-const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyBkqH6ZG8as8djqUpEBv57QvqGi_Zq-B3d6c5kGsbHfGvbuSEaeqeqfoO0QXiO_gjp/exec';   // URL Web App (kết thúc bằng /exec) của Apps Script MỚI cho trang này
-const INSTAGRAM_URL = '';   // dán link Instagram của TKG vào đây; để trống thì nút Instagram sẽ ẩn
+const RSVP_ENDPOINT = 'PASTE_WEB_APP_URL_HERE';   // URL Web App (kết thúc bằng /exec) của Apps Script MỚI cho trang này
+const INSTAGRAM_URL = 'https://www.instagram.com/tkg.naula/';   // để trống thì nút Instagram sẽ ẩn
 
 (function () {
   /* ─── Chọn chế độ theo UTM: utm_campaign bắt đầu bằng "b2b" → B2B, còn lại → DTC ─── */
@@ -531,6 +585,32 @@ const INSTAGRAM_URL = '';   // dán link Instagram của TKG vào đây; để t
       status.textContent = 'Something went wrong. Please try again · Có lỗi, vui lòng thử lại.';
     }
   });
+})();
+</script>
+
+<script>
+/* ─── Nav: hamburger + dropdown trên mobile ─── */
+(function () {
+  var burger = document.getElementById('navBurger');
+  var menu = document.getElementById('navMenu');
+  if (!burger || !menu) return;
+  var mq = window.matchMedia('(max-width:900px)');
+  function closeAll() {
+    menu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.querySelectorAll('.has-sub.open').forEach(function (li) { li.classList.remove('open'); });
+  }
+  burger.addEventListener('click', function () {
+    var open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.has-sub > .nav-link').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (mq.matches) { e.preventDefault(); a.parentNode.classList.toggle('open'); }
+    });
+  });
+  menu.querySelectorAll('a[href^="#"]').forEach(function (a) { a.addEventListener('click', closeAll); });
+  if (mq.addEventListener) mq.addEventListener('change', closeAll);
 })();
 </script>
 
