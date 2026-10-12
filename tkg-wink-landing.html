@@ -454,19 +454,23 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
               <span><b>Yellow fresh drink</b> <em>TKG Morning Ember · Ginger – Lemongrass – Lime</em><br><span class="vi-l2">Nước tươi màu vàng</span></span></label>
             <label class="f-check opt"><input type="checkbox" name="product" value="still_fresh">
               <span><b>Pink fresh drink</b> <em>TKG Still Ember · Perilla – Clove – Kumquat</em><br><span class="vi-l2">Nước tươi màu hồng</span></span></label>
-          <div class="pg-title">Non-alcohol soda · Pha soda không cồn</div>
-            <label class="f-check opt"><input type="checkbox" name="product" value="morning_soda">
-              <span><b>Soda with Morning Ember</b> <em>Ginger – Lemongrass – Lime</em><br><span class="vi-l2">Món non-alcohol pha soda từ Morning Ember</span></span></label>
-            <label class="f-check opt"><input type="checkbox" name="product" value="still_soda">
-              <span><b>Soda with Still Ember</b> <em>Perilla – Clove – Kumquat</em><br><span class="vi-l2">Món non-alcohol pha soda từ Still Ember</span></span></label>
-          <div class="pg-title">Cocktail</div>
-            <label class="f-check opt"><input type="checkbox" name="product" value="the_hunter">
-              <span><b>The Hunter</b> <em>Morning Ember × Gin × Tonic</em><br><span class="vi-l2">Cocktail The Hunter</span></span></label>
+          <div class="pg-title">Cocktails</div>
             <label class="f-check opt"><input type="checkbox" name="product" value="the_red_hood">
-              <span><b>The Red Hood</b> <em>Still Ember × Gin × Tonic</em><br><span class="vi-l2">Cocktail The Red Hood</span></span></label>
-          <div class="pg-title">Mocktail</div>
-            <label class="f-check opt"><input type="checkbox" name="product" value="tropical_island">
-              <span><b>Tropical Island</b> <em>Still Ember × Coconut water × Soda</em><br><span class="vi-l2">Mocktail Tropical Island</span></span></label>
+              <span><b>The Red Hood</b> <em>Still Ember · gin · kumquat · cucumber</em><br><span class="vi-l2">Cocktail gin, quất, dưa leo</span></span></label>
+            <label class="f-check opt"><input type="checkbox" name="product" value="black_monsoon">
+              <span><b>Black Monsoon</b> <em>Morning Ember · aged rum · cola · lime</em><br><span class="vi-l2">Cocktail rum ủ lâu năm, cola, chanh</span></span></label>
+            <label class="f-check opt"><input type="checkbox" name="product" value="the_hunter">
+              <span><b>The Hunter</b> <em>Morning Ember · gin · honey · lime</em><br><span class="vi-l2">Cocktail gin, mật ong, chanh</span></span></label>
+          <div class="pg-title">Morning · Bữa sáng</div>
+            <label class="f-check opt"><input type="checkbox" name="product" value="morning_citrus_tea">
+              <span><b>Morning Ember Citrus Tea</b> <em>Morning Ember · kumquat · honey</em><br><span class="vi-l2">Trà Cam Chanh Morning Ember</span></span></label>
+            <label class="f-check opt"><input type="checkbox" name="product" value="still_coconut_tea">
+              <span><b>Still Ember Coconut Tea</b> <em>Still Ember · coconut water · pandan</em><br><span class="vi-l2">Trà Dừa Still Ember</span></span></label>
+          <div class="pg-title">Alcohol-free · Không cồn</div>
+            <label class="f-check opt"><input type="checkbox" name="product" value="morning_ginger_fizz">
+              <span><b>Morning Ember Ginger Fizz</b> <em>Morning Ember · ginger · kumquat · honey · soda</em><br><span class="vi-l2">Soda Gừng Morning Ember</span></span></label>
+            <label class="f-check opt"><input type="checkbox" name="product" value="still_kumquat_soda">
+              <span><b>Still Ember Kumquat Soda</b> <em>Still Ember · kumquat · mint · soda</em><br><span class="vi-l2">Soda Quất Still Ember</span></span></label>
           <div class="f-err pg-err">Please choose at least one · Vui lòng chọn ít nhất một món</div>
         </div>
 
@@ -594,7 +598,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
 
 <script>
 /* ─── CẤU HÌNH ─────────────────────────────────────────── */
-const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyBkqH6ZG8as8djqUpEBv57QvqGi_Zq-B3d6c5kGsbHfGvbuSEaeqeqfoO0QXiO_gjp/exec';   // URL Web App (kết thúc bằng /exec) của Apps Script cho trang này
+const RSVP_ENDPOINT = 'PASTE_WEB_APP_URL_HERE';   // URL Web App (kết thúc bằng /exec) của Apps Script cho trang này
 const INSTAGRAM_URL = 'https://www.instagram.com/tkg.naula/';   // để trống thì nút Instagram sẽ ẩn
 
 (function () {
