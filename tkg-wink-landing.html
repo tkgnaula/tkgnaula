@@ -258,6 +258,30 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
   .nav-list .has-sub.open>.sub{display:block}
   .nav-order{margin-top:20px;text-align:center;padding:12px 18px}
 }
+/* ─── MOBILE: chữ hero lên góc phải trên; chữ phần cuối đẩy xuống dưới ảnh ─── */
+@media(max-width:760px){
+  .hero{--hh:max(460px,64svh);aspect-ratio:auto;height:auto;min-height:0;max-height:none;overflow:visible}
+  .hero-media{position:relative;inset:auto;height:var(--hh)}
+  .hero-media img{object-position:30% center}
+  .hero-veil{inset:0 0 auto 0;height:var(--hh);
+    background:linear-gradient(to bottom left,rgba(18,17,11,.82) 0%,rgba(18,17,11,.5) 34%,rgba(18,17,11,0) 66%)}
+  .hero-panel{position:static;inset:auto;display:block;padding:0;text-align:left}
+  .hero-in{max-width:none}
+  .hero-top{position:absolute;top:18px;right:20px;max-width:58%;text-align:right}
+  .hero-top .hero-label{font-size:8.5px;letter-spacing:.2em;margin-bottom:12px}
+  .hero-top .hero-h1{font-size:25px;line-height:1.08;margin-bottom:8px}
+  .hero-top .hero-h1-vi{font-size:15px;line-height:1.35;margin-bottom:0;text-wrap:balance}
+  .hero-bottom{padding:28px 24px 36px;background:var(--bg)}
+  .hero-bottom .hero-rule{margin-bottom:20px}
+  .hero-actions{justify-content:flex-start;margin-top:26px}
+
+  .closing{aspect-ratio:auto;height:auto;min-height:0;overflow:visible}
+  .closing-media{position:relative;inset:auto;height:300px}
+  .closing-media img{object-position:45% center}
+  .closing-veil{display:none}
+  .closing-text{position:static;right:auto;bottom:auto;left:auto;max-width:none;text-align:left;padding:30px 24px 40px;background:var(--bg)}
+  .closing-serif,.closing-vi{text-shadow:none}
+}
 </style>
 </head>
 <body>
@@ -301,10 +325,13 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
   <div class="hero-veil"></div>
   <div class="hero-panel">
     <div class="hero-in">
+      <div class="hero-top">
       <div class="hero-label only-dtc">Now at WINK · Tasting</div>
       <div class="hero-label only-b2b">Thank you for joining us</div>
       <h1 class="hero-h1">One botanical,<br><em>many expressions.</em></h1>
       <div class="hero-h1-vi">Một nguyên liệu, nhiều cách thể hiện</div>
+      </div>
+      <div class="hero-bottom">
       <div class="hero-rule">
         <div class="hero-rule-line"></div>
         <span>Botanical Performance Experience</span>
@@ -315,6 +342,7 @@ footer{background:var(--bg1);border-top:.5px solid var(--line)}
         <a class="btn-ghost" href="#blends">The two blends ↓</a>
         <a class="btn-primary only-dtc" href="#more">Learn more</a>
         <a class="btn-primary only-b2b" href="#connect">Stay connected</a>
+      </div>
       </div>
     </div>
   </div>
