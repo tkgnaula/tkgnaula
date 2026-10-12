@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKG × WINK · Morning Ember &amp; Still Ember</title>
+<meta name="description" content="Morning Ember and Still Ember by TKG · Vietnamese botanical blends · Wink Saigon Centre – Unscripted by Hyatt">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="https://www.tkg-naula.com/TKG-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="WINK.webp" fetchpriority="high">
+
+<!-- ═══ AUTO-UTM THEO GIỜ (phải nằm TRƯỚC script analytics) ═══════════════
+     Nếu link chưa có utm_campaign (QR chung), tự gắn theo giờ Việt Nam:
+       - Ngày 15/10/2026 từ 19:00 trở đi → b2b_1510
+       - Mọi thời điểm khác               → dtc_1510
+     Link đã có utm_campaign (QR riêng, link test) thì giữ nguyên, không ghi đè. -->
+<script>
+(function () {
+  try {
+    var p = new URLSearchParams(location.search);
+    if (p.get('utm_campaign')) return;
+    var vn = new Date(Date.now() + 7 * 3600 * 1000);           // Việt Nam = UTC+7, không đổi giờ mùa hè
+    var day = vn.getUTCFullYear() + '-' + String(vn.getUTCMonth() + 1).padStart(2, '0') + '-' + String(vn.getUTCDate()).padStart(2, '0');
+    var b2b = (day === '2026-10-15' && vn.getUTCHours() >= 19);
+    if (!p.get('utm_source')) p.set('utm_source', 'wink');
+    if (!p.get('utm_medium')) p.set('utm_medium', 'qr');
+    p.set('utm_campaign', b2b ? 'b2b_1510' : 'dtc_1510');
+    p.set('utm_content', 'auto');                              // đánh dấu: campaign do trang tự gắn theo giờ
+    history.replaceState(null, '', location.pathname + '?' + p.toString() + location.hash);
+  } catch (e) {}
+})();
+</script>
+
+<!-- ═══ ANALYTICS ═══════════════════════════════════════════
+     Dán đoạn script GA4 hoặc Cloudflare Web Analytics vào đây (trong <head>), SAU đoạn auto-UTM ở trên.
+     Không có tracker thì UTM sẽ không cho ra số liệu. -->
+
+<style>
+/* ─── RESET ─────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Be Vietnam Pro',system-ui,sans-serif;
+  background:#12110B;color:#EDE8DC;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+
+:root{
+  --bg:#12110B;--bg1:#181610;--bg2:#1E1B13;
+  --fire:#D45E29;--perilla:#74255E;
+  --gold:#F9DA85;--cream:#EDE8DC;--cream2:#C4BFB1;--cream3:#ACA797;--cream4:#969282;
+  --line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);
+  --err:#E8836A;--ok:#CEE2B8;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Be Vietnam Pro',system-ui,sans-serif;
+}
+
+/* ─── MODE SWITCH (DTC mặc định, B2B khi utm_campaign bắt đầu bằng "b2b") ─── */
+.only-b2b{display:none!important}
+body.mode-b2b .only-b2b{display:revert!important}
+body.mode-b2b .only-b2b.as-flex{display:flex!important}
+body.mode-b2b .only-dtc{display:none!important}
+
+/* ─── NAV ────────────────────────────────────────── */
+nav{position:sticky;top:0;z-index:100;background:rgba(18,17,11,.94);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:.5px solid var(--line)}
+.nav-w{max-width:1280px;margin:0 auto;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:block;height:56px}
+.nav-logo img{height:80px;width:auto;margin-top:-12px}
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-meta{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream3)}
+.nav-cta{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--fire);
+  border:.5px solid var(--fire);border-radius:2px;padding:7px 16px;transition:all .2s}
+.nav-cta:hover{background:var(--fire);color:#fff}
+
+/* ─── HERO ───────────────────────────────────────── */
+.hero{position:relative;width:100%;aspect-ratio:16/9;min-height:560px;max-height:92vh;border-bottom:.5px solid var(--line);overflow:hidden}
+.hero-media{position:absolute;inset:0}
+.hero-media img{object-position:center}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,17,11,.92) 0%,rgba(18,17,11,.62) 38%,rgba(18,17,11,.14) 68%,rgba(18,17,11,0) 100%)}
+.hero-panel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;text-align:right;padding:0 80px 64px 64px}
+.hero-in{max-width:680px;width:100%}
+.hero-label{font-size:10px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--cream2);margin-bottom:24px}
+.hero-h1{font-family:var(--sans);font-size:clamp(38px,4.4vw,62px);font-weight:800;line-height:1.05;letter-spacing:-.01em;margin-bottom:10px;color:var(--cream)}
+.hero-h1 em{color:var(--fire);font-style:normal}
+.hero-h1-vi{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(20px,2vw,28px);color:var(--cream2);letter-spacing:.02em;margin-bottom:28px}
+.hero-rule{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.hero-rule-line{flex:1;height:.5px;background:var(--line2)}
+.hero-rule span{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.hero-when{font-size:15px;font-weight:300;line-height:1.78;color:var(--cream2)}
+.hero-when b{font-weight:500;color:var(--cream)}
+.hero-when-vi{font-size:13px;font-weight:300;color:var(--cream3)}
+.hero-actions{display:flex;align-items:center;justify-content:flex-end;gap:20px;margin-top:32px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--fire);color:#fff;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:12px 28px;border-radius:2px;border:none;cursor:pointer;transition:opacity .2s;font-family:var(--sans)}
+.btn-primary:hover{opacity:.85}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.btn-ghost{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--cream2);transition:color .2s}
+.btn-ghost:hover{color:var(--cream)}
+
+/* ─── SECTIONS ───────────────────────────────────── */
+.sec-tag{font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--fire);margin-bottom:14px}
+.sec-h2{font-family:var(--serif);font-size:clamp(34px,3.8vw,56px);font-weight:400;line-height:1.08;color:var(--cream)}
+.sec-h2 em{font-style:italic;color:var(--cream2)}
+
+.letter{background:var(--bg)}
+.letter-w{max-width:1280px;margin:0 auto;padding:96px 80px;display:grid;grid-template-columns:5fr 7fr;gap:80px}
+.letter-body p{font-size:15px;font-weight:300;line-height:1.85;color:var(--cream2);margin-bottom:18px}
+.vi-block{margin-top:44px;padding-top:40px;border-top:.5px solid var(--line)}
+.vi-lbl{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cream4);margin-bottom:20px}
+.vi-block p{font-size:14.5px;color:var(--cream3)}
+
+/* ─── BLENDS ─────────────────────────────────────── */
+.menu{border-top:.5px solid var(--line);background:var(--bg)}
+.menu-w{max-width:1280px;margin:0 auto;padding:72px 80px 88px}
+.menu-head{margin-bottom:40px}
+.menu-head .vi{font-size:13px;font-weight:300;color:var(--cream4);margin-top:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.sku{border:.5px solid var(--line2);border-radius:4px;overflow:hidden;position:relative}
+.sku-fire{background:linear-gradient(160deg,#1D1208 0%,#160E08 100%)}
+.sku-fire::before{content:'';position:absolute;top:0;right:0;width:240px;height:240px;pointer-events:none;background:radial-gradient(circle at top right,rgba(212,94,41,.13) 0%,transparent 70%)}
+.sku-perilla{background:linear-gradient(160deg,#130812 0%,#0E0710 100%)}
+.sku-perilla::before{content:'';position:absolute;top:0;right:0;width:240px;height:240px;pointer-events:none;background:radial-gradient(circle at top right,rgba(116,37,94,.16) 0%,transparent 70%)}
+.sku-body{padding:32px 28px 28px;position:relative;z-index:1}
+.sku-fam{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px}
+.sku-fam-fire{color:var(--fire)}
+.sku-fam-perilla{color:#997393}
+.sku-name{font-family:var(--serif);font-size:34px;font-weight:500;line-height:1.06;color:var(--cream);margin-bottom:4px}
+.sku-tagline{font-size:13.5px;font-weight:300;font-style:italic;color:var(--cream3);margin-bottom:18px}
+.sku-pills{display:flex;gap:6px;flex-wrap:wrap}
+.sku-pill{font-size:9.5px;font-weight:500;letter-spacing:.07em;padding:4px 11px;border-radius:20px;border:.5px solid var(--line2);color:var(--cream3);background:rgba(255,255,255,.03)}
+
+/* ─── LEARN MORE (DTC) ───────────────────────────── */
+.more{border-top:.5px solid var(--line);background:var(--bg1)}
+.more-w{max-width:1280px;margin:0 auto;padding:80px;display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+.more-intro .vi{font-size:13px;font-weight:300;color:var(--cream4);margin-top:14px;line-height:1.7}
+.more-links{display:flex;flex-direction:column;gap:0;border-top:.5px solid var(--line2)}
+.more-link{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 4px;border-bottom:.5px solid var(--line2);transition:padding .2s}
+.more-link:hover{padding-left:12px}
+.more-link b{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--cream)}
+.more-link span{font-size:12.5px;font-weight:300;color:var(--cream3);display:block;margin-top:2px}
+.more-link i{font-style:normal;color:var(--fire);font-size:18px}
+.privacy-note{margin-top:28px;font-size:12px;font-weight:300;color:var(--cream4);line-height:1.7}
+
+/* ─── CONNECT FORM (B2B) ─────────────────────────── */
+.rsvp{border-top:.5px solid var(--line);background:var(--bg1);position:relative;overflow:hidden}
+.rsvp::before{content:'';position:absolute;top:0;right:0;width:520px;height:420px;pointer-events:none;background:radial-gradient(circle at top right,rgba(212,94,41,.09) 0%,transparent 70%)}
+.rsvp-w{max-width:1280px;margin:0 auto;padding:96px 80px;position:relative;display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+.rsvp-intro .vi{font-size:13px;font-weight:300;color:var(--cream4);margin-top:14px;line-height:1.7}
+.rsvp-intro .meta{margin-top:32px;padding-top:24px;border-top:.5px solid var(--line);font-size:13.5px;font-weight:300;line-height:1.8;color:var(--cream3)}
+.rsvp-form{background:var(--bg);border:.5px solid var(--line2);border-radius:4px;padding:40px 36px 36px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.f-field{margin-bottom:24px;display:flex;flex-direction:column}
+.f-field label.lbl{font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cream3);margin-bottom:10px}
+.f-field label .vi-l{font-weight:400;letter-spacing:.06em;text-transform:none;color:var(--cream4);margin-left:6px}
+.f-field input[type=text],.f-field input[type=email],.f-field select{
+  font-family:var(--sans);font-size:15px;font-weight:300;color:var(--cream);background:transparent;border:none;
+  border-bottom:.5px solid var(--line2);padding:8px 0 10px;border-radius:0;outline:none;transition:border-color .2s}
+.f-field select option{background:#1E1B13;color:var(--cream)}
+.f-field input::placeholder{color:var(--cream4);opacity:.6}
+.f-field input:focus,.f-field select:focus{border-bottom-color:var(--fire)}
+.f-field .invalid{border-bottom-color:var(--err)!important}
+.f-err{font-size:11.5px;color:var(--err);margin-top:6px;display:none}
+.invalid + .f-err{display:block}
+.f-check{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px;font-size:13px;font-weight:300;line-height:1.65;color:var(--cream3);cursor:pointer}
+.f-check input{margin-top:4px;accent-color:var(--fire);flex:none}
+.f-check.invalid-box{color:var(--err)}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.f-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:8px}
+.f-status{font-size:13px;font-weight:300;line-height:1.6;color:var(--cream3)}
+.f-status.err{color:var(--err)}
+.rsvp-done{display:none;padding:24px 0 8px}
+.rsvp-done .tick{width:44px;height:44px;border-radius:50%;border:.5px solid var(--ok);color:var(--ok);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:24px}
+.rsvp-done h3{font-family:var(--serif);font-size:34px;font-weight:500;line-height:1.1;color:var(--cream);margin-bottom:12px}
+.rsvp-done p{font-size:14.5px;font-weight:300;line-height:1.8;color:var(--cream2)}
+.rsvp-done p.vi{font-size:13px;color:var(--cream4);margin-top:8px}
+.rsvp-form.sent .rsvp-fields{display:none}
+.rsvp-form.sent .rsvp-done{display:block}
+
+/* ─── CLOSING / FOOTER ───────────────────────────── */
+.closing{border-top:.5px solid var(--line);position:relative;overflow:hidden;background:var(--bg);aspect-ratio:2576/1027;min-height:340px}
+.closing-media{position:absolute;inset:0}
+.closing-media img{object-position:center}
+.closing-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to left,rgba(18,17,11,.78) 0%,rgba(18,17,11,.35) 32%,rgba(18,17,11,0) 60%)}
+.closing-text{position:absolute;right:80px;bottom:64px;max-width:520px;text-align:right}
+.closing-serif{font-family:var(--serif);font-size:clamp(26px,2.8vw,40px);font-style:italic;font-weight:300;line-height:1.4;color:var(--cream);letter-spacing:.04em;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.closing-vi{margin-top:12px;font-size:13px;font-weight:300;color:var(--cream2);letter-spacing:.06em;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+footer{background:var(--bg1);border-top:.5px solid var(--line)}
+.foot-top{max-width:1280px;margin:0 auto;padding:48px 80px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.foot-brand img{height:48px;width:auto;opacity:.85}
+.foot-sub{font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--cream4);margin-top:6px}
+.foot-sub2{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--fire);margin-top:4px}
+.foot-venue{text-align:right;font-size:13.5px;font-weight:300;color:var(--cream3);line-height:1.7}
+.foot-venue b{font-weight:500;color:var(--cream2)}
+.foot-bottom{max-width:1280px;margin:0 auto;padding:20px 80px 32px;border-top:.5px solid var(--line)}
+.foot-copy{font-size:9.5px;color:var(--cream4);letter-spacing:.06em}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:1024px){
+  .nav-w{padding:0 24px}.nav-meta{display:none}
+  .hero-panel{padding:0 40px 48px}
+  .letter-w,.more-w,.rsvp-w{grid-template-columns:1fr;gap:48px;padding:72px 40px}
+  .menu-w{padding:64px 40px 72px}
+  .foot-top,.foot-bottom{padding-left:40px;padding-right:40px}
+  .closing-text{right:40px;bottom:40px}
+}
+@media(max-width:760px){
+  .hero{aspect-ratio:auto;height:92svh;min-height:600px}
+  .hero-media img{object-position:38% center}
+  .hero-panel{padding:0 24px 40px;align-items:flex-start;text-align:left}
+  .hero-actions{justify-content:flex-start}
+  .letter-w,.more-w,.rsvp-w{padding:56px 24px 64px}
+  .menu-w{padding:56px 24px 64px}
+  .grid2{grid-template-columns:1fr}
+  .rsvp-form{padding:28px 22px 26px}
+  .f-row{grid-template-columns:1fr;gap:0}
+  .foot-top{flex-direction:column;align-items:flex-start;padding:40px 24px}
+  .foot-venue{text-align:left}
+  .foot-bottom{padding:20px 24px 28px}
+  .closing{aspect-ratio:auto;height:420px}
+  .closing-media img{object-position:45% center}
+  .closing-text{right:24px;bottom:28px;left:24px;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-w">
+    <a class="nav-logo" href="#top" aria-label="TKG"><img src="https://www.tkg-naula.com/TKG-logo.png" alt="TKG"></a>
+    <div class="nav-right">
+      <span class="nav-meta">× WINK · Oct 15</span>
+      <a class="nav-cta only-dtc" href="#more">Learn more</a>
+      <a class="nav-cta only-b2b" href="#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════ -->
+<header class="hero" id="top">
+  <div class="hero-media"><img src="WINK.webp" alt="Wink Saigon Centre – Unscripted by Hyatt at dusk"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-panel">
+    <div class="hero-in">
+      <div class="hero-label only-dtc">Now at WINK · Tasting</div>
+      <div class="hero-label only-b2b">Thank you for joining us</div>
+      <h1 class="hero-h1">One botanical,<br><em>many expressions.</em></h1>
+      <div class="hero-h1-vi">Một nguyên liệu, nhiều cách thể hiện</div>
+      <div class="hero-rule">
+        <div class="hero-rule-line"></div>
+        <span>Botanical Performance Experience</span>
+      </div>
+      <p class="hero-when"><b>TKG × WINK Saigon Centre · October 15, 2026</b></p>
+      <p class="hero-when-vi">Morning Ember &amp; Still Ember · Hai dòng Botanical Blend của TKG</p>
+      <div class="hero-actions">
+        <a class="btn-ghost" href="#blends">The two blends ↓</a>
+        <a class="btn-primary only-dtc" href="#more">Learn more</a>
+        <a class="btn-primary only-b2b" href="#connect">Stay connected</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ LETTER ════════════════════════════════════════ -->
+<section class="letter">
+  <div class="letter-w">
+    <div>
+      <div class="sec-tag">TKG × WINK</div>
+      <h2 class="sec-h2">Vietnamese botanicals,<br><em>reinterpreted.</em></h2>
+    </div>
+    <div class="letter-body">
+      <p>The WINK bartender team reinterprets TKG's Morning Ember and Still Ember across a series of contemporary creations, from non-alcoholic drinks and mocktails to cocktails and smoothies.</p>
+      <p>Discover how familiar Vietnamese botanicals can take on different expressions through preparation, mixing and creative application.</p>
+      <div class="vi-block">
+        <div class="vi-lbl">Tiếng Việt</div>
+        <p>Đội ngũ bartender của WINK diễn giải hai dòng bột thảo mộc Morning Ember và Still Ember của TKG theo nhiều cách thưởng thức khác nhau, từ thức uống không cồn, mocktail, cocktail đến smoothie.</p>
+        <p>Cùng khám phá cách những nguyên liệu thảo mộc quen thuộc của Việt Nam có thể mở ra những trải nghiệm mới thông qua cách chế biến, pha trộn và sáng tạo hiện đại.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE TWO BLENDS ════════════════════════════════ -->
+<section class="menu" id="blends">
+  <div class="menu-w">
+    <div class="menu-head">
+      <div class="sec-tag">Fire · Two Blends</div>
+      <h2 class="sec-h2">Morning Ember &amp; <em>Still Ember.</em></h2>
+      <div class="vi">Hai dòng Botanical Blend của TKG.</div>
+    </div>
+    <div class="grid2">
+      <div class="sku sku-fire">
+        <div class="sku-body">
+          <div class="sku-fam sku-fam-fire">Fire · Bold · Direct · Warm</div>
+          <div class="sku-name">Morning Ember</div>
+          <div class="sku-tagline">A familiar, approachable botanical profile.</div>
+          <div class="sku-pills"><span class="sku-pill">Ginger</span><span class="sku-pill">Lemongrass</span><span class="sku-pill">Lime</span></div>
+        </div>
+      </div>
+      <div class="sku sku-perilla">
+        <div class="sku-body">
+          <div class="sku-fam sku-fam-perilla">Fire · Quiet · Considered · Distinctive</div>
+          <div class="sku-name">Still Ember</div>
+          <div class="sku-tagline">A more distinctive botanical profile.</div>
+          <div class="sku-pills"><span class="sku-pill">Perilla</span><span class="sku-pill">Clove</span><span class="sku-pill">Kumquat</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LEARN MORE · chế độ DTC (không thu thập thông tin cá nhân) ═══ -->
+<section class="more only-dtc" id="more">
+  <div class="more-w">
+    <div class="more-intro">
+      <div class="sec-tag">Discover TKG</div>
+      <h2 class="sec-h2">Learn more,<br><em>at your pace.</em></h2>
+      <p class="vi">Tìm hiểu thêm về TKG và Naula theo cách của bạn.</p>
+    </div>
+    <div>
+      <div class="more-links">
+        <a class="more-link" href="https://www.tkg-naula.com/index.html?utm_source=wink&amp;utm_medium=landing&amp;utm_campaign=dtc_1510" id="lnkSite">
+          <div><b>TKG × Naula</b><span>Botanical blends, ingredients, method · Sản phẩm và phương pháp</span></div><i>→</i>
+        </a>
+        <a class="more-link" href="#" id="lnkIg" style="display:none">
+          <div><b>Instagram</b><span>Follow TKG · Theo dõi TKG</span></div><i>→</i>
+        </a>
+      </div>
+      <p class="privacy-note">We don't ask for any personal information on this page.<br>Trang này không yêu cầu thông tin cá nhân của bạn.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONNECT · chế độ B2B (khách mời buổi tối, có đồng ý rõ ràng) ═══ -->
+<section class="rsvp only-b2b" id="connect">
+  <div class="rsvp-w">
+    <div class="rsvp-intro">
+      <div class="sec-tag">Stay connected</div>
+      <h2 class="sec-h2">Let's continue<br><em>the conversation.</em></h2>
+      <p class="vi">Để lại thông tin nếu bạn muốn TKG liên hệ lại về hợp tác, mẫu thử hoặc tài liệu sản phẩm.</p>
+      <div class="meta">
+        <b>TKG will reach out within 2 business days.</b><br>
+        TKG sẽ liên hệ lại trong vòng 2 ngày làm việc.
+      </div>
+    </div>
+
+    <div class="rsvp-form" id="formBox">
+      <form id="connectForm" class="rsvp-fields" novalidate autocomplete="on">
+        <div class="f-row">
+          <div class="f-field">
+            <label class="lbl" for="f-name">Full name<span class="vi-l">Họ và tên</span></label>
+            <input type="text" id="f-name" name="name" autocomplete="name" required maxlength="120" placeholder="Nguyen Van A">
+            <div class="f-err">Please enter your name · Vui lòng nhập họ tên</div>
+          </div>
+          <div class="f-field">
+            <label class="lbl" for="f-email">Email<span class="vi-l">Email</span></label>
+            <input type="email" id="f-email" name="email" autocomplete="email" required maxlength="160" placeholder="name@company.com">
+            <div class="f-err">Please enter a valid email · Email chưa hợp lệ</div>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-field">
+            <label class="lbl" for="f-company">Company<span class="vi-l">Công ty</span></label>
+            <input type="text" id="f-company" name="company" autocomplete="organization" required maxlength="160" placeholder="Company name">
+            <div class="f-err">Please enter your company · Vui lòng nhập công ty</div>
+          </div>
+          <div class="f-field">
+            <label class="lbl" for="f-title">Title<span class="vi-l">Chức danh</span></label>
+            <input type="text" id="f-title" name="title" autocomplete="organization-title" required maxlength="120" placeholder="Your role">
+            <div class="f-err">Please enter your title · Vui lòng nhập chức danh</div>
+          </div>
+        </div>
+        <div class="f-field">
+          <label class="lbl" for="f-interest">I'm interested in<span class="vi-l">Tôi quan tâm đến</span></label>
+          <select id="f-interest" name="interest" required>
+            <option value="">Select · Chọn</option>
+            <option value="distribution">Distribution · Phân phối</option>
+            <option value="oem_private_label">OEM / Private label</option>
+            <option value="hospitality_fnb">Hospitality &amp; F&amp;B · Khách sạn, F&amp;B</option>
+            <option value="corporate_gifting">Corporate gifting · Quà tặng doanh nghiệp</option>
+            <option value="co_marketing">Co-marketing · Đồng tiếp thị</option>
+            <option value="other">Other · Khác</option>
+          </select>
+          <div class="f-err">Please select one · Vui lòng chọn</div>
+        </div>
+
+        <label class="f-check" for="f-sample">
+          <input type="checkbox" id="f-sample" name="sample">
+          <span>I would like to receive a product sample.<br><span style="color:var(--cream4)">Tôi muốn nhận mẫu sản phẩm.</span></span>
+        </label>
+        <label class="f-check" for="f-consent" id="consentLbl">
+          <input type="checkbox" id="f-consent" name="consent" required>
+          <span>I agree that TKG may store my details and contact me about the topics above.<br><span style="color:var(--cream4)">Tôi đồng ý để TKG lưu thông tin và liên hệ với tôi về các nội dung trên.</span></span>
+        </label>
+
+        <input class="hp" type="text" name="website" id="f-website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="f-actions">
+          <button type="submit" class="btn-primary" id="submitBtn">Send · Gửi</button>
+          <span class="f-status" id="formStatus" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <div class="rsvp-done" id="formDone">
+        <div class="tick">✓</div>
+        <h3>Thank you.</h3>
+        <p>We have your details and will be in touch shortly.</p>
+        <p class="vi">TKG đã nhận được thông tin của bạn và sẽ liên hệ sớm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING ═══════════════════════════════════════ -->
+<section class="closing">
+  <div class="closing-media"><img src="TKG_Products.webp" alt="TKG Morning Ember and Still Ember products" loading="lazy"></div>
+  <div class="closing-veil"></div>
+  <div class="closing-text">
+    <p class="closing-serif">Rooted in Vietnam.<br>Prepared with Care.</p>
+    <p class="closing-vi">Bén rễ từ Việt Nam. Chế biến bằng sự tận tâm.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <img src="https://www.tkg-naula.com/TKG-logo.png" alt="TKG">
+      <div class="foot-sub">Thiện Kiến Goods</div>
+      <div class="foot-sub2">Vietnamese Botanical Wellness</div>
+    </div>
+    <div class="foot-venue">
+      <b>Wink Saigon Centre – Unscripted by Hyatt</b><br>
+      75 Nguyễn Bỉnh Khiêm, Ho Chi Minh City
+    </div>
+  </div>
+  <div class="foot-bottom"><div class="foot-copy">© 2026 TKG · Thiện Kiến Goods</div></div>
+</footer>
+
+<script>
+/* ─── CẤU HÌNH ─────────────────────────────────────────── */
+const RSVP_ENDPOINT = 'PASTE_WEB_APP_URL_HERE';   // URL Web App (kết thúc bằng /exec) của Apps Script MỚI cho trang này
+const INSTAGRAM_URL = '';   // dán link Instagram của TKG vào đây; để trống thì nút Instagram sẽ ẩn
+
+(function () {
+  /* ─── Chọn chế độ theo UTM: utm_campaign bắt đầu bằng "b2b" → B2B, còn lại → DTC ─── */
+  const params   = new URLSearchParams(location.search);
+  const campaign = (params.get('utm_campaign') || '').toLowerCase();
+  const isB2B    = campaign.indexOf('b2b') === 0;
+  document.body.classList.toggle('mode-b2b', isB2B);
+
+  if (INSTAGRAM_URL) {
+    const ig = document.getElementById('lnkIg');
+    ig.href = INSTAGRAM_URL + (INSTAGRAM_URL.includes('?') ? '&' : '?') + 'utm_source=wink&utm_medium=landing&utm_campaign=' + encodeURIComponent(campaign || 'dtc_1510');
+    ig.style.display = '';
+  }
+
+  if (!isB2B) return; // DTC: không có form, không thu dữ liệu cá nhân
+
+  /* ─── Form B2B ─── */
+  const form   = document.getElementById('connectForm');
+  const box    = document.getElementById('formBox');
+  const btn    = document.getElementById('submitBtn');
+  const status = document.getElementById('formStatus');
+  const consentLbl = document.getElementById('consentLbl');
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function check(el) {
+    const v = el.value.trim();
+    const ok = el.type === 'email' ? emailRe.test(v) : v.length > 0;
+    el.classList.toggle('invalid', !ok);
+    return ok;
+  }
+  const fields = [...form.querySelectorAll('input[type=text][required], input[type=email][required], select[required]')];
+  fields.forEach(i => {
+    i.addEventListener('input',  () => { if (i.classList.contains('invalid')) check(i); });
+    i.addEventListener('change', () => { if (i.classList.contains('invalid')) check(i); });
+    i.addEventListener('blur',   () => { if (i.value) check(i); });
+  });
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    status.className = 'f-status'; status.textContent = '';
+
+    const allOk = fields.map(check).every(Boolean);
+    const consentOk = form.consent.checked;
+    consentLbl.classList.toggle('invalid-box', !consentOk);
+    if (!allOk) { fields.find(i => i.classList.contains('invalid')).focus(); return; }
+    if (!consentOk) { status.className = 'f-status err'; status.textContent = 'Please tick the consent box · Vui lòng đánh dấu đồng ý'; return; }
+
+    if (document.getElementById('f-website').value) { box.classList.add('sent'); return; } // honeypot
+
+    if (!RSVP_ENDPOINT || RSVP_ENDPOINT.indexOf('PASTE_') === 0) {
+      status.className = 'f-status err';
+      status.textContent = 'Form endpoint is not configured yet.';
+      return;
+    }
+
+    const payload = {
+      name:     form.name.value.trim(),
+      email:    form.email.value.trim(),
+      company:  form.company.value.trim(),
+      title:    form.title.value.trim(),
+      interest: form.interest.value,
+      sample:   form.sample.checked ? 'yes' : 'no',
+      consent:  'yes',
+      source:   params.get('utm_source')   || '',
+      medium:   params.get('utm_medium')   || '',
+      campaign: params.get('utm_campaign') || '',
+      lang:     navigator.language || '',
+      page:     location.href
+    };
+
+    btn.disabled = true;
+    status.textContent = 'Sending… · Đang gửi…';
+    try {
+      await fetch(RSVP_ENDPOINT, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      box.classList.add('sent');
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      btn.disabled = false;
+      status.className = 'f-status err';
+      status.textContent = 'Something went wrong. Please try again · Có lỗi, vui lòng thử lại.';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
