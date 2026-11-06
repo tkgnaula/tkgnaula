@@ -343,8 +343,12 @@ footer{
 .mx-recipe{padding:80px 0;border-bottom:.5px solid var(--line)}
 .mx-recipe[hidden]{display:none}
 .mx-row{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:72px}
-.mx-open{align-items:center}
-.mx-how{margin-top:56px;padding-top:56px;border-top:.5px solid var(--line);align-items:start}
+.mx-open{display:flex;flex-direction:column;align-items:center;text-align:center}
+.mx-open .mx-serve{width:100%;max-width:420px}
+.mx-open .mx-intro{margin-top:40px;max-width:640px}
+.mx-open .mx-meta,.mx-open .mx-specs{justify-content:center}
+.mx-open .mx-tag,.mx-open .mx-specs{margin-left:auto;margin-right:auto}
+.mx-how{grid-template-columns:minmax(0,7fr) minmax(0,4fr);margin-top:56px;padding-top:56px;border-top:.5px solid var(--line);align-items:start}
 .mx-frame{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--bg2);border-radius:2px;margin:0}
 .mx-frame img{position:absolute;inset:0}
 .mx-cardimg figcaption{
@@ -352,6 +356,7 @@ footer{
   color:var(--cream);background:rgba(18,17,11,.7);backdrop-filter:blur(6px);padding:6px 10px;border-radius:2px;
 }
 .mx-cardimg.is-empty{display:block}
+.mx-how .mx-cardimg{order:2}
 .mx-howto{position:sticky;top:140px}
 .mx-label.mx-how-h{color:var(--fire);margin-bottom:28px}
 .mx-ph{
@@ -627,52 +632,12 @@ footer{
         </div>
       </div>
     </article>
-    <article class="mx-recipe" id="midnight-monsoon" data-cat="cocktails" data-ember="morning">
-      <!-- 1 · finished serve -->
-      <div class="mx-row mx-open">
-        <figure class="mx-frame mx-serve"><img src="mix-midnight-monsoon.webp" alt="Midnight Monsoon — Morning Ember" loading="lazy" width="900" height="1600"></figure>
-        <div class="mx-intro">
-          <div class="mx-num">02</div>
-          <h2 class="mx-name">Midnight Monsoon</h2>
-          <div class="mx-meta"><span class="mx-ember morning">Pha cùng Morning Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
-          <p class="mx-tag">Rum lâu năm và cola, thêm chiều sâu từ gừng, sả và chanh. Một ly highball cho đêm mưa.</p>
-          <div class="mx-specs"><div><b>Ly</b>Ly highball</div><div><b>Trang trí</b>Lát chanh</div></div>
-        </div>
-      </div>
-      <!-- 2 · recipe card | how to make -->
-      <div class="mx-row mx-how">
-        <figure class="mx-frame mx-cardimg"><img src="mix-midnight-monsoon-card.webp" alt="Midnight Monsoon — Thẻ công thức" loading="lazy" width="900" height="1600"><figcaption>Thẻ công thức</figcaption></figure>
-        <div class="mx-howto">
-          <div class="mx-label mx-how-h">Cách pha</div>
-          <div class="mx-cols">
-            <div>
-              <div class="mx-label">Nguyên liệu</div>
-              <ul class="mx-ing">
-            <li><span>Rum lâu năm</span><span>30 ml</span></li>
-            <li class="is-ember"><span>Morning Ember</span><span>3 g (3 muỗng cà phê)</span></li>
-            <li><span>Nước cốt chanh</span><span>5 ml</span></li>
-            <li><span>Coca-Cola</span><span>Thêm cho đầy</span></li>
-              </ul>
-            </div>
-            <div>
-              <div class="mx-label">Cách pha</div>
-              <ol class="mx-steps">
-            <li>Cho Morning Ember, rum lâu năm và nước cốt chanh vào ly.</li>
-            <li>Khuấy đều đến khi bột tan hoàn toàn.</li>
-            <li>Thêm đá, rót Coca-Cola cho đầy và khuấy nhẹ.</li>
-            <li>Trang trí bằng một lát chanh và thưởng thức.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
     <article class="mx-recipe" id="the-red-hood" data-cat="cocktails" data-ember="still">
       <!-- 1 · finished serve -->
       <div class="mx-row mx-open">
         <figure class="mx-frame mx-serve"><img src="mix-the-red-hood.webp" alt="The Red Hood — Still Ember" loading="lazy" width="900" height="1600"></figure>
         <div class="mx-intro">
-          <div class="mx-num">03</div>
+          <div class="mx-num">02</div>
           <h2 class="mx-name">The Red Hood</h2>
           <div class="mx-meta"><span class="mx-ember still">Pha cùng Still Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
           <p class="mx-tag">Lady Triệu Gin lắc cùng tía tô, đinh hương và tắc của Still Ember.</p>
@@ -702,6 +667,46 @@ footer{
             <li>Lắc mạnh đến khi bột tan hoàn toàn.</li>
             <li>Lọc ra ly cocktail đã ướp lạnh, rót thêm nước tonic.</li>
             <li>Trang trí bằng vỏ cam xoắn và thưởng thức.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="mx-recipe" id="midnight-monsoon" data-cat="cocktails" data-ember="morning">
+      <!-- 1 · finished serve -->
+      <div class="mx-row mx-open">
+        <figure class="mx-frame mx-serve"><img src="mix-midnight-monsoon.webp" alt="Midnight Monsoon — Morning Ember" loading="lazy" width="900" height="1600"></figure>
+        <div class="mx-intro">
+          <div class="mx-num">03</div>
+          <h2 class="mx-name">Midnight Monsoon</h2>
+          <div class="mx-meta"><span class="mx-ember morning">Pha cùng Morning Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
+          <p class="mx-tag">Rum lâu năm và cola, thêm chiều sâu từ gừng, sả và chanh. Một ly highball cho đêm mưa.</p>
+          <div class="mx-specs"><div><b>Ly</b>Ly highball</div><div><b>Trang trí</b>Lát chanh</div></div>
+        </div>
+      </div>
+      <!-- 2 · recipe card | how to make -->
+      <div class="mx-row mx-how">
+        <figure class="mx-frame mx-cardimg"><img src="mix-midnight-monsoon-card.webp" alt="Midnight Monsoon — Thẻ công thức" loading="lazy" width="900" height="1600"><figcaption>Thẻ công thức</figcaption></figure>
+        <div class="mx-howto">
+          <div class="mx-label mx-how-h">Cách pha</div>
+          <div class="mx-cols">
+            <div>
+              <div class="mx-label">Nguyên liệu</div>
+              <ul class="mx-ing">
+            <li><span>Rum lâu năm</span><span>30 ml</span></li>
+            <li class="is-ember"><span>Morning Ember</span><span>3 g (3 muỗng cà phê)</span></li>
+            <li><span>Nước cốt chanh</span><span>5 ml</span></li>
+            <li><span>Coca-Cola</span><span>Thêm cho đầy</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="mx-label">Cách pha</div>
+              <ol class="mx-steps">
+            <li>Cho Morning Ember, rum lâu năm và nước cốt chanh vào ly.</li>
+            <li>Khuấy đều đến khi bột tan hoàn toàn.</li>
+            <li>Thêm đá, rót Coca-Cola cho đầy và khuấy nhẹ.</li>
+            <li>Trang trí bằng một lát chanh và thưởng thức.</li>
               </ol>
             </div>
           </div>
