@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7GG42WSH6B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7GG42WSH6B');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mixology · TKG Naula — Cocktail & Mocktail</title>
+<meta name="description" content="Công thức cocktail và mocktail đặc trưng pha cùng Morning Ember và Still Ember, bột thảo mộc Việt sấy thăng hoa của TKG.">
+<link rel="icon" type="image/webp" href="TKG-logo.webp">
+<link rel="canonical" href="https://www.tkg-naula.com/mixology_vi.html">
+<link rel="alternate" hreflang="en" href="https://www.tkg-naula.com/mixology.html">
+<link rel="alternate" hreflang="vi" href="https://www.tkg-naula.com/mixology_vi.html">
+<meta property="og:title" content="Mixology · TKG Naula — Cocktail & Mocktail">
+<meta property="og:description" content="Công thức cocktail và mocktail đặc trưng pha cùng Morning Ember và Still Ember, bột thảo mộc Việt sấy thăng hoa của TKG.">
+<meta property="og:image" content="https://www.tkg-naula.com/mix-the-red-hood.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET ─────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Be Vietnam Pro',system-ui,sans-serif;
+  background:#12110B;
+  color:#EDE8DC;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+
+/* ─── TOKENS ─────────────────────────────────────── */
+:root{
+  --bg:       #12110B;
+  --bg1:      #181610;
+  --bg2:      #1E1B13;
+  --fire:     #D45E29;
+  --fire2:    rgba(212,94,41,.14);
+  --perilla:  #74255E;
+  --perilla2: rgba(116,37,94,.18);
+  --gold:     #F9DA85;
+  --herb:     #CEE2B8;
+  --cream:    #EDE8DC;
+  --cream2:   #C4BFB1;
+  --cream3:   #ACA797;
+  --cream4:#969282;
+  --line:     rgba(255,255,255,.07);
+  --line2:    rgba(255,255,255,.12);
+  --serif:    'Cormorant Garamond',Georgia,serif;
+  --sans:     'Be Vietnam Pro',system-ui,sans-serif;
+}
+
+/* ─── NAV ────────────────────────────────────────── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(18,17,11,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:.5px solid var(--line);
+}
+.nav-w{
+  max-width:1280px;margin:0 auto;padding:0 48px;
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo img{
+  height:80px;width:auto;display:block;
+}
+/* Desktop Navigation */
+.nav-desktop{display:flex;align-items:center;gap:32px}
+.nav-desktop a{
+  font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream3);transition:color .2s;
+}
+.nav-desktop a:hover{color:var(--cream)}
+
+/* Mobile Navigation */
+.nav-mobile-btn{display:none;cursor:pointer;background:transparent;border:none;padding:8px}
+.nav-mobile-btn span{display:block;width:20px;height:2px;background:var(--cream);margin:4px 0;transition:all .3s}
+.nav-mobile{
+  position:fixed;top:56px;left:0;right:0;
+  background:rgba(18,17,11,.98);backdrop-filter:blur(14px);
+  flex-direction:column;gap:0;padding:20px 0;
+  transform:translateY(-100%);transition:transform .3s;
+  border-bottom:1px solid var(--line);
+  display:none;
+}
+.nav-mobile.active{transform:translateY(0);display:flex}
+.nav-mobile a{
+  font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream3);transition:color .2s;
+  padding:16px 24px;border-bottom:.5px solid var(--line);text-align:left;
+}
+.nav-mobile a:last-child{border-bottom:none}
+.nav-mobile a:hover{color:var(--cream)}
+
+/* Navigation Button */
+.nav-btn{
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--fire);color:#fff;
+  padding:8px 20px;border-radius:2px;transition:opacity .2s;
+}
+.nav-btn:hover{opacity:.85}
+
+/* Language Toggle */
+.lang-toggle{
+  display:flex;align-items:center;
+  border:.5px solid var(--line2);border-radius:20px;
+  overflow:hidden;flex-shrink:0;
+}
+.lang-toggle a{
+  display:flex;align-items:center;justify-content:center;
+  width:28px;height:22px;padding:0;
+  transition:opacity .2s,background .2s;
+  opacity:.45;
+}
+.lang-toggle a svg{display:block;width:18px;height:13px;border-radius:2px}
+.lang-toggle a.active{opacity:1;background:rgba(255,255,255,.06)}
+.lang-toggle a:not(.active):hover{opacity:.75}
+.nav-mobile .lang-toggle{display:none}
+
+/* Mobile language toggle — sits next to logo, always visible */
+.nav-right-mobile{display:none;align-items:center;gap:8px}
+
+/* ─── S8 · FOOTER ────────────────────────────────── */
+footer{
+  background:var(--bg1);
+  border-top:.5px solid var(--line);
+}
+.foot-top{
+  max-width:1280px;margin:0 auto;padding:56px 80px 48px;
+  display:grid;grid-template-columns:auto 1fr auto;gap:64px;align-items:start;
+}
+.foot-brand img{
+  height:48px;width:auto;display:block;opacity:.85;
+}
+.foot-sub{
+  font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream4);margin-top:6px;
+}
+.foot-sub2{
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--fire);margin-top:4px;
+}
+.foot-nav{display:flex;gap:48px}
+.foot-col-title{
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream4);margin-bottom:14px;
+}
+.foot-col a{
+  display:block;font-size:13.5px;font-weight:300;color:var(--cream3);
+  margin-bottom:10px;transition:color .2s;
+}
+.foot-col a:hover{color:var(--cream)}
+.foot-bottom{
+  max-width:1280px;margin:0 auto;padding:20px 80px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:.5px solid var(--line);
+}
+.foot-copy{font-size:9.5px;color:var(--cream4);letter-spacing:.06em}
+.foot-social{display:flex;gap:14px;align-items:center;}
+.foot-social a{color:var(--cream4);display:flex;transition:color .2s;}
+.foot-social a:hover{color:var(--cream);}
+.foot-social svg{width:16px;height:16px;}
+
+/* ─── PLACEHOLDER ────────────────────────────────── */
+.ph{
+  background:var(--bg2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;color:var(--cream4);
+}
+.ph svg{opacity:.22}
+.ph span{font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+
+/* ─── ORDER POPUP MODAL ───────────────────────────── */
+.order-modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.8);z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;visibility:hidden;
+  transition:opacity .3s,visibility .3s;
+}
+.order-modal[style*="flex"]{
+  opacity:1;visibility:visible;
+}
+.modal-overlay{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.6);
+}
+.modal-content{
+  position:relative;background:var(--bg1);
+  border-radius:8px;max-width:480px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  border:1px solid var(--line2);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:32px;height:32px;border:none;background:transparent;
+  color:var(--cream3);font-size:20px;cursor:pointer;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;z-index:1;
+}
+.modal-close:hover{background:var(--line2);color:var(--cream)}
+.modal-header{
+  padding:32px 32px 24px;border-bottom:1px solid var(--line);
+}
+.modal-title{
+  font-family:var(--serif);font-size:28px;font-weight:400;
+  color:var(--cream);margin-bottom:8px;line-height:1.2;
+}
+.modal-subtitle{
+  font-size:15.5px;font-weight:300;color:var(--cream3);
+  line-height:1.5;
+}
+.order-form{
+  padding:32px;
+}
+.form-group{
+  margin-bottom:24px;
+}
+.form-group label{
+  display:block;font-size:13.5px;font-weight:500;
+  color:var(--cream2);margin-bottom:8px;letter-spacing:.02em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;padding:12px 16px;background:var(--bg);
+  border:1px solid var(--line2);border-radius:4px;
+  color:var(--cream);font-size:14px;font-family:var(--sans);
+  transition:border-color .2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  outline:none;border-color:var(--fire);
+}
+.form-group textarea{
+  resize:vertical;min-height:80px;
+}
+.submit-btn{
+  width:100%;background:var(--fire);color:#fff;
+  border:none;padding:14px 24px;border-radius:4px;
+  font-size:12px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;
+  transition:opacity .2s;
+}
+.submit-btn:hover{opacity:.85}
+.modal-footer{
+  padding:24px 32px 32px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;gap:12px;
+}
+.hotline-info{
+  font-size:14.5px;color:var(--cream2);
+}
+.hotline-info strong{
+  color:var(--cream);
+}
+.product-origin{
+  font-size:11px;font-style:italic;
+  color:var(--cream4);text-align:center;
+  font-family:var(--serif);
+}
+
+/* ─── Nav dropdown (Products / In Practice) ───────── */
+.nav-item-dd{position:relative}
+.nav-item-dd>a{display:inline-flex;align-items:center;gap:4px}
+.nav-dd-caret{font-size:8px;opacity:.6}
+.nav-dd-menu{
+  position:absolute;top:100%;left:0;margin-top:18px;
+  background:rgba(18,17,11,.98);backdrop-filter:blur(14px);
+  border:.5px solid var(--line2);min-width:190px;padding:8px 0;
+  opacity:0;visibility:hidden;transform:translateY(4px);
+  transition:opacity .18s ease,transform .18s ease,visibility .18s;
+  z-index:200;
+}
+.nav-item-dd:hover .nav-dd-menu,.nav-item-dd:focus-within .nav-dd-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-dd-menu a{display:block;padding:10px 20px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3)}
+.nav-dd-menu a:hover{color:var(--gold);background:rgba(255,255,255,.03)}
+
+
+/* ═══ MIXOLOGY PAGE ═══════════════════════════════════ */
+.nav-desktop a.is-current{color:var(--cream)}
+.mx-hero{position:relative;overflow:hidden;border-bottom:.5px solid var(--line)}
+.mx-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(60% 80% at 85% 0%,rgba(212,94,41,.16),transparent 60%),
+    radial-gradient(50% 70% at 0% 100%,rgba(116,37,94,.18),transparent 60%);
+}
+.mx-hero-w{position:relative;max-width:1280px;margin:0 auto;padding:104px 80px 72px}
+.mx-eyebrow{font-size:10px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--fire)}
+.mx-h1{
+  font-family:var(--serif);font-weight:400;font-size:clamp(46px,6.4vw,96px);
+  line-height:1;letter-spacing:-.01em;color:var(--cream);margin:22px 0 26px;
+}
+.mx-h1 em{font-style:italic;color:var(--gold)}
+.mx-sub{max-width:620px;font-size:15.5px;font-weight:300;line-height:1.8;color:var(--cream2)}
+.mx-note{
+  display:inline-flex;align-items:center;gap:10px;margin-top:28px;
+  font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cream3);
+}
+.mx-note::before{content:"";width:28px;height:.5px;background:var(--cream4)}
+
+/* toolbar */
+.mx-bar{position:sticky;top:56px;z-index:50;background:rgba(18,17,11,.94);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:.5px solid var(--line)}
+.mx-bar-w{max-width:1280px;margin:0 auto;padding:0 80px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.mx-tabs{display:flex;gap:4px}
+.mx-tab{
+  position:relative;background:none;border:none;cursor:pointer;font-family:var(--sans);
+  font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cream3);
+  padding:20px 16px;transition:color .2s;display:inline-flex;align-items:center;gap:8px;
+}
+.mx-tab:hover{color:var(--cream)}
+.mx-tab[aria-selected="true"]{color:var(--cream)}
+.mx-tab[aria-selected="true"]::after{content:"";position:absolute;left:16px;right:16px;bottom:-.5px;height:2px;background:var(--fire)}
+.mx-count{font-size:9px;font-weight:700;color:var(--cream4);letter-spacing:.06em}
+.mx-soon{font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--gold);border:.5px solid rgba(249,218,133,.4);padding:2px 6px;border-radius:10px}
+.mx-filters{display:flex;gap:8px;padding:12px 0}
+.mx-chip{
+  background:none;cursor:pointer;font-family:var(--sans);
+  border:.5px solid var(--line2);border-radius:20px;padding:7px 14px;
+  font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cream3);
+  transition:all .2s;display:inline-flex;align-items:center;gap:7px;
+}
+.mx-chip i{width:7px;height:7px;border-radius:50%;display:inline-block}
+.mx-chip:hover{color:var(--cream);border-color:rgba(255,255,255,.25)}
+.mx-chip[aria-pressed="true"]{color:var(--cream);background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.3)}
+
+/* recipes */
+.mx-list{max-width:1280px;margin:0 auto;padding:24px 80px 40px}
+.mx-recipe{padding:80px 0;border-bottom:.5px solid var(--line)}
+.mx-recipe[hidden]{display:none}
+.mx-row{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:72px}
+.mx-open{align-items:center}
+.mx-how{margin-top:56px;padding-top:56px;border-top:.5px solid var(--line);align-items:start}
+.mx-frame{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--bg2);border-radius:2px;margin:0}
+.mx-frame img{position:absolute;inset:0}
+.mx-cardimg figcaption{
+  position:absolute;left:12px;top:12px;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream);background:rgba(18,17,11,.7);backdrop-filter:blur(6px);padding:6px 10px;border-radius:2px;
+}
+.mx-cardimg.is-empty{display:block}
+.mx-howto{position:sticky;top:140px}
+.mx-label.mx-how-h{color:var(--fire);margin-bottom:28px}
+.mx-ph{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;
+}
+.mx-ph-name{font-family:var(--serif);font-style:italic;font-size:clamp(34px,3.4vw,48px);color:var(--cream);line-height:1.05}
+.mx-ph-sub{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cream4)}
+.mx-ph.still{background:radial-gradient(80% 60% at 50% 30%,rgba(116,37,94,.45),transparent 70%),var(--bg2)}
+.mx-ph.morning{background:radial-gradient(80% 60% at 50% 30%,rgba(212,94,41,.38),transparent 70%),var(--bg2)}
+
+.mx-num{font-family:var(--serif);font-size:15px;color:var(--cream4);letter-spacing:.1em}
+.mx-name{font-family:var(--serif);font-weight:400;font-size:clamp(44px,5vw,76px);line-height:1;color:var(--cream);margin:10px 0 18px}
+.mx-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:24px}
+.mx-ember{
+  display:inline-flex;align-items:center;gap:8px;font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  padding:6px 12px;border-radius:2px;
+}
+.mx-ember.morning{color:#F2A27A;background:var(--fire2)}
+.mx-ember.still{color:#D69BC4;background:var(--perilla2)}
+.mx-partner{font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cream4)}
+.mx-tag{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.45;color:var(--cream2);max-width:560px}
+.mx-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.mx-label{font-size:9.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--cream4);margin-bottom:14px}
+.mx-ing{list-style:none}
+.mx-ing li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:.5px solid var(--line);font-size:14px}
+.mx-ing li span:first-child{color:var(--cream);font-weight:400}
+.mx-ing li span:last-child{color:var(--cream3);font-weight:300;white-space:nowrap}
+.mx-ing li.is-ember span:first-child{color:var(--gold);font-weight:500}
+.mx-steps{list-style:none;counter-reset:s}
+.mx-steps li{counter-increment:s;position:relative;padding:0 0 14px 34px;font-size:14px;font-weight:300;line-height:1.65;color:var(--cream2)}
+.mx-steps li::before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:0;top:2px;
+  font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--fire);
+}
+.mx-specs{display:flex;gap:32px;margin-top:28px;padding-top:16px;border-top:.5px solid var(--line);max-width:560px}
+.mx-specs div{font-size:13px;font-weight:300;color:var(--cream2)}
+.mx-specs b{display:block;font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--cream4);margin-bottom:4px}
+
+.mx-empty{max-width:640px;margin:0 auto;padding:120px 24px;text-align:center}
+.mx-empty[hidden]{display:none}
+.mx-empty-mark{font-family:var(--serif);font-size:56px;color:var(--fire);line-height:1;margin-bottom:18px}
+.mx-empty h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);color:var(--cream);margin-bottom:14px}
+.mx-empty p{font-size:15px;font-weight:300;line-height:1.8;color:var(--cream3)}
+
+/* tips */
+.mx-tips{border-top:.5px solid var(--line);background:var(--bg1)}
+.mx-tips-w{max-width:1280px;margin:0 auto;padding:88px 80px}
+.mx-sec-h{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.2vw,46px);line-height:1.1;color:var(--cream);margin:14px 0 44px}
+.mx-tip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:.5px solid var(--line)}
+.mx-tip{background:var(--bg1);padding:32px 28px}
+.mx-tip-n{font-size:10px;font-weight:700;color:var(--fire);letter-spacing:.1em}
+.mx-tip-t{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--cream);margin:12px 0 10px}
+.mx-tip-b{font-size:14px;font-weight:300;line-height:1.75;color:var(--cream3)}
+
+/* cta */
+.mx-cta{max-width:1280px;margin:0 auto;padding:96px 80px;display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end}
+.mx-cta p{font-size:15px;font-weight:300;line-height:1.8;color:var(--cream2);max-width:460px}
+.mx-cta-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.mx-btn{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:14px 26px;border-radius:2px;transition:all .2s}
+.mx-btn.fire{background:var(--fire);color:#fff}
+.mx-btn.fire:hover{opacity:.85}
+.mx-btn.ghost{border:.5px solid var(--line2);color:var(--cream)}
+.mx-btn.ghost:hover{background:rgba(255,255,255,.05)}
+.mx-legal{font-size:11.5px;font-weight:300;font-style:italic;line-height:1.7;color:var(--cream4);border-left:1px solid var(--line2);padding-left:20px}
+
+/* responsive */
+@media(max-width:1024px){
+  .nav-desktop{display:none}
+  .nav-mobile-btn{display:block}
+  .nav-mobile{display:none}
+  .nav-right-mobile{display:flex}
+  .nav-w{padding:0 24px}
+  .mx-hero-w{padding:80px 40px 56px}
+  .mx-bar-w,.mx-list,.mx-tips-w{padding-left:40px;padding-right:40px}
+  .mx-cta{padding:72px 40px;grid-template-columns:1fr;gap:32px}
+  .mx-row{gap:44px}
+  .foot-top{grid-template-columns:1fr;gap:36px;padding:48px 40px 40px}
+  .foot-bottom{padding:20px 40px 28px}
+  .modal-content{margin:20px;max-height:85vh}
+}
+@media(max-width:760px){
+  .mx-hero-w{padding:64px 24px 44px}
+  .mx-bar-w{padding:0 12px;gap:0}
+  .mx-tabs{width:100%;overflow-x:auto;scrollbar-width:none}
+  .mx-tabs::-webkit-scrollbar{display:none}
+  .mx-tab{padding:16px 12px;white-space:nowrap}
+  .mx-tab[aria-selected="true"]::after{left:12px;right:12px}
+  .mx-filters{width:100%;padding:0 0 12px 12px;overflow-x:auto}
+  .mx-chip{white-space:nowrap}
+  .mx-list{padding:0 24px 24px}
+  .mx-recipe{padding:48px 0}
+  .mx-row{grid-template-columns:1fr;gap:28px}
+  .mx-frame{width:100%;max-width:380px;margin:0 auto}
+  .mx-how{margin-top:40px;padding-top:40px}
+  .mx-cardimg.is-empty{display:none}
+  .mx-howto{position:static}
+  .mx-name{font-size:44px}
+  .mx-ing li span:last-child{white-space:normal;text-align:right}
+  .mx-cols{grid-template-columns:1fr;gap:28px}
+  .mx-tag{font-size:19px;margin-bottom:28px}
+  .mx-tips-w{padding:64px 24px}
+  .mx-tip-grid{grid-template-columns:1fr}
+  .mx-cta{padding:64px 24px}
+  .foot-top{padding:40px 24px 32px}
+  .foot-nav{flex-direction:column;gap:28px}
+  .foot-bottom{padding:20px 24px 28px;flex-direction:column;gap:14px;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════ -->
+<nav>
+  <div class="nav-w">
+    <a href="index_vi.html" class="nav-logo">
+      <img src="TKG-logo.webp" alt="TKG">
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="nav-desktop">
+      <div class="nav-item-dd">
+        <a href="products_vi.html">Sản phẩm <span class="nav-dd-caret">▾</span></a>
+        <div class="nav-dd-menu">
+          <a href="products_vi.html">Bộ Sưu Tập Hỏa</a>
+          <a href="morning-ember_vi.html">Morning Ember</a>
+          <a href="still-ember_vi.html">Still Ember</a>
+          <a href="comboember_vi.html">Combo Ember — Câu Chuyện</a>
+        </div>
+      </div>
+      <a href="world-of-naula_vi.html">Naula</a>
+      <a href="in-practice.html">In Practice</a>
+      <div class="nav-item-dd">
+        <a href="mixology_vi.html" class="is-current" aria-current="page">Mixology <span class="nav-dd-caret">▾</span></a>
+        <div class="nav-dd-menu">
+          <a href="mixology_vi.html#cocktails">Cocktail</a>
+          <a href="mixology_vi.html#mocktails">Mocktail</a>
+        </div>
+      </div>
+      <div class="nav-item-dd">
+        <a href="founders_vi.html">Giới thiệu <span class="nav-dd-caret">▾</span></a>
+        <div class="nav-dd-menu">
+          <a href="founders_vi.html">Người Sáng Lập</a>
+          <a href="https://thienkien.com" target="_blank" rel="noopener">Thiện Kiến</a>
+          <a href="vg2-savvi-landing.html">Chương Trình VG2</a>
+        </div>
+      </div>
+      <div class="lang-toggle">
+        <a href="mixology.html" onclick="switchLang('en'); return false;" aria-label="English">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
+        </a>
+        <a href="mixology_vi.html" class="active" aria-label="Tiếng Việt">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
+        </a>
+      </div>
+      <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Đặt hàng</a>
+    </div>
+
+    <!-- Mobile: language toggle + hamburger -->
+    <div class="nav-right-mobile">
+      <div class="lang-toggle">
+        <a href="mixology.html" onclick="switchLang('en'); return false;" aria-label="English">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#B22234"/><g fill="#fff"><rect y="1.38" width="24" height="1.38"/><rect y="4.15" width="24" height="1.38"/><rect y="6.92" width="24" height="1.38"/><rect y="9.69" width="24" height="1.38"/><rect y="12.46" width="24" height="1.38"/><rect y="15.23" width="24" height="1.38"/></g><rect width="9.6" height="9.69" fill="#3C3B6E"/></svg>
+        </a>
+        <a href="mixology_vi.html" class="active" aria-label="Tiếng Việt">
+          <svg viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="18" fill="#DA251D"/><polygon points="12,4 13.76,9.27 19.27,9.27 14.76,12.55 16.51,17.82 12,14.55 7.49,17.82 9.24,12.55 4.73,9.27 10.24,9.27" fill="#FFFF00"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile Navigation Button -->
+      <button class="nav-mobile-btn" onclick="toggleMobileNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="nav-mobile">
+      <a href="products_vi.html">Sản phẩm</a>
+      <a href="morning-ember_vi.html" style="padding-left:36px;font-size:11px;">— Morning Ember</a>
+      <a href="still-ember_vi.html" style="padding-left:36px;font-size:11px;">— Still Ember</a>
+      <a href="comboember_vi.html" style="padding-left:36px;font-size:11px;">— Combo Ember, Câu Chuyện</a>
+      <a href="world-of-naula_vi.html">Naula</a>
+      <a href="in-practice.html">In Practice</a>
+      <a href="mixology_vi.html">Mixology</a>
+      <a href="mixology_vi.html#cocktails" style="padding-left:36px;font-size:11px;">— Cocktail</a>
+      <a href="mixology_vi.html#mocktails" style="padding-left:36px;font-size:11px;">— Mocktail</a>
+      <a href="founders_vi.html">Giới thiệu</a>
+      <a href="https://thienkien.com" target="_blank" rel="noopener" style="padding-left:36px;font-size:11px;">— Thiện Kiến</a>
+      <a href="vg2-savvi-landing.html" style="padding-left:36px;font-size:11px;">— Chương Trình VG2</a>
+      <a href="#" onclick="openOrderModal(); return false;" class="nav-btn">Đặt hàng</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════ -->
+<header class="mx-hero">
+  <div class="mx-hero-w">
+    <div class="mx-eyebrow">TKG · Mixology</div>
+    <h1 class="mx-h1">Naula, <em>sau quầy bar.</em></h1>
+    <p class="mx-sub">Những công thức đặc trưng từ Morning Ember và Still Ember: thảo mộc Việt sấy thăng hoa, tan thẳng vào rượu, nước trái cây hay soda. Bắt đầu với cocktail. Mocktail và nhiều cách pha khác sẽ sớm có mặt.</p>
+    <div class="mx-note">1 muỗng cà phê gạt ngang ≈ 1 g bột</div>
+  </div>
+</header>
+
+<!-- ═══ TABS + FILTERS ════════════════════════════ -->
+<div class="mx-bar">
+  <div class="mx-bar-w">
+    <div class="mx-tabs" role="tablist">
+      <button class="mx-tab" role="tab" data-tab="cocktails" aria-selected="false">Cocktail <span class="mx-count">3</span></button>
+      <button class="mx-tab" role="tab" data-tab="mocktails" aria-selected="false">Mocktail <span class="mx-count">1</span></button>
+      <button class="mx-tab" role="tab" data-tab="more" aria-selected="false">Cách pha khác <span class="mx-soon">Sắp có</span></button>
+    </div>
+    <div class="mx-filters">
+      <button class="mx-chip" data-ember="all" aria-pressed="true">Tất cả</button>
+      <button class="mx-chip" data-ember="morning" aria-pressed="false"><i style="background:var(--fire)"></i>Morning Ember</button>
+      <button class="mx-chip" data-ember="still" aria-pressed="false"><i style="background:#A2477F"></i>Still Ember</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ RECIPES ═══════════════════════════════════
+     To add a serve: copy one <article class="mx-recipe"> block,
+     set data-cat = cocktails | mocktails | more, and data-ember = morning | still.
+     Tab counts are computed automatically on load.  -->
+<main id="cocktails">
+  <section class="mx-list" id="recipes">
+    <article class="mx-recipe" id="the-hunter" data-cat="cocktails" data-ember="morning">
+      <!-- 1 · finished serve -->
+      <div class="mx-row mx-open">
+        <figure class="mx-frame mx-serve"><img src="mix-the-hunter.webp" alt="The Hunter — Morning Ember" loading="lazy" width="900" height="1600"></figure>
+        <div class="mx-intro">
+          <div class="mx-num">01</div>
+          <h2 class="mx-name">The Hunter</h2>
+          <div class="mx-meta"><span class="mx-ember morning">Pha cùng Morning Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
+          <p class="mx-tag">Gin quyện hơi ấm gừng – sả của Morning Ember, nâng lên bởi chanh và mật ong.</p>
+          <div class="mx-specs"><div><b>Ly</b>Ly rocks</div><div><b>Trang trí</b>Chanh</div></div>
+        </div>
+      </div>
+      <!-- 2 · recipe card | how to make -->
+      <div class="mx-row mx-how">
+        <figure class="mx-frame mx-cardimg"><img src="mix-the-hunter-card.webp" alt="The Hunter — Thẻ công thức" loading="lazy" width="900" height="1600"><figcaption>Thẻ công thức</figcaption></figure>
+        <div class="mx-howto">
+          <div class="mx-label mx-how-h">Cách pha</div>
+          <div class="mx-cols">
+            <div>
+              <div class="mx-label">Nguyên liệu</div>
+              <ul class="mx-ing">
+            <li><span>Lady Triệu Gin</span><span>35 ml</span></li>
+            <li class="is-ember"><span>Morning Ember</span><span>3 g (3 muỗng cà phê)</span></li>
+            <li><span>Nước cốt chanh</span><span>10 ml</span></li>
+            <li><span>Mật ong</span><span>10 ml</span></li>
+            <li><span>Nước tonic</span><span>Thêm cho đầy</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="mx-label">Cách pha</div>
+              <ol class="mx-steps">
+            <li>Cho Morning Ember, gin, nước cốt chanh và mật ong vào ly.</li>
+            <li>Khuấy đều đến khi bột tan hoàn toàn.</li>
+            <li>Thêm đá, rót nước tonic cho đầy và khuấy nhẹ.</li>
+            <li>Trang trí bằng chanh và thưởng thức.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="mx-recipe" id="midnight-monsoon" data-cat="cocktails" data-ember="morning">
+      <!-- 1 · finished serve -->
+      <div class="mx-row mx-open">
+        <figure class="mx-frame mx-serve"><img src="mix-midnight-monsoon.webp" alt="Midnight Monsoon — Morning Ember" loading="lazy" width="900" height="1600"></figure>
+        <div class="mx-intro">
+          <div class="mx-num">02</div>
+          <h2 class="mx-name">Midnight Monsoon</h2>
+          <div class="mx-meta"><span class="mx-ember morning">Pha cùng Morning Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
+          <p class="mx-tag">Rum lâu năm và cola, thêm chiều sâu từ gừng, sả và chanh. Một ly highball cho đêm mưa.</p>
+          <div class="mx-specs"><div><b>Ly</b>Ly highball</div><div><b>Trang trí</b>Lát chanh</div></div>
+        </div>
+      </div>
+      <!-- 2 · recipe card | how to make -->
+      <div class="mx-row mx-how">
+        <figure class="mx-frame mx-cardimg"><img src="mix-midnight-monsoon-card.webp" alt="Midnight Monsoon — Thẻ công thức" loading="lazy" width="900" height="1600"><figcaption>Thẻ công thức</figcaption></figure>
+        <div class="mx-howto">
+          <div class="mx-label mx-how-h">Cách pha</div>
+          <div class="mx-cols">
+            <div>
+              <div class="mx-label">Nguyên liệu</div>
+              <ul class="mx-ing">
+            <li><span>Rum lâu năm</span><span>30 ml</span></li>
+            <li class="is-ember"><span>Morning Ember</span><span>3 g (3 muỗng cà phê)</span></li>
+            <li><span>Nước cốt chanh</span><span>5 ml</span></li>
+            <li><span>Coca-Cola</span><span>Thêm cho đầy</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="mx-label">Cách pha</div>
+              <ol class="mx-steps">
+            <li>Cho Morning Ember, rum lâu năm và nước cốt chanh vào ly.</li>
+            <li>Khuấy đều đến khi bột tan hoàn toàn.</li>
+            <li>Thêm đá, rót Coca-Cola cho đầy và khuấy nhẹ.</li>
+            <li>Trang trí bằng một lát chanh và thưởng thức.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="mx-recipe" id="the-red-hood" data-cat="cocktails" data-ember="still">
+      <!-- 1 · finished serve -->
+      <div class="mx-row mx-open">
+        <figure class="mx-frame mx-serve"><img src="mix-the-red-hood.webp" alt="The Red Hood — Still Ember" loading="lazy" width="900" height="1600"></figure>
+        <div class="mx-intro">
+          <div class="mx-num">03</div>
+          <h2 class="mx-name">The Red Hood</h2>
+          <div class="mx-meta"><span class="mx-ember still">Pha cùng Still Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
+          <p class="mx-tag">Lady Triệu Gin lắc cùng tía tô, đinh hương và tắc của Still Ember.</p>
+          <div class="mx-specs"><div><b>Ly</b>Ly cocktail</div><div><b>Trang trí</b>Vỏ cam xoắn</div></div>
+        </div>
+      </div>
+      <!-- 2 · recipe card | how to make -->
+      <div class="mx-row mx-how">
+        <figure class="mx-frame mx-cardimg"><img src="mix-the-red-hood-card.webp" alt="The Red Hood — Thẻ công thức" loading="lazy" width="900" height="1600"><figcaption>Thẻ công thức</figcaption></figure>
+        <div class="mx-howto">
+          <div class="mx-label mx-how-h">Cách pha</div>
+          <div class="mx-cols">
+            <div>
+              <div class="mx-label">Nguyên liệu</div>
+              <ul class="mx-ing">
+            <li><span>Lady Triệu Gin</span><span>35 ml</span></li>
+            <li class="is-ember"><span>Still Ember</span><span>3 g (3 muỗng cà phê)</span></li>
+            <li><span>Nước cốt tắc</span><span>10 ml</span></li>
+            <li><span>Siro đường</span><span>10 ml</span></li>
+            <li><span>Nước tonic</span><span>Thêm cho đầy</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="mx-label">Cách pha</div>
+              <ol class="mx-steps">
+            <li>Cho gin, Still Ember, nước cốt tắc, siro đường và đá vào bình lắc.</li>
+            <li>Lắc mạnh đến khi bột tan hoàn toàn.</li>
+            <li>Lọc ra ly cocktail đã ướp lạnh, rót thêm nước tonic.</li>
+            <li>Trang trí bằng vỏ cam xoắn và thưởng thức.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="mx-recipe" id="tropical-island" data-cat="mocktails" data-ember="still">
+      <!-- 1 · finished serve -->
+      <div class="mx-row mx-open">
+        <figure class="mx-frame mx-serve"><div class="mx-ph still"><div class="mx-ph-name">Tropical Island</div><div class="mx-ph-sub">Ảnh sắp ra mắt</div></div></figure>
+        <div class="mx-intro">
+          <div class="mx-num">01</div>
+          <h2 class="mx-name">Tropical Island</h2>
+          <div class="mx-meta"><span class="mx-ember still">Pha cùng Still Ember</span></div>
+          <p class="mx-tag">Nước dừa cùng tía tô, đinh hương và tắc. Không cồn, dành cho những buổi chiều dài.</p>
+          <div class="mx-specs"><div><b>Ly</b>Ly highball</div></div>
+        </div>
+      </div>
+      <!-- 2 · recipe card | how to make -->
+      <div class="mx-row mx-how">
+        <div class="mx-cardimg is-empty"></div>
+        <div class="mx-howto">
+          <div class="mx-label mx-how-h">Cách pha</div>
+          <div class="mx-cols">
+            <div>
+              <div class="mx-label">Nguyên liệu</div>
+              <ul class="mx-ing">
+            <li class="is-ember"><span>Still Ember</span><span>2 g (2 muỗng cà phê)</span></li>
+            <li><span>Nước dừa</span><span>100 ml</span></li>
+            <li><span>Nước cốt tắc</span><span>5 ml</span></li>
+            <li><span>Siro đường</span><span>15 ml</span></li>
+            <li><span>Nước soda</span><span>30 ml (thêm cho đầy)</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="mx-label">Cách pha</div>
+              <ol class="mx-steps">
+            <li>Cho Still Ember, nước dừa, nước cốt tắc và siro đường vào ly.</li>
+            <li>Khuấy đều đến khi bột tan hoàn toàn; điều chỉnh độ ngọt theo khẩu vị.</li>
+            <li>Thêm đá, rót nước soda cho đầy và khuấy nhẹ.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+  <div class="mx-empty" id="mxEmpty" hidden>
+    <div class="mx-empty-mark">火</div>
+    <h2 id="mxEmptyT">Nhiều cách pha mới đang được hoàn thiện.</h2>
+    <p id="mxEmptyB">Chúng tôi đang phát triển thêm những cách pha mới với Morning Ember và Still Ember. Hãy quay lại sớm, hoặc theo dõi TKG để thưởng thức trước.</p>
+  </div>
+  <span id="mocktails"></span><span id="more"></span>
+</main>
+
+<!-- ═══ TIPS ══════════════════════════════════════ -->
+<section class="mx-tips">
+  <div class="mx-tips-w">
+    <div class="mx-eyebrow">Pha cùng bột thảo mộc</div>
+    <h2 class="mx-sec-h">Ba thói quen cho một ly tròn vị.</h2>
+    <div class="mx-tip-grid">
+      <div class="mx-tip"><div class="mx-tip-n">01</div><div class="mx-tip-t">Hoà tan trước</div><p class="mx-tip-b">Khuấy hoặc lắc bột cùng rượu, nước trái cây hay siro trước khi thêm đá và soda.</p></div>
+      <div class="mx-tip"><div class="mx-tip-n">02</div><div class="mx-tip-t">Đong bằng muỗng</div><p class="mx-tip-b">Một muỗng cà phê gạt ngang khoảng 1 g. Giữ muỗng khô để bột luôn tơi.</p></div>
+      <div class="mx-tip"><div class="mx-tip-n">03</div><div class="mx-tip-t">Nêm theo khẩu vị</div><p class="mx-tip-b">Lượng chua và ngọt là điểm khởi đầu. Điều chỉnh theo loại rượu và khách của bạn.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══════════════════════════════════════ -->
+<section class="mx-cta">
+  <div>
+    <div class="mx-eyebrow">Dành cho bar, khách sạn & nhà hàng</div>
+    <h2 class="mx-sec-h" style="margin-bottom:18px">Đưa Naula vào menu của bạn.</h2>
+    <p>TKG đồng hành cùng các đối tác hospitality xây dựng những ly đặc trưng quanh Morning Ember và Still Ember.</p>
+    <div class="mx-cta-btns">
+      <a href="#" onclick="openOrderModal(); return false;" class="mx-btn fire">Đặt hàng</a>
+      <a href="mailto:tkg.naula@gmail.com?subject=Mixology%20%C2%B7%20TKG%20Naula" class="mx-btn ghost">Liên hệ</a>
+    </div>
+  </div>
+  <p class="mx-legal">Các cocktail trên trang có chứa cồn. Vui lòng thưởng thức có trách nhiệm và chỉ khi đủ tuổi theo quy định.</p>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════ -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand"><img src="TKG-logo.webp" alt="TKG"></div>
+      <div class="foot-sub">Thiện Kiến</div>
+      <div class="foot-sub2">Sản phẩm Việt Nam</div>
+    </div>
+    <div class="foot-nav">
+      <div class="foot-col">
+        <div class="foot-col-title">Điều Hướng</div>
+        <a href="world-of-naula_vi.html">Phương Pháp Naula</a>
+        <a href="products_vi.html">Sản Phẩm</a>
+        <a href="product-evidence_vi.html">Bằng Chứng Sản Phẩm</a>
+        <a href="in-practice.html">In Practice</a>
+        <a href="mixology_vi.html">Mixology</a>
+        <a href="founders_vi.html">Người Sáng Lập</a>
+        <a href="vg2-savvi-landing.html">Chương Trình VG2</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title">Hỗ Trợ</div>
+        <a href="faq_vi.html">Câu Hỏi Thường Gặp</a>
+        <a href="shipping.html">Vận Chuyển &amp; Đổi Trả</a>
+        <a href="https://thienkien.com" target="_blank" rel="noopener">thienkien.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-col-title">Sản xuất bởi Công ty TNHH Thương mại Dịch vụ THIỆN KIẾN</div>
+      <div class="foot-col">
+        <a href="#">Địa chỉ: 279 lầu 2 đường Hậu Giang, Phường Bình Tây, TP. Hồ Chí Minh, Việt Nam</a>
+        <a href="#">Mã số thuế: 0317374438</a>
+        <a href="#">Email: tkg.naula@gmail.com</a>
+        <a href="#">Hotline: (+84) 976-847-789</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 Thiện Kiến · tkg-naula.com</div>
+    <div class="foot-social">
+      <a href="https://www.facebook.com/tkg.naula" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06Z"/></svg></a>
+      <a href="https://www.instagram.com/tkg.naula/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg></a>
+    </div>
+    <div class="foot-copy" style="font-style:italic;font-family:var(--serif);font-size:12px;letter-spacing:.06em;color:var(--cream4);">naula. naula. well. wellness.</div>
+  </div>
+</footer>
+
+<!-- ═══ ORDER POPUP MODAL ═════════════════════════ -->
+<div id="orderModal" class="order-modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeOrderModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeOrderModal()">×</button>
+    <div class="modal-header">
+      <h3 class="modal-title">Đặt Hàng Sản Phẩm TKG</h3>
+      <p class="modal-subtitle">Đặt hàng Morning Ember hoặc Still Ember</p>
+    </div>
+    <form class="order-form" onsubmit="submitOrderForm(event)">
+      <div class="form-group">
+        <label for="name">Họ và Tên *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Địa Chỉ Email *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Số Điện Thoại</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="product">Sản Phẩm *</label>
+        <select id="product" name="product" required>
+          <option value="">Chọn sản phẩm</option>
+          <option value="morning-ember">Morning Ember</option>
+          <option value="still-ember">Still Ember</option>
+          <option value="both">Cả Hai Sản Phẩm</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Số Lượng *</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Ghi Chú Thêm</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Gửi Yêu Cầu Đặt Hàng</button>
+    </form>
+    <div class="modal-footer">
+      <div class="hotline-info">
+        <strong>Hotline:</strong> (+84) 976-847-789
+      </div>
+      <div class="product-origin">Sản phẩm Việt Nam</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ─── Order Modal ─── */
+function openOrderModal() {
+  document.getElementById('orderModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeOrderModal() {
+  document.getElementById('orderModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+function submitOrderForm(event) {
+  event.preventDefault();
+  var formData = new FormData(event.target);
+  var subject = encodeURIComponent('TKG Order Request - ' + formData.get('product'));
+  var body = encodeURIComponent(
+    'Name: ' + formData.get('name') +
+    '\nEmail: ' + formData.get('email') +
+    '\nPhone: ' + formData.get('phone') +
+    '\nProduct: ' + formData.get('product') +
+    '\nQuantity: ' + formData.get('quantity') +
+    '\nMessage: ' + formData.get('message')
+  );
+  window.location.href = 'mailto:orders@tkg-naula.com?subject=' + subject + '&body=' + body;
+  alert('Cảm ơn bạn đã gửi yêu cầu đặt hàng! Chúng tôi sẽ liên hệ với bạn sớm nhất.');
+  closeOrderModal();
+}
+
+/* ─── Language Toggle (keeps the current tab) ─── */
+function switchLang(lang) {
+  if (lang === 'en') window.location.href = 'mixology.html' + window.location.hash;
+}
+
+/* ─── Mobile Nav ─── */
+function toggleMobileNav() {
+  const navMobile = document.querySelector('.nav-mobile');
+  navMobile.classList.toggle('active');
+  navMobile.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navMobile.classList.remove('active'));
+  });
+}
+
+/* ─── Mixology: tabs, filters, serve/recipe-card switch ─── */
+(function () {
+  const TABS = ['cocktails', 'mocktails', 'more'];
+  const EMPTY_SOON = {t: "Nhiều cách pha mới đang được hoàn thiện.", b: "Chúng tôi đang phát triển thêm những cách pha mới với Morning Ember và Still Ember. Hãy quay lại sớm, hoặc theo dõi TKG để thưởng thức trước."};
+  const EMPTY_NONE = "Chưa có công thức trong mục này.";
+  const recipes = [...document.querySelectorAll('.mx-recipe')];
+  const tabs = [...document.querySelectorAll('.mx-tab')];
+  const chips = [...document.querySelectorAll('.mx-chip')];
+  const empty = document.getElementById('mxEmpty');
+  let tab = 'cocktails', ember = 'all';
+
+  function render() {
+    let shown = 0, inTab = 0;
+    recipes.forEach(r => {
+      const okTab = r.dataset.cat === tab;
+      if (okTab) inTab++;
+      const ok = okTab && (ember === 'all' || r.dataset.ember === ember);
+      r.hidden = !ok; if (ok) shown++;
+    });
+    tabs.forEach(b => b.setAttribute('aria-selected', b.dataset.tab === tab));
+    chips.forEach(b => b.setAttribute('aria-pressed', b.dataset.ember === ember));
+    empty.hidden = shown > 0;
+    document.getElementById('mxEmptyT').textContent = inTab ? EMPTY_NONE : EMPTY_SOON.t;
+    document.getElementById('mxEmptyB').textContent = inTab ? '' : EMPTY_SOON.b;
+  }
+  function fromHash(scroll) {
+    const h = location.hash.replace('#', '');
+    if (TABS.includes(h)) { tab = h; ember = 'all'; }
+    else {
+      const r = document.getElementById(h);
+      if (r && r.classList.contains('mx-recipe')) { tab = r.dataset.cat; ember = 'all'; }
+    }
+    render();
+    if (scroll && h) {
+      const target = document.getElementById(h);
+      const el = (target && target.classList.contains('mx-recipe')) ? target : document.querySelector('.mx-bar');
+      requestAnimationFrame(() => el.scrollIntoView({behavior: 'smooth', block: 'start'}));
+    }
+  }
+  tabs.forEach(b => b.addEventListener('click', () => {
+    tab = b.dataset.tab;
+    history.replaceState(null, '', '#' + tab);
+    render();
+  }));
+  chips.forEach(b => b.addEventListener('click', () => { ember = b.dataset.ember; render(); }));
+  window.addEventListener('hashchange', () => fromHash(true));
+  fromHash(!!location.hash);
+})();
+</script>
+
+</body>
+</html>
