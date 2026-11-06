@@ -343,8 +343,12 @@ footer{
 .mx-recipe{padding:80px 0;border-bottom:.5px solid var(--line)}
 .mx-recipe[hidden]{display:none}
 .mx-row{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:72px}
-.mx-open{align-items:center}
-.mx-how{margin-top:56px;padding-top:56px;border-top:.5px solid var(--line);align-items:start}
+.mx-open{display:flex;flex-direction:column;align-items:center;text-align:center}
+.mx-open .mx-serve{width:100%;max-width:420px}
+.mx-open .mx-intro{margin-top:40px;max-width:640px}
+.mx-open .mx-meta,.mx-open .mx-specs{justify-content:center}
+.mx-open .mx-tag,.mx-open .mx-specs{margin-left:auto;margin-right:auto}
+.mx-how{grid-template-columns:minmax(0,7fr) minmax(0,4fr);margin-top:56px;padding-top:56px;border-top:.5px solid var(--line);align-items:start}
 .mx-frame{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--bg2);border-radius:2px;margin:0}
 .mx-frame img{position:absolute;inset:0}
 .mx-cardimg figcaption{
@@ -352,6 +356,7 @@ footer{
   color:var(--cream);background:rgba(18,17,11,.7);backdrop-filter:blur(6px);padding:6px 10px;border-radius:2px;
 }
 .mx-cardimg.is-empty{display:block}
+.mx-how .mx-cardimg{order:2}
 .mx-howto{position:sticky;top:140px}
 .mx-label.mx-how-h{color:var(--fire);margin-bottom:28px}
 .mx-ph{
@@ -627,52 +632,12 @@ footer{
         </div>
       </div>
     </article>
-    <article class="mx-recipe" id="midnight-monsoon" data-cat="cocktails" data-ember="morning">
-      <!-- 1 · finished serve -->
-      <div class="mx-row mx-open">
-        <figure class="mx-frame mx-serve"><img src="mix-midnight-monsoon.webp" alt="Midnight Monsoon — Morning Ember" loading="lazy" width="900" height="1600"></figure>
-        <div class="mx-intro">
-          <div class="mx-num">02</div>
-          <h2 class="mx-name">Midnight Monsoon</h2>
-          <div class="mx-meta"><span class="mx-ember morning">Made with Morning Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
-          <p class="mx-tag">Aged rum and cola, deepened with ginger, lemongrass and lime. A rainy-night highball.</p>
-          <div class="mx-specs"><div><b>Glass</b>Highball glass</div><div><b>Garnish</b>Lime wheel</div></div>
-        </div>
-      </div>
-      <!-- 2 · recipe card | how to make -->
-      <div class="mx-row mx-how">
-        <figure class="mx-frame mx-cardimg"><img src="mix-midnight-monsoon-card.webp" alt="Midnight Monsoon — Recipe card" loading="lazy" width="900" height="1600"><figcaption>Recipe card</figcaption></figure>
-        <div class="mx-howto">
-          <div class="mx-label mx-how-h">How to make</div>
-          <div class="mx-cols">
-            <div>
-              <div class="mx-label">Ingredients</div>
-              <ul class="mx-ing">
-            <li><span>Aged rum</span><span>30 ml</span></li>
-            <li class="is-ember"><span>Morning Ember</span><span>3 g (3 tsp)</span></li>
-            <li><span>Lime juice</span><span>5 ml</span></li>
-            <li><span>Coca-Cola</span><span>Top up</span></li>
-              </ul>
-            </div>
-            <div>
-              <div class="mx-label">Method</div>
-              <ol class="mx-steps">
-            <li>Add Morning Ember, aged rum and lime juice to the glass.</li>
-            <li>Stir until the powder is fully dissolved.</li>
-            <li>Add ice, top up with Coca-Cola and stir gently.</li>
-            <li>Garnish with a lime wheel and serve.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
     <article class="mx-recipe" id="the-red-hood" data-cat="cocktails" data-ember="still">
       <!-- 1 · finished serve -->
       <div class="mx-row mx-open">
         <figure class="mx-frame mx-serve"><img src="mix-the-red-hood.webp" alt="The Red Hood — Still Ember" loading="lazy" width="900" height="1600"></figure>
         <div class="mx-intro">
-          <div class="mx-num">03</div>
+          <div class="mx-num">02</div>
           <h2 class="mx-name">The Red Hood</h2>
           <div class="mx-meta"><span class="mx-ember still">Made with Still Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
           <p class="mx-tag">Lady Triệu Gin shaken with Still Ember's perilla, clove and kumquat.</p>
@@ -702,6 +667,46 @@ footer{
             <li>Shake hard until the powder is fully dissolved.</li>
             <li>Strain into a chilled cocktail glass and top up with tonic water.</li>
             <li>Garnish with a citrus peel twist and serve.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="mx-recipe" id="midnight-monsoon" data-cat="cocktails" data-ember="morning">
+      <!-- 1 · finished serve -->
+      <div class="mx-row mx-open">
+        <figure class="mx-frame mx-serve"><img src="mix-midnight-monsoon.webp" alt="Midnight Monsoon — Morning Ember" loading="lazy" width="900" height="1600"></figure>
+        <div class="mx-intro">
+          <div class="mx-num">03</div>
+          <h2 class="mx-name">Midnight Monsoon</h2>
+          <div class="mx-meta"><span class="mx-ember morning">Made with Morning Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
+          <p class="mx-tag">Aged rum and cola, deepened with ginger, lemongrass and lime. A rainy-night highball.</p>
+          <div class="mx-specs"><div><b>Glass</b>Highball glass</div><div><b>Garnish</b>Lime wheel</div></div>
+        </div>
+      </div>
+      <!-- 2 · recipe card | how to make -->
+      <div class="mx-row mx-how">
+        <figure class="mx-frame mx-cardimg"><img src="mix-midnight-monsoon-card.webp" alt="Midnight Monsoon — Recipe card" loading="lazy" width="900" height="1600"><figcaption>Recipe card</figcaption></figure>
+        <div class="mx-howto">
+          <div class="mx-label mx-how-h">How to make</div>
+          <div class="mx-cols">
+            <div>
+              <div class="mx-label">Ingredients</div>
+              <ul class="mx-ing">
+            <li><span>Aged rum</span><span>30 ml</span></li>
+            <li class="is-ember"><span>Morning Ember</span><span>3 g (3 tsp)</span></li>
+            <li><span>Lime juice</span><span>5 ml</span></li>
+            <li><span>Coca-Cola</span><span>Top up</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="mx-label">Method</div>
+              <ol class="mx-steps">
+            <li>Add Morning Ember, aged rum and lime juice to the glass.</li>
+            <li>Stir until the powder is fully dissolved.</li>
+            <li>Add ice, top up with Coca-Cola and stir gently.</li>
+            <li>Garnish with a lime wheel and serve.</li>
               </ol>
             </div>
           </div>
