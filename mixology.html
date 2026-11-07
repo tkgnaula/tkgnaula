@@ -422,6 +422,14 @@ footer{
 .mx-btn.ghost:hover{background:rgba(255,255,255,.05)}
 .mx-legal{font-size:11.5px;font-weight:300;font-style:italic;line-height:1.7;color:var(--cream4);border-left:1px solid var(--line2);padding-left:20px}
 
+/* group headings (After Hours → Mocktail / Cocktail) */
+.mx-group{display:flex;align-items:baseline;gap:18px;padding:72px 0 0;scroll-margin-top:130px}
+.mx-group[hidden]{display:none}
+.mx-group-h{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.6vw,52px);color:var(--cream);line-height:1}
+.mx-group-d{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fire)}
+.mx-group::after{content:"";flex:1;height:.5px;background:var(--line2);transform:translateY(-10px)}
+.mx-recipe{scroll-margin-top:110px}
+
 /* credit */
 .mx-credit{border-top:.5px solid var(--line)}
 .mx-credit p{max-width:1280px;margin:0 auto;padding:28px 80px;text-align:center;
@@ -467,6 +475,8 @@ footer{
   .mx-tip-grid{grid-template-columns:1fr}
   .mx-cta{padding:64px 24px}
   .mx-credit p{padding:24px}
+  .mx-group{padding-top:48px;gap:12px;flex-wrap:wrap}
+  .mx-group::after{display:none}
   .foot-top{padding:40px 24px 32px}
   .foot-nav{flex-direction:column;gap:28px}
   .foot-bottom{padding:20px 24px 28px;flex-direction:column;gap:14px;align-items:flex-start}
@@ -498,8 +508,8 @@ footer{
       <div class="nav-item-dd">
         <a href="mixology.html" class="is-current" aria-current="page">Mixology <span class="nav-dd-caret">▾</span></a>
         <div class="nav-dd-menu">
-          <a href="mixology.html#cocktails">Cocktails</a>
-          <a href="mixology.html#mocktails">Mocktails</a>
+          <a href="mixology.html#everyday">Everyday</a>
+          <a href="mixology.html#after-hours">After Hours</a>
         </div>
       </div>
       <div class="nav-item-dd">
@@ -549,8 +559,8 @@ footer{
       <a href="world-of-naula.html">Naula</a>
       <a href="in-practice.html">In Practice</a>
       <a href="mixology.html">Mixology</a>
-      <a href="mixology.html#cocktails" style="padding-left:36px;font-size:11px;">— Cocktails</a>
-      <a href="mixology.html#mocktails" style="padding-left:36px;font-size:11px;">— Mocktails</a>
+      <a href="mixology.html#everyday" style="padding-left:36px;font-size:11px;">— Everyday</a>
+      <a href="mixology.html#after-hours" style="padding-left:36px;font-size:11px;">— After Hours</a>
       <a href="founders.html">About</a>
       <a href="https://thienkien.com" target="_blank" rel="noopener" style="padding-left:36px;font-size:11px;">— Thiện Kiến</a>
       <a href="vg2-savvi-landing.html" style="padding-left:36px;font-size:11px;">— VG2 Program</a>
@@ -563,8 +573,8 @@ footer{
 <header class="mx-hero">
   <div class="mx-hero-w">
     <div class="mx-eyebrow">TKG · Mixology</div>
-    <h1 class="mx-h1">Naula, <em>behind the bar.</em></h1>
-    <p class="mx-sub">Signature serves built on Morning Ember and Still Ember: freeze-dried Vietnamese botanicals that dissolve straight into spirit, juice or soda. Cocktails first. Mocktails and more ways to mix are on the way.</p>
+    <h1 class="mx-h1">Naula, <em>in every glass.</em></h1>
+    <p class="mx-sub">Ways to mix Morning Ember and Still Ember, freeze-dried Vietnamese botanicals that dissolve straight into water, juice, soda or spirit. Everyday for tea, smoothies and simple daily serves; After Hours for mocktails and cocktails.</p>
     <div class="mx-note">1 level tsp ≈ 1 g of powder</div>
   </div>
 </header>
@@ -573,9 +583,8 @@ footer{
 <div class="mx-bar">
   <div class="mx-bar-w">
     <div class="mx-tabs" role="tablist">
-      <button class="mx-tab" role="tab" data-tab="cocktails" aria-selected="false">Cocktails <span class="mx-count">3</span></button>
-      <button class="mx-tab" role="tab" data-tab="mocktails" aria-selected="false">Mocktails <span class="mx-count">1</span></button>
-      <button class="mx-tab" role="tab" data-tab="more" aria-selected="false">More serves <span class="mx-soon">Soon</span></button>
+      <button class="mx-tab" role="tab" data-tab="everyday" aria-selected="false">Everyday <span class="mx-soon">Soon</span></button>
+      <button class="mx-tab" role="tab" data-tab="after-hours" aria-selected="false">After Hours <span class="mx-count">4</span></button>
     </div>
     <div class="mx-filters">
       <button class="mx-chip" data-ember="all" aria-pressed="true">All</button>
@@ -589,9 +598,51 @@ footer{
      To add a serve: copy one <article class="mx-recipe"> block,
      set data-cat = cocktails | mocktails | more, and data-ember = morning | still.
      Tab counts are computed automatically on load.  -->
-<main id="cocktails">
+<main id="everyday">
   <section class="mx-list" id="recipes">
-    <article class="mx-recipe" id="the-hunter" data-cat="cocktails" data-ember="morning">
+    <div class="mx-group" id="mocktails" data-cat="after-hours" data-sub="mocktail"><h2 class="mx-group-h">Mocktail</h2><span class="mx-group-d">Alcohol-free</span></div>
+    <article class="mx-recipe" id="tropical-island" data-cat="after-hours" data-sub="mocktail" data-ember="still">
+      <!-- 1 · finished serve -->
+      <div class="mx-row mx-open">
+        <figure class="mx-frame mx-serve"><div class="mx-ph still"><div class="mx-ph-name">Tropical Island</div><div class="mx-ph-sub">Photo coming soon</div></div></figure>
+        <div class="mx-intro">
+          <div class="mx-num">01</div>
+          <h2 class="mx-name">Tropical Island</h2>
+          <div class="mx-meta"><span class="mx-ember still">Made with Still Ember</span></div>
+          <p class="mx-tag">Coconut water with perilla, clove and kumquat. Alcohol-free, made for long afternoons.</p>
+          <div class="mx-specs"><div><b>Glass</b>Highball glass</div></div>
+        </div>
+      </div>
+      <!-- 2 · recipe card | how to make -->
+      <div class="mx-row mx-how">
+        <div class="mx-cardimg is-empty"></div>
+        <div class="mx-howto">
+          <div class="mx-label mx-how-h">How to make</div>
+          <div class="mx-cols">
+            <div>
+              <div class="mx-label">Ingredients</div>
+              <ul class="mx-ing">
+            <li class="is-ember"><span>Still Ember</span><span>2 g (2 tsp)</span></li>
+            <li><span>Coconut water</span><span>100 ml</span></li>
+            <li><span>Kumquat juice</span><span>5 ml</span></li>
+            <li><span>Sugar syrup</span><span>15 ml</span></li>
+            <li><span>Soda water</span><span>30 ml (top up)</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="mx-label">Method</div>
+              <ol class="mx-steps">
+            <li>Add Still Ember, coconut water, kumquat juice and sugar syrup to the glass.</li>
+            <li>Stir until the powder is fully dissolved; adjust sweetness to taste.</li>
+            <li>Add ice, top up with soda water and stir gently.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <div class="mx-group" id="cocktails" data-cat="after-hours" data-sub="cocktail"><h2 class="mx-group-h">Cocktail</h2><span class="mx-group-d">With spirits</span></div>
+    <article class="mx-recipe" id="the-hunter" data-cat="after-hours" data-sub="cocktail" data-ember="morning">
       <!-- 1 · finished serve -->
       <div class="mx-row mx-open">
         <figure class="mx-frame mx-serve"><img src="mix-the-hunter.webp" alt="The Hunter — Morning Ember" loading="lazy" width="900" height="1600"></figure>
@@ -632,7 +683,7 @@ footer{
         </div>
       </div>
     </article>
-    <article class="mx-recipe" id="the-red-hood" data-cat="cocktails" data-ember="still">
+    <article class="mx-recipe" id="the-red-hood" data-cat="after-hours" data-sub="cocktail" data-ember="still">
       <!-- 1 · finished serve -->
       <div class="mx-row mx-open">
         <figure class="mx-frame mx-serve"><img src="mix-the-red-hood.webp" alt="The Red Hood — Still Ember" loading="lazy" width="900" height="1600"></figure>
@@ -673,7 +724,7 @@ footer{
         </div>
       </div>
     </article>
-    <article class="mx-recipe" id="midnight-monsoon" data-cat="cocktails" data-ember="morning">
+    <article class="mx-recipe" id="midnight-monsoon" data-cat="after-hours" data-sub="cocktail" data-ember="morning">
       <!-- 1 · finished serve -->
       <div class="mx-row mx-open">
         <figure class="mx-frame mx-serve"><img src="mix-midnight-monsoon.webp" alt="Midnight Monsoon — Morning Ember" loading="lazy" width="900" height="1600"></figure>
@@ -713,53 +764,13 @@ footer{
         </div>
       </div>
     </article>
-    <article class="mx-recipe" id="tropical-island" data-cat="mocktails" data-ember="still">
-      <!-- 1 · finished serve -->
-      <div class="mx-row mx-open">
-        <figure class="mx-frame mx-serve"><div class="mx-ph still"><div class="mx-ph-name">Tropical Island</div><div class="mx-ph-sub">Photo coming soon</div></div></figure>
-        <div class="mx-intro">
-          <div class="mx-num">01</div>
-          <h2 class="mx-name">Tropical Island</h2>
-          <div class="mx-meta"><span class="mx-ember still">Made with Still Ember</span></div>
-          <p class="mx-tag">Coconut water with perilla, clove and kumquat. Alcohol-free, made for long afternoons.</p>
-          <div class="mx-specs"><div><b>Glass</b>Highball glass</div></div>
-        </div>
-      </div>
-      <!-- 2 · recipe card | how to make -->
-      <div class="mx-row mx-how">
-        <div class="mx-cardimg is-empty"></div>
-        <div class="mx-howto">
-          <div class="mx-label mx-how-h">How to make</div>
-          <div class="mx-cols">
-            <div>
-              <div class="mx-label">Ingredients</div>
-              <ul class="mx-ing">
-            <li class="is-ember"><span>Still Ember</span><span>2 g (2 tsp)</span></li>
-            <li><span>Coconut water</span><span>100 ml</span></li>
-            <li><span>Kumquat juice</span><span>5 ml</span></li>
-            <li><span>Sugar syrup</span><span>15 ml</span></li>
-            <li><span>Soda water</span><span>30 ml (top up)</span></li>
-              </ul>
-            </div>
-            <div>
-              <div class="mx-label">Method</div>
-              <ol class="mx-steps">
-            <li>Add Still Ember, coconut water, kumquat juice and sugar syrup to the glass.</li>
-            <li>Stir until the powder is fully dissolved; adjust sweetness to taste.</li>
-            <li>Add ice, top up with soda water and stir gently.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
   </section>
   <div class="mx-empty" id="mxEmpty" hidden>
     <div class="mx-empty-mark">火</div>
-    <h2 id="mxEmptyT">More serves are on the way.</h2>
-    <p id="mxEmptyB">We are developing new ways to mix Morning Ember and Still Ember. Check back soon, or follow us for first pours.</p>
+    <h2 id="mxEmptyT">Everyday recipes are on the way.</h2>
+    <p id="mxEmptyB">Ways to enjoy Morning Ember and Still Ember with tea, smoothies and more through the day are in development. Check back soon, or follow us for first pours.</p>
   </div>
-  <span id="mocktails"></span><span id="more"></span>
+  <span id="after-hours"></span>
 </main>
 
 <!-- ═══ TIPS ══════════════════════════════════════ -->
@@ -929,16 +940,21 @@ function toggleMobileNav() {
   });
 }
 
-/* ─── Mixology: tabs, filters, serve/recipe-card switch ─── */
+/* ─── Mixology: tabs (Everyday / After Hours), sub-groups, filters ─── */
 (function () {
-  const TABS = ['cocktails', 'mocktails', 'more'];
-  const EMPTY_SOON = {t: "More serves are on the way.", b: "We are developing new ways to mix Morning Ember and Still Ember. Check back soon, or follow us for first pours."};
+  const TABS = ['everyday', 'after-hours'];
+  const GROUP_HASH = {mocktails: 'after-hours', cocktails: 'after-hours'};
+  const OLD_HASH = {'healthy-mix': 'everyday', 'lifestyle': 'after-hours'};
+  const EMPTY_SOON = {t: "Everyday recipes are on the way.", b: "Ways to enjoy Morning Ember and Still Ember with tea, smoothies and more through the day are in development. Check back soon, or follow us for first pours."};
   const EMPTY_NONE = "No serves in this selection yet.";
   const recipes = [...document.querySelectorAll('.mx-recipe')];
+  const groups = [...document.querySelectorAll('.mx-group')];
   const tabs = [...document.querySelectorAll('.mx-tab')];
   const chips = [...document.querySelectorAll('.mx-chip')];
   const empty = document.getElementById('mxEmpty');
-  let tab = 'cocktails', ember = 'all';
+  /* open the first tab that has recipes until Everyday has content */
+  const firstFilled = TABS.find(k => recipes.some(r => r.dataset.cat === k)) || TABS[0];
+  let tab = firstFilled, ember = 'all';
 
   function render() {
     let shown = 0, inTab = 0;
@@ -948,6 +964,9 @@ function toggleMobileNav() {
       const ok = okTab && (ember === 'all' || r.dataset.ember === ember);
       r.hidden = !ok; if (ok) shown++;
     });
+    groups.forEach(g => {
+      g.hidden = !recipes.some(r => !r.hidden && r.dataset.cat === g.dataset.cat && r.dataset.sub === g.dataset.sub);
+    });
     tabs.forEach(b => b.setAttribute('aria-selected', b.dataset.tab === tab));
     chips.forEach(b => b.setAttribute('aria-pressed', b.dataset.ember === ember));
     empty.hidden = shown > 0;
@@ -955,18 +974,17 @@ function toggleMobileNav() {
     document.getElementById('mxEmptyB').textContent = inTab ? '' : EMPTY_SOON.b;
   }
   function fromHash(scroll) {
-    const h = location.hash.replace('#', '');
-    if (TABS.includes(h)) { tab = h; ember = 'all'; }
+    let h = location.hash.replace('#', '');
+    if (OLD_HASH[h]) { h = OLD_HASH[h]; history.replaceState(null, '', '#' + h); }
+    let target = null;
+    if (TABS.includes(h)) { tab = h; ember = 'all'; target = document.querySelector('.mx-bar'); }
+    else if (GROUP_HASH[h]) { tab = GROUP_HASH[h]; ember = 'all'; target = document.getElementById(h); }
     else {
       const r = document.getElementById(h);
-      if (r && r.classList.contains('mx-recipe')) { tab = r.dataset.cat; ember = 'all'; }
+      if (r && r.classList.contains('mx-recipe')) { tab = r.dataset.cat; ember = 'all'; target = r; }
     }
     render();
-    if (scroll && h) {
-      const target = document.getElementById(h);
-      const el = (target && target.classList.contains('mx-recipe')) ? target : document.querySelector('.mx-bar');
-      requestAnimationFrame(() => el.scrollIntoView({behavior: 'smooth', block: 'start'}));
-    }
+    if (scroll && target) requestAnimationFrame(() => target.scrollIntoView({behavior: 'smooth', block: 'start'}));
   }
   tabs.forEach(b => b.addEventListener('click', () => {
     tab = b.dataset.tab;
