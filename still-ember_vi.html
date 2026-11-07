@@ -415,7 +415,7 @@ nav{
   background:radial-gradient(circle at top right,rgba(116,37,94,.16) 0%,transparent 70%);
 }
 .sku-img{
-  width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;
+  width:100%;aspect-ratio:9/16;overflow:hidden;position:relative;
 }
 .sku-img img,.sku-img .ph{width:100%;height:100%}
 .sku-body{padding:28px 28px 24px;position:relative;z-index:1}
@@ -1169,7 +1169,7 @@ table.lab-table tr:last-child td{border-bottom:none}
   .products-h2{font-size:26px;line-height:1.1}
   .products-sub{font-size:16.9px;line-height:1.7;max-width:100%;margin-top:16px}
   .products-grid{grid-template-columns:1fr;gap:24px}
-  .sku-img{aspect-ratio:1/1}
+  .sku-img{aspect-ratio:9/16}
   .sku-body{padding:20px 20px 18px}
   .sku-name{font-size:24px}
   .sku-price{font-size:15px;margin:8px 0 12px}
@@ -1267,7 +1267,7 @@ table.lab-table tr:last-child td{border-bottom:none}
   display:flex;flex-direction:column;
 }
 .collection-card-img{
-  width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;
+  width:100%;aspect-ratio:9/16;overflow:hidden;position:relative;
 }
 .collection-card-img img,.collection-card-img .ph{width:100%;height:100%}
 .collection-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
@@ -1286,7 +1286,7 @@ table.lab-table tr:last-child td{border-bottom:none}
   display:flex;flex-direction:column;
 }
 .collection-card-soon-img{
-  width:100%;aspect-ratio:4/3;
+  width:100%;aspect-ratio:9/16;
   background:var(--bg2);
   display:flex;align-items:center;justify-content:center;
 }
@@ -1456,6 +1456,26 @@ body{background:var(--bg);}
 .mini-faq-item h4{color:var(--cream);}
 .ingredient-card-name{color:var(--cream);}
 .page-h1 em.perilla-em{color:var(--perilla)!important;}
+
+/* ─── Product hero: text + 9:16 product photo ─── */
+.pd-hero{border-bottom:.5px solid var(--line)}
+.pd-hero-w{max-width:1280px;margin:0 auto;padding:64px 80px;display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:72px;align-items:center}
+.pd-hero-img{aspect-ratio:9/16;overflow:hidden;border-radius:2px;background:var(--bg2)}
+.pd-hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:1024px){.pd-hero-w{padding:48px 40px;gap:48px;grid-template-columns:minmax(0,1fr) minmax(0,340px)}}
+@media(max-width:760px){
+  .pd-hero-w{grid-template-columns:1fr;padding:32px 20px 40px;gap:28px}
+  .pd-hero-img{order:-1;width:100%;max-width:380px;margin:0 auto}
+}
+
+/* ─── Two Formats: 9:16 flat-lay beside the format cards ─── */
+.fmt-split{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:48px;align-items:center;margin-top:48px}
+.fmt-split .ways-grid{grid-template-columns:1fr;margin-top:0}
+.fmt-img{aspect-ratio:9/16;overflow:hidden;border-radius:2px;background:var(--bg2)}
+.fmt-img img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:1024px){.fmt-split{grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:32px}}
+@media(max-width:760px){.fmt-split{grid-template-columns:1fr}.fmt-img{width:100%;max-width:380px;margin:0 auto}}
 </style>
 </head>
 <body>
@@ -1479,6 +1499,13 @@ body{background:var(--bg);}
       </div>
       <a href="world-of-naula_vi.html">Naula</a>
       <a href="in-practice.html">In Practice</a>
+      <div class="nav-item-dd">
+        <a href="mixology_vi.html">Mixology <span class="nav-dd-caret">▾</span></a>
+        <div class="nav-dd-menu">
+          <a href="mixology_vi.html#everyday">Everyday</a>
+          <a href="mixology_vi.html#after-hours">After Hours</a>
+        </div>
+      </div>
       <div class="nav-item-dd">
         <a href="founders_vi.html">Giới thiệu <span class="nav-dd-caret">▾</span></a>
         <div class="nav-dd-menu">
@@ -1525,6 +1552,9 @@ body{background:var(--bg);}
       <a href="comboember_vi.html" style="padding-left:36px;font-size:11px;">— Combo Ember, Câu Chuyện</a>
       <a href="world-of-naula_vi.html">Naula</a>
       <a href="in-practice.html">In Practice</a>
+      <a href="mixology_vi.html">Mixology</a>
+      <a href="mixology_vi.html#everyday" style="padding-left:36px;font-size:11px;">— Everyday</a>
+      <a href="mixology_vi.html#after-hours" style="padding-left:36px;font-size:11px;">— After Hours</a>
       <a href="founders_vi.html">Giới thiệu</a>
       <a href="https://thienkien.com" target="_blank" rel="noopener" style="padding-left:36px;font-size:11px;">— Thiện Kiến</a>
       <a href="vg2-savvi-landing.html" style="padding-left:36px;font-size:11px;">— Chương Trình VG2</a>
@@ -1535,13 +1565,14 @@ body{background:var(--bg);}
 
 
 <!-- ═══ HERO ═══ -->
-<section class="method-top" style="aspect-ratio:16/7;">
-  <img class="method-top-img" src="Still-Ember-texture.webp" alt="Still Ember" loading="lazy">
-  <div class="method-top-veil"></div>
-  <div class="method-top-content">
-    <div class="sec-tag" style="color:var(--perilla);">Bộ sưu tập Hỏa · Phú Đăng Hoả</div>
-    <h1 class="page-h1" style="margin-bottom:8px;">Still <em class="perilla-em">Ember.</em></h1>
-    <p class="sec-lead">Tía tô · Đinh hương · Tắc — lặng lẽ, suy tư, một cái kết khác biệt cho ngày dài.</p>
+<section class="pd-hero">
+  <div class="pd-hero-w">
+    <div class="pd-hero-txt">
+      <div class="sec-tag" style="color:var(--perilla);">Bộ sưu tập Hỏa · Phú Đăng Hoả</div>
+      <h1 class="page-h1" style="margin-bottom:8px;">Still <em class="perilla-em">Ember.</em></h1>
+      <p class="sec-lead">Tía tô · Đinh hương · Tắc — lặng lẽ, suy tư, một cái kết khác biệt cho ngày dài.</p>
+    </div>
+    <div class="pd-hero-img"><img src="Still-Ember-product-9x16.webp" alt="Still Ember" width="1080" height="1920"></div>
   </div>
 </section>
 
@@ -1598,18 +1629,21 @@ body{background:var(--bg);}
     <div class="sec-tag">Hai định dạng</div>
     <h2 class="sec-h2">Dù bạn thưởng thức theo cách nào.</h2>
 
-    <div class="ways-grid">
-      <div class="way-card">
-        <div class="way-tag">01 · Thức uống thảo mộc tươi</div>
-        <div class="way-head">Sẵn sàng thưởng thức.</div>
-        <div class="way-sub">250ml, được chế biến theo phương pháp Naula. Vị ngọt từ mật ong và đường thô — không dùng đường tinh luyện.</div>
-        <span class="badge-soon">Sắp ra mắt</span>
-        <p class="way-note">Hiện diện tại các điểm bán chọn lọc. Danh sách địa điểm sẽ sớm được công bố.</p>
-      </div>
-      <div class="way-card">
-        <div class="way-tag">02 · Bột thảo mộc sấy thăng hoa</div>
-        <div class="way-head">Mang theo bất cứ đâu.</div>
-        <div class="way-sub">Hộp 60g · Định lượng 2g mỗi lần dùng. Nước thảo mộc được chế biến hoàn chỉnh, sau đó sấy thăng hoa — không thêm đường hay chất tạo ngọt.</div>
+    <div class="fmt-split">
+      <div class="fmt-img"><img src="Still-Ember-formats-9x16.webp" alt="Still Ember: thức uống tươi, hộp thiếc 60g và gói bột" loading="lazy" width="1080" height="1920"></div>
+      <div class="ways-grid">
+        <div class="way-card">
+          <div class="way-tag">01 · Thức uống thảo mộc tươi</div>
+          <div class="way-head">Sẵn sàng thưởng thức.</div>
+          <div class="way-sub">250ml, được chế biến theo phương pháp Naula. Vị ngọt từ mật ong và đường thô — không dùng đường tinh luyện.</div>
+          <span class="badge-soon">Sắp ra mắt</span>
+          <p class="way-note">Hiện diện tại các điểm bán chọn lọc. Danh sách địa điểm sẽ sớm được công bố.</p>
+        </div>
+        <div class="way-card">
+          <div class="way-tag">02 · Bột thảo mộc sấy thăng hoa</div>
+          <div class="way-head">Mang theo bất cứ đâu.</div>
+          <div class="way-sub">Hộp 60g · Định lượng 2g mỗi lần dùng. Nước thảo mộc được chế biến hoàn chỉnh, sau đó sấy thăng hoa — không thêm đường hay chất tạo ngọt.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1725,6 +1759,7 @@ body{background:var(--bg);}
         <a href="products_vi.html">Sản Phẩm</a>
         <a href="product-evidence_vi.html">Bằng Chứng Sản Phẩm</a>
         <a href="in-practice.html">In Practice</a>
+        <a href="mixology_vi.html">Mixology</a>
         <a href="founders_vi.html">Người Sáng Lập</a>
         <a href="vg2-savvi-landing.html">Chương Trình VG2</a>
       </div>
