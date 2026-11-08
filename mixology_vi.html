@@ -459,6 +459,15 @@ footer{
 .mx-recipe.mx-in{animation:mxIn .7s ease both}
 @keyframes mxIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
+/* wide (16:9) recipe image: full width above the method */
+.mx-how-wide{grid-template-columns:1fr !important;gap:40px}
+.mx-wideimg{position:relative;margin:0;aspect-ratio:16/9;overflow:hidden;border-radius:2px;background:var(--bg2)}
+.mx-wideimg img{width:100%;height:100%;object-fit:cover;display:block}
+.mx-wideimg figcaption{position:absolute;left:12px;top:12px;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream);background:rgba(18,17,11,.7);padding:6px 10px;border-radius:2px}
+.mx-how-wide .mx-howto{position:static;max-width:900px}
+.mx-everyday{border-bottom:none;padding-bottom:0}
+
 /* credit */
 .mx-credit{border-top:.5px solid var(--line)}
 .mx-credit p{max-width:1280px;margin:0 auto;padding:28px 80px;text-align:center;
@@ -615,7 +624,7 @@ footer{
 <div class="mx-bar">
   <div class="mx-bar-w">
     <div class="mx-tabs" role="tablist">
-      <button class="mx-tab" role="tab" data-tab="everyday" aria-selected="false">Everyday <span class="mx-soon">Sắp có</span></button>
+      <button class="mx-tab" role="tab" data-tab="everyday" aria-selected="false">Everyday <span class="mx-count">1</span></button>
       <button class="mx-tab" role="tab" data-tab="after-hours" aria-selected="false">After Hours <span class="mx-count">4</span></button>
     </div>
     <div class="mx-filters">
@@ -632,6 +641,53 @@ footer{
      Tab counts are computed automatically on load.  -->
 <main id="everyday">
   <section class="mx-list" id="recipes">
+    <section class="mx-story mx-everyday" data-cat="everyday" data-sub="">
+      <div class="mx-story-head">
+        <div class="mx-eyebrow">TKG cho mỗi ngày</div>
+        <p class="mx-story-tag">Một gói. Một ly. Bất cứ lúc nào.</p>
+      </div>
+      <div class="mx-story-body" style="margin-top:0">
+        <p>Những ly Everyday dành cho các khoảnh khắc xen giữa ngày: một quãng nghỉ giữa buổi sáng, một buổi chiều dài bên bàn làm việc, một ly thong thả sau giờ tập. Một gói 3 g, một nền vị quen thuộc của Việt Nam, và một phút khuấy đều. Không cần bình lắc, không cần quầy bar.</p>
+      </div>
+    </section>
+    <article class="mx-recipe" id="coconut-blossom-nectar" data-cat="everyday" data-sub="" data-ember="still">
+      <!-- 1 · finished serve -->
+      <div class="mx-row mx-open">
+        
+        <div class="mx-intro">
+          <div class="mx-num">01</div>
+          <h2 class="mx-name">Coconut Blossom Nectar</h2>
+          <div class="mx-meta"><span class="mx-ember still">Pha cùng Still Ember</span></div>
+          <p class="mx-tag">Một gói Still Ember khuấy cùng mật hoa dừa. Vị ngọt caramel dịu nhẹ từ miền Mekong gặp tía tô, đinh hương và tắc, trong một ly đỏ ruby đậm sắc.</p>
+          <div class="mx-specs"><div><b>Ly</b>Ly rocks</div></div>
+        </div>
+      </div>
+      <!-- 2 · recipe card | how to make -->
+      <div class="mx-row mx-how mx-how-wide">
+        <figure class="mx-wideimg"><img src="mix-coconut-blossom-nectar.webp" alt="Coconut Blossom Nectar — Thẻ công thức" loading="lazy" width="1920" height="1080"><figcaption>Thẻ công thức</figcaption></figure>
+        <div class="mx-howto">
+          <div class="mx-label mx-how-h">Cách pha</div>
+          <div class="mx-cols">
+            <div>
+              <div class="mx-label">Nguyên liệu</div>
+              <ul class="mx-ing">
+            <li class="is-ember"><span>Still Ember</span><span>1 gói (3 g)</span></li>
+            <li><span>Mật hoa dừa</span><span>100 ml</span></li>
+            <li><span>Đá viên</span><span>Tùy thích</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="mx-label">Cách pha</div>
+              <ol class="mx-steps">
+            <li>Rót mật hoa dừa vào ly.</li>
+            <li>Cho một gói Still Ember vào, khuấy đều đến khi bột tan hoàn toàn.</li>
+            <li>Thêm đá và thưởng thức. Không cần bình lắc, không cần siro, không cần thêm gì khác.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
     <div class="mx-group" id="mocktails" data-cat="after-hours" data-sub="mocktail"><h2 class="mx-group-h">Mocktail</h2><span class="mx-group-d">Không cồn</span></div>
     <article class="mx-recipe" id="tropical-island" data-cat="after-hours" data-sub="mocktail" data-ember="still">
       <!-- 1 · finished serve -->
