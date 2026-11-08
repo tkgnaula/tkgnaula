@@ -459,6 +459,15 @@ footer{
 .mx-recipe.mx-in{animation:mxIn .7s ease both}
 @keyframes mxIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
+/* wide (16:9) recipe image: full width above the method */
+.mx-how-wide{grid-template-columns:1fr !important;gap:40px}
+.mx-wideimg{position:relative;margin:0;aspect-ratio:16/9;overflow:hidden;border-radius:2px;background:var(--bg2)}
+.mx-wideimg img{width:100%;height:100%;object-fit:cover;display:block}
+.mx-wideimg figcaption{position:absolute;left:12px;top:12px;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream);background:rgba(18,17,11,.7);padding:6px 10px;border-radius:2px}
+.mx-how-wide .mx-howto{position:static;max-width:900px}
+.mx-everyday{border-bottom:none;padding-bottom:0}
+
 /* credit */
 .mx-credit{border-top:.5px solid var(--line)}
 .mx-credit p{max-width:1280px;margin:0 auto;padding:28px 80px;text-align:center;
@@ -615,7 +624,7 @@ footer{
 <div class="mx-bar">
   <div class="mx-bar-w">
     <div class="mx-tabs" role="tablist">
-      <button class="mx-tab" role="tab" data-tab="everyday" aria-selected="false">Everyday <span class="mx-soon">Soon</span></button>
+      <button class="mx-tab" role="tab" data-tab="everyday" aria-selected="false">Everyday <span class="mx-count">1</span></button>
       <button class="mx-tab" role="tab" data-tab="after-hours" aria-selected="false">After Hours <span class="mx-count">4</span></button>
     </div>
     <div class="mx-filters">
@@ -632,6 +641,53 @@ footer{
      Tab counts are computed automatically on load.  -->
 <main id="everyday">
   <section class="mx-list" id="recipes">
+    <section class="mx-story mx-everyday" data-cat="everyday" data-sub="">
+      <div class="mx-story-head">
+        <div class="mx-eyebrow">TKG for everyday</div>
+        <p class="mx-story-tag">One sachet. One glass. Any hour.</p>
+      </div>
+      <div class="mx-story-body" style="margin-top:0">
+        <p>Everyday serves are made for the moments in between: a mid-morning pause, a long afternoon at the desk, a quiet glass after training. One 3 g sachet, a familiar Vietnamese base, and a minute of stirring. No shaker, no bar.</p>
+      </div>
+    </section>
+    <article class="mx-recipe" id="coconut-blossom-nectar" data-cat="everyday" data-sub="" data-ember="still">
+      <!-- 1 · finished serve -->
+      <div class="mx-row mx-open">
+        
+        <div class="mx-intro">
+          <div class="mx-num">01</div>
+          <h2 class="mx-name">Coconut Blossom Nectar</h2>
+          <div class="mx-meta"><span class="mx-ember still">Made with Still Ember</span></div>
+          <p class="mx-tag">One sachet of Still Ember stirred into coconut blossom nectar. Soft caramel sweetness from the Mekong meets perilla, clove and kumquat, in a deep ruby glass.</p>
+          <div class="mx-specs"><div><b>Glass</b>Rocks glass</div></div>
+        </div>
+      </div>
+      <!-- 2 · recipe card | how to make -->
+      <div class="mx-row mx-how mx-how-wide">
+        <figure class="mx-wideimg"><img src="mix-coconut-blossom-nectar.webp" alt="Coconut Blossom Nectar — Recipe card" loading="lazy" width="1920" height="1080"><figcaption>Recipe card</figcaption></figure>
+        <div class="mx-howto">
+          <div class="mx-label mx-how-h">How to make</div>
+          <div class="mx-cols">
+            <div>
+              <div class="mx-label">Ingredients</div>
+              <ul class="mx-ing">
+            <li class="is-ember"><span>Still Ember</span><span>1 sachet (3 g)</span></li>
+            <li><span>Coconut blossom nectar</span><span>100 ml</span></li>
+            <li><span>Ice</span><span>To taste</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="mx-label">Method</div>
+              <ol class="mx-steps">
+            <li>Pour the coconut blossom nectar into the glass.</li>
+            <li>Add one sachet of Still Ember and stir until the powder is fully dissolved.</li>
+            <li>Add ice and enjoy. No shaker, no syrup, nothing else needed.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
     <div class="mx-group" id="mocktails" data-cat="after-hours" data-sub="mocktail"><h2 class="mx-group-h">Mocktail</h2><span class="mx-group-d">Alcohol-free</span></div>
     <article class="mx-recipe" id="tropical-island" data-cat="after-hours" data-sub="mocktail" data-ember="still">
       <!-- 1 · finished serve -->
