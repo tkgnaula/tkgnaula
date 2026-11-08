@@ -430,6 +430,35 @@ footer{
 .mx-group::after{content:"";flex:1;height:.5px;background:var(--line2);transform:translateY(-10px)}
 .mx-recipe{scroll-margin-top:110px}
 
+/* cocktail story */
+.mx-story{padding:56px 0 24px;border-bottom:.5px solid var(--line)}
+.mx-story[hidden]{display:none}
+.mx-story-head{text-align:center;max-width:720px;margin:0 auto 40px}
+.mx-story-place{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--cream4);margin-top:14px}
+.mx-story-tag{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,30px);line-height:1.4;color:var(--cream);margin-top:18px}
+.mx-story-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mx-story-photos figure{margin:0;aspect-ratio:16/9;overflow:hidden;border-radius:2px;background:var(--bg2)}
+.mx-story-photos img{width:100%;height:100%;object-fit:cover;display:block}
+.mx-story-body{max-width:680px;margin:56px auto 32px;text-align:center}
+.mx-story-title{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.mx-story-sub{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--cream3);margin:14px 0 32px}
+.mx-story-body p:not(.mx-story-sub):not(.mx-story-close){font-size:15.5px;font-weight:300;line-height:1.85;color:var(--cream2);margin-bottom:18px}
+.mx-story-close{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.2vw,28px);color:#E8566B;margin-top:36px;padding-top:28px;border-top:.5px solid var(--line2)}
+
+/* reveal button: cocktails stay hidden until the story is read */
+.mx-reveal{
+  margin-top:32px;display:inline-flex;align-items:center;gap:12px;cursor:pointer;
+  background:transparent;border:.5px solid rgba(232,86,107,.55);border-radius:2px;
+  color:var(--cream);font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:15px 30px;transition:background .25s,border-color .25s;
+}
+.mx-reveal:hover{background:rgba(232,86,107,.12);border-color:#E8566B}
+.mx-reveal span{font-size:14px;color:#E8566B;animation:mxNudge 1.6s ease-in-out infinite}
+.mx-reveal[hidden]{display:none}
+@keyframes mxNudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+.mx-recipe.mx-in{animation:mxIn .7s ease both}
+@keyframes mxIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
 /* credit */
 .mx-credit{border-top:.5px solid var(--line)}
 .mx-credit p{max-width:1280px;margin:0 auto;padding:28px 80px;text-align:center;
@@ -477,6 +506,9 @@ footer{
   .mx-credit p{padding:24px}
   .mx-group{padding-top:48px;gap:12px;flex-wrap:wrap}
   .mx-group::after{display:none}
+  .mx-story-photos{grid-template-columns:1fr;gap:10px}
+  .mx-story-body{margin-top:40px}
+  .mx-story-body p:not(.mx-story-sub):not(.mx-story-close){font-size:16.5px}
   .foot-top{padding:40px 24px 32px}
   .foot-nav{flex-direction:column;gap:28px}
   .foot-bottom{padding:20px 24px 28px;flex-direction:column;gap:14px;align-items:flex-start}
@@ -604,29 +636,29 @@ footer{
     <article class="mx-recipe" id="tropical-island" data-cat="after-hours" data-sub="mocktail" data-ember="still">
       <!-- 1 · finished serve -->
       <div class="mx-row mx-open">
-        <figure class="mx-frame mx-serve"><img src="mix-tropical-island.webp" alt="Tropical Island — Still Ember" loading="lazy" width="900" height="1600"></figure>
+        <figure class="mx-frame mx-serve"><img src="mix-tropical-island-serve.webp" alt="Tropical Island — Still Ember" loading="lazy" width="900" height="1600"></figure>
         <div class="mx-intro">
           <div class="mx-num">01</div>
           <h2 class="mx-name">Tropical Island</h2>
-          <div class="mx-meta"><span class="mx-ember still">Pha cùng Still Ember</span></div>
+          <div class="mx-meta"><span class="mx-ember still">Pha cùng Still Ember</span><span class="mx-partner">TKG × Blush Beach</span></div>
           <p class="mx-tag">Nước dừa cùng tía tô, đinh hương và tắc. Không cồn, dành cho những buổi chiều dài.</p>
           <div class="mx-specs"><div><b>Ly</b>Ly highball</div></div>
         </div>
       </div>
       <!-- 2 · recipe card | how to make -->
       <div class="mx-row mx-how">
-        <div class="mx-cardimg is-empty"></div>
+        <figure class="mx-frame mx-cardimg"><img src="mix-tropical-island-card.webp" alt="Tropical Island — Thẻ công thức" loading="lazy" width="900" height="1600"><figcaption>Thẻ công thức</figcaption></figure>
         <div class="mx-howto">
           <div class="mx-label mx-how-h">Cách pha</div>
           <div class="mx-cols">
             <div>
               <div class="mx-label">Nguyên liệu</div>
               <ul class="mx-ing">
-            <li class="is-ember"><span>Still Ember</span><span>2 g (2 muỗng cà phê)</span></li>
+            <li class="is-ember"><span>Still Ember</span><span>3 g (3 muỗng cà phê)</span></li>
             <li><span>Nước dừa</span><span>100 ml</span></li>
             <li><span>Nước cốt tắc</span><span>5 ml</span></li>
             <li><span>Siro đường</span><span>15 ml</span></li>
-            <li><span>Nước soda</span><span>30 ml (thêm cho đầy)</span></li>
+            <li><span>Nước soda</span><span>Thêm cho đầy</span></li>
               </ul>
             </div>
             <div>
@@ -642,6 +674,28 @@ footer{
       </div>
     </article>
     <div class="mx-group" id="cocktails" data-cat="after-hours" data-sub="cocktail"><h2 class="mx-group-h">Cocktail</h2><span class="mx-group-d">Có cồn</span></div>
+    <section class="mx-story" data-cat="after-hours" data-sub="cocktail">
+      <div class="mx-story-head">
+        <div class="mx-eyebrow">Cảm hứng từ hành trình một mình của nhà sáng lập</div>
+        <div class="mx-story-place">Sa Pa, Việt Nam · Tháng 9/2014</div>
+        <p class="mx-story-tag">Một chuyến đi vào màn sương. Một cuộc gặp thoáng qua. Một ký ức trở thành câu chuyện.</p>
+      </div>
+      <div class="mx-story-photos">
+        <figure><img src="mix-story-fansipan.webp" alt="Rừng sương trên đường lên Fansipan, tháng 9/2014" loading="lazy" width="1600" height="900"></figure>
+        <figure><img src="mix-story-sapa.webp" alt="Người lữ khách trên con đường sương mù ở Sa Pa, tháng 9/2014" loading="lazy" width="1600" height="900"></figure>
+      </div>
+      <div class="mx-story-body">
+        <h3 class="mx-story-title">The Hunter · The Red Hood · Midnight Monsoon</h3>
+        <p class="mx-story-sub">Lấy cảm hứng từ những cảnh sắc huyền bí và truyện kể dân gian của vùng cao phía Bắc Việt Nam.</p>
+        <p>Sâu trong núi rừng Việt Nam, nơi những cánh rừng cổ tan vào màn sương và gió mùa quét ngang thung lũng, một người thợ săn lạc lối.</p>
+        <p>Qua làn sương, anh thoáng thấy một người phụ nữ bí ẩn đeo gùi sau lưng, chiếc mũ trùm đỏ thấp thoáng giữa những tán cây.</p>
+        <p>Sự tò mò dẫn anh vào sâu hơn trong rừng. Nhưng càng đi theo, thế giới quen thuộc càng nhạt dần.</p>
+        <p>Khi màn đêm buông xuống, cơn mưa mùa kéo đến. Mưa, gió và bóng tối biến khu rừng thành một chốn huyền bí, nơi thực và mộng bắt đầu nhòe vào nhau.</p>
+        <p>Ba ly cocktail. Một hành trình. Một cuộc gặp gỡ bí ẩn có lẽ sẽ chẳng bao giờ được lý giải.</p>
+        <p class="mx-story-close">Bước vào rừng. Theo dấu sắc đỏ. Đón lấy điều chưa biết.</p>
+        <button type="button" class="mx-reveal" id="mxReveal" aria-expanded="false">Mở ra ba ly cocktail <span aria-hidden="true">↓</span></button>
+      </div>
+    </section>
     <article class="mx-recipe" id="the-hunter" data-cat="after-hours" data-sub="cocktail" data-ember="morning">
       <!-- 1 · finished serve -->
       <div class="mx-row mx-open">
@@ -948,13 +1002,14 @@ function toggleMobileNav() {
   const EMPTY_SOON = {t: "Công thức Everyday sắp ra mắt.", b: "Những cách pha Morning Ember và Still Ember cùng trà, smoothie và nhiều thức uống khác trong ngày đang được hoàn thiện. Hãy quay lại sớm, hoặc theo dõi TKG để thưởng thức trước."};
   const EMPTY_NONE = "Chưa có công thức trong mục này.";
   const recipes = [...document.querySelectorAll('.mx-recipe')];
-  const groups = [...document.querySelectorAll('.mx-group')];
+  const groups = [...document.querySelectorAll('.mx-group, .mx-story')];
   const tabs = [...document.querySelectorAll('.mx-tab')];
   const chips = [...document.querySelectorAll('.mx-chip')];
   const empty = document.getElementById('mxEmpty');
   /* open the first tab that has recipes until Everyday has content */
   const firstFilled = TABS.find(k => recipes.some(r => r.dataset.cat === k)) || TABS[0];
-  let tab = firstFilled, ember = 'all';
+  let tab = firstFilled, ember = 'all', revealed = false;
+  const revealBtn = document.getElementById('mxReveal');
 
   function render() {
     let shown = 0, inTab = 0;
@@ -962,11 +1017,14 @@ function toggleMobileNav() {
       const okTab = r.dataset.cat === tab;
       if (okTab) inTab++;
       const ok = okTab && (ember === 'all' || r.dataset.ember === ember);
-      r.hidden = !ok; if (ok) shown++;
+      r._ok = ok;
+      r.hidden = !ok || (r.dataset.sub === 'cocktail' && revealBtn && !revealed);
+      if (ok) shown++;
     });
     groups.forEach(g => {
-      g.hidden = !recipes.some(r => !r.hidden && r.dataset.cat === g.dataset.cat && r.dataset.sub === g.dataset.sub);
+      g.hidden = !recipes.some(r => r._ok && r.dataset.cat === g.dataset.cat && r.dataset.sub === g.dataset.sub);
     });
+    if (revealBtn) revealBtn.hidden = revealed;
     tabs.forEach(b => b.setAttribute('aria-selected', b.dataset.tab === tab));
     chips.forEach(b => b.setAttribute('aria-pressed', b.dataset.ember === ember));
     empty.hidden = shown > 0;
@@ -981,7 +1039,7 @@ function toggleMobileNav() {
     else if (GROUP_HASH[h]) { tab = GROUP_HASH[h]; ember = 'all'; target = document.getElementById(h); }
     else {
       const r = document.getElementById(h);
-      if (r && r.classList.contains('mx-recipe')) { tab = r.dataset.cat; ember = 'all'; target = r; }
+      if (r && r.classList.contains('mx-recipe')) { tab = r.dataset.cat; ember = 'all'; target = r; if (r.dataset.sub === 'cocktail') revealed = true; }
     }
     render();
     if (scroll && target) requestAnimationFrame(() => target.scrollIntoView({behavior: 'smooth', block: 'start'}));
@@ -992,6 +1050,12 @@ function toggleMobileNav() {
     render();
   }));
   chips.forEach(b => b.addEventListener('click', () => { ember = b.dataset.ember; render(); }));
+  if (revealBtn) revealBtn.addEventListener('click', () => {
+    revealed = true; render();
+    const shownCocktails = recipes.filter(r => !r.hidden && r.dataset.sub === 'cocktail');
+    shownCocktails.forEach((r, i) => { r.style.animationDelay = (i * 0.12) + 's'; r.classList.add('mx-in'); });
+    if (shownCocktails[0]) requestAnimationFrame(() => shownCocktails[0].scrollIntoView({behavior: 'smooth', block: 'start'}));
+  });
   window.addEventListener('hashchange', () => fromHash(true));
   fromHash(!!location.hash);
 })();
